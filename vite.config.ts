@@ -32,6 +32,7 @@ export default defineConfig({
   // elementUi组件自动引入
   Components({
     resolvers: [ElementPlusResolver()],
+    dts: 'src/components.d.ts',
   }),
   ],
   server: {
@@ -48,5 +49,15 @@ export default defineConfig({
         rewrite: (path: string) => path.replace(/^\/api/, '')
       }
     }
-  }
+  },
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: `
+  //         @import '@/assets/scss/variables.scss';
+  //         @import '@/assets/scss/main.scss';
+  //        `,
+  //     },
+  //   },
+  // },
 });

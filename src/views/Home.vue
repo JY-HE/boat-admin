@@ -11,20 +11,16 @@
                 <img src="https://pinia.web3doc.top/logo.svg" class="logo pinia" alt="Pinia logo" />
             </a>
         </div>
-        <el-button type="success" round>按钮</el-button>
         <HelloWorld msg="Vite + Vue + Pinia" />
         <UsePinia />
-        <Request />
     </div>
 </template>
 
-<script lang="ts" setup>
-import HelloWorld from '@/components/HelloWorld.vue';
-import UsePinia from '@/components/UsePinia.vue';
-import Request from '@/components/Request.vue';
-</script>
+<script lang="ts" setup></script>
 <style lang="scss">
 .home {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

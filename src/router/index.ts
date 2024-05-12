@@ -3,13 +3,12 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        name: 'Home',
-        component: () => import('@/views/Home.vue'),
+        redirect: '/home',
         children: [
             {
                 path: '/home',
-                name: 'homeIndex',
-                component: () => import('@/views/home/index.vue'),
+                name: 'Home',
+                component: () => import('@/views/Home.vue'),
                 meta: {
                     isShow: true, // 控制当前项是否在菜单栏中渲染出来，比如你写了 login 页面的路由，但是并不希望 login在menu菜单中渲染出来，即可设为false
                     title: '首页', // menu菜单项的名称，没啥好说的

@@ -14,6 +14,171 @@ body {
             @include baseTransition(opacity);
             // @include panelStyle;
             @include panelShadow;
+
+            div[menuMain] {
+                @include wh;
+                // @include panelStyle(20);
+                @include panelShadow;
+                border-radius: pxToRem(0) pxToRem(20) pxToRem(20) pxToRem(0);
+                // @include after {
+                //     border-radius: pxToRem(0) pxToRem(20) pxToRem(20) pxToRem(0);
+                // }
+
+                #systemTitle {
+                    @include wh(100%, pxToRem(90));
+                    @include flexCenter;
+                    border-bottom: pxToRem(1) solid;
+                    @include themeColor(var(--dividingLineAlpha), border-color);
+                    padding: pxToRem(30) pxToRem(18);
+                    overflow: hidden;
+
+                    .logo {
+                        @include whrem(34);
+                        @include flexCenter;
+                        @include whiteColor(1, color);
+                        border-radius: pxToRem(12);
+                        margin-right: pxToRem(8);
+                        flex-shrink: 0;
+                        .BoatIconfont {
+                            @include whrem(34);
+                            font-size: pxToRem(34);
+                            @include themeColor(1, color);
+                        }
+                    }
+
+                    .title {
+                        @include themeColor(1, color);
+                        @include fontStyle(1);
+                    }
+                }
+
+                .menu {
+                    width: 100%;
+                    @include wh(100%, calc(100% - #{pxToRem(90)}));
+                    @include scrollbarXYStyle();
+                    .el-menu {
+                        min-width: 100%;
+                        width: fit-content;
+                        border: none;
+                        @include fontColor(1);
+                        padding: 0 pxToRem(16);
+
+                        .el-menu-item,
+                        .el-sub-menu {
+                            padding: 0;
+
+                            .el-sub-menu__title {
+                                padding: 0;
+                            }
+                            .BoatIconfont {
+                                @include iconSize(1);
+                                margin-right: pxToRem(8);
+                            }
+                        }
+                        .el-menu-item {
+                            &:hover {
+                                @include themeColor(0.1, background-color);
+                            }
+                        }
+                        .el-sub-menu {
+                            &.is-opened {
+                                @include themeColor(0.06, background-color);
+                            }
+                        }
+
+                        .is-active {
+                            @include themeColor(1, background-color);
+                            @include whiteColor(1, color);
+                            &:hover {
+                                @include themeColor(0.1, background-color);
+                            }
+                        }
+                    }
+                }
+
+                div[menuGroup] {
+                    @include wh;
+                    @include scrollbarStyle;
+                    padding: 0 pxToRem(16);
+                    div[menuItem] {
+                        margin-bottom: pxToRem(16);
+
+                        div[childrenMenu] {
+                            width: 100%;
+                            overflow: hidden;
+                            height: 0;
+                            @include baseTransition(height);
+                            div {
+                                width: 100%;
+                                button {
+                                    padding-left: pxToRem(50);
+                                }
+                            }
+                            &.show {
+                                height: var(--height);
+                            }
+                        }
+
+                        button {
+                            @include wh(100%, pxToRem(48));
+                            @include themeColor(0, background-color);
+                            @include flexCenter(flex-start);
+                            @include baseTransition(width);
+                            border-radius: pxToRem(12);
+                            outline: none;
+                            border: none;
+                            text-align: left;
+                            cursor: pointer;
+                            padding: 0 pxToRem(8);
+                            &:hover {
+                                @include themeColor(
+                                    var(--datalistHoverBackgroundAlpha),
+                                    background-color
+                                );
+                            }
+                            .BoatIconfont {
+                                @include iconSize(2);
+                                @include fontColor(3);
+
+                                &:first-child {
+                                    @include iconSize(1);
+                                    margin-right: pxToRem(8);
+                                }
+
+                                &:last-child {
+                                    @include baseTransition(transform);
+                                }
+                            }
+                            h4 {
+                                @include fontColor(3);
+                                // @include textHidden;
+                                width: calc(100% - #{pxToRem(22 + 8 + 16)});
+                            }
+                            &.active {
+                                @include themeColor(1, background-color);
+                                &:hover {
+                                    @include themeColor(1, background-color);
+                                }
+                                .BoatIconfont {
+                                    @include whiteColor(1, color);
+                                }
+                                h4 {
+                                    @include whiteColor(1, color);
+                                }
+                            }
+
+                            &.expand {
+                                @include themeColor(0.06, background-color);
+                                .BoatIconfont {
+                                    &:last-child {
+                                        transform: rotate(90deg);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

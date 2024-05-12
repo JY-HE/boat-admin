@@ -24,8 +24,4 @@ const clickHandle = (event: MouseEvent) => {
 };
 </script>
 
-<style lang="scss">
-.BoatIconfont {
-    font-size: pxToRem(24);
-}
-</style>
+<style lang="scss"></style>

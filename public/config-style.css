@@ -64,6 +64,19 @@
     --textColor_5: 185, 198, 224;
 }
 
+@font-face {
+    font-family: "iconfont"; /* Project id 3677754 */
+    src: url('./font/iconfont.woff2') format('woff2')
+}
+  
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 1rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 body #loadingMaskView {
     background-color: rgba(var(--bodyBackground), 1);
     width: 100vw;

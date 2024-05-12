@@ -1,11 +1,10 @@
 <template>
     <em
-        class="iconfont"
+        class="BoatIconfont iconfont"
         :class="[className, { errorColor: errorColor }]"
         v-html="icon"
         @click="clickHandle($event)"
     ></em>
-    <!-- <i class="BoatIconfont iconfont">&#xe6d5;</i> -->
 </template>
 
 <script setup lang="ts">

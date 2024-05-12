@@ -26,7 +26,6 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 // 路由列表
 const routerList = router.getRoutes().filter(item => item?.meta?.isShow);
-console.log('🚀 ~ MenuList.vue:10 ~ routerList:', routerList);
 </script>
 
 <style lang="scss">

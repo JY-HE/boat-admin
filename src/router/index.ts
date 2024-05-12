@@ -1,18 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-// const routes: Array<RouteRecordRaw> = [
-//     {
-//         path: '/',
-//         name: 'Home',
-//         component: () => import('@/views/Home.vue')
-//     },
-// ]
-
 const routes: Array<RouteRecordRaw> = [
     {
-        path: '/layout',
-        name: 'layoutIndex',
-        component: () => import('@/layout/index.vue'),
+        path: '/',
+        name: 'Home',
+        component: () => import('@/views/Home.vue'),
         children: [
             {
                 path: '/home',
@@ -21,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
                 meta: {
                     isShow: true, // 控制当前项是否在菜单栏中渲染出来，比如你写了 login 页面的路由，但是并不希望 login在menu菜单中渲染出来，即可设为false
                     title: '首页', // menu菜单项的名称，没啥好说的
-                    icon: '&#xe6d5;', // menu菜单项的图标，我此处是与封装好的 svg 组件结合使用的
+                    icon: '&#xe622;', // menu菜单项的图标，我此处是与封装好的 svg 组件结合使用的
                 },
             },
             {
@@ -31,7 +23,7 @@ const routes: Array<RouteRecordRaw> = [
                 meta: {
                     isShow: true,
                     title: 'Echarts页',
-                    icon: 'menu-echarts',
+                    icon: '&#xe622;',
                 },
                 children: [
                     {
@@ -59,7 +51,7 @@ const routes: Array<RouteRecordRaw> = [
                 meta: {
                     isShow: true,
                     title: '组件',
-                    icon: 'menu-package',
+                    icon: '&#xe622;',
                 },
             },
             {
@@ -69,7 +61,7 @@ const routes: Array<RouteRecordRaw> = [
                 meta: {
                     isShow: true,
                     title: '一级菜单',
-                    icon: 'menu-package',
+                    icon: '&#xe622;',
                 },
                 children: [
                     {

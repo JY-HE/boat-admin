@@ -1,0 +1,75 @@
+/**
+ * @name: wh
+ * @desc: 设置元素宽高,默认为宽高100%;
+ * @param {String} $width 宽度
+ * @param {String} $height 高度
+ * @use: @include wh;
+ * @use: @include wh(80%);
+ * @use: @include wh(80%, 20px);
+ */
+@mixin wh($width: 100%, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+/**
+ * @name: whrem
+ * @desc: 设置元素宽高,传入数值自动转换rem值
+ * @param {String} $width 宽度
+ * @param {String} $height 高度
+ * @use: @include whrem(40);
+ * @use: @include whrem(200, 100);
+ */
+@mixin whrem($width, $height: $width) {
+    width: pxToRem($width);
+    height: pxToRem($height);
+}
+
+/**
+ * @name: flexCenter
+ * @desc: 弹性盒居中
+ * @param {String} $justify 主轴对齐方式
+ * @param {String} $align 副轴对齐方式
+ * @param {String} $direction 主轴是否垂直
+ * @use: @include flexCenter;
+ * @use: @include flexCenter(space-around, center);
+ */
+@mixin flexCenter($justify: center, $align: center, $direction: false) {
+    display: flex;
+
+    @if ($justify !=false) {
+        justify-content: $justify;
+    }
+
+    @if ($align !=false) {
+        align-items: $align;
+    }
+
+    @if ($direction !=false) {
+        flex-direction: column;
+    }
+}
+
+// [全局] [动画] 基础过度效果
+@mixin baseTransition($style: 'normal', $isImportant: false) {
+    $baseTransition: color var(--baseTransition), background var(--baseTransition),
+        border-color var(--baseTransition);
+
+    @if $isImportant==false {
+        @if $style== 'normal' {
+            transition: $baseTransition;
+        } @else if $style== 'none' {
+            transition: none;
+        } @else {
+            transition: $baseTransition, #{$style} var(--baseTransition);
+        }
+    } @else {
+        @if $style== 'normal' {
+            transition: $baseTransition !important;
+        } @else if $style== 'none' {
+            transition: none !important;
+        } @else {
+            transition: $baseTransition, #{$style} var(--baseTransition) !important;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+body {
+    @include bodyBackground(1, background-color);
+
+    #app {
+        @include wh;
+        overflow: hidden;
+        @include flexCenter(flex-start, flex-start);
+        @include themeColor(0.03, background-color);
+        $menuList: 288;
+        position: relative;
+
+        div[menuList] {
+            @include wh(pxToRem($menuList), 100%);
+            @include baseTransition(opacity);
+            // @include panelStyle;
+            @include panelShadow;
+        }
+    }
+}

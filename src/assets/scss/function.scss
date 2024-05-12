@@ -1,0 +1,16 @@
+/**
+ * @name: pxToRem
+ * @desc: px转换rem方法
+ * @param {Number} $px 像素值
+ * @use: pxToRem(10);
+ * @return: {String} rem 像素对象转换的rem值;
+ */
+@function pxToRem($px) {
+    $unit: unit($px);
+
+    @if $unit != '' {
+        @return $px;
+    }
+
+    @return calc($px * 1rem / 16);
+}

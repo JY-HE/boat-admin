@@ -1,0 +1,214 @@
+// [全局] [颜色] 白色;
+@mixin whiteColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(whiteColor, $alpha, $isImportant);
+    @include baseTransition;
+}
+
+// [全局] [颜色] 黑色;
+@mixin blackColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(blackColor, $alpha, $isImportant);
+    @include baseTransition;
+}
+
+// [全局] [颜色] 背景色;
+@mixin bodyBackground($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(bodyBackground, $alpha, $isImportant);
+    @include baseTransition;
+}
+
+// [全局] [颜色] 强调色/主题色;
+@mixin themeColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(themeColor, $alpha, $isImportant);
+    @include baseTransition;
+}
+
+// [全局] [颜色] 成功/安全色;
+@mixin successColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(successColor, $alpha, $isImportant);
+    @include baseTransition;
+}
+
+// [全局] [颜色] 常规色;
+@mixin normalColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(normalColor, $alpha, $isImportant);
+    @include baseTransition;
+}
+
+// [全局] [颜色] 告警/错误色;
+@mixin errorColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(errorColor, $alpha, $isImportant);
+    @include baseTransition;
+}
+
+// [全局] [颜色] 警告/提醒色;
+@mixin warnColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(warnColor, $alpha, $isImportant);
+    @include baseTransition;
+}
+
+// [全局] [颜色] 警告/辅助色-黄;
+@mixin assistColorYellow($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(assistColorYellow, $alpha, $isImportant);
+    @include baseTransition;
+}
+
+// [全局] [颜色] 故障/禁用色;
+@mixin disabledColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(disabledColor, $alpha, $isImportant);
+    @include baseTransition;
+}
+
+// [全局] [颜色] 获取颜色函数
+@function colorValue($name: 'baseColor', $alpha: 1, $isImportant: false) {
+    @if $isImportant==true {
+        @return rgba(var(--#{$name}), $alpha) + ' '+'!' + important;
+    } @else {
+        @return rgba(var(--#{$name}), $alpha);
+    }
+}
+
+// [全局] 获取颜色透明度
+@function colorAlpha($name) {
+    @return var(--#{$name});
+}
+
+// [全局] [动画] 基础过度效果
+@mixin baseTransition($style: 'normal', $isImportant: false) {
+    $baseTransition: color var(--baseTransition), background var(--baseTransition),
+        border-color var(--baseTransition);
+
+    @if $isImportant==false {
+        @if $style== 'normal' {
+            transition: $baseTransition;
+        } @else if $style== 'none' {
+            transition: none;
+        } @else {
+            transition: $baseTransition, #{$style} var(--baseTransition);
+        }
+    } @else {
+        @if $style== 'normal' {
+            transition: $baseTransition !important;
+        } @else if $style== 'none' {
+            transition: none !important;
+        } @else {
+            transition: $baseTransition, #{$style} var(--baseTransition) !important;
+        }
+    }
+}
+
+// [全局] 滚动条样式
+@mixin scrollbarStyle($width: 8) {
+    overflow: hidden overlay;
+
+    &::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: pxToRem($width);
+        /*高宽分别对应横竖滚动条的尺寸*/
+        height: 100%;
+        border-radius: pxToRem($width);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        /*滚动条里面小方块*/
+        @include themeColor(var(--scrollbarAlpha), background-color);
+        border-radius: pxToRem($width);
+    }
+
+    &::-webkit-scrollbar-track {
+        /*滚动条里面轨道*/
+        display: none;
+    }
+}
+
+// [全局] 双向滚动条样式
+@mixin scrollbarXYStyle($width: 8) {
+    overflow: overlay overlay;
+
+    &::-webkit-scrollbar {
+        @include whrem($width);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: pxToRem($width);
+        @include themeColor(var(--scrollbarAlpha), background-color);
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+        /*滚动条里面轨道*/
+        display: none;
+    }
+    &::-webkit-scrollbar-corner {
+        /*边角，即两个滚动条的交汇处*/
+        background-color: transparent;
+    }
+}
+
+// [全局] [样式] 面板阴影样式
+@mixin panelShadow($alpha: 0.08, $color: themeColor, $isImportant: false) {
+    box-shadow: 0 0 pxToRem(16) 0 colorValue($color, $alpha, $isImportant);
+}
+
+// [全局] [样式] 按钮阴影样式
+@mixin buttonShadow($alpha: 0.124, $color: themeColor) {
+    box-shadow: 0 pxToRem(3) pxToRem(8) 0 colorValue($color, $alpha);
+}
+
+// [全局] 字体样式
+@mixin fontStyle($level: 4) {
+    $fontStyleList: (
+        (22, 22, bolder),
+        (16, 24, bolder),
+        (14, 22, bolder),
+        (14, 22, normal),
+        (12, 22, normal)
+    );
+    $fontStyle: nth(
+        $list: $fontStyleList,
+        $n: $level,
+    );
+    font-size: pxToRem(nth($list: $fontStyle, $n: 1));
+    line-height: pxToRem(nth($list: $fontStyle, $n: 2));
+    min-height: pxToRem(nth($list: $fontStyle, $n: 2));
+    font-weight: nth($list: $fontStyle, $n: 3);
+    font-family: '微软雅黑';
+}
+
+// [全局] 字体颜色
+/*
+* T1-文本色：#253970 
+* 用途：用于 [默认模式] 左侧导航一级标题、各内容面板标题、列表内字段名称标题、字段内容文字、输入框输入文字
+
+* T2-文本色：#B9C6E0
+* 用途：用于 [黑夜模式] 左侧导航一级标题、各内容面板标题、列表内字段名称标题、字段内容文字、输入框输入文字
+
+* T3-文本色：#74829F
+* 用于未选中左侧导航标题、未选中树结构文字、未选中列表内容文字、其他字段标题、页码未选中、登录用户名称、输入框提示文字、面包屑未选中文字
+
+* T4-文本色：#FFFFFF
+* 用于选中左侧导航标题、选中树结构文字、选中列表内容文字、选中页码、气泡提示文字
+*/
+@mixin fontColor($no: 4, $alpha: 1, $isImportant: false) {
+    $colorName: textColor_ + $no;
+    color: colorValue($colorName, $alpha, $isImportant);
+}
+
+// [全局] 字体图标大小
+/*
+* @param {Number} $no 1 表示 [22px] 大小的图标
+* @param {Number} $no 2 表示 [16px] 大小的图标
+*/
+@mixin iconSize($no: 1) {
+    @if $no==1 {
+        @include flexCenter;
+        @include whrem(22);
+        font-size: pxToRem(22);
+    } @else {
+        @include flexCenter;
+        @include whrem(16);
+        font-size: pxToRem(16);
+    }
+}

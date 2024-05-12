@@ -1,0 +1,88 @@
+/* 全局样式配置 */
+@charset "utf-8";
+
+:root {
+    /* ------------ 项目配置 ------------ */
+
+    /* 基础过度时间 -> 0.5s */
+    --baseTransition: 0.5s;
+    /* 基础白色 -> rgb(255,255,255) */
+    --whiteColor: 255, 255, 255;
+    /* 基础黑色 -> rgb(0,0,0) */
+    --blackColor: 0, 0, 0;
+    /* 强调色/主题色 -> rgb(0, 124, 255) */
+    --themeColor: 0, 124, 255;
+    /* 成功/安全色 -> rgb(0, 200, 140) */
+    --successColor: 0, 200, 140;
+    /* 常规色 -> rgb(0, 124, 255) */
+    --normalColor: 0, 124, 255;
+    /* 告警/错误色 -> rgb(255, 77, 77) */
+    --errorColor: 255, 77, 77;
+    /* 警告/提醒色 -> rgb(255, 153, 0) */
+    --warnColor: 255, 153, 0;
+    /* 警告/辅助色-黄 -> rgb(251, 218, 0) */
+    --assistColorYellow: 251, 218, 0;
+    /* 故障/禁用色 -> rgb(116, 130, 159) */
+    --disabledColor: 116, 130, 159;
+
+    /* 底板背景色 默认模式 -> rgb(255, 255, 255) 黑夜模式 -> rgb(0, 0, 0) */
+    --bodyBackground: 255, 255, 255;
+    /* 底板背景色透明度 默认模式 -> 0% 黑夜模式 -> 16% */
+    --panelBackgroundAlpha: 0;
+    /* 滚动条背景色透明度 默认模式 -> 26% 黑夜模式 -> 46% */
+    --scrollbarAlpha: 0.26;
+    /* 输入框边框色透明度 默认模式 -> 26% 黑夜模式 -> 46% */
+    --inputBorderAlpha: 0.26;
+    /* 列表头部背景色透明度 默认模式 -> 12% 黑夜模式 -> 26% */
+    --datalistHeaderBackgroundAlpha: 0.12;
+    /* 列表头部背景色透明度 默认模式 -> 5% 黑夜模式 -> 12% */
+    --datalistBackgroundAlpha: 0.05;
+    /* 列表鼠标划入背景色透明度 默认模式 -> 12% 黑夜模式 -> 26% */
+    --datalistHoverBackgroundAlpha: 0.12;
+    /* 图表模块边框色透明度 默认模式 -> 12% 黑夜模式 -> 100% */
+    --chartModuleBorderAlpha: 0.12;
+    /* 图表模块鼠标移入边框色透明度 默认模式 -> 46% 黑夜模式 -> 100% */
+    --chartModuleHoverBorderAlpha: 0.46;
+    /* 统计数据背景色透明度 默认模式 -> 5% 黑夜模式 -> 26% */
+    --dataCardBackgroundAlpha: 0.05;
+    /* 分割线透明度 默认模式 -> 46% 黑夜模式 -> 100% */
+    --dividingLineAlpha: 0.46;
+    /* 页码背景透明度 默认模式 -> 5% 黑夜模式 -> 12% */
+    --paginationBackgroundAlpha: 0.05;
+    /* 页码鼠标移入背景透明度 默认模式 -> 12% 黑夜模式 -> 26% */
+    --paginationHoverBackgroundAlpha: 0.12;
+
+    /* T1-文本色 -> rgb(37, 57, 112) */
+    --textColor_1: 37, 57, 112;
+    /* T2-文本色 -> rgb(185, 198, 224) */
+    --textColor_2: 185, 198, 224;
+    /* T3-文本色 -> rgb(116, 130, 159) */
+    --textColor_3: 116, 130, 159;
+    /* T4-文本色 -> rgb(255, 255, 255) */
+    --textColor_4: 255, 255, 255;
+    /* T5-文本色 -> rgb(185, 198, 224) */
+    --textColor_5: 185, 198, 224;
+}
+
+body #loadingMaskView {
+    background-color: rgba(var(--bodyBackground), 1);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000000000;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body #loadingMaskView img {
+    width: 7rem;
+    height: 7rem;
+}

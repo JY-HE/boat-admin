@@ -67,8 +67,20 @@ const jumpNavigation = (routerItem: CustomRouteRecordRaw) => {
     }
 };
 
+const expandRouter = () => {
+    const pathName = active.value
+        ?.split('/')
+        ?.filter(item => Boolean(item))
+        ?.at(0);
+    const findItem = routerMenu.find(item => item.path === `/${pathName}`);
+    if (findItem && findItem.children?.length) {
+        findItem.meta.isShowChildRouter = true;
+    }
+};
+
 watchEffect(() => {
     active.value = routerStore.activeRouter;
+    expandRouter();
 });
 </script>
 

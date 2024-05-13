@@ -12,17 +12,17 @@ body {
         div[menuList] {
             @include wh(pxToRem($menuList), 100%);
             @include baseTransition(opacity);
-            // @include panelStyle;
+            @include panelStyle;
             @include panelShadow;
 
             div[menuMain] {
                 @include wh;
-                // @include panelStyle(20);
+                @include panelStyle;
                 @include panelShadow;
                 border-radius: pxToRem(0) pxToRem(20) pxToRem(20) pxToRem(0);
-                // @include after {
-                //     border-radius: pxToRem(0) pxToRem(20) pxToRem(20) pxToRem(0);
-                // }
+                &:after {
+                    border-radius: pxToRem(0) pxToRem(20) pxToRem(20) pxToRem(0);
+                }
 
                 #systemTitle {
                     @include wh(100%, pxToRem(90));
@@ -111,7 +111,7 @@ body {
                             div {
                                 width: 100%;
                                 button {
-                                    padding-left: pxToRem(50);
+                                    padding-left: pxToRem(44);
                                 }
                             }
                             &.show {
@@ -129,7 +129,7 @@ body {
                             border: none;
                             text-align: left;
                             cursor: pointer;
-                            padding: 0 pxToRem(8);
+                            padding: 0 pxToRem(10);
                             &:hover {
                                 @include themeColor(
                                     var(--datalistHoverBackgroundAlpha),
@@ -142,7 +142,7 @@ body {
 
                                 &:first-child {
                                     @include iconSize(1);
-                                    margin-right: pxToRem(8);
+                                    margin-right: pxToRem(12);
                                 }
 
                                 &:last-child {
@@ -151,7 +151,7 @@ body {
                             }
                             h4 {
                                 @include fontColor(3);
-                                // @include textHidden;
+                                @include textHidden;
                                 width: calc(100% - #{pxToRem(22 + 8 + 16)});
                             }
                             &.active {

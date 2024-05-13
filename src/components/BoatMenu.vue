@@ -10,12 +10,12 @@
             >
                 <BoatIconfont :icon="menu.meta.icon"></BoatIconfont>
                 <h4 :title="menu.meta.title">{{ menu.meta.title }}</h4>
-                <BoatIconfont v-if="menu.children?.length" icon="&#xe622;"></BoatIconfont>
+                <BoatIconfont v-if="menu.children?.length" icon="&#xe625;"></BoatIconfont>
             </button>
             <div
                 childrenMenu
                 :class="{ show: menu.meta?.isShowChildRouter }"
-                :style="{ '--height': `${(menu.children || []).length * 2.75}rem` }"
+                :style="{ '--height': `${(menu.children || []).length * 3}rem` }"
             >
                 <div
                     v-for="subRouterItem in menu.children as CustomRouteRecordRaw[]  || []"
@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { RouteRecordRaw, useRouter } from 'vue-router';
+import { RouteRecordRaw, useRouter, useRoute } from 'vue-router';
 import { useRouterStore } from '@/store/router';
 
 const props = defineProps({
@@ -43,6 +43,7 @@ const props = defineProps({
         required: true,
     },
 });
+const routerMenu = reactive(props.routerList);
 
 // 做类型限制，解决ts类型报错
 type CustomRouteRecordRaw = RouteRecordRaw & {
@@ -56,17 +57,19 @@ type CustomRouteRecordRaw = RouteRecordRaw & {
 const routerStore = useRouterStore();
 const router = useRouter();
 const active = ref<string>('');
-const routerMenu = reactive(props.routerList);
 
 const jumpNavigation = (routerItem: CustomRouteRecordRaw) => {
     if (routerItem.children?.length) {
         routerItem.meta.isShowChildRouter = !routerItem.meta.isShowChildRouter;
     } else {
         routerStore.setActiveRouter(routerItem.path);
-        active.value = routerItem.path;
         router.push(routerItem.path);
     }
 };
+
+watchEffect(() => {
+    active.value = routerStore.activeRouter;
+});
 </script>
 
 <style lang="scss"></style>

@@ -50,6 +50,28 @@
     }
 }
 
+/**
+ * @name: textHidden
+ * @desc: 单行文本溢出省略号
+ * @use: @include textHidden;
+ */
+@mixin textHidden {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// [全局] 底板颜色叠加样式
+@mixin panelStyle {
+    z-index: 0;
+    background: linear-gradient(
+            0deg,
+            colorValue(themeColor, colorAlpha(panelBackgroundAlpha)),
+            colorValue(themeColor, colorAlpha(panelBackgroundAlpha))
+        ),
+        colorValue(bodyBackground);
+}
+
 // [全局] [动画] 基础过度效果
 @mixin baseTransition($style: 'normal', $isImportant: false) {
     $baseTransition: color var(--baseTransition), background var(--baseTransition),

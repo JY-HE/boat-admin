@@ -11,9 +11,12 @@ body {
 
         div[menuList] {
             @include wh(pxToRem($menuList), 100%);
-            @include baseTransition(opacity);
-            @include panelStyle;
-            @include panelShadow;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: color var(--baseTransition), background var(--baseTransition),
+                border-color var(--baseTransition), width 0.3s !important;
+            z-index: 10;
 
             div[menuMain] {
                 @include wh;
@@ -203,6 +206,82 @@ body {
                             }
                         }
                     }
+                }
+            }
+        }
+
+        div[mainArea] {
+            @include wh;
+            @include flexCenter(center, center, true);
+            padding: pxToRem(30) pxToRem(30) pxToRem(30) pxToRem($menuList + 30);
+            @include baseTransition(padding);
+
+            // 头部
+            div[header] {
+                @include wh(100%, pxToRem(88));
+                @include flexCenter(space-between);
+                @include panelStyle;
+                @include panelShadow;
+                border-radius: pxToRem(20);
+                padding: pxToRem(0) pxToRem(16) pxToRem(0) pxToRem(17);
+                margin-bottom: pxToRem(30);
+                position: relative;
+                z-index: var(--zIndex);
+
+                // 面包屑样式
+                div[breadcrumb] {
+                    height: 100%;
+                    @include flexCenter;
+                    @include fontColor(3);
+                    .RdappIconfont {
+                        @include iconSize(1);
+                        &.home {
+                            cursor: pointer;
+                            &:hover {
+                                @include themeColor(1, color);
+                            }
+                        }
+                    }
+                    .RdappIconfont,
+                    h2 {
+                        margin-right: pxToRem(9);
+                        &.active {
+                            @include themeColor(1, color);
+                            cursor: pointer;
+                        }
+                        &.link {
+                            cursor: pointer;
+                            &:hover {
+                                @include themeColor(1, color);
+                            }
+                        }
+                    }
+                    div[breadcrumbList] {
+                        @include flexCenter;
+                    }
+                }
+
+                // 右侧区域
+                div[rightArea] {
+                    @include flexCenter;
+                    height: 100%;
+                }
+            }
+
+            // 内容区域
+            div[mainContent] {
+                flex: 1;
+                flex-shrink: 0;
+                width: 100%;
+                position: relative;
+
+                div[contentArea] {
+                    @include wh;
+                    @include panelStyle;
+                    position: absolute;
+                    @include panelShadow;
+                    border-radius: pxToRem(20);
+                    overflow: hidden;
                 }
             }
         }

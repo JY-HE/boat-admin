@@ -7,7 +7,14 @@ import MenuList from '@/views/indexView/components/MenuList.vue';
         <MenuList></MenuList>
     </div>
     <div mainArea>
-        <router-view />
+        <!-- 顶部 -->
+        <!-- <Header></Header> -->
+        <!-- 内容区 -->
+        <div mainContent>
+            <transition name="fade">
+                <router-view content-area></router-view>
+            </transition>
+        </div>
     </div>
 </template>
 

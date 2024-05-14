@@ -2,7 +2,7 @@
     <div menuMain>
         <div id="systemTitle">
             <div id="logo"></div>
-            <h1 class="title">BoatAdmin</h1>
+            <h1 class="title">Boat</h1>
         </div>
 
         <div class="menu">

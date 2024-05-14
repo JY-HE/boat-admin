@@ -65,10 +65,10 @@
 }
 
 @font-face {
-    font-family: "iconfont"; /* Project id 3677754 */
+    font-family: "iconfont";
     src: url('./font/iconfont.woff2') format('woff2')
 }
-  
+
 .iconfont {
     font-family: "iconfont" !important;
     font-size: 1rem;
@@ -95,7 +95,26 @@ body #loadingMaskView {
     overflow: hidden;
 }
 
-body #loadingMaskView img {
-    width: 7rem;
-    height: 7rem;
+body #loadingMaskView div {
+    width: 3rem;
+    aspect-ratio: .577;
+    clip-path: polygon(0 0, 100% 100%, 0 100%, 100% 0);
+    position: relative;
+    animation: loadingAnimation 2s infinite linear;
+    overflow: hidden;
+}
+
+body #loadingMaskView div:before {
+    content: "";
+    position: absolute;
+    inset: -150% -150%;
+    background: repeating-conic-gradient(from 30deg, rgb(var(--assistColorYellow)) 0 60deg, rgb(var(--themeColor)) 0 120deg, rgb(var(--errorColor)) 0 180deg);
+    animation: inherit;
+    animation-direction: reverse;
+}
+
+@keyframes loadingAnimation {
+    100% {
+        transform: rotate(360deg)
+    }
 }

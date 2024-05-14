@@ -1,7 +1,7 @@
 <template>
     <div menuMain>
         <div id="systemTitle">
-            <div class="logo"></div>
+            <div id="logo"></div>
             <h1 class="title">BoatAdmin</h1>
         </div>
 

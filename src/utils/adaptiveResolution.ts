@@ -47,15 +47,22 @@ function reCalc(callback: CallbackFunction, designWidth: number, designHeight: n
     }, 100);
 }
 
-export default function init(
+export default function adaptiveResolution(
     callback?: CallbackFunction,
-    designWidth: number = 1920,
-    designHeight: number = 1080
-) {
-    const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
-    if (!document.addEventListener) return;
-
-    const onResize = () => reCalc(callback, designWidth, designHeight);
-    window.addEventListener(resizeEvt, onResize, false);
-    document.addEventListener('DOMContentLoaded', onResize, false);
+    designWidth = 1920,
+    designHeight = 1080
+): Promise<void> {
+    return new Promise<void>(resolve => {
+        const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+        if (!document.addEventListener) {
+            resolve();
+            return;
+        }
+        const onResize = () => {
+            reCalc(callback, designWidth, designHeight);
+            resolve();
+        };
+        window.addEventListener(resizeEvt, onResize, false);
+        document.addEventListener('DOMContentLoaded', onResize, false);
+    });
 }

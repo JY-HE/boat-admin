@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { RouteRecordRaw, useRouter, useRoute } from 'vue-router';
+import { RouteRecordRaw } from 'vue-router';
 import { useRouterStore } from '@/store/router';
 
 const props = defineProps({

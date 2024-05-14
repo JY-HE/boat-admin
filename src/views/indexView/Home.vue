@@ -11,8 +11,6 @@
                 <img src="https://pinia.web3doc.top/logo.svg" class="logo pinia" alt="Pinia logo" />
             </a>
         </div>
-        <HelloWorld msg="Vite + Vue + Pinia" />
-        <UsePinia />
     </div>
 </template>
 

@@ -49,10 +49,11 @@ export default defineConfig({
         'process.env': process.env,
     },
     server: {
-        port: 8080, //启动端口
+        open: false,
+        port: 3456,
         hmr: {
             host: '127.0.0.1',
-            port: 8080,
+            port: 3456,
         },
         // 设置 https 代理
         proxy: {

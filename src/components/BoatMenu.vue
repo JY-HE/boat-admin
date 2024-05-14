@@ -8,7 +8,7 @@
                 }"
                 @click="jumpNavigation(menu)"
             >
-                <BoatIconfont :icon="menu.meta.icon"></BoatIconfont>
+                <BoatIconfont v-if="menu.meta.icon" :icon="menu.meta.icon"></BoatIconfont>
                 <h4 :title="menu.meta.title">{{ menu.meta.title }}</h4>
                 <BoatIconfont v-if="menu.children?.length" icon="&#xe625;"></BoatIconfont>
             </button>
@@ -43,7 +43,7 @@ const props = defineProps({
         required: true,
     },
 });
-const routerMenu = reactive(props.routerList);
+const routerMenu = reactive<CustomRouteRecordRaw[]>(props.routerList);
 
 // 做类型限制，解决ts类型报错
 type CustomRouteRecordRaw = RouteRecordRaw & {

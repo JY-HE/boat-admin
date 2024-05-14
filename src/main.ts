@@ -17,3 +17,6 @@ adaptiveResolution();
 
 // 挂载实例
 app.mount('#app');
+
+const loadingView = window.document.getElementById('loadingMaskView');
+if (loadingView) loadingView.style.display = 'none';

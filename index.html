@@ -5,10 +5,13 @@
         <link rel="icon" type="image/svg+xml" href="/vite.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Vite + Vue + TS</title>
-        <link rel="stylesheet" href="/config-style.css" />
+        <link rel="stylesheet" href="<%= BASE_URL %>config-style.css" />
     </head>
     <body>
         <div id="app"></div>
-        <script type="module" src="/src/main.ts"></script>
+        <div id="loadingMaskView">
+            <img src="<%= BASE_URL %>img/loading.png" alt="loading" />
+        </div>
+        <script type="module" src="<%= BASE_URL %>src/main.ts"></script>
     </body>
 </html>

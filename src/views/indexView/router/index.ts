@@ -1,7 +1,7 @@
 const router = {
     path: '/home',
     name: '首页',
-    component: () => import('../Home.vue'),
+    component: () => import('@/views/indexView/Home.vue'),
     meta: {
         isShow: true,
         title: '首页',

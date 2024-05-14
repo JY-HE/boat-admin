@@ -11,7 +11,7 @@ const router = {
         {
             path: '/css/barCharts',
             name: '柱状图',
-            component: () => import('../components/BarCharts.vue'),
+            component: () => import('@/views/cssView/components/BarCharts.vue'),
             meta: {
                 title: '柱状图',
             },

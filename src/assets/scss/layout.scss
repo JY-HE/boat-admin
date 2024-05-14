@@ -17,6 +17,7 @@ body {
             transition: color var(--baseTransition), background var(--baseTransition),
                 border-color var(--baseTransition), width 0.3s !important;
             z-index: 10;
+            padding: pxToRem(16) 0;
 
             div[menuMain] {
                 @include wh;
@@ -213,7 +214,7 @@ body {
         div[mainArea] {
             @include wh;
             @include flexCenter(center, center, true);
-            padding: pxToRem(30) pxToRem(30) pxToRem(30) pxToRem($menuList + 30);
+            padding: pxToRem(16) pxToRem(30) pxToRem(16) pxToRem($menuList + 30);
             @include baseTransition(padding);
 
             // 头部

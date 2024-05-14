@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import MenuList from '@/views/indexView/components/MenuList.vue';
+import Header from '@/views/indexView/components/Header.vue';
 </script>
 
 <template>
@@ -8,7 +9,7 @@ import MenuList from '@/views/indexView/components/MenuList.vue';
     </div>
     <div mainArea>
         <!-- 顶部 -->
-        <!-- <Header></Header> -->
+        <Header></Header>
         <!-- 内容区 -->
         <div mainContent>
             <transition name="fade">

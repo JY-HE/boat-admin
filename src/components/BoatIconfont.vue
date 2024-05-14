@@ -2,8 +2,8 @@
     <em
         class="BoatIconfont iconfont"
         :class="[className, { errorColor: errorColor }]"
-        v-html="icon"
         @click="clickHandle($event)"
+        v-html="icon"
     ></em>
 </template>
 

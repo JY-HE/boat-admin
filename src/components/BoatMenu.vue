@@ -1,6 +1,6 @@
 <template>
     <div menuGroup>
-        <div menuItem v-for="menu in routerMenu" :key="menu.meta.title">
+        <div v-for="menu in routerMenu" :key="menu.meta.title" menuItem>
             <button
                 :class="{
                     active: menu.path === active,
@@ -8,7 +8,7 @@
                 }"
                 @click="jumpNavigation(menu)"
             >
-                <BoatIconfont v-if="menu.meta.icon" :icon="menu.meta.icon"></BoatIconfont>
+                <BoatIconfont v-if="menu.meta.icon" :icon="menu.meta.icon as string"></BoatIconfont>
                 <h4 :title="menu.meta.title">{{ menu.meta.title }}</h4>
                 <BoatIconfont v-if="menu.children?.length" icon="&#xe625;"></BoatIconfont>
             </button>
@@ -34,8 +34,8 @@
 </template>
 
 <script setup lang="ts">
-import { RouteRecordRaw } from 'vue-router';
 import { useRouterStore } from '@/store/router';
+import { CustomRouteRecordRaw } from '@/views/indexView/types';
 
 const props = defineProps({
     routerList: {
@@ -44,15 +44,6 @@ const props = defineProps({
     },
 });
 const routerMenu = reactive<CustomRouteRecordRaw[]>(props.routerList);
-
-// 做类型限制，解决ts类型报错
-type CustomRouteRecordRaw = RouteRecordRaw & {
-    meta: {
-        title: string;
-        isShow?: boolean;
-        isShowChildRouter?: boolean;
-    };
-};
 
 const routerStore = useRouterStore();
 const router = useRouter();

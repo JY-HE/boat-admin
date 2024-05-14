@@ -30,5 +30,7 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/no-empty-function': 'off',
+        'vue/no-v-html': 'off',
+        'vue/multi-word-component-names': 'off', // 禁用 multi-word-component-names 规则
     },
 };

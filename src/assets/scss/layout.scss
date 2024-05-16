@@ -234,31 +234,24 @@ body {
                     height: 100%;
                     @include flexCenter;
                     @include fontColor(3);
-                    .RdappIconfont {
-                        @include iconSize(1);
-                        &.home {
-                            cursor: pointer;
-                            &:hover {
-                                @include themeColor(1, color);
-                            }
-                        }
-                    }
-                    .RdappIconfont,
-                    h2 {
-                        margin-right: pxToRem(9);
-                        &.active {
-                            @include themeColor(1, color);
-                            cursor: pointer;
-                        }
-                        &.link {
-                            cursor: pointer;
-                            &:hover {
-                                @include themeColor(1, color);
-                            }
-                        }
-                    }
-                    div[breadcrumbList] {
+                    & > div {
                         @include flexCenter;
+                        .BoatIconfont {
+                            margin-right: pxToRem(9);
+                            @include iconSize(2);
+                            @include fontStyle(2);
+                        }
+                        h2 {
+                            margin-right: pxToRem(9);
+                            @include fontStyle(2);
+                            cursor: pointer;
+                            &:hover {
+                                @include themeColor(0.8, color);
+                            }
+                            &.active {
+                                @include themeColor(1, color);
+                            }
+                        }
                     }
                 }
 

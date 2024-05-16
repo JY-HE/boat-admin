@@ -11,11 +11,13 @@
                 <BoatIconfont v-if="index !== breadList.length - 1" icon="&#xe625;" />
             </div>
         </div>
+        <Theme />
     </div>
 </template>
 
 <script setup lang="ts">
 import { RouteLocationMatched } from 'vue-router';
+import Theme from './Theme.vue';
 
 const router = useRouter();
 const route = useRoute();

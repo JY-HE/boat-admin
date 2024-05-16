@@ -131,7 +131,7 @@ body {
                     @include scrollbarStyle;
                     padding: 0 pxToRem(16);
                     div[menuItem] {
-                        margin-bottom: pxToRem(16);
+                        margin-top: pxToRem(16);
 
                         div[childrenMenu] {
                             width: 100%;
@@ -165,6 +165,12 @@ body {
                                     var(--datalistHoverBackgroundAlpha),
                                     background-color
                                 );
+                            }
+                            & > div {
+                                display: flex;
+                                align-items: center;
+                                flex: 1;
+                                flex-shrink: 0;
                             }
                             .BoatIconfont {
                                 @include iconSize(2);

@@ -8,8 +8,13 @@
                 }"
                 @click="jumpNavigation(menu)"
             >
-                <BoatIconfont v-if="menu.meta.icon" :icon="menu.meta.icon as string"></BoatIconfont>
-                <h4 :title="menu.meta.title">{{ menu.meta.title }}</h4>
+                <div>
+                    <BoatIconfont
+                        v-if="menu.meta.icon"
+                        :icon="menu.meta.icon as string"
+                    ></BoatIconfont>
+                    <h4 :title="menu.meta.title">{{ menu.meta.title }}</h4>
+                </div>
                 <BoatIconfont v-if="menu.children?.length" icon="&#xe625;"></BoatIconfont>
             </button>
             <div

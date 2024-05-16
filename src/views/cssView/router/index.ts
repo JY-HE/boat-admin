@@ -1,10 +1,10 @@
 const router = {
     path: '/css',
-    name: 'Css技巧',
+    name: '玩转Css',
     meta: {
         isShow: true,
-        title: 'Css技巧',
-        icon: '',
+        title: '玩转Css',
+        icon: '&#xe778;',
     },
     redirect: '/css/barCharts',
     children: [

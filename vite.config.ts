@@ -21,7 +21,7 @@ export default defineConfig({
         AutoImport({
             imports: ['vue', 'vue-router', 'pinia'],
             // 指定引入根目录下的 requests，config，utils 目录内的所有函数
-            dirs: ['./src/requests/**', './src/config/**', './src/utils/**'],
+            // dirs: ['./src/requests/**', './src/config/**', './src/utils/**'],
             resolvers: [ElementPlusResolver()],
             // 可以选择auto-import.d.ts生成的位置，使用ts建议设置为'src/auto-import.d.ts'
             dts: 'src/auto-import.d.ts',

@@ -33,5 +33,15 @@ module.exports = {
         'vue/no-v-html': 'off',
         'vue/multi-word-component-names': 'off', // 禁用 multi-word-component-names 规则
         'vue/attribute-hyphenation': ['warn', 'never'], // 禁用属性自动转换为短横线命名
+        'prettier/prettier': [
+            'warn',
+            {
+                singleQuote: true, // 使用单引号 ' 替代双引号 " 作为字符串的定界符。
+                semi: true, // 每行语句的结尾都加上分号。
+                tabWidth: 4,
+                useTabs: false,
+            },
+        ],
+        indent: ['error', 4], // 缩进4
     },
 };

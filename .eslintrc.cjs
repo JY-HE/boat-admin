@@ -32,5 +32,6 @@ module.exports = {
         '@typescript-eslint/no-empty-function': 'off',
         'vue/no-v-html': 'off',
         'vue/multi-word-component-names': 'off', // 禁用 multi-word-component-names 规则
+        'vue/attribute-hyphenation': ['warn', 'never'], // 禁用属性自动转换为短横线命名
     },
 };

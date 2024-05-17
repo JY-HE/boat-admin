@@ -6,7 +6,7 @@
         </div>
 
         <div class="menu">
-            <BoatMenu :router-list="routerList" />
+            <BoatMenu :routerList="routerList" />
         </div>
     </div>
 </template>

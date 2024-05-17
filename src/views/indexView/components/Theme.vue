@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-switch v-model="isDarkValue" @change="darkModeHandler(isDarkValue)"></el-switch>
+        <el-switch v-model="isDarkValue"></el-switch>
     </div>
 </template>
 
@@ -11,11 +11,15 @@ const themeStore = useThemeStore();
 
 const isDarkValue = ref<boolean>(false);
 
+watch(isDarkValue, newValue => {
+    themeModeHandler(newValue);
+});
+
 /**
- * 切换暗黑模式
+ * 切换主题模式
  * @param isDark 是否暗黑模式
  */
-const darkModeHandler = (isDark: boolean) => {
+const themeModeHandler = (isDark: boolean) => {
     themeStore.setThemeMode(isDark);
     globalStyleHandler(isDark);
 };
@@ -75,6 +79,18 @@ const setRootCss = (
     const value = isDark ? isDarkValue : normalValue;
     document.documentElement.style.setProperty(`--${cssName}`, value as string);
 };
+
+/**
+ * 从localStorage获取主题模式
+ */
+const getThemeModeByLocalStorage = () => {
+    const isDark = window.localStorage.getItem('isDark');
+    isDarkValue.value = JSON.parse(isDark as string);
+};
+
+onMounted(() => {
+    getThemeModeByLocalStorage();
+});
 </script>
 
 <style lang="scss"></style>

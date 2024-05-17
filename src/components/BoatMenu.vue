@@ -54,6 +54,10 @@ const routerStore = useRouterStore();
 const router = useRouter();
 const active = ref<string>('');
 
+/**
+ * 点击菜单跳转路由
+ * @param routerItem 菜单项
+ */
 const jumpNavigation = (routerItem: CustomRouteRecordRaw) => {
     if (routerItem.children?.length) {
         routerItem.meta.isShowChildRouter = !routerItem.meta.isShowChildRouter;
@@ -63,6 +67,9 @@ const jumpNavigation = (routerItem: CustomRouteRecordRaw) => {
     }
 };
 
+/**
+ * 展开子路由
+ */
 const expandRouter = () => {
     const pathName = active.value
         ?.split('/')

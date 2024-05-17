@@ -8,12 +8,10 @@ import Header from '@/views/indexView/components/Header.vue';
         <MenuList></MenuList>
     </div>
     <div mainArea>
-        <!-- 顶部 -->
         <Header></Header>
-        <!-- 内容区 -->
         <div mainContent>
             <transition name="fade">
-                <router-view content-area></router-view>
+                <router-view contentArea></router-view>
             </transition>
         </div>
     </div>

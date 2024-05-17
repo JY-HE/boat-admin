@@ -10,6 +10,8 @@ export const useThemeStore = defineStore({
     actions: {
         setThemeMode(mode: boolean) {
             this.isDark = mode;
+            window.localStorage.setItem('isDark', JSON.stringify(this.isDark));
+            document.body.setAttribute('mode', this.isDark ? 'dark' : 'normal');
         },
     },
 });

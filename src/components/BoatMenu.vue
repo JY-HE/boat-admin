@@ -65,6 +65,7 @@ const jumpNavigation = (routerItem: CustomRouteRecordRaw) => {
         routerStore.setActiveRouter(routerItem.path);
         router.push(routerItem.path);
     }
+    collapseOtherMenus(routerItem);
 };
 
 /**
@@ -79,6 +80,17 @@ const expandRouter = () => {
     if (findItem && findItem.children?.length) {
         findItem.meta.isShowChildRouter = true;
     }
+};
+
+/**
+ * 折叠其他菜单
+ */
+const collapseOtherMenus = (menu: CustomRouteRecordRaw) => {
+    routerMenu?.forEach(router => {
+        if (router.children?.length && router.path !== menu.path) {
+            router.meta.isShowChildRouter = false;
+        }
+    });
 };
 
 watchEffect(() => {

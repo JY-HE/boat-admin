@@ -11,7 +11,10 @@ const router = {
         {
             path: '/css/barCharts',
             name: '柱状图',
-            component: () => import('@/views/cssView/components/BarCharts.vue'),
+            component: () =>
+                import(
+                    /* webpackChunkName: "barCharts" */ '@/views/cssView/components/BarCharts.vue'
+                ),
             meta: {
                 title: '柱状图',
             },

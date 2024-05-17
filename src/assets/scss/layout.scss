@@ -84,7 +84,7 @@ body {
 
                 .menu {
                     width: 100%;
-                    @include wh(100%, calc(100% - #{pxToRem(90)}));
+                    @include wh(100%, calc(100% - #{pxToRem(90)} - #{pxToRem(48)}));
                     @include scrollbarXYStyle();
                     .el-menu {
                         min-width: 100%;
@@ -214,6 +214,22 @@ body {
                         }
                     }
                 }
+
+                .collapseExpandButton {
+                    @include whrem(100%, 48);
+                    @include flexCenter;
+                    border-radius: 0 0 pxToRem(12) 0;
+                    @include themeColor(0.06, background-color);
+                    cursor: pointer;
+                    @include baseTransition(width);
+                    @include fontColor(1);
+                    &:hover {
+                        @include themeColor(var(--datalistHoverBackgroundAlpha), background-color);
+                    }
+                    .BoatIconfont {
+                        @include iconSize(1);
+                    }
+                }
             }
         }
 
@@ -283,6 +299,53 @@ body {
                     border-radius: pxToRem(20);
                     overflow: hidden;
                 }
+            }
+        }
+
+        &.hide {
+            div[menuList] {
+                width: pxToRem(124);
+                #systemTitle {
+                    .title {
+                        display: none;
+                    }
+                }
+                div[menuMain] {
+                    .menu {
+                        div[menuGroup] {
+                            div[menuItem] {
+                                button {
+                                    width: 100%;
+                                    @include flexCenter;
+                                    & > div {
+                                        @include flexCenter;
+                                    }
+                                    .BoatIconfont {
+                                        &:first-child {
+                                            margin-right: 0;
+                                        }
+                                        &:last-child {
+                                            display: none;
+                                        }
+                                    }
+                                    h4 {
+                                        display: none;
+                                    }
+                                }
+                                div[childrenMenu] {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                    .collapseExpandButton {
+                        transform: rotate(180deg);
+                        border-radius: pxToRem(12) 0 0 0;
+                    }
+                }
+            }
+            div[mainArea] {
+                padding-left: pxToRem(124 + 30);
             }
         }
     }

@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import MenuList from '@/views/indexView/components/MenuList.vue';
-import Header from '@/views/indexView/components/Header.vue';
-</script>
-
 <template>
     <div menuList>
         <MenuList></MenuList>
@@ -16,6 +11,11 @@ import Header from '@/views/indexView/components/Header.vue';
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+import MenuList from '@/views/indexView/components/MenuList.vue';
+import Header from '@/views/indexView/components/Header.vue';
+</script>
 
 <style lang="scss">
 @import './assets/scss/layout.scss';

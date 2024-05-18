@@ -87,7 +87,7 @@ const expandRouter = () => {
  */
 const collapseOtherMenus = (menu: CustomRouteRecordRaw) => {
     routerMenu?.forEach(router => {
-        if (router.children?.length && router.path !== menu.path) {
+        if (router.children?.length && !menu.path.startsWith(router.path)) {
             router.meta.isShowChildRouter = false;
         }
     });

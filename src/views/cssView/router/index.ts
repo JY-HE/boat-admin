@@ -6,17 +6,17 @@ const router = {
         title: '玩转Css',
         icon: '&#xe778;',
     },
-    redirect: '/css/barCharts',
+    redirect: '/css/rotationParallax',
     children: [
         {
-            path: '/css/barCharts',
-            name: '柱状图',
+            path: '/css/rotationParallax',
+            name: '旋转中的视差效果',
             component: () =>
                 import(
-                    /* webpackChunkName: "barCharts" */ '@/views/cssView/components/BarCharts.vue'
+                    /* webpackChunkName: "rotationParallax" */ '@/views/cssView/components/RotationParallaxEffect.vue'
                 ),
             meta: {
-                title: '柱状图',
+                title: '旋转中的视差效果',
             },
         },
     ],

@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import exampleImage from '@/assets/img/截图20240518104520.png'; // 使用 import 语句加载图片
+import exampleImage from '@/assets/img/7.png'; // 使用 import 语句加载图片
 
 const img1Src = ref('/public/img/截图20240518104550.png'); // 路径相对于 public 目录
 const img2Src = ref(exampleImage);

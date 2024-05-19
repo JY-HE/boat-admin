@@ -5,8 +5,16 @@
             <img :src="img2Src" draggable="false" @click="previewSrc = img2Src" />
         </div>
         <div class="parentBox">
-            <div id="previewBox">
-                <img :src="previewSrc" draggable="false" />
+            <!-- <div id="previewBox"> -->
+            <img id="previewBox" :src="previewSrc" draggable="false" />
+            <!-- </div> -->
+            <div v-if="previewSrc" class="operation">
+                <BoatIconfont icon="&#xec13;" title="缩小" @click="simulateWheelEvent(100)" />
+                <BoatIconfont icon="&#xec14;" title="放大" @click="simulateWheelEvent(-100)" />
+                <BoatIconfont v-if="isOriginalSize" icon="&#xe918;" title="图片原始大小" />
+                <BoatIconfont v-else icon="&#xe7cf;" title="图片适应窗口大小" />
+                <BoatIconfont icon="&#xe722;" title="左旋转" @click="rotateLeft" />
+                <BoatIconfont icon="&#xe720;" title="右旋转" @click="rotateRight" />
             </div>
         </div>
     </div>
@@ -18,6 +26,7 @@ import exampleImage from '@/assets/img/截图20240518104520.png'; // 使用 impo
 const img1Src = ref('/public/img/截图20240518104550.png'); // 路径相对于 public 目录
 const img2Src = ref(exampleImage);
 const previewSrc = ref('');
+const isOriginalSize = ref(false);
 
 const isDragging = ref<boolean>(false);
 const imageX = ref<number>(0); // 图片初始位置
@@ -40,7 +49,7 @@ const init = () => {
         wheelHandler(event, imgBoxDom);
     });
     imgBoxDom.addEventListener('mousedown', event => {
-        mousedownHandler(event, imgBoxDom);
+        mouseDownHandler(event, imgBoxDom);
     });
 };
 
@@ -53,16 +62,26 @@ const wheelHandler = (event: WheelEvent, dom: HTMLElement) => {
     event.preventDefault();
     const zoomStep = 0.1;
     const transf = getTransform(dom);
-    const imgDom = document.querySelector('#previewBox > img') as HTMLElement;
     if (event.deltaY < 0) {
         transf.scale = Math.min(transf.scale + zoomStep, 10.0);
     } else {
         transf.scale = Math.max(0.1, Math.min(transf.scale - zoomStep, 10.0));
     }
-    imgDom.style.objectFit = transf.scale > 1 ? 'fill' : 'contain';
     const parent = document.querySelector('.parentBox') as HTMLElement;
-    const newTransf = limitBorder(dom, parent, transf.transX, transf.transY, transf.scale);
-    dom.style.transform = `matrix(${transf.scale}, 0, 0, ${transf.scale}, ${newTransf.transX}, ${newTransf.transY})`;
+    const newTransf = limitBorder(
+        dom,
+        parent,
+        transf.transX,
+        transf.transY,
+        transf.scale,
+        transf.rotate
+    );
+    applyTransform(dom, {
+        transX: newTransf.transX,
+        transY: newTransf.transY,
+        scale: transf.scale,
+        rotate: transf.rotate,
+    });
 };
 
 /**
@@ -70,13 +89,13 @@ const wheelHandler = (event: WheelEvent, dom: HTMLElement) => {
  * @param event 鼠标按钮事件
  * @param dom 装载预览图片的dom
  */
-const mousedownHandler = (event: MouseEvent, dom: HTMLElement) => {
+const mouseDownHandler = (event: MouseEvent, dom: HTMLElement) => {
     const transf = getTransform(dom);
     isDragging.value = transf.scale > 1; // 图片放大才可以拖拽
     imageX.value = event.clientX - transf.transX;
     imageY.value = event.clientY - transf.transY;
     document.addEventListener('mousemove', ev => {
-        mousemoveHandler(ev, dom);
+        mouseMoveHandler(ev, dom);
     });
     document.addEventListener('mouseup', ev => {
         mouseUpHandler(ev, dom);
@@ -91,7 +110,7 @@ const mousedownHandler = (event: MouseEvent, dom: HTMLElement) => {
 const mouseUpHandler = (event: MouseEvent, dom: HTMLElement) => {
     isDragging.value = false;
     document.removeEventListener('mousemove', ev => {
-        mousemoveHandler(ev, dom);
+        mouseMoveHandler(ev, dom);
     });
     document.removeEventListener('mouseup', ev => {
         mouseUpHandler(ev, dom);
@@ -103,14 +122,19 @@ const mouseUpHandler = (event: MouseEvent, dom: HTMLElement) => {
  * @param event 鼠标按钮事件
  * @param dom 装载预览图片的dom
  */
-const mousemoveHandler = (event: MouseEvent, dom: HTMLElement) => {
+const mouseMoveHandler = (event: MouseEvent, dom: HTMLElement) => {
     if (isDragging.value && checkMouse(event)) {
         const parent = document.querySelector('.parentBox') as HTMLElement;
-        const { scale } = getTransform(dom);
+        const { scale, rotate } = getTransform(dom);
         const moveX = event.clientX - imageX.value; // x向移动距离
         const moveY = event.clientY - imageY.value; // y向移动距离
-        const newTransf = limitBorder(dom, parent, moveX, moveY, scale);
-        dom.style.transform = `matrix(${scale}, 0, 0, ${scale}, ${newTransf.transX}, ${newTransf.transY})`;
+        const newTransf = limitBorder(dom, parent, moveX, moveY, scale, rotate);
+        applyTransform(dom, {
+            transX: newTransf.transX,
+            transY: newTransf.transY,
+            scale,
+            rotate,
+        });
     }
 };
 
@@ -136,23 +160,67 @@ const checkMouse = (event: MouseEvent) => {
  * 通过getComputedStyle获取transform矩阵,并用split分割
  * 如 transform: translate(100, 100);
  * getComputedStyle可以取到"matrix(1, 0, 0, 1, 100, 100)"
- * 当transform属性没有旋转rotate和拉伸skew时
- * matrix的第1, 4, 5, 6个参数为 x方向倍数, y方向倍数, x方向偏移量, y方向偏移量
  * @param dom 装载预览图片的dom
  * @returns {number} returns.transX - 图片在 x 方向上的偏移量
  * @returns {number} returns.transY - 图片在 y 方向上的偏移量
  * @returns {number} returns.scale - 图片的缩放比例
+ * @returns {number} returns.rotate - 图片的旋转角度
  */
 const getTransform = (dom: HTMLElement) => {
-    const arr = getComputedStyle(dom).transform.split(',');
-    const transX = arr?.at(-2) || 0;
-    const transY = arr?.at(-1)?.split(')')[0] || 0;
-    const scale = arr?.at(-3) || 1;
+    const transform = getComputedStyle(dom).transform;
+    if (transform === 'none') {
+        return {
+            transX: 0,
+            transY: 0,
+            scale: 1,
+            rotate: 0,
+        };
+    }
+
+    const arr = transform.split(',');
+
+    const a = parseFloat(arr[0].split('(')[1]);
+    const b = parseFloat(arr[1]);
+    const c = parseFloat(arr[2]);
+    const d = parseFloat(arr[3]);
+    const e = parseFloat(arr[4]);
+    const f = parseFloat(arr[5].split(')')[0]);
+
+    const scale = Math.sqrt(a * a + b * b);
+    const rotate = Math.atan2(b, a) * (180 / Math.PI); // 将弧度转换为度数
+
     return {
-        transX: +transX,
-        transY: +transY,
-        scale: +scale,
+        transX: e,
+        transY: f,
+        scale: scale,
+        rotate: rotate,
     };
+};
+
+/**
+ * 应用 transform 对象到 matrix 上
+ * @param dom 装载预览图片的 dom
+ * @param transformObj 包含 transX, transY, scale, 和 rotate 的 transform 对象
+ */
+const applyTransform = (
+    dom: HTMLElement,
+    transformObj: { transX: number; transY: number; scale: number; rotate: number }
+) => {
+    const { transX, transY, scale, rotate } = transformObj;
+
+    // 将角度转换为弧度
+    const rad = rotate * (Math.PI / 180);
+
+    // 计算 matrix 参数
+    const a = Math.cos(rad) * scale;
+    const b = Math.sin(rad) * scale;
+    const c = -Math.sin(rad) * scale;
+    const d = Math.cos(rad) * scale;
+    const e = transX;
+    const f = transY;
+
+    // 应用新的 transform 属性
+    dom.style.transform = `matrix(${a}, ${b}, ${c}, ${d}, ${e}, ${f})`;
 };
 
 /**
@@ -161,7 +229,8 @@ const getTransform = (dom: HTMLElement) => {
  * @param parentDom 父盒子dom
  * @param moveX 父盒子的x移动距离
  * @param moveY 父盒子的y移动距离
- * @param scale
+ * @param scale 缩放比例
+ * @param rotate 旋转角度
  * @returns {number} returns.transX - 图片在 x 方向上的偏移量
  * @returns {number} returns.transY - 图片在 y 方向上的偏移量
  */
@@ -170,14 +239,68 @@ const limitBorder = (
     parentDom: HTMLElement,
     moveX: number,
     moveY: number,
-    scale: number
+    scale: number,
+    rotate: number
 ) => {
+    // console.log('🚀 ~ PicturePreview.vue:246 ~ moveX:', moveX);
+    // console.log('🚀 ~ PicturePreview.vue:246 ~ moveY:', moveY);
+    // console.log('🚀 ~ PicturePreview.vue:246 ~ scale:', scale);
+    // console.log('🚀 ~ PicturePreview.vue:246 ~ rotate:', rotate);
+    // const rad = (rotate * Math.PI) / 180; // 将角度转换为弧度
+    // const {
+    //     clientWidth: imageWidth,
+    //     clientHeight: imageHeight,
+    //     offsetLeft: imageLeft,
+    //     offsetTop: imageTop,
+    // } = imageDom;
+    // const { clientWidth: parentWidth, clientHeight: parentHeight } = parentDom;
+
+    // // 计算旋转后的图像宽度和高度
+    // const rotatedWidth =
+    //     Math.abs(imageWidth * Math.cos(rad)) + Math.abs(imageHeight * Math.sin(rad));
+    // const rotatedHeight =
+    //     Math.abs(imageWidth * Math.sin(rad)) + Math.abs(imageHeight * Math.cos(rad));
+
+    // let transX;
+    // let transY;
+
+    // // 放大的图片超出父盒子时，图片最多拖动到与父盒子边框对齐
+    // if (rotatedWidth * scale > parentWidth || rotatedHeight * scale > parentHeight) {
+    //     transX = Math.min(
+    //         Math.max(moveX, parentWidth - (rotatedWidth * scale + imageWidth) / 2 - imageLeft),
+    //         -imageLeft + (rotatedWidth * scale - imageWidth) / 2
+    //     );
+    //     console.log('🚀 ~ PicturePreview.vue:270 ~ transX:', transX);
+    //     transY = Math.min(
+    //         Math.max(moveY, parentHeight - (rotatedHeight * scale + imageHeight) / 2 - imageTop),
+    //         -imageTop + (rotatedHeight * scale - imageHeight) / 2
+    //     );
+    //     console.log('🚀 ~ PicturePreview.vue:275 ~ transY:', transY);
+    // }
+    // // 图片缩小时，偏移量逐渐减少到0
+    // else {
+    //     transX = Math.max(
+    //         Math.min(moveX, parentWidth - (rotatedWidth * scale + imageWidth) / 2 - imageLeft),
+    //         -imageLeft + (rotatedWidth * scale - imageWidth) / 2
+    //     );
+    //     console.log('🚀 ~ PicturePreview.vue:282 ~ transX:', transX);
+    //     transY = Math.max(
+    //         Math.min(moveY, parentHeight - (rotatedHeight * scale + imageHeight) / 2 - imageTop),
+    //         -imageTop + (rotatedHeight * scale - imageHeight) / 2
+    //     );
+    //     console.log('🚀 ~ PicturePreview.vue:282 ~ transY:', transY);
+    // }
+    // return { transX, transY };
     const {
         clientWidth: imageWidth,
         clientHeight: imageHeight,
         offsetLeft: imageLeft,
         offsetTop: imageTop,
     } = imageDom;
+    console.log('🚀 ~ PicturePreview.vue:296 ~ imageWidth:', imageWidth);
+    console.log('🚀 ~ PicturePreview.vue:296 ~ imageHeight:', imageHeight);
+    console.log('🚀 ~ PicturePreview.vue:296 ~ imageLeft:', imageLeft);
+    console.log('🚀 ~ PicturePreview.vue:296 ~ imageTop:', imageTop);
     const { clientWidth: parentWidth, clientHeight: parentHeight } = parentDom;
     let transX;
     let transY;
@@ -208,6 +331,68 @@ const limitBorder = (
     }
     return { transX, transY };
 };
+
+/**
+ * 模拟滚轮事件
+ * @param deltaY 滚轮的 deltaY 值，负值表示向上滚动，正值表示向下滚动
+ */
+const simulateWheelEvent = (deltaY: number) => {
+    const imgBoxDom = document.querySelector('#previewBox') as HTMLElement;
+    const event = new WheelEvent('wheel', { deltaY });
+    wheelHandler(event, imgBoxDom);
+};
+
+/**
+ * 左旋转
+ */
+const rotateLeft = () => {
+    const imgBoxDom = document.querySelector('#previewBox') as HTMLElement;
+    console.log('🚀 ~ PicturePreview.vue:350 ~ imgBoxDom:', imgBoxDom);
+    const parent = document.querySelector('.parentBox') as HTMLElement;
+    const transf = getTransform(imgBoxDom);
+    transf.rotate = (transf.rotate - 90) % 360;
+    applyTransform(imgBoxDom, transf);
+    // const newTransf = limitBorder(
+    //     imgBoxDom,
+    //     parent,
+    //     transf.transX,
+    //     transf.transY,
+    //     transf.scale,
+    //     transf.rotate
+    // );
+    // applyTransform(imgBoxDom, {
+    //     transX: newTransf.transX,
+    //     transY: newTransf.transY,
+    //     scale: transf.scale,
+    //     rotate: transf.rotate,
+    // });
+};
+
+/**
+ * 右旋转
+ */
+const rotateRight = () => {
+    const imgBoxDom = document.querySelector('#previewBox') as HTMLElement;
+    const parent = document.querySelector('.parentBox') as HTMLElement;
+    const transf = getTransform(imgBoxDom);
+    transf.rotate = (transf.rotate + 90) % 360;
+    applyTransform(imgBoxDom, transf);
+
+    // const newTransf = limitBorder(
+    //     imgBoxDom,
+    //     parent,
+    //     transf.transX,
+    //     transf.transY,
+    //     transf.scale,
+    //     transf.rotate
+    // );
+    // applyTransform(imgBoxDom, {
+    //     transX: newTransf.transX,
+    //     transY: newTransf.transY,
+    //     scale: transf.scale,
+    //     rotate: transf.rotate,
+    // });
+};
 </script>
 
 <style lang="scss">
@@ -237,12 +422,34 @@ const limitBorder = (
         height: 100%;
         overflow: hidden;
         position: relative;
+        @include flexCenter;
         #previewBox {
-            @include wh;
+            // @include wh;
             transform: translate(0, 0);
-            img {
-                @include wh;
-                object-fit: contain;
+            transform-origin: center center;
+            // object-fit: contain;
+            // img {
+            //     @include wh;
+            //     object-fit: contain;
+            // }
+        }
+        .operation {
+            width: fit-content;
+            height: 48;
+            @include themeColor(0.6, background-color);
+            position: absolute;
+            z-index: 100;
+            bottom: pxToRem(16);
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: pxToRem(36);
+            @include flexCenter;
+            grid-gap: pxToRem(24);
+            padding: pxToRem(16) pxToRem(24);
+            .BoatIconfont {
+                @include iconSize(1);
+                @include whiteColor(1, color);
+                cursor: pointer;
             }
         }
     }

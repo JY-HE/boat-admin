@@ -21,19 +21,22 @@
 
 <script setup lang="ts">
 import { CustomRouteRecordRaw } from '@/views/indexView/types';
+import { useThemeStore } from '@/store/theme';
 
 const router = useRouter();
 const routerList = router
     .getRoutes()
     .filter(item => item?.meta?.isShow) as unknown as CustomRouteRecordRaw[];
 
-const isHideMenu = ref<boolean>(false);
+const themeStore = useThemeStore();
+const isHideMenu = ref<boolean>(themeStore.isHideMenu);
 
 /**
  * 处理折叠菜单
  */
 const collapseExpandButton = () => {
     isHideMenu.value = !isHideMenu.value;
+    themeStore.setHideMenu(isHideMenu.value);
     const appElement = document.querySelector('#app') as HTMLElement;
     appElement.setAttribute('class', isHideMenu.value ? 'hide' : '');
 };

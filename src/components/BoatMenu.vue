@@ -8,11 +8,43 @@
                 }"
                 @click="jumpNavigation(menu)"
             >
-                <div>
-                    <BoatIconfont
-                        v-if="menu.meta.icon"
-                        :icon="menu.meta.icon as string"
-                    ></BoatIconfont>
+                <div v-if="!menu.children?.length">
+                    <el-popover placement="right" popperClass="menuPopover" :disabled="!isHideMenu">
+                        <template #reference>
+                            <BoatIconfont
+                                v-if="menu.meta.icon"
+                                :icon="menu.meta.icon as string"
+                            ></BoatIconfont>
+                        </template>
+                        <p>{{ menu.meta.title }}</p>
+                    </el-popover>
+                    <h4 :title="menu.meta.title">{{ menu.meta.title }}</h4>
+                </div>
+                <div v-else>
+                    <el-popover
+                        placement="right-start"
+                        popperClass="menuPopover"
+                        :disabled="!isHideMenu"
+                    >
+                        <template #reference>
+                            <BoatIconfont
+                                v-if="menu.meta.icon"
+                                :icon="menu.meta.icon as string"
+                            ></BoatIconfont>
+                        </template>
+                        <div class="buttonBox">
+                            <button
+                                v-for="subRouterItem in menu.children as CustomRouteRecordRaw[]  || []"
+                                :key="subRouterItem.meta.title"
+                                :class="{ active: subRouterItem.path === active }"
+                                @click="jumpNavigation(subRouterItem)"
+                            >
+                                <h4 :title="subRouterItem.meta.title">
+                                    {{ subRouterItem.meta.title }}
+                                </h4>
+                            </button>
+                        </div>
+                    </el-popover>
                     <h4 :title="menu.meta.title">{{ menu.meta.title }}</h4>
                 </div>
                 <BoatIconfont v-if="menu.children?.length" icon="&#xe625;"></BoatIconfont>
@@ -40,6 +72,7 @@
 
 <script setup lang="ts">
 import { useRouterStore } from '@/store/router';
+import { useThemeStore } from '@/store/theme';
 import { CustomRouteRecordRaw } from '@/views/indexView/types';
 
 const props = defineProps({
@@ -51,6 +84,8 @@ const props = defineProps({
 const routerMenu = reactive<CustomRouteRecordRaw[]>(props.routerList);
 
 const routerStore = useRouterStore();
+const themeStore = useThemeStore();
+const isHideMenu = ref<boolean>(false);
 const router = useRouter();
 const active = ref<string>('');
 
@@ -93,10 +128,67 @@ const collapseOtherMenus = (menu: CustomRouteRecordRaw) => {
     });
 };
 
+watch(
+    () => themeStore.isHideMenu,
+    newValue => {
+        isHideMenu.value = newValue;
+    },
+    {
+        immediate: true,
+    }
+);
+
 watchEffect(() => {
     active.value = routerStore.activeRouter;
     expandRouter();
 });
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.menuPopover {
+    margin-left: pxToRem(48) !important;
+    border-radius: pxToRem(12);
+
+    p {
+        padding: pxToRem(10) pxToRem(16);
+    }
+
+    .buttonBox {
+        @include wh;
+        max-height: pxToRem((48+10) * 8 + 20);
+        @include scrollbarStyle;
+        padding: pxToRem(10) pxToRem(16);
+    }
+    button {
+        @include whrem(228, 48);
+        @include themeColor(0, background-color);
+        @include flexCenter(flex-start);
+        border-radius: pxToRem(12);
+        outline: none;
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        margin-top: pxToRem(10);
+        &:hover {
+            @include themeColor(var(--datalistHoverBackgroundAlpha), background-color);
+        }
+        &:nth-child(1) {
+            margin-top: 0;
+        }
+        h4 {
+            @include fontColor(3);
+            @include textHidden;
+            width: 100%;
+        }
+        &.active {
+            @include themeColor(1, background-color);
+            &:hover {
+                @include themeColor(1, background-color);
+            }
+            h4 {
+                @include whiteColor(1, color);
+            }
+        }
+    }
+}
+</style>

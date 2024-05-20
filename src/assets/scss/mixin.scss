@@ -62,14 +62,23 @@
 }
 
 // [全局] 底板颜色叠加样式
-@mixin panelStyle {
+@mixin panelStyle($isImportant: false) {
     z-index: 0;
-    background: linear-gradient(
-            0deg,
-            colorValue(themeColor, colorAlpha(panelBackgroundAlpha)),
-            colorValue(themeColor, colorAlpha(panelBackgroundAlpha))
-        ),
-        colorValue(bodyBackground);
+    @if $isImportant==false {
+        background: linear-gradient(
+                0deg,
+                colorValue(themeColor, colorAlpha(panelBackgroundAlpha)),
+                colorValue(themeColor, colorAlpha(panelBackgroundAlpha))
+            ),
+            colorValue(bodyBackground);
+    } @else {
+        background: linear-gradient(
+                0deg,
+                colorValue(themeColor, colorAlpha(panelBackgroundAlpha)),
+                colorValue(themeColor, colorAlpha(panelBackgroundAlpha))
+            ),
+            colorValue(bodyBackground) !important;
+    }
 }
 
 // [全局] [动画] 基础过度效果

@@ -86,44 +86,6 @@ body {
                     width: 100%;
                     @include wh(100%, calc(100% - #{pxToRem(90)} - #{pxToRem(48)}));
                     @include scrollbarXYStyle();
-                    .el-menu {
-                        min-width: 100%;
-                        width: fit-content;
-                        border: none;
-                        @include fontColor(1);
-                        padding: 0 pxToRem(16);
-
-                        .el-menu-item,
-                        .el-sub-menu {
-                            padding: 0;
-
-                            .el-sub-menu__title {
-                                padding: 0;
-                            }
-                            .BoatIconfont {
-                                @include iconSize(1);
-                                margin-right: pxToRem(8);
-                            }
-                        }
-                        .el-menu-item {
-                            &:hover {
-                                @include themeColor(0.1, background-color);
-                            }
-                        }
-                        .el-sub-menu {
-                            &.is-opened {
-                                @include themeColor(0.06, background-color);
-                            }
-                        }
-
-                        .is-active {
-                            @include themeColor(1, background-color);
-                            @include whiteColor(1, color);
-                            &:hover {
-                                @include themeColor(0.1, background-color);
-                            }
-                        }
-                    }
                 }
 
                 div[menuGroup] {

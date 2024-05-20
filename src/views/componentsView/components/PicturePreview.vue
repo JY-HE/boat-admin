@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import exampleImage from '@/assets/img/7.png'; // 使用 import 语句加载图片
 
-const img1Src = ref('/public/img/截图20240518104550.png'); // 路径相对于 public 目录
+const img1Src = ref('/public/img/8.jpg'); // 路径相对于 public 目录
 const img2Src = ref(exampleImage);
 const previewSrc = ref('');
 const isOriginalSize = ref(false);

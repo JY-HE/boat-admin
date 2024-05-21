@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <el-switch v-model="isDarkValue"></el-switch>
+    <div class="Theme">
+        <el-switch v-model="isDarkValue" class="switchThemeMode"></el-switch>
     </div>
 </template>
 

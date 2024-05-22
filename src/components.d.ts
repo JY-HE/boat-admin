@@ -9,7 +9,6 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BoatIconfont: typeof import('./components/BoatIconfont.vue')['default']
     BoatMenu: typeof import('./components/BoatMenu.vue')['default']
-    ElButton: typeof import('element-plus/es')['ElButton']
     ElPopover: typeof import('element-plus/es')['ElPopover']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     RouterLink: typeof import('vue-router')['RouterLink']

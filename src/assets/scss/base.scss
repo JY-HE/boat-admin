@@ -1,0 +1,46 @@
+/* 基础样式定义 */
+body {
+    // 一级标题 -> 只用于单标的主标题
+    h1 {
+        @include fontStyle(1);
+        @extend %titleStyle;
+    }
+
+    // 二级标题 -> 用于左侧导航一级标题、各内容面板标题、顶部面包屑
+    h2 {
+        @include fontStyle(2);
+        @extend %titleStyle;
+    }
+
+    // 三级标题 -> 用于左侧导航二级及以下级别标题选中文字、内容列表标题、列表页选中文字、页码选中数字、登录用户名称文字
+    h3 {
+        @include fontStyle(3);
+        @extend %titleStyle;
+    }
+
+    // 四级标题 -> 用于左侧导航二级及以下级别标题文字、所有内容文字
+    h4 {
+        @include fontStyle(4);
+        @extend %titleStyle;
+    }
+
+    // 标题公共样式
+    %titleStyle {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+    }
+}
+
+input {
+    @include whrem(320, 48);
+    border: pxToRem(1) solid;
+    @include themeColor(1, border-color);
+    border-radius: pxToRem(12);
+    padding: 0 pxToRem(16);
+    @include fontColor(3);
+    @include fontStyle(4);
+    line-height: pxToRem(48);
+    background: none;
+}

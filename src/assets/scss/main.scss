@@ -1,9 +1,17 @@
+// 函数
 @import './function.scss';
 
+// 指令
 @import './mixin.scss';
 
+// 规则
 @import './rules.scss';
 
+// 基础样式
+@import './base.scss';
+
+// 饿了么组件样式重定义
 @import './elementUI.scss';
 
+// 过渡样式
 @import './transitionStyle.scss';

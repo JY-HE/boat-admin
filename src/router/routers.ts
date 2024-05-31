@@ -10,6 +10,8 @@ import functionView from '@/views/functionView/router';
 import introductionPageView from '@/views/introductionPageView/router';
 // 水印
 import watermarkView from '@/views/watermarkView/router';
+// 异常页
+import errorView from '@/views/errorView/router';
 
 export default [
     indexViewRoute,
@@ -18,4 +20,5 @@ export default [
     functionView,
     introductionPageView,
     watermarkView,
+    errorView,
 ];

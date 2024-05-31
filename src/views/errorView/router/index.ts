@@ -4,7 +4,7 @@ const router = {
     meta: {
         isShow: true,
         title: '异常页',
-        icon: '&#xe778;',
+        icon: '&#xe612;',
     },
     redirect: '/error/403',
     children: [

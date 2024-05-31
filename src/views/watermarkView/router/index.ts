@@ -4,7 +4,7 @@ const router = {
     meta: {
         isShow: true,
         title: '水印',
-        icon: '&#xe61e;',
+        icon: '&#xe734;',
     },
     redirect: '/watermark/textWatermark',
     children: [

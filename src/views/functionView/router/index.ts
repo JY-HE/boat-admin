@@ -13,7 +13,7 @@ const router = {
             name: '防抖',
             component: () =>
                 import(
-                    /* webpackChunkName: "debounce" */ '@/views/functionView/components/Debounce.vue'
+                    /* webpackChunkName: "debounce" */ '@/views/functionView/components/debounce/Index.vue'
                 ),
             meta: {
                 title: '防抖',

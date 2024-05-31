@@ -13,7 +13,7 @@ const router = {
             name: '图片预览',
             component: () =>
                 import(
-                    /* webpackChunkName: "picturePreview" */ '@/views/componentsView/components/PicturePreview.vue'
+                    /* webpackChunkName: "picturePreview" */ '@/views/componentsView/components/picturePreview/Index.vue'
                 ),
             meta: {
                 title: '图片预览',

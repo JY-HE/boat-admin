@@ -13,7 +13,7 @@ const router = {
             name: '文字水印',
             component: () =>
                 import(
-                    /* webpackChunkName: "textWatermark" */ '@/views/watermarkView/components/TextWatermark.vue'
+                    /* webpackChunkName: "textWatermark" */ '@/views/watermarkView/components/textWatermark/Index.vue'
                 ),
             meta: {
                 title: '文字水印',
@@ -24,7 +24,7 @@ const router = {
             name: '图片水印',
             component: () =>
                 import(
-                    /* webpackChunkName: "imageWatermark" */ '@/views/watermarkView/components/ImageWatermark.vue'
+                    /* webpackChunkName: "imageWatermark" */ '@/views/watermarkView/components/imageWatermark/Index.vue'
                 ),
             meta: {
                 title: '图片水印',

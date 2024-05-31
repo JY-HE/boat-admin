@@ -13,7 +13,7 @@ const router = {
             name: '旋转中的视差效果',
             component: () =>
                 import(
-                    /* webpackChunkName: "rotationParallax" */ '@/views/cssView/components/RotationParallaxEffect.vue'
+                    /* webpackChunkName: "rotationParallax" */ '@/views/cssView/components/rotationParallaxEffect/Index.vue'
                 ),
             meta: {
                 title: '旋转中的视差效果',

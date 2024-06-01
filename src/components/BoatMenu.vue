@@ -71,8 +71,8 @@
 </template>
 
 <script setup lang="ts">
-import { useRouterStore } from '@/store/router';
-import { useThemeStore } from '@/store/theme';
+import { useRouterStore } from '@/store/routerStore';
+import { useThemeStore } from '@/store/themeStore';
 import { CustomRouteRecordRaw } from '@/views/indexView/types';
 
 const props = defineProps({

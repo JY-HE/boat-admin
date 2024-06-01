@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { CustomRouteRecordRaw } from '@/views/indexView/types';
-import { useThemeStore } from '@/store/theme';
+import { useThemeStore } from '@/store/themeStore';
 
 const router = useRouter();
 const routerList = router

@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-import { usePackageStore } from '@/store/packageStore';
+import { usePackageStore } from '@/store';
 import type { PackageJson } from '@/types';
 
 const packageStore = usePackageStore();

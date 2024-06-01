@@ -20,8 +20,6 @@ export default defineConfig({
         // 自动引入
         AutoImport({
             imports: ['vue', 'vue-router', 'pinia'],
-            // 指定引入根目录下的 requests，config，utils 目录内的所有函数
-            // dirs: ['./src/requests/**', './src/config/**', './src/utils/**'],
             resolvers: [ElementPlusResolver()],
             // 可以选择auto-import.d.ts生成的位置，使用ts建议设置为'src/auto-import.d.ts'
             dts: 'src/auto-import.d.ts',
@@ -45,8 +43,32 @@ export default defineConfig({
             },
         }),
     ],
+    build: {
+        rollupOptions: {
+            output: {
+                // 静态资源拆分
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        return id.toString().split('node_modules/')[1].split('/')[0].toString();
+                    }
+                },
+            },
+        },
+        // 开启 minify 和 brotli 压缩
+        minify: 'terser',
+        chunkSizeWarningLimit: 1000, // 单个模块文件大小限制1000KB
+        terserOptions: {
+            compress: {
+                drop_console: true, // 删除 console 语句
+                drop_debugger: true, // 删除 debugger 语句
+            },
+        },
+    },
     define: {
         'process.env': process.env,
+    },
+    optimizeDeps: {
+        include: ['element-plus', 'vue', 'vue-router', 'pinia'], // 预打包 Element Plus 和常用库
     },
     server: {
         open: false,

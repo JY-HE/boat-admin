@@ -34,14 +34,14 @@
 </template>
 
 <script lang="ts" setup>
+import packageData from '@/../package.json';
 import { usePackageStore } from '@/store';
 import type { PackageJson } from '@/types';
 
 const packageStore = usePackageStore();
-const packageData = computed<PackageJson>(() => packageStore.package as PackageJson);
 
 onMounted(async () => {
-    await packageStore.loadPackage();
+    packageStore.setPackage(packageData as PackageJson);
 });
 </script>
 

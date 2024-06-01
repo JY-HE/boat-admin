@@ -11,5 +11,5 @@ export interface PackageJson {
     version: string;
     dependencies: { [key: string]: string };
     devDependencies: { [key: string]: string };
-    [key: string]: { [key: string]: string } | string;
+    [key: string]: { [key: string]: string } | string | boolean | number;
 }

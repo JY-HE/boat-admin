@@ -7,6 +7,7 @@ export {};
 
 declare module '@vue/runtime-core' {
     export interface GlobalComponents {
+        BoatCard: typeof import('./components/BoatCard.vue')['default'];
         BoatIconfont: typeof import('./components/BoatIconfont.vue')['default'];
         BoatMenu: typeof import('./components/BoatMenu.vue')['default'];
         ElPopover: typeof import('element-plus/es')['ElPopover'];

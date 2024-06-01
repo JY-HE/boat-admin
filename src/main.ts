@@ -15,11 +15,8 @@ async function initializeApp() {
 
     app.mount('#app');
 
-    setTimeout(() => {
-        // 暂时让loading持续1s
-        const loadingView = window.document.getElementById('loadingMaskView');
-        if (loadingView) loadingView.style.display = 'none';
-    }, 1000);
+    const loadingView = window.document.getElementById('loadingMaskView');
+    if (loadingView) loadingView.style.display = 'none';
 }
 
 initializeApp();

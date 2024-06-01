@@ -12,6 +12,8 @@ import introductionPageView from '@/views/introductionPageView/router';
 import watermarkView from '@/views/watermarkView/router';
 // 异常页
 import errorView from '@/views/errorView/router';
+// 关于页
+import aboutView from '@/views/aboutView/router';
 
 export default [
     indexViewRoute,
@@ -21,4 +23,5 @@ export default [
     introductionPageView,
     watermarkView,
     errorView,
+    aboutView,
 ];

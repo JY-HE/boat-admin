@@ -50,11 +50,9 @@ export default defineConfig({
     },
     server: {
         open: false,
+        host: '127.0.0.1',
         port: 3456,
-        hmr: {
-            host: '127.0.0.1',
-            port: 3456,
-        },
+        hmr: true,
         // 设置 https 代理
         proxy: {
             '/api': {

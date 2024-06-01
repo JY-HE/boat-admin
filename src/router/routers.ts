@@ -1,5 +1,5 @@
 // 首页
-import indexViewRoute from '@/views/indexView/router';
+import homeViewRoute from '@/views/homeView/router';
 // 玩转css
 import cssViewRouter from '@/views/cssView/router';
 // 组件
@@ -16,7 +16,7 @@ import errorView from '@/views/errorView/router';
 import aboutView from '@/views/aboutView/router';
 
 export default [
-    indexViewRoute,
+    homeViewRoute,
     cssViewRouter,
     componentsView,
     functionView,

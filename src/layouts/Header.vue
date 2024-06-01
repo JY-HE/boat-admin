@@ -2,6 +2,7 @@
     <div header>
         <div breadcrumb>
             <div v-for="(item, index) in breadList" :key="index">
+                <BoatIconfont v-if="item.meta.icon" :icon="item.meta.icon" />
                 <h2
                     :class="{ active: index === breadList.length - 1 }"
                     @click="breadcrumbClickHandler(item)"

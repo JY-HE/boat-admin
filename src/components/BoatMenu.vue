@@ -73,7 +73,7 @@
 <script setup lang="ts">
 import { useRouterStore } from '@/store';
 import { useThemeStore } from '@/store';
-import { CustomRouteRecordRaw } from '@/views/indexView/types';
+import { CustomRouteRecordRaw } from '@/types';
 
 const props = defineProps({
     routerList: {

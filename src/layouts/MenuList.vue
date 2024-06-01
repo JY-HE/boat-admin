@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { CustomRouteRecordRaw } from '@/views/indexView/types';
+import { CustomRouteRecordRaw } from '@/types';
 import { useThemeStore } from '@/store';
 
 const router = useRouter();

@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-import MenuList from '@/views/indexView/components/MenuList.vue';
-import Header from '@/views/indexView/components/Header.vue';
+import MenuList from '@/layouts/MenuList.vue';
+import Header from '@/layouts/Header.vue';
 </script>
 
 <style lang="scss">

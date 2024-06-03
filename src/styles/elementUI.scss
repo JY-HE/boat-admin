@@ -1,3 +1,4 @@
+/* popover 弹出框样式 */
 .el-popover.el-popper {
     @include bodyBackground(1, background-color, true);
     @include fontColor(3);
@@ -16,6 +17,15 @@
         }
     }
 }
+
+/* dialog 对话框样式 */
+.el-dialog {
+    width: fit-content;
+    min-width: pxToRem(464);
+    border-radius: pxToRem(12);
+}
+
+/* 黑暗模式样式 */
 @include darkStyle {
     .el-popover.el-popper {
         @include whiteColor(1, color);

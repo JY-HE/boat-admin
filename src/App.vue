@@ -13,10 +13,10 @@
 </template>
 
 <script setup lang="ts">
-import MenuList from '@/layouts/MenuList.vue';
-import Header from '@/layouts/Header.vue';
+import MenuList from '@/layouts/menu/Index.vue';
+import Header from '@/layouts/header/Index.vue';
 </script>
 
 <style lang="scss">
-@import './assets/scss/layout.scss';
+@import './styles/layout.scss';
 </style>

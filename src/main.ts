@@ -1,9 +1,10 @@
-import { createApp } from 'vue';
-import '@/assets/css/public.css';
 import App from './App.vue';
+import { createApp } from 'vue';
 import store from './store';
 import router from '@/router';
 import adaptiveResolution from '@/utils/adaptiveResolution';
+import '@/styles/public.css';
+import '@/styles/elementUI.scss';
 
 async function initializeApp() {
     // 初始化自适应页面

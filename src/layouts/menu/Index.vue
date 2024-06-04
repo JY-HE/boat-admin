@@ -1,7 +1,9 @@
 <template>
     <div menuMain>
         <div id="systemTitle">
-            <div id="logo"></div>
+            <div id="logo">
+                <img src="/logo.svg" alt="" />
+            </div>
             <h1 class="title">Boat Admin</h1>
         </div>
 

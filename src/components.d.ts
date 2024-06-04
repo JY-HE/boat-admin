@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
         BoatCard: typeof import('./components/BoatCard.vue')['default'];
         BoatIconfont: typeof import('./components/BoatIconfont.vue')['default'];
         BoatMenu: typeof import('./components/BoatMenu.vue')['default'];
+        BoatNoData: typeof import('./components/BoatNoData.vue')['default'];
         ElButton: typeof import('element-plus/es')['ElButton'];
         ElDialog: typeof import('element-plus/es')['ElDialog'];
         ElPopover: typeof import('element-plus/es')['ElPopover'];

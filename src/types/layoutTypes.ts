@@ -11,4 +11,5 @@ export interface CustomRouteMeta {
 
 export type CustomRouteRecordRaw = RouteRecordRaw & {
     meta: CustomRouteMeta;
+    name: string;
 };

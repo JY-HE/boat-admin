@@ -2,7 +2,7 @@
     <div header>
         <div breadcrumb>
             <div v-for="(item, index) in breadList" :key="index">
-                <BoatIconfont v-if="item.meta.icon" :icon="item.meta.icon" />
+                <BoatIconfont v-if="item.meta.icon" :icon="item.meta.icon as string" />
                 <h2
                     :class="{ active: index === breadList.length - 1 }"
                     @click="breadcrumbClickHandler(item)"
@@ -12,13 +12,17 @@
                 <BoatIconfont v-if="index !== breadList.length - 1" icon="&#xe625;" />
             </div>
         </div>
-        <Theme />
+        <div operation>
+            <RouterSearch />
+            <Theme />
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { RouteLocationMatched } from 'vue-router';
-import Theme from './Theme.vue';
+import Theme from './components/Theme.vue';
+import RouterSearch from './components/RouterSearch.vue';
 
 const router = useRouter();
 const route = useRoute();

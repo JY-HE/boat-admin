@@ -242,6 +242,13 @@ body {
                     }
                 }
 
+                // 操作区域
+                div[operation] {
+                    height: 100%;
+                    @include flexCenter;
+                    gap: pxToRem(16);
+                }
+
                 // 右侧区域
                 div[rightArea] {
                     @include flexCenter;

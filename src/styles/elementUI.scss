@@ -21,7 +21,39 @@
 /* dialog 对话框样式 */
 .el-dialog {
     width: fit-content;
-    min-width: pxToRem(464);
+    border-radius: pxToRem(12);
+    @include panelStyle(true);
+    @include panelShadow(0.46);
+    padding: 0;
+
+    .el-dialog__header {
+        min-width: pxToRem(464);
+        height: pxToRem(48);
+        line-height: pxToRem(48);
+        padding: 0 pxToRem(16);
+        @include themeColor(0.08, background-color);
+        @include flexCenter(flex-start);
+        @include themeColor(1, color);
+        @include fontStyle(2);
+        .el-dialog__title {
+            @include themeColor(1, color);
+            @include fontStyle(2);
+        }
+    }
+    .el-dialog__body {
+        min-width: pxToRem(464);
+        min-height: pxToRem(54);
+        padding: pxToRem(16);
+    }
+    .el-dialog__footer {
+        padding: pxToRem(16);
+    }
+}
+
+/* el-button 按钮样式 */
+.el-button {
+    padding: pxToRem(12) pxToRem(16);
+    @include fontStyle(4);
     border-radius: pxToRem(12);
 }
 

@@ -28,7 +28,7 @@ const driverObj = driver({
             },
         },
         {
-            element: '.switchThemeMode',
+            element: '.Theme',
             popover: {
                 title: '切换主题模式',
                 description: '您可以点击这里切换当前的主题模式。',

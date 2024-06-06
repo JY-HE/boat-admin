@@ -1,6 +1,12 @@
 <template>
     <div class="Theme">
-        <el-switch v-model="isDarkValue" class="switchThemeMode"></el-switch>
+        <BoatIconButton
+            v-if="isDarkValue"
+            icon="&#xe600;"
+            title="浅色模式"
+            @click="isDarkValue = false"
+        />
+        <BoatIconButton v-else icon="&#xe650;" title="暗黑模式" @click="isDarkValue = true" />
     </div>
 </template>
 

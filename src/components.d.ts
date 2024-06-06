@@ -8,6 +8,7 @@ export {};
 declare module '@vue/runtime-core' {
     export interface GlobalComponents {
         BoatCard: typeof import('./components/BoatCard.vue')['default'];
+        BoatIconButton: typeof import('./components/BoatIconButton.vue')['default'];
         BoatIconfont: typeof import('./components/BoatIconfont.vue')['default'];
         BoatMenu: typeof import('./components/BoatMenu.vue')['default'];
         BoatNoData: typeof import('./components/BoatNoData.vue')['default'];
@@ -15,6 +16,7 @@ declare module '@vue/runtime-core' {
         ElDialog: typeof import('element-plus/es')['ElDialog'];
         ElPopover: typeof import('element-plus/es')['ElPopover'];
         ElSwitch: typeof import('element-plus/es')['ElSwitch'];
+        ElTooltip: typeof import('element-plus/es')['ElTooltip'];
         ErrorTip: typeof import('./components/ErrorTip.vue')['default'];
         RouterLink: typeof import('vue-router')['RouterLink'];
         RouterView: typeof import('vue-router')['RouterView'];

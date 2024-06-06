@@ -1,6 +1,7 @@
 <template>
     <div class="RouterSearch">
-        <BoatIconfont icon="&#xe662;" @click="dialogVisible = true"></BoatIconfont>
+        <BoatIconButton title="搜索菜单" icon="&#xe662;" @click="dialogVisible = true">
+        </BoatIconButton>
 
         <el-dialog v-model="dialogVisible" :showClose="false" @closed="searchValue = ''">
             <template #header>

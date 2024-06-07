@@ -27,12 +27,9 @@ import BasicBar from './components/BasicBar.vue';
                 @include whrem(100%, 48);
                 @include fontColor(1);
             }
-            .chart {
+            .BoatBaseECharts {
                 width: 100%;
                 height: calc(100% - #{pxToRem(48)});
-                border: pxToRem(1) solid;
-                @include themeColor(var(--dividingLineAlpha), border-color);
-                border-radius: pxToRem(12);
             }
         }
     }

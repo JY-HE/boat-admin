@@ -6,7 +6,7 @@
  * @returns 返回一个具有防抖功能的 ref 对象
  */
 function debounceRef<T>(value: T, delay = 1000) {
-    let timer: any = null;
+    let timer: ReturnType<typeof setTimeout> | null = null;
 
     return customRef((track, trigger) => {
         return {
@@ -15,7 +15,10 @@ function debounceRef<T>(value: T, delay = 1000) {
                 return value;
             },
             set(newValue: T) {
-                clearTimeout(timer);
+                if (timer !== null) {
+                    clearTimeout(timer);
+                    timer = null;
+                }
                 timer = setTimeout(() => {
                     value = newValue;
                     trigger(); // 派发更新

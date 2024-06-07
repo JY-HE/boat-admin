@@ -8,14 +8,18 @@
         </BoatCard>
         <BoatCard title="信息">
             <div>
-                <div label>Gitbub</div>
+                <div label>GitHub</div>
                 <div value>
-                    <a href="https://github.com/JY-HE/boat-admin" target="_blank"> Gitbub </a>
+                    <a href="https://github.com/JY-HE/boat-admin" target="_blank"> GitHub地址 </a>
                 </div>
             </div>
             <div>
                 <div label>版本</div>
                 <div value>{{ packageData.version }}</div>
+            </div>
+            <div>
+                <div label>推荐 Node 版本</div>
+                <div value>>=16.1.0</div>
             </div>
         </BoatCard>
         <BoatCard title="生产环境依赖">

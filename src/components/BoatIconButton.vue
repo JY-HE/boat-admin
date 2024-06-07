@@ -20,7 +20,7 @@ const props = withDefaults(
         successColor?: boolean;
         errorColor?: boolean;
         disabledColor?: boolean;
-        placement:
+        placement?:
             | 'top'
             | 'top-start'
             | 'top-end'

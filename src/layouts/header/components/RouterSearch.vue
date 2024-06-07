@@ -1,11 +1,17 @@
 <template>
-    <div class="RouterSearch">
+    <div class="RouterSearch" @click="dialogVisible = true">
         <BoatIconButton title="搜索菜单" icon="&#xe662;" @click="dialogVisible = true">
         </BoatIconButton>
+        <div class="label">Ctrl+I</div>
 
-        <el-dialog v-model="dialogVisible" :showClose="false" @closed="searchValue = ''">
+        <el-dialog
+            v-model="dialogVisible"
+            :showClose="false"
+            @closed="searchValue = ''"
+            @opened="handleOpened"
+        >
             <template #header>
-                <input v-model="searchValue" type="text" placeholder="搜索菜单" />
+                <input ref="inputRef" v-model="searchValue" type="text" placeholder="搜索菜单" />
             </template>
             <div class="searchList">
                 <template v-if="searchList.length">
@@ -13,6 +19,7 @@
                         v-for="(item, index) in searchList"
                         :key="index"
                         class="searchItem"
+                        :class="selectedIndex === index ? 'active' : ''"
                         @click="routerHandler(item)"
                     >
                         <p name>{{ item.name }}</p>
@@ -22,9 +29,20 @@
                 <BoatNoData v-else />
             </div>
             <template #footer>
-                <div class="dialog-footer">
-                    <el-button @click="dialogVisible = false">Cancel</el-button>
-                    <el-button type="primary" @click="dialogVisible = false"> Confirm </el-button>
+                <div class="prompt">
+                    <div>
+                        <BoatIconfont icon="&#xe757;" />
+                        <span>选择</span>
+                    </div>
+                    <div>
+                        <BoatIconfont icon="&#xe62e;" />
+                        <BoatIconfont icon="&#xe637;" />
+                        <span>切换</span>
+                    </div>
+                    <div>
+                        <BoatIconfont icon="&#xe634;" />
+                        <span>关闭</span>
+                    </div>
                 </div>
             </template>
         </el-dialog>
@@ -40,9 +58,14 @@ const routerList = router
     .getRoutes()
     .filter(item => item.path !== '/' || item.name) as unknown as CustomRouteRecordRaw[];
 
+const inputRef = ref<HTMLInputElement | null>(null);
 const searchValue = ref<string>('');
 const dialogVisible = ref<boolean>(false);
+const selectedIndex = ref<number>(-1);
 
+/**
+ * 过滤搜索列表
+ */
 const searchList = computed<CustomRouteRecordRaw[]>(() => {
     if (!searchValue.value) return [];
     return routerList.filter(
@@ -50,20 +73,86 @@ const searchList = computed<CustomRouteRecordRaw[]>(() => {
     );
 });
 
+/**
+ * 点击跳转路由
+ * @param item 路由对象
+ */
 const routerHandler = (item: RouteRecordRaw) => {
     dialogVisible.value = false;
     router.push(item.path);
     searchValue.value = '';
 };
+
+/**
+ * 监听键盘事件
+ * @param event 键盘事件对象
+ */
+const handleKeydown = (event: KeyboardEvent) => {
+    const { key } = event;
+    const { length } = searchList.value;
+    // 检查是否是Ctrl+H组合键
+    if (event.ctrlKey && (event.key === 'I' || event.key === 'i')) {
+        dialogVisible.value = true;
+    }
+    if (key === 'ArrowUp') {
+        if (selectedIndex.value > 0) {
+            selectedIndex.value--;
+        } else {
+            selectedIndex.value = length - 1; // 循环到最后一个
+        }
+    } else if (key === 'ArrowDown') {
+        if (selectedIndex.value < length - 1) {
+            selectedIndex.value++;
+        } else {
+            selectedIndex.value = 0; // 循环到第一个
+        }
+    }
+    if (key === 'Enter' && dialogVisible.value && selectedIndex.value >= 0) {
+        routerHandler(searchList.value[selectedIndex.value]);
+    }
+};
+
+/**
+ * Dialog 打开动画结束时的回调
+ */
+const handleOpened = () => {
+    if (inputRef.value) {
+        inputRef.value.focus();
+    }
+};
+
+onMounted(() => {
+    window.addEventListener('keydown', handleKeydown);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('keydown', handleKeydown);
+});
 </script>
 
 <style lang="scss">
 .RouterSearch {
-    .BoatIconfont {
-        @include iconSize(1);
-        @include fontColor(3);
-        cursor: pointer;
+    @include flexCenter;
+    cursor: pointer;
+    padding: pxToRem(8);
+    border-radius: pxToRem(12);
+    &:hover {
+        @include themeColor(var(--datalistHoverBackgroundAlpha), background-color);
     }
+    @include fontColor(3);
+
+    .BoatIconButton {
+        margin-right: pxToRem(8);
+        &:hover {
+            @include themeColor(0, background-color);
+        }
+    }
+    .label {
+        border-radius: pxToRem(12);
+        @include themeColor(var(--datalistHoverBackgroundAlpha), background-color);
+        padding: pxToRem(8);
+    }
+
     .el-dialog {
         width: pxToRem(680);
         .el-dialog__header {
@@ -89,6 +178,9 @@ const routerHandler = (item: RouteRecordRaw) => {
                     &:hover {
                         @include themeColor(var(--datalistHoverBackgroundAlpha), background-color);
                     }
+                    &.active {
+                        @include themeColor(var(--datalistHoverBackgroundAlpha), background-color);
+                    }
                     p {
                         &[name] {
                             @include fontColor(1);
@@ -98,6 +190,25 @@ const routerHandler = (item: RouteRecordRaw) => {
                             @include fontColor(3);
                             @include fontStyle(4);
                         }
+                    }
+                }
+            }
+        }
+        .el-dialog__footer {
+            border-top: pxToRem(1) solid;
+            @include themeColor(0.46, border-color);
+            .prompt {
+                @include flexCenter(flex-start);
+                gap: pxToRem(16);
+                @include fontColor(3);
+                @include fontStyle(4);
+                div {
+                    @include flexCenter;
+                    .BoatIconfont {
+                        @include iconSize(1);
+                    }
+                    span {
+                        padding-left: pxToRem(8);
                     }
                 }
             }

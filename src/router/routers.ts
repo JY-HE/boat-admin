@@ -6,6 +6,8 @@ import cssViewRouter from '@/views/cssView/router';
 import componentsView from '@/views/componentsView/router';
 // 功能
 import functionView from '@/views/functionView/router';
+// eCharts示例
+import eChartsView from '@/views/eChartsView/router';
 // 引导页
 import introductionPageView from '@/views/introductionPageView/router';
 // 水印
@@ -20,6 +22,7 @@ export default [
     cssViewRouter,
     componentsView,
     functionView,
+    eChartsView,
     introductionPageView,
     watermarkView,
     errorView,

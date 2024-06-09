@@ -19,7 +19,7 @@
             </div>
             <div>
                 <div label>推荐 Node 版本</div>
-                <div value>>=16.1.0</div>
+                <div value>>=18.1.0</div>
             </div>
         </BoatCard>
         <BoatCard title="生产环境依赖">

@@ -5,6 +5,7 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import addDirectory from './public/addDirectory';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -42,6 +43,39 @@ export default defineConfig({
                 },
             },
         }),
+        {
+            name: 'file-system-operations',
+            configureServer(server) {
+                server.middlewares.use((req, res, next) => {
+                    if (req.url === '/addDirectory' && req.method === 'POST') {
+                        let body = '';
+                        req.on('data', chunk => {
+                            body += chunk.toString(); // 将 Buffer 对象转换为字符串并拼接到 body 中
+                        });
+                        req.on('end', async () => {
+                            const { level, title, fileName, icon, parentName } = JSON.parse(body);
+                            try {
+                                const data = await addDirectory(
+                                    level,
+                                    title,
+                                    fileName,
+                                    icon,
+                                    parentName
+                                );
+                                res.statusCode = 200;
+                                res.setHeader('Content-Type', 'application/json');
+                                res.end(data);
+                            } catch (error) {
+                                res.statusCode = 500;
+                                res.end(`Error creating directory: ${error.message}`);
+                            }
+                        });
+                    } else {
+                        next();
+                    }
+                });
+            },
+        },
     ],
     build: {
         rollupOptions: {

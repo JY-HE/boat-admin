@@ -39,6 +39,16 @@
             @include themeColor(1, color);
             @include fontStyle(2);
         }
+        .el-dialog__headerbtn {
+            .el-dialog__close {
+                @include whrem(24);
+                @include themeColor(1, color);
+                @include fontStyle(2);
+                svg {
+                    @include whrem(24);
+                }
+            }
+        }
     }
     .el-dialog__body {
         min-width: pxToRem(464);
@@ -52,9 +62,209 @@
 
 /* el-button 按钮样式 */
 .el-button {
-    padding: pxToRem(12) pxToRem(16);
-    @include fontStyle(4);
+    padding: 0;
     border-radius: pxToRem(12);
+    span {
+        display: block;
+        padding: pxToRem(16);
+        @include fontStyle(4);
+    }
+}
+
+/* el-form 弹窗表单样式 */
+.el-form.dialogForm {
+    width: 100%;
+
+    .el-form-item {
+        @include flexCenter(flex-start, flex-start);
+        margin-bottom: pxToRem(20);
+        min-height: pxToRem(40);
+        position: relative;
+        .el-form-item__label {
+            @include whrem(120, 40);
+            @include fontStyle(4);
+            @include fontColor(1);
+            line-height: pxToRem(40);
+            padding-right: pxToRem(20);
+            position: relative;
+            text-align: right;
+        }
+        .el-form-item__content {
+            flex: 1;
+            flex-shrink: 0;
+            @include fontStyle(4);
+            height: fit-content;
+            line-height: pxToRem(40);
+
+            .el-input {
+                @include wh(100%, pxToRem(40));
+                @include fontStyle(4);
+                line-height: pxToRem(40);
+                @include flexCenter;
+
+                .el-input__wrapper {
+                    @include wh;
+                    padding: 0;
+                    box-shadow: none;
+                    display: block;
+                    border: none;
+                    border-radius: 0;
+                    @include themeColor(0, background-color);
+                }
+
+                .el-input__inner {
+                    @include wh;
+                    padding: 0 pxToRem(16);
+                    line-height: pxToRem(40);
+                    border-radius: pxToRem(12);
+                    border: pxToRem(1) solid;
+                    @include fontColor(3);
+                    @include themeColor(0.26, border-color);
+
+                    &:hover {
+                        @include themeColor(1, border-color);
+                    }
+
+                    &:focus {
+                        @include themeColor(1, border-color);
+                    }
+                }
+            }
+        }
+        .el-input__suffix {
+            display: none;
+        }
+    }
+
+    & > .el-form-item:last-child {
+        margin-bottom: 0;
+        text-align: right;
+        .el-form-item__content {
+            justify-content: flex-end;
+        }
+    }
+}
+
+/* el-select 选择器样式 */
+.el-select {
+    @include wh(100%, pxToRem(40));
+    padding: 0 pxToRem(16);
+    border-radius: pxToRem(12);
+    border: pxToRem(1) solid;
+    @include themeColor(0.26, border-color);
+    &:hover {
+        @include themeColor(1, border-color);
+    }
+    .el-select__wrapper {
+        height: 100%;
+        @include themeColor(0, background-color);
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+        &.is-hovering:not(is-focus),
+        &.is-focused {
+            box-shadow: none;
+        }
+        .el-select__selected-item {
+            @include fontColor(3);
+            @include fontStyle(4);
+            line-height: pxToRem(40);
+        }
+        .el-select__suffix {
+            .el-select__caret {
+                @include fontColor(3);
+            }
+        }
+    }
+}
+
+/* el-select 选择器弹框样式 */
+.el-select__popper.el-popper {
+    @include themeColor(0, background);
+    box-shadow: none;
+    border-radius: pxToRem(12);
+    border: none;
+
+    .el-select-dropdown {
+        @include panelStyle;
+        @include panelShadow(0.46);
+        border: none;
+        border-radius: pxToRem(12);
+        max-width: pxToRem(300);
+
+        .el-scrollbar {
+            position: relative;
+            z-index: 10;
+            padding: pxToRem(10) 0;
+
+            .el-select-dropdown__wrap {
+                @include scrollbarStyle;
+                max-height: pxToRem(300);
+                margin: 0 !important;
+
+                .el-scrollbar__view {
+                    width: 100%;
+                    padding: 0 pxToRem(10);
+
+                    .el-select-dropdown__item {
+                        width: 100%;
+                        @include fontStyle(4);
+                        @include fontColor(3);
+                        padding: 0 pxToRem(10);
+                        height: pxToRem(32);
+                        line-height: pxToRem(32);
+                        border-radius: pxToRem(12);
+                        background: none;
+
+                        &.is-selected {
+                            @include whiteColor(1, color);
+                            @include themeColor(1, background-color);
+                            &.is-hovering {
+                                @include whiteColor(1, color);
+                                @include themeColor(1, background-color);
+                            }
+                        }
+
+                        &.is-hovering {
+                            @include themeColor(0.12, background-color);
+                        }
+                    }
+                }
+            }
+
+            .el-scrollbar__bar {
+                display: none !important;
+            }
+        }
+
+        &.selectTreeDropdown {
+            width: pxToRem(356);
+            height: fit-content;
+
+            .el-scrollbar {
+                @include wh(100%, fit-content);
+
+                .el-select-dropdown__wrap {
+                    .el-scrollbar__view {
+                        padding: pxToRem(4) 0 pxToRem(4) pxToRem(4);
+
+                        .el-select-dropdown__item {
+                            min-height: pxToRem(44 + 17);
+                            height: fit-content;
+                            padding: 0;
+
+                            &:hover {
+                                background: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .el-popper__arrow {
+        display: none;
+    }
 }
 
 /* 黑暗模式样式 */

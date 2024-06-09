@@ -15,6 +15,8 @@
         <div operation>
             <RouterSearch />
             <Theme />
+            <AddRouter />
+            <Setting />
         </div>
     </div>
 </template>
@@ -23,6 +25,8 @@
 import { RouteLocationMatched } from 'vue-router';
 import Theme from './components/Theme.vue';
 import RouterSearch from './components/RouterSearch.vue';
+import Setting from './components/Setting.vue';
+import AddRouter from './components/AddRouter.vue';
 
 const router = useRouter();
 const route = useRoute();

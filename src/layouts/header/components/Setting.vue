@@ -6,10 +6,7 @@
             @click="drawerVisible = true"
         ></BoatIconButton>
 
-        <el-drawer v-model="drawerVisible" :direction="direction">
-            <template #header>
-                <h4>set title by slot</h4>
-            </template>
+        <el-drawer v-model="drawerVisible" :direction="direction" title="系统配置">
             <template #default>
                 <div>123</div>
             </template>

@@ -15,7 +15,7 @@
         <div operation>
             <RouterSearch />
             <Theme />
-            <AddRouter />
+            <AddRouter v-if="mode === 'development'" />
             <Setting />
         </div>
     </div>
@@ -30,6 +30,7 @@ import AddRouter from './components/AddRouter.vue';
 
 const router = useRouter();
 const route = useRoute();
+const mode = ref(import.meta.env.VITE_NODE_ENV);
 
 const breadList = ref<RouteLocationMatched[]>([]);
 

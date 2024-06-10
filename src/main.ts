@@ -4,6 +4,8 @@ import store from './store';
 import router from '@/router';
 import adaptiveResolution from '@/utils/adaptiveResolution';
 import '@/styles/public.css';
+// 一定要在main.ts中导入tailwind.css，防止vite每次hmr都会请求src/style/index.scss整体css文件导致热更新慢的问题
+import '@/styles/tailwind.css';
 import '@/styles/elementUI.scss';
 
 async function initializeApp() {

@@ -1,6 +1,8 @@
 <template>
-    <div class="LineCharts">
-        <div class="lineChartsContent">
+    <div class="LineCharts pt-4 pb-4 pl-4">
+        <div
+            class="lineChartsContent p-4 w-full h-full grid justify-items-center grid-cols-2 gap-8"
+        >
             <BasicLine />
         </div>
     </div>
@@ -13,25 +15,7 @@ import BasicLine from './components/BasicLine.vue';
 <style lang="scss">
 .LineCharts {
     .lineChartsContent {
-        @include wh;
-        padding: pxToRem(32);
         @include scrollbarStyle;
-        display: grid;
-        justify-items: center;
-        row-gap: pxToRem(32);
-        grid-template-columns: repeat(2, 1fr);
-
-        .ChartBox {
-            @include whrem(800, 500);
-            .title {
-                @include whrem(100%, 48);
-                @include fontColor(1);
-            }
-            .BoatBaseECharts {
-                width: 100%;
-                height: calc(100% - #{pxToRem(48)});
-            }
-        }
     }
 }
 </style>

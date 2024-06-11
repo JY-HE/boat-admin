@@ -1,11 +1,13 @@
 <template>
-    <div class="ChartBox">
-        <div class="title"><h2>基础折线图</h2></div>
-        <BoatBaseECharts :options="options" />
+    <div class="w-full h-[calc(32rem)]">
+        <div class="w-full h-12 text-h1"><h2>基础折线图</h2></div>
+        <BoatBaseECharts :options="options" class="w-full h-[calc(100%-3rem)]" />
     </div>
 </template>
 
 <script setup lang="ts">
+import { ECOption } from '@/utils/eCharts';
+
 const options = {
     tooltip: {},
     xAxis: {
@@ -19,5 +21,5 @@ const options = {
             data: [5, 20, 36, 10, 10, 20],
         },
     ],
-};
+} as ECOption;
 </script>

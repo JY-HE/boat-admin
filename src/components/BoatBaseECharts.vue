@@ -5,7 +5,7 @@
             width: width,
             height: height,
         }"
-        class="BoatBaseECharts"
+        class="BoatBaseECharts w-full h-full overflow-hidden rounded-xl border-themeColor-chartModuleBorderAlpha hover:border-themeColor-chartModuleHoverBorderAlpha"
     ></div>
 </template>
 
@@ -40,12 +40,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
-.BoatBaseECharts {
-    @include wh;
-    overflow: hidden;
-    border: pxToRem(1) solid;
-    @include themeColor(var(--dividingLineAlpha), border-color);
-    border-radius: pxToRem(12);
-}
-</style>
+<style lang="scss"></style>

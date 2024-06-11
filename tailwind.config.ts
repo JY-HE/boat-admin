@@ -84,6 +84,34 @@ const generateColorUtilities = (colors: { [key: string]: string }) => {
                     'color var(--baseTransition) background var(--baseTransition) border-color var(--baseTransition)',
             };
         }
+        // 输入框边框色透明度
+        utilities[`.border-${name}-inputBorderAlpha`] = {
+            border: '0.0625rem solid',
+            borderColor: `rgba(${value}, var(--inputBorderAlpha))`,
+            transition:
+                'color var(--baseTransition) background var(--baseTransition) border-color var(--baseTransition)',
+        };
+        // 分割线透明度
+        utilities[`.border-${name}-dividingLineAlpha`] = {
+            border: '0.0625rem solid',
+            borderColor: `rgba(${value}, var(--dividingLineAlpha))`,
+            transition:
+                'color var(--baseTransition) background var(--baseTransition) border-color var(--baseTransition)',
+        };
+        // 图表模块边框色透明度
+        utilities[`.border-${name}-chartModuleBorderAlpha`] = {
+            border: '0.0625rem solid',
+            borderColor: `rgba(${value}, var(--chartModuleBorderAlpha))`,
+            transition:
+                'color var(--baseTransition) background var(--baseTransition) border-color var(--baseTransition)',
+        };
+        // 图表模块鼠标移入边框色透明度
+        utilities[`.border-${name}-chartModuleHoverBorderAlpha`] = {
+            border: '0.0625rem solid',
+            borderColor: `rgba(${value}, var(--chartModuleHoverBorderAlpha))`,
+            transition:
+                'color var(--baseTransition) background var(--baseTransition) border-color var(--baseTransition)',
+        };
     });
 
     return utilities;

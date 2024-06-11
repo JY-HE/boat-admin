@@ -1,8 +1,6 @@
 <template>
     <div class="AboutView pt-4 pb-4 pl-4">
-        <div
-            class="content flex justify-start items-center flex-col gap-4 pr-4 w-full h-full scrollbar-style-1"
-        >
+        <div class="content flex justify-start items-center flex-col gap-4 pr-4 w-full h-full">
             <BoatCard title="关于">
                 <p>
                     Boat-admin 是一款基于 Vue3 + Vite3 + TypeScript + Element-plus + Tailwindcss

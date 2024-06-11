@@ -1,6 +1,6 @@
 <template>
-    <div class="BarCharts">
-        <div class="barChartsContent">
+    <div class="BarCharts pt-4 pb-4 pl-4">
+        <div class="barChartsContent p-4 w-full h-full grid justify-items-center grid-cols-2 gap-8">
             <BasicBar />
         </div>
     </div>
@@ -13,25 +13,7 @@ import BasicBar from './components/BasicBar.vue';
 <style lang="scss">
 .BarCharts {
     .barChartsContent {
-        @include wh;
-        padding: pxToRem(32);
         @include scrollbarStyle;
-        display: grid;
-        justify-items: center;
-        row-gap: pxToRem(32);
-        grid-template-columns: repeat(2, 1fr);
-
-        .ChartBox {
-            @include whrem(800, 500);
-            .title {
-                @include whrem(100%, 48);
-                @include fontColor(1);
-            }
-            .BoatBaseECharts {
-                width: 100%;
-                height: calc(100% - #{pxToRem(48)});
-            }
-        }
     }
 }
 </style>

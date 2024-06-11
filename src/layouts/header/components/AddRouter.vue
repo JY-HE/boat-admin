@@ -43,8 +43,10 @@
                     <el-input v-model.trim="ruleForm.icon" placeholder="请输入icon图标" />
                 </el-form-item>
                 <el-form-item>
-                    <el-button @click="dialogVisible = false">取消</el-button>
-                    <el-button type="primary" @click="submitForm(ruleFormRef)">确定</el-button>
+                    <BoatCancelConfirmButton
+                        @cancel="dialogVisible = false"
+                        @submit-form="submitForm(ruleFormRef)"
+                    />
                 </el-form-item>
             </el-form>
         </el-dialog>
@@ -73,12 +75,12 @@ const ruleForm = ref<RuleForm>({
 });
 const dialogVisible = ref<boolean>(false);
 const rules = ref<FormRules<RuleForm>>({
-    menuName: [{ required: true, message: '请输入菜单名称', trigger: 'blur' }],
+    menuName: [{ required: true, message: '请输入菜单名称', trigger: 'change' }],
     menuFileName: [
         {
             required: true,
             message: '请输入菜单文件名称',
-            trigger: 'blur',
+            trigger: 'change',
         },
         {
             message: '请输入英文字母或数字',
@@ -86,7 +88,8 @@ const rules = ref<FormRules<RuleForm>>({
             pattern: /^[a-zA-Z0-9]*$/,
         },
     ],
-    icon: [{ required: true, message: '请输入icon图标', trigger: 'blur' }],
+    menuParent: [{ required: true, message: '请选择所属菜单', trigger: 'change' }],
+    icon: [{ required: true, message: '请输入icon图标', trigger: 'change' }],
 });
 
 /**

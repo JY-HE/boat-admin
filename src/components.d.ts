@@ -8,6 +8,7 @@ export {};
 declare module '@vue/runtime-core' {
     export interface GlobalComponents {
         BoatBaseECharts: typeof import('./components/BoatBaseECharts.vue')['default'];
+        BoatCancelConfirmButton: typeof import('./components/BoatCancelConfirmButton.vue')['default'];
         BoatCard: typeof import('./components/BoatCard.vue')['default'];
         BoatIconButton: typeof import('./components/BoatIconButton.vue')['default'];
         BoatIconfont: typeof import('./components/BoatIconfont.vue')['default'];

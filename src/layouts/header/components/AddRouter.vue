@@ -64,7 +64,7 @@ interface RuleForm {
     icon: string;
 }
 const ruleFormRef = ref<FormInstance | null>(null);
-const ruleForm = reactive<RuleForm>({
+const ruleForm = ref<RuleForm>({
     menuLevel: 1,
     menuParent: '',
     menuName: '',
@@ -72,7 +72,7 @@ const ruleForm = reactive<RuleForm>({
     icon: '',
 });
 const dialogVisible = ref<boolean>(false);
-const rules = reactive<FormRules<RuleForm>>({
+const rules = ref<FormRules<RuleForm>>({
     menuName: [{ required: true, message: '请输入菜单名称', trigger: 'blur' }],
     menuFileName: [
         {
@@ -100,11 +100,11 @@ const submitForm = async (formEl: FormInstance | null) => {
         if (valid) {
             try {
                 await axios.post('/addDirectory', {
-                    level: ruleForm.menuLevel,
-                    title: ruleForm.menuName,
-                    fileName: ruleForm.menuFileName,
-                    icon: ruleForm.icon,
-                    parentName: ruleForm.menuParent,
+                    level: ruleForm.value.menuLevel,
+                    title: ruleForm.value.menuName,
+                    fileName: ruleForm.value.menuFileName,
+                    icon: ruleForm.value.icon,
+                    parentName: ruleForm.value.menuParent,
                 });
             } catch (error) {
                 console.error('Error creating directory:', error);
@@ -124,7 +124,7 @@ const routerOptions = ref<{ label: string; value: string }[]>([]);
  */
 const menuLevelChange = () => {
     // 新建二级菜单
-    if (ruleForm.menuLevel === 2) {
+    if (ruleForm.value.menuLevel === 2) {
         routerOptions.value = routerList.map(item => {
             const { path, name } = item;
             const viewName = `${path

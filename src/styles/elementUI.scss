@@ -128,6 +128,9 @@
                     &:focus {
                         @include themeColor(1, border-color);
                     }
+                    &::placeholder {
+                        @include fontColor(3);
+                    }
                 }
             }
         }

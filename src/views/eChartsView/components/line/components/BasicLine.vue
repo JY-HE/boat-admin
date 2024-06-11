@@ -1,7 +1,6 @@
 <template>
     <div class="w-full h-[calc(32rem)]">
-        <div class="w-full h-12 text-h1"><h2>基础折线图</h2></div>
-        <BoatBaseECharts :options="options" class="w-full h-[calc(100%-3rem)]" />
+        <BoatBaseECharts :options="options" title="基础折线图" />
     </div>
 </template>
 

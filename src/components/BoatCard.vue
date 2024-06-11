@@ -1,11 +1,11 @@
 <template>
-    <div class="BoatCard">
-        <div class="title">
+    <div class="BoatCard flex justify-start items-start flex-col w-full rounded-xl">
+        <div class="w-full flex justify-start items-center text-h1 py-4 px-6">
             <slot name="title">
                 <h1>{{ title }}</h1>
             </slot>
         </div>
-        <div class="content">
+        <div class="content flex-1 w-full py-4 px-6 h-auto">
             <slot></slot>
         </div>
     </div>
@@ -19,24 +19,8 @@ defineProps({
 
 <style lang="scss">
 .BoatCard {
-    @include flexCenter(flex-start, flex-start, true);
     @include panelStyle;
-    @include panelShadow;
-    border-radius: pxToRem(20);
-    width: 100%;
+    @include panelShadow(0.46);
     height: fit-content;
-
-    .title {
-        width: 100%;
-        @include flexCenter(flex-start, center);
-        @include fontColor(1);
-        padding: pxToRem(16) pxToRem(24);
-    }
-    .content {
-        width: 100%;
-        @include flexCenter(flex-start, center);
-        padding: pxToRem(16) pxToRem(24);
-        min-height: pxToRem(96);
-    }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div class="AboutView pt-4 pb-4 pl-4">
-        <div class="content flex justify-start items-center flex-col gap-4 pr-4 w-full h-full">
+        <div class="content flex justify-start items-center flex-col gap-4 p-4 w-full h-full">
             <BoatCard title="关于">
-                <p>
+                <p class="text-h1 font-style-2">
                     Boat-admin 是一款基于 Vue3 + Vite3 + TypeScript + Element-plus + Tailwindcss
                     的后台管理模板。力求开箱即用，降低学习门槛和维护成本，同时也记录了一些作者工作过程中积累的技术。
                 </p>
@@ -60,17 +60,15 @@ onMounted(async () => {
     }
     .BoatCard {
         .content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             p {
-                @include fontStyle(2);
-                @include fontColor(1);
                 grid-area: 1 / 1 / 1 / 4;
             }
 
             & > div {
-                width: 100%;
+                width: calc((100% - 2rem) / 3);
                 @include flexCenter;
                 border: pxToRem(1) solid;
                 @include themeColor(0.16, border-color);

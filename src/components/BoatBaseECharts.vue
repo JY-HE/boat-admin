@@ -10,23 +10,23 @@
 </template>
 
 <script setup lang="ts">
-import { useECharts, EChartsCoreOption } from '@/hooks';
+import { ECOption } from '@/utils/eCharts';
+import { useECharts } from '@/hooks';
 
-const props = defineProps({
-    options: { type: Object as PropType<EChartsCoreOption>, required: true },
-    themeColors: { type: Array as PropType<string[]>, default: () => [] },
-    height: { type: String, default: '' },
-    width: { type: String, default: '' },
-});
+const props = defineProps<{
+    options: ECOption;
+    themeColors?: string[];
+    height?: string;
+    width?: string;
+}>();
 
 const echartsRef = ref<HTMLDivElement | null>(null);
-
 const { setOptions, initCharts } = useECharts(echartsRef, props.options);
 
 watch(
     () => props.options,
     newValue => {
-        let targetOptions: EChartsCoreOption = {};
+        let targetOptions: ECOption = {};
         targetOptions = { ...newValue };
         if (props.themeColors && props.themeColors.length > 0) {
             targetOptions.color = props.themeColors;
@@ -36,7 +36,7 @@ watch(
 );
 
 onMounted(() => {
-    initCharts();
+    initCharts(props.themeColors);
 });
 </script>
 

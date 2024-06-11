@@ -1,8 +1,6 @@
 import { Ref, shallowRef, unref } from 'vue';
 
-import echarts, { ECOption } from '@/utils/echarts';
-
-export type EChartsCoreOption = ECOption;
+import echarts, { ECOption } from '@/utils/eCharts';
 
 /**
  * 统一处理 ECharts 实例
@@ -12,7 +10,7 @@ export type EChartsCoreOption = ECOption;
  * @returns setOptions 设置配置项
  * @returns resize 重新计算
  */
-const useECharts = (elRef: Ref<HTMLDivElement>, options: EChartsCoreOption) => {
+const useECharts = (elRef: Ref<HTMLDivElement | null>, options: ECOption) => {
     const charts = shallowRef<echarts.ECharts>();
     let timer: ReturnType<typeof setTimeout> | null = null;
 
@@ -20,7 +18,7 @@ const useECharts = (elRef: Ref<HTMLDivElement>, options: EChartsCoreOption) => {
      * 设置 ECharts 配置项
      * @param options 配置项
      */
-    const setOptions = (options: EChartsCoreOption) => {
+    const setOptions = (options: ECOption) => {
         charts.value && charts.value.setOption(options);
     };
 
@@ -28,13 +26,15 @@ const useECharts = (elRef: Ref<HTMLDivElement>, options: EChartsCoreOption) => {
     const initCharts = (themeColor?: Array<string>) => {
         // 获取 ref 对象的值
         const el = unref(elRef);
-        if (!el || !unref(el)) {
+        if (!el) {
             return;
         }
         //  初始化 ECharts 实例
         charts.value = echarts.init(el);
         if (themeColor) {
-            options.color = themeColor;
+            // 创建一个新的配置项对象，避免直接修改传入的options
+            const newOptions = { ...options, color: themeColor };
+            setOptions(newOptions);
         }
         setOptions(options);
     };

@@ -50,13 +50,12 @@
 </template>
 
 <script setup lang="ts">
-import { RouteRecordRaw } from 'vue-router';
-import { CustomRouteRecordRaw } from '@/types';
+import { PlusRouteRecordRaw } from '@/types';
 
 const router = useRouter();
 const routerList = router
     .getRoutes()
-    .filter(item => item.path !== '/' || item.name) as unknown as CustomRouteRecordRaw[];
+    .filter(item => item.path !== '/' || item.name) as unknown as PlusRouteRecordRaw[];
 
 const inputRef = ref<HTMLInputElement | null>(null);
 const searchValue = ref<string>('');
@@ -66,10 +65,10 @@ const selectedIndex = ref<number>(-1);
 /**
  * 过滤搜索列表
  */
-const searchList = computed<CustomRouteRecordRaw[]>(() => {
+const searchList = computed<PlusRouteRecordRaw[]>(() => {
     if (!searchValue.value) return [];
     return routerList.filter(
-        item => item.path.includes(searchValue.value) || item.name.includes(searchValue.value)
+        item => item.path.includes(searchValue.value) || item.meta.title.includes(searchValue.value)
     );
 });
 
@@ -77,7 +76,7 @@ const searchList = computed<CustomRouteRecordRaw[]>(() => {
  * 点击跳转路由
  * @param item 路由对象
  */
-const routerHandler = (item: RouteRecordRaw) => {
+const routerHandler = (item: PlusRouteRecordRaw) => {
     dialogVisible.value = false;
     router.push(item.path);
     searchValue.value = '';

@@ -22,13 +22,13 @@
 </template>
 
 <script setup lang="ts">
-import { CustomRouteRecordRaw } from '@/types';
+import { PlusRouteRecordRaw } from '@/types';
 import { useThemeStore } from '@/store';
 
 const router = useRouter();
 const routerList = router
     .getRoutes()
-    .filter(item => item?.meta?.isShow) as unknown as CustomRouteRecordRaw[];
+    .filter(item => item?.meta?.isShow) as unknown as PlusRouteRecordRaw[];
 
 const themeStore = useThemeStore();
 const isHideMenu = ref<boolean>(themeStore.isHideMenu);

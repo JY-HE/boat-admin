@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { CustomRouteRecordRaw } from '@/types';
+import { PlusRouteRecordRaw } from '@/types';
 import type { FormInstance, FormRules } from 'element-plus';
 import axios from 'axios';
 
@@ -120,7 +120,7 @@ const submitForm = async (formEl: FormInstance | null) => {
 
 const routerList = useRouter()
     .getRoutes()
-    .filter(item => item?.meta?.isShow) as unknown as CustomRouteRecordRaw[];
+    .filter(item => item?.meta?.isShow) as unknown as PlusRouteRecordRaw[];
 const routerOptions = ref<{ label: string; value: string }[]>([]);
 /**
  * 处理菜单等级改变事件
@@ -129,13 +129,12 @@ const menuLevelChange = () => {
     // 新建二级菜单
     if (ruleForm.value.menuLevel === 2) {
         routerOptions.value = routerList.map(item => {
-            const { path, name } = item;
-            const viewName = `${path
+            const viewName = `${item.path
                 ?.split('/')
                 ?.filter(item => Boolean(item))
                 ?.at(0)}View`;
             return {
-                label: name,
+                label: item.meta.title,
                 value: viewName,
             };
         });

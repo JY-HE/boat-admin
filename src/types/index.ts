@@ -1,2 +1,3 @@
 export * from './packageTypes';
-export * from './layoutTypes';
+export * from './layout';
+export * from './global';

@@ -44,3 +44,10 @@ input {
     line-height: pxToRem(48);
     background: none;
 }
+
+.scrollbarStyle {
+    @include scrollbarStyle;
+}
+.scrollbarStyle-important {
+    @include scrollbarStyle(8, true);
+}

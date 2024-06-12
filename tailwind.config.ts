@@ -141,7 +141,14 @@ const config: Config = {
             assistColorYellow: colors.assistColorYellow,
             disabledColor: colors.disabledColor,
         },
-        extend: {},
+        extend: {
+            width: {
+                'fit-content': 'fit-content',
+            },
+            height: {
+                'fit-content': 'fit-content',
+            },
+        },
     },
     plugins: [fontPlugin, colorPlugin],
 };

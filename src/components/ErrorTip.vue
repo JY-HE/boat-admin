@@ -1,5 +1,5 @@
 <template>
-    <div class="ErrorTip">
+    <div class="ErrorTip flex justify-center items-center gap-12">
         <!-- 403 -->
         <svg
             v-if="type === '403'"
@@ -8,6 +8,7 @@
             height="659.29778"
             viewBox="0 0 586.47858 659.29778"
             xmlns:xlink="http://www.w3.org/1999/xlink"
+            class="w-[calc(25rem)] h-[calc(25rem)]"
         >
             <circle cx="332.47856" cy="254" r="254.00001" fill="#f2f2f2" />
             <path
@@ -142,6 +143,7 @@
             height="571.14799"
             viewBox="0 0 860.13137 571.14799"
             xmlns:xlink="http://www.w3.org/1999/xlink"
+            class="w-[calc(25rem)] h-[calc(25rem)]"
         >
             <path
                 d="M605.66974,324.95306c-7.66934-12.68446-16.7572-26.22768-30.98954-30.36953-16.482-4.7965-33.4132,4.73193-47.77473,14.13453a1392.15692,1392.15692,0,0,0-123.89338,91.28311l.04331.49238q46.22556-3.1878,92.451-6.37554c22.26532-1.53546,45.29557-3.2827,64.97195-13.8156,7.46652-3.99683,14.74475-9.33579,23.20555-9.70782,10.51175-.46217,19.67733,6.87923,26.8802,14.54931,42.60731,45.371,54.937,114.75409,102.73817,154.61591A1516.99453,1516.99453,0,0,0,605.66974,324.95306Z"
@@ -297,6 +299,7 @@
             height="699"
             viewBox="0 0 1119.60911 699"
             xmlns:xlink="http://www.w3.org/1999/xlink"
+            class="w-[calc(25rem)] h-[calc(25rem)]"
         >
             <title>server down</title>
             <circle cx="292.60911" cy="213" r="213" fill="#f2f2f2" />
@@ -451,9 +454,9 @@
             />
         </svg>
         <div>
-            <h2>{{ type }}</h2>
-            <p class="text">{{ errorList.get(type) }}</p>
-            <button @click="router.push('/')">返回首页</button>
+            <h2 class="text-h1 text-4xl">{{ type }}</h2>
+            <p class="text-h2 font-style-2 mt-8">{{ errorList.get(type) }}</p>
+            <el-button type="primary" class="mt-6" @click="router.push('/')">返回首页</el-button>
         </div>
     </div>
 </template>
@@ -473,35 +476,3 @@ const errorList = computed(() => {
     ]);
 });
 </script>
-
-<style lang="scss">
-.ErrorTip {
-    @include flexCenter(center, center);
-    gap: pxToRem(48);
-    svg {
-        @include whrem(400);
-    }
-    div {
-        button {
-            margin-top: pxToRem(24);
-            padding: pxToRem(12) pxToRem(16);
-            @include fontStyle(2);
-            @include whiteColor(1, color);
-            @include themeColor(1, background-color);
-            border-radius: pxToRem(12);
-            border: none;
-        }
-        h2 {
-            @include fontColor(1);
-            font-size: pxToRem(32);
-            line-height: pxToRem(32);
-        }
-
-        p {
-            margin-top: pxToRem(32);
-            @include fontColor(2);
-            @include fontStyle(2);
-        }
-    }
-}
-</style>

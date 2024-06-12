@@ -1,5 +1,7 @@
 <template>
-    <div class="BoatNoData">
+    <div
+        class="BoatNoData w-fit-content h-fit-content flex justify-center items-center flex-col mx-auto mt-28 mb-0"
+    >
         <!-- Data -->
         <svg
             v-if="type === 'data'"
@@ -389,7 +391,7 @@
             </defs>
         </svg>
 
-        <h4>{{ title }}</h4>
+        <h4 class="text-h3 mt-3">{{ title }}</h4>
     </div>
 </template>
 
@@ -402,8 +404,6 @@ defineProps({
 
 <style lang="scss">
 .BoatNoData {
-    @include wh(fit-content);
-    @include flexCenter(center, center, true);
     svg {
         @include wh(pxToRem(166), auto);
         path {
@@ -417,10 +417,5 @@ defineProps({
             }
         }
     }
-    h4 {
-        @include fontColor(3);
-        margin-top: pxToRem(12);
-    }
-    margin: pxToRem(100) auto 0;
 }
 </style>

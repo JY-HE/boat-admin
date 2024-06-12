@@ -34,3 +34,14 @@ export type Nullable<T> = T | null;
  * 去除只读状态
  */
 export { Mutable };
+
+/**
+ * package.json 文件的类型定义
+ */
+export type PackageJson = {
+    name: string;
+    version: string;
+    dependencies: { [key: string]: string };
+    devDependencies: { [key: string]: string };
+    [key: string]: { [key: string]: string } | string | boolean | number;
+};

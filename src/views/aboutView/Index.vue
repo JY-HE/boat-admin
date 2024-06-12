@@ -46,7 +46,7 @@
 <script lang="ts" setup>
 import packageData from '@/../package.json';
 import { usePackageStore } from '@/store';
-import type { PackageJson } from '@/types';
+import { PackageJson } from '@/types';
 
 const packageStore = usePackageStore();
 

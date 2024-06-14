@@ -3,6 +3,8 @@ import { createApp } from 'vue';
 import store from './store';
 import router from '@/router';
 import adaptiveResolution from '@/utils/adaptiveResolution';
+import directives from '@/directives';
+import BoatNotify from '@/utils/notification';
 import '@/styles/public.css';
 // 一定要在main.ts中导入tailwind.css，防止vite每次hmr都会请求src/style/index.scss整体css文件导致热更新慢的问题
 import '@/styles/tailwind.css';
@@ -21,6 +23,9 @@ async function initializeApp() {
     // 注册 Vue-router
     app.use(router);
     // 注册指令
+    app.use(directives);
+    // 全局配置
+    app.config.globalProperties.$BoatNotify = BoatNotify;
     // 卸载载入动画
     const loadingView = window.document.getElementById('loadingMaskView');
     if (loadingView) loadingView.style.display = 'none';

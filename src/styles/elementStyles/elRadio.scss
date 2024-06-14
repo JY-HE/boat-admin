@@ -1,0 +1,59 @@
+/* .el-radio 单选框样式 */
+.el-radio {
+    @include fontStyle(4);
+    @include fontColor(1);
+    margin-right: pxToRem(48);
+    outline: none;
+
+    &:focus {
+        .el-radio__input {
+            .el-radio__inner {
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    .el-radio__input {
+        @include wh(fit-content);
+
+        .el-radio__inner {
+            @include whrem(16);
+            border: pxToRem(1) solid;
+            @include themeColor(1, border-color);
+            @include themeColor(0, background-color);
+            border-radius: pxToRem(12);
+            display: block;
+            @include flexCenter;
+
+            &::after {
+                display: block;
+                @include whrem(8);
+                @include themeColor(0, background-color);
+                border-radius: pxToRem(8);
+            }
+        }
+
+        .el-radio__original {
+            display: none;
+        }
+    }
+
+    .el-radio__label {
+        @include fontStyle(4);
+        @include fontColor(1);
+    }
+
+    &.is-checked {
+        .el-radio__input {
+            .el-radio__inner {
+                &::after {
+                    @include themeColor(1, background-color);
+                }
+            }
+        }
+
+        .el-radio__label {
+            @include fontColor(1);
+        }
+    }
+}

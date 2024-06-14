@@ -169,6 +169,7 @@ watchEffect(() => {
         text-align: left;
         cursor: pointer;
         margin-top: pxToRem(10);
+        padding-left: pxToRem(16);
         &:hover {
             @include themeColor(var(--datalistHoverBackgroundAlpha), background-color);
         }
@@ -176,7 +177,7 @@ watchEffect(() => {
             margin-top: 0;
         }
         h4 {
-            @include fontColor(3);
+            @include fontColor(1);
             @include textHidden;
             width: 100%;
         }
@@ -184,9 +185,6 @@ watchEffect(() => {
             @include themeColor(1, background-color);
             &:hover {
                 @include themeColor(1, background-color);
-            }
-            h4 {
-                @include whiteColor(1, color);
             }
         }
     }

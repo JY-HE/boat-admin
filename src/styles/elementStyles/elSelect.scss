@@ -1,0 +1,121 @@
+/* el-select 选择器样式 */
+.el-select {
+    @include wh(100%, pxToRem(40));
+    padding: 0 pxToRem(16);
+    border-radius: pxToRem(12);
+    border: pxToRem(1) solid;
+    @include themeColor(0.26, border-color);
+    &:hover {
+        @include themeColor(1, border-color);
+    }
+    .el-select__wrapper {
+        height: 100%;
+        @include themeColor(0, background-color);
+        border-radius: 0;
+        box-shadow: none !important;
+        padding: 0;
+        &.is-hovering:not(is-focus),
+        &.is-focused {
+            box-shadow: none;
+        }
+        .el-select__selected-item {
+            @include fontColor(3);
+            @include fontStyle(4);
+            line-height: pxToRem(40);
+        }
+        .el-select__suffix {
+            .el-select__caret {
+                @include fontColor(3);
+            }
+        }
+    }
+}
+
+/* el-select 选择器弹框样式 */
+.el-select__popper.el-popper {
+    @include themeColor(0, background);
+    box-shadow: none;
+    border-radius: pxToRem(12);
+    border: none;
+
+    .el-select-dropdown {
+        @include panelStyle;
+        @include panelShadow(0.46);
+        border: none;
+        border-radius: pxToRem(12);
+        max-width: pxToRem(300);
+
+        .el-scrollbar {
+            position: relative;
+            z-index: 10;
+            padding: pxToRem(10) 0;
+
+            .el-select-dropdown__wrap {
+                @include scrollbarStyle;
+                max-height: pxToRem(300);
+                margin: 0 !important;
+
+                .el-scrollbar__view {
+                    width: 100%;
+                    padding: 0 pxToRem(10);
+
+                    .el-select-dropdown__item {
+                        width: 100%;
+                        @include fontStyle(4);
+                        @include fontColor(3);
+                        padding: 0 pxToRem(10);
+                        height: pxToRem(32);
+                        line-height: pxToRem(32);
+                        border-radius: pxToRem(12);
+                        background: none;
+
+                        &.is-selected {
+                            @include whiteColor(1, color);
+                            @include themeColor(1, background-color);
+                            &.is-hovering {
+                                @include whiteColor(1, color);
+                                @include themeColor(1, background-color);
+                            }
+                        }
+
+                        &.is-hovering {
+                            @include themeColor(0.12, background-color);
+                        }
+                    }
+                }
+            }
+
+            .el-scrollbar__bar {
+                display: none !important;
+            }
+        }
+
+        &.selectTreeDropdown {
+            width: pxToRem(356);
+            height: fit-content;
+
+            .el-scrollbar {
+                @include wh(100%, fit-content);
+
+                .el-select-dropdown__wrap {
+                    .el-scrollbar__view {
+                        padding: pxToRem(4) 0 pxToRem(4) pxToRem(4);
+
+                        .el-select-dropdown__item {
+                            min-height: pxToRem(44 + 17);
+                            height: fit-content;
+                            padding: 0;
+
+                            &:hover {
+                                background: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .el-popper__arrow {
+        display: none;
+    }
+}

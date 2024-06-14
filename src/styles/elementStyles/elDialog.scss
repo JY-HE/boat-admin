@@ -1,0 +1,41 @@
+/* dialog 对话框样式 */
+.el-dialog {
+    width: fit-content;
+    border-radius: pxToRem(12);
+    @include panelStyle(true);
+    @include panelShadow(0.46);
+    padding: 0;
+
+    .el-dialog__header {
+        min-width: pxToRem(464);
+        height: pxToRem(48);
+        line-height: pxToRem(48);
+        padding: 0 pxToRem(16);
+        @include themeColor(0.08, background-color);
+        @include flexCenter(flex-start);
+        @include themeColor(1, color);
+        @include fontStyle(2);
+        .el-dialog__title {
+            @include themeColor(1, color);
+            @include fontStyle(2);
+        }
+        .el-dialog__headerbtn {
+            .el-dialog__close {
+                @include whrem(24);
+                @include themeColor(1, color);
+                @include fontStyle(2);
+                svg {
+                    @include whrem(24);
+                }
+            }
+        }
+    }
+    .el-dialog__body {
+        min-width: pxToRem(464);
+        min-height: pxToRem(54);
+        padding: pxToRem(16);
+    }
+    .el-dialog__footer {
+        padding: pxToRem(16);
+    }
+}

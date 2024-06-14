@@ -1,0 +1,76 @@
+/* el-form 弹窗表单样式 */
+.el-form.dialogForm {
+    width: 100%;
+
+    .el-form-item {
+        @include flexCenter(flex-start, flex-start);
+        margin-bottom: pxToRem(20);
+        min-height: pxToRem(40);
+        position: relative;
+        .el-form-item__label {
+            @include whrem(120, 40);
+            @include fontStyle(4);
+            @include fontColor(1);
+            line-height: pxToRem(40);
+            padding-right: pxToRem(20);
+            position: relative;
+            text-align: right;
+        }
+        .el-form-item__content {
+            flex: 1;
+            flex-shrink: 0;
+            @include fontStyle(4);
+            height: fit-content;
+            line-height: pxToRem(40);
+
+            .el-input {
+                @include wh(100%, pxToRem(40));
+                @include fontStyle(4);
+                line-height: pxToRem(40);
+                @include flexCenter;
+
+                .el-input__wrapper {
+                    @include wh;
+                    padding: 0;
+                    box-shadow: none;
+                    display: block;
+                    border: none;
+                    border-radius: 0;
+                    @include themeColor(0, background-color);
+                }
+
+                .el-input__inner {
+                    @include wh;
+                    padding: 0 pxToRem(16);
+                    line-height: pxToRem(40);
+                    border-radius: pxToRem(12);
+                    border: pxToRem(1) solid;
+                    @include fontColor(3);
+                    @include themeColor(0.26, border-color);
+
+                    &:hover {
+                        @include themeColor(1, border-color);
+                    }
+
+                    &:focus {
+                        @include themeColor(1, border-color);
+                    }
+                    &::placeholder {
+                        @include fontColor(3);
+                    }
+                }
+            }
+        }
+        .el-input__suffix {
+            display: none;
+        }
+    }
+
+    & > .el-form-item:last-child {
+        margin-bottom: 0;
+        text-align: right;
+        .el-form-item__content {
+            justify-content: flex-end;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+/* .el-drawer 抽屉样式 */
+.el-drawer {
+    width: pxToRem(500) !important;
+    height: 100% !important;
+    @include panelStyle(true);
+    @include panelShadow(0.46);
+    border-radius: pxToRem(12);
+    .el-drawer__header {
+        @include whrem(100%, 48);
+        border-bottom: pxToRem(1) solid;
+        @include themeColor(var(--dividingLineAlpha), border-color);
+        margin: 0;
+        @include flexCenter(flex-start);
+        padding: 0 pxToRem(16);
+        @include fontStyle(2);
+        @include fontColor(1);
+        & > div {
+            flex: 1;
+        }
+        .el-drawer__title {
+            @include fontColor(1);
+            @include fontStyle(2);
+            @include textHidden;
+        }
+        .el-drawer__close-btn {
+            .el-drawer__close {
+                @include fontColor(1);
+                @include whrem(24);
+            }
+        }
+    }
+    .el-drawer__footer {
+        @include whrem(100%, 68);
+        padding: 0 pxToRem(32) pxToRem(16) 0;
+        @include flexCenter;
+    }
+}

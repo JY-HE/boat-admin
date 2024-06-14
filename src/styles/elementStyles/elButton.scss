@@ -1,0 +1,87 @@
+/* el-button 按钮样式 */
+.el-button {
+    @include fontStyle(4);
+    @include themeColor(1, color);
+    height: pxToRem(38);
+    line-height: pxToRem(38);
+    padding: 0 pxToRem(16);
+    border-radius: pxToRem(12);
+    border: pxToRem(1) solid;
+    @include themeColor(0.26, border-color);
+    @include buttonShadow(0);
+
+    &:focus,
+    &:hover {
+        @include themeColor(1, color);
+        @include themeColor(0, background-color);
+        @include themeColor(0.46, border-color);
+        @include buttonShadow;
+    }
+
+    &.is-disabled,
+    &.is-disabled:active,
+    &.is-disabled:focus,
+    &.is-disabled:hover {
+        @include themeColor(0.46, color);
+        @include themeColor(0.26, border-color);
+    }
+
+    &.el-button--text {
+        @include themeColor(1, color);
+    }
+
+    &.el-button--text:focus,
+    &.el-button--text:hover {
+        @include themeColor(0.8, background-color);
+        border-color: transparent;
+        background-color: transparent;
+    }
+
+    &.el-button--primary {
+        @include whiteColor(1, color);
+        @include themeColor(1, background-color);
+        @include themeColor(1, border-color);
+    }
+
+    &.el-button--primary:focus,
+    &.el-button--primary:hover {
+        @include whiteColor(1, color);
+        @include themeColor(0.8, background-color);
+        @include themeColor(0.8, border-color);
+    }
+
+    &.el-button--primary.is-disabled,
+    &.el-button--primary.is-disabled:active,
+    &.el-button--primary.is-disabled:focus,
+    &.el-button--primary.is-disabled:hover {
+        @include whiteColor(1, color);
+        @include themeColor(0.5, background-color);
+        @include themeColor(0.5, border-color);
+    }
+
+    &.el-button--text,
+    &.el-button--text.is-disabled,
+    &.el-button--text.is-disabled:focus,
+    &.el-button--text.is-disabled:hover,
+    &.el-button--text:active {
+        border-color: transparent;
+    }
+
+    & + .el-button {
+        margin-left: pxToRem(16);
+    }
+}
+
+/* 黑暗模式样式 */
+@include darkStyle {
+    .el-button {
+        &.el-button {
+            @include themeColor(0, background-color);
+        }
+        &.el-button--primary {
+            @include whiteColor(1, color);
+            @include themeColor(1, background-color);
+            @include themeColor(1, border-color);
+        }
+    }
+}

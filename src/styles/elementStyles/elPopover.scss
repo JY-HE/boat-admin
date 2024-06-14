@@ -1,0 +1,36 @@
+/* popover 弹出框样式 */
+.el-popover.el-popper {
+    @include bodyBackground(1, background-color, true);
+    @include fontColor(1);
+    border: none !important;
+    width: fit-content !important;
+    min-width: fit-content;
+    max-width: pxToRem(228);
+    padding: 0;
+
+    .el-popper__arrow {
+        @include whrem(16);
+        &::before {
+            @include whrem(16);
+            @include bodyBackground(1, background-color, true);
+            border: none !important;
+        }
+    }
+}
+
+/* 黑暗模式样式 */
+@include darkStyle {
+    .el-popover.el-popper {
+        @include panelStyle(true);
+        border: none !important;
+
+        .el-popper__arrow {
+            @include whrem(16);
+            &::before {
+                @include whrem(16);
+                @include panelStyle(true);
+                border: none !important;
+            }
+        }
+    }
+}

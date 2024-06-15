@@ -3,7 +3,7 @@
         <h1 class="text-h1">剪贴板示例</h1>
         <div class="font-style-2 text-h1 mt-8">v-copy指令</div>
         <div class="mt-8 flex gap-8 items-center">
-            <input v-model="copyValue" type="text" />
+            <el-input v-model="copyValue" />
             <el-button v-copy="copyValue" type="primary">复制</el-button>
         </div>
         <div class="font-style-2 text-h1 mt-8">BoatCopyButton组件</div>

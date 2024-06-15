@@ -8,7 +8,7 @@
             简单来说，防抖就是：如果你持续触发事件，我会在你停止触发后的一段时间内执行一次回调，而不是每次你触发事件时都执行。
         </p>
         <p class="font-style-2 text-h1 mt-8 mb-4">输入防抖</p>
-        <input v-model="inputValue" type="text" placeholder="请输入" />
+        <el-input v-model="inputValue" placeholder="请输入" />
         <p class="font-style-3 text-h1 mt-4">{{ inputValue }}</p>
     </div>
 </template>

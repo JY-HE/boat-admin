@@ -1,8 +1,13 @@
 <template>
     <div class="RouterSearch" @click="dialogVisible = true">
-        <BoatIconButton title="搜索菜单" icon="&#xe662;" @click="dialogVisible = true">
+        <BoatIconButton
+            title="搜索菜单"
+            icon="&#xe662;"
+            class="mr-2 hover:bg-themeColor-0"
+            @click="dialogVisible = true"
+        >
         </BoatIconButton>
-        <div class="label">Ctrl+I</div>
+        <div class="rounded-xl p-2 bg-themeColor-20">Ctrl+I</div>
 
         <el-dialog
             v-model="dialogVisible"
@@ -11,9 +16,9 @@
             @opened="handleOpened"
         >
             <template #header>
-                <input ref="inputRef" v-model="searchValue" type="text" placeholder="搜索菜单" />
+                <el-input ref="inputRef" v-model="searchValue" placeholder="搜索菜单" />
             </template>
-            <div class="searchList">
+            <div class="searchList h-full py-0 px-2">
                 <template v-if="searchList.length">
                     <div
                         v-for="(item, index) in searchList"
@@ -22,26 +27,26 @@
                         :class="selectedIndex === index ? 'active' : ''"
                         @click="routerHandler(item)"
                     >
-                        <p name>{{ item.name }}</p>
-                        <p path>{{ item.path }}</p>
+                        <p class="text-h1 font-style-3">{{ item.name }}</p>
+                        <p class="text-h3 font-style-4">{{ item.path }}</p>
                     </div>
                 </template>
                 <BoatNoData v-else />
             </div>
             <template #footer>
-                <div class="prompt">
-                    <div>
+                <div class="flex justify-start gap-4 text-h3 font-style-4">
+                    <div class="flex items-center">
                         <BoatIconfont icon="&#xe757;" />
-                        <span>选择</span>
+                        <span class="pl-2">选择</span>
                     </div>
-                    <div>
+                    <div class="flex items-center">
                         <BoatIconfont icon="&#xe62e;" />
                         <BoatIconfont icon="&#xe637;" />
-                        <span>切换</span>
+                        <span class="pl-2">切换</span>
                     </div>
-                    <div>
+                    <div class="flex items-center">
                         <BoatIconfont icon="&#xe634;" />
-                        <span>关闭</span>
+                        <span class="pl-2">关闭</span>
                     </div>
                 </div>
             </template>
@@ -140,34 +145,20 @@ onUnmounted(() => {
     }
     @include fontColor(3);
 
-    .BoatIconButton {
-        margin-right: pxToRem(8);
-        &:hover {
-            @include themeColor(0, background-color);
-        }
-    }
-    .label {
-        border-radius: pxToRem(12);
-        @include themeColor(var(--datalistHoverBackgroundAlpha), background-color);
-        padding: pxToRem(8);
-    }
-
     .el-dialog {
         width: pxToRem(680);
         .el-dialog__header {
             height: fit-content;
             padding-top: pxToRem(8);
             padding-bottom: pxToRem(8);
-            input {
+            .el-input {
                 width: 100%;
             }
         }
         .el-dialog__body {
             height: pxToRem(486);
             .searchList {
-                height: 100%;
                 @include scrollbarStyle;
-                padding: 0 pxToRem(8);
                 .searchItem {
                     height: pxToRem(68);
                     cursor: pointer;
@@ -180,37 +171,12 @@ onUnmounted(() => {
                     &.active {
                         @include themeColor(var(--datalistHoverBackgroundAlpha), background-color);
                     }
-                    p {
-                        &[name] {
-                            @include fontColor(1);
-                            @include fontStyle(3);
-                        }
-                        &[path] {
-                            @include fontColor(3);
-                            @include fontStyle(4);
-                        }
-                    }
                 }
             }
         }
         .el-dialog__footer {
             border-top: pxToRem(1) solid;
             @include themeColor(0.46, border-color);
-            .prompt {
-                @include flexCenter(flex-start);
-                gap: pxToRem(16);
-                @include fontColor(3);
-                @include fontStyle(4);
-                div {
-                    @include flexCenter;
-                    .BoatIconfont {
-                        @include iconSize(1);
-                    }
-                    span {
-                        padding-left: pxToRem(8);
-                    }
-                }
-            }
         }
     }
 }

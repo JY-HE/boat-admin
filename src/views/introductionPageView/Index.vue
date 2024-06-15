@@ -1,11 +1,11 @@
 <template>
-    <div class="IntroductionPage">
-        <p>引导页常用于引导式介绍项目的基本功能或亮点</p>
-        <span>
+    <div class="IntroductionPage text-h1 p-4">
+        <p class="font-style-1 mb-4">引导页常用于引导式介绍项目的基本功能或亮点</p>
+        <span class="font-style-2">
             本事例基于
             <a href="https://driverjs.com" target="\_blank">driver.js</a>
         </span>
-        <div @click="driverHandler">Click me</div>
+        <el-button type="primary" class="ml-8" @click="driverHandler">Click me</el-button>
     </div>
 </template>
 
@@ -28,10 +28,28 @@ const driverObj = driver({
             },
         },
         {
+            element: '.Setting',
+            popover: {
+                title: '系统设置',
+                description: '您可以点击这里进行系统设置。',
+                side: 'right',
+                align: 'start',
+            },
+        },
+        {
             element: '.Theme',
             popover: {
                 title: '切换主题模式',
                 description: '您可以点击这里切换当前的主题模式。',
+                side: 'right',
+                align: 'start',
+            },
+        },
+        {
+            element: '.RouterSearch',
+            popover: {
+                title: '菜单搜索',
+                description: '您可以点击这里搜索菜单快速跳转s。',
                 side: 'right',
                 align: 'start',
             },
@@ -44,27 +62,6 @@ const driverHandler = () => {
 </script>
 
 <style lang="scss">
-.IntroductionPage {
-    @include fontColor(1);
-    padding: pxToRem(16);
-    p {
-        @include fontStyle(1);
-        margin-bottom: pxToRem(16);
-    }
-    span {
-        @include fontStyle(2);
-    }
-    div {
-        width: fit-content;
-        height: fit-content;
-        padding: pxToRem(16);
-        border-radius: pxToRem(12);
-        margin-top: pxToRem(16);
-        cursor: pointer;
-        @include themeColor(1, background-color);
-        @include whiteColor(1, color);
-    }
-}
 .driver-popover.driverjs-theme {
     @include themeColor(1, background-color);
     @include whiteColor(1, color);

@@ -9,7 +9,7 @@
                     的后台管理模板。力求开箱即用，降低学习门槛和维护成本，同时也记录了一些作者工作过程中积累的技术。
                 </p>
             </BoatCard>
-            <BoatCard title="信息" contentClassName="flex flex-wrap justify-between">
+            <BoatCard title="信息" contentClassName="flex flex-wrap justify-start gap-x-4">
                 <div>
                     <div label>GitHub</div>
                     <div value>
@@ -27,13 +27,13 @@
                     <div value>>=18.1.0</div>
                 </div>
             </BoatCard>
-            <BoatCard title="生产环境依赖" contentClassName="flex flex-wrap justify-between">
+            <BoatCard title="生产环境依赖" contentClassName="flex flex-wrap justify-start gap-x-4">
                 <div v-for="(value, label) in packageData.dependencies" :key="label">
                     <div label>{{ label }}</div>
                     <div value>{{ value }}</div>
                 </div>
             </BoatCard>
-            <BoatCard title="开发环境依赖" contentClassName="flex flex-wrap justify-between">
+            <BoatCard title="开发环境依赖" contentClassName="flex flex-wrap justify-start gap-x-4">
                 <div v-for="(value, label) in packageData.devDependencies" :key="label">
                     <div label>{{ label }}</div>
                     <div value>{{ value }}</div>

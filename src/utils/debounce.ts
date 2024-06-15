@@ -6,7 +6,7 @@ import { Timeout } from '@/types';
  * @param delay 延迟时间
  * @returns 返回防抖后的函数
  */
-export function debounce<T extends any[]>(
+export default function debounce<T extends any[]>(
     fn: (...args: T) => any,
     delay: number
 ): (...args: T) => void {

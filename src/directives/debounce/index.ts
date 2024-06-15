@@ -1,5 +1,5 @@
 import { DirectiveBinding } from 'vue';
-import { debounce } from '@/utils/debounce';
+import debounce from '@/utils/debounce';
 
 // 定义 DebounceBinding，继承 DirectiveBinding 并覆盖 'value' 属性的类型
 interface DebounceBinding extends Omit<DirectiveBinding, 'value'> {
@@ -20,7 +20,8 @@ const debounceDirective = {
             throw new Error('v-debounce directive expects a function as the value');
         }
         // 解析延迟时间，默认为 500 毫秒
-        const delay = binding.arg !== undefined ? parseInt(binding.arg) : 500;
+        const delay =
+            binding.arg !== undefined && binding.arg !== null ? parseInt(binding.arg) : 500;
         // 创建防抖函数
         const debouncedFunction = debounce(binding.value, delay);
         // 为元素添加点击事件监听器，使用防抖函数

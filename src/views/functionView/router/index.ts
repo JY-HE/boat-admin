@@ -19,6 +19,17 @@ const router = {
                 title: '防抖',
             },
         },
+        {
+            path: '/function/clipboard',
+            name: '剪贴板',
+            component: () =>
+                import(
+                    /* webpackChunkName: "clipboard" */ '@/views/functionView/components/clipboard/Index.vue'
+                ),
+            meta: {
+                title: '剪贴板',
+            },
+        },
     ],
 };
 

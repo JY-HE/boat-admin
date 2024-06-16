@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
         BoatIconfont: typeof import('./components/BoatIconfont.vue')['default'];
         BoatMenu: typeof import('./components/BoatMenu.vue')['default'];
         BoatNoData: typeof import('./components/BoatNoData.vue')['default'];
+        BoatTitle: typeof import('./components/BoatTitle.vue')['default'];
         ElButton: typeof import('element-plus/es')['ElButton'];
         ElDialog: typeof import('element-plus/es')['ElDialog'];
         ElDrawer: typeof import('element-plus/es')['ElDrawer'];

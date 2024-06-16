@@ -1,5 +1,5 @@
 import { DirectiveBinding } from 'vue';
-import debounce from '@/utils/debounce';
+import { debounce } from '@/utils/debounce';
 
 // 定义 DebounceBinding，继承 DirectiveBinding 并覆盖 'value' 属性的类型
 interface DebounceBinding extends Omit<DirectiveBinding, 'value'> {

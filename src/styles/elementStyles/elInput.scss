@@ -2,7 +2,7 @@
 .el-input {
     @include whrem(353, 40);
 
-    .el-input__wrapper{
+    .el-input__wrapper {
         box-shadow: none;
         padding: 0;
         background: transparent;
@@ -10,7 +10,8 @@
         @include wh;
         position: relative;
 
-        &.is-focus,&:hover{
+        &.is-focus,
+        &:hover {
             box-shadow: none;
         }
 
@@ -26,57 +27,57 @@
             padding-left: pxToRem(22);
             padding-right: pxToRem(30);
         }
-    
+
         .el-input__prefix,
         .el-input__suffix {
             width: fit-content;
             @include fontColor(3);
             @include flexCenter;
             position: absolute;
-    
+
             .el-input__suffix-inner {
                 @include wh(fit-content);
                 @include flexCenter;
-    
+
                 .el-input__icon {
                     @include iconSize(2);
                     @include flexCenter;
                 }
             }
         }
-    
+
         .el-input__prefix {
             left: pxToRem(6);
         }
-    
+
         .el-input__suffix {
             right: pxToRem(8);
             @include themeColor(1, color);
         }
-    
+
         &:not(.is-disabled):hover {
             .el-input__inner {
                 @include themeColor(1, border-color);
             }
         }
-    
+
         &.is-focus {
             .el-input__inner {
                 @include themeColor(1, border-color, true);
             }
         }
-    
+
         &:focus {
             @include themeColor(1, border-color);
         }
-    
+
         .el-input__clear {
             @include fontColor(3);
         }
     }
 
     &.is-disabled {
-        .el-input__wrapper{
+        .el-input__wrapper {
             background: transparent;
             box-shadow: none;
             .el-input__inner {
@@ -88,5 +89,23 @@
             }
         }
     }
+}
 
+/* 原生 input 输入框样式 */
+input {
+    @include whrem(353, 40);
+    border: pxToRem(1) solid;
+    @include themeColor(var(--inputBorderAlpha), border-color);
+    border-radius: pxToRem(12);
+    line-height: pxToRem(40);
+    padding-left: pxToRem(22);
+    padding-right: pxToRem(30);
+    @include fontColor(3);
+    @include fontStyle(4);
+    background: none;
+
+    &:focus,
+    &:hover {
+        @include themeColor(1, border-color);
+    }
 }

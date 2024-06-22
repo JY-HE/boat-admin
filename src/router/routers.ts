@@ -16,6 +16,8 @@ import watermarkView from '@/views/watermarkView/router';
 import errorView from '@/views/errorView/router';
 // 关于页
 import aboutView from '@/views/aboutView/router';
+// 权限管理
+import permissionView from '@/views/permissionView/router';
 
 export default [
     homeViewRoute,
@@ -27,4 +29,5 @@ export default [
     watermarkView,
     errorView,
     aboutView,
+    permissionView,
 ];

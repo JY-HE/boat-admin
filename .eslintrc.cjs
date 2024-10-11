@@ -42,6 +42,6 @@ module.exports = {
                 useTabs: false,
             },
         ],
-        indent: ['error', 4], // 缩进4
+        indent: ['warn', 4], // 缩进4
     },
 };

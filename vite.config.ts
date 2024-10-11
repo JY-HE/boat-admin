@@ -112,7 +112,7 @@ export default defineConfig({
         // 设置 https 代理
         proxy: {
             '/api': {
-                target: 'your https address',
+                target: 'https://api.example.com',
                 changeOrigin: true,
                 rewrite: (path: string) => path.replace(/^\/api/, ''),
             },

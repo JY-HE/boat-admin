@@ -6,5 +6,6 @@ export * from './packageStore';
 export * from './routerStore';
 export * from './themeStore';
 export * from './permissionStore';
+export * from './authStore';
 
 export default store;

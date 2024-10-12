@@ -44,6 +44,27 @@ function resetElement() {
     createElement(next).classList.add('next');
 }
 
+function handleWheelEvent(e: WheelEvent) {
+    if (!e.deltaY || !container || isAnimating) return;
+    isAnimating = true;
+    if (e.deltaY > 0) {
+        container.className = 'scrollContainer scrollDown';
+    } else {
+        container.className = 'scrollContainer scrollUp';
+    }
+}
+
+function handleTransitionEnd() {
+    isAnimating = false;
+    if (container?.classList.contains('scrollDown')) {
+        currentIndex = nextIndex();
+    } else if (container?.classList.contains('scrollUp')) {
+        currentIndex = prevIndex();
+    }
+    container?.classList.remove('scrollDown', 'scrollUp');
+    resetElement();
+}
+
 onMounted(() => {
     container = document.querySelector('.scrollContainer');
     if (!container) {
@@ -51,25 +72,14 @@ onMounted(() => {
         return;
     }
     resetElement();
-    window.addEventListener('wheel', e => {
-        if (!e.deltaY || !container || isAnimating) return;
-        isAnimating = true;
-        if (e.deltaY > 0) {
-            container.className = 'scrollContainer scrollDown';
-        } else {
-            container.className = 'scrollContainer scrollUp';
-        }
-    });
-    container.addEventListener('transitionend', () => {
-        isAnimating = false;
-        if (container?.classList.contains('scrollDown')) {
-            currentIndex = nextIndex();
-        } else if (container?.classList.contains('scrollUp')) {
-            currentIndex = prevIndex();
-        }
-        container?.classList.remove('scrollDown', 'scrollUp');
-        resetElement();
-    });
+    window.addEventListener('wheel', handleWheelEvent);
+    container.addEventListener('transitionend', handleTransitionEnd);
+});
+onUnmounted(() => {
+    if (container) {
+        container.removeEventListener('animationend', handleTransitionEnd);
+    }
+    window.removeEventListener('wheel', handleWheelEvent);
 });
 </script>
 

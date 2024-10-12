@@ -77,7 +77,7 @@ onMounted(() => {
 });
 onUnmounted(() => {
     if (container) {
-        container.removeEventListener('animationend', handleTransitionEnd);
+        container.removeEventListener('transitionend', handleTransitionEnd);
     }
     window.removeEventListener('wheel', handleWheelEvent);
 });

@@ -14,7 +14,7 @@ import { getAssetsImg } from '@/utils/global';
 const imageUrls = ref<string[]>([]);
 
 for (let i = 0; i < 5; i += 1) {
-    const url = getAssetsImg(`${i + 1}.jpg`);
+    const url = getAssetsImg(`${i + 1}.png`);
     imageUrls.value.push(url);
 }
 </script>

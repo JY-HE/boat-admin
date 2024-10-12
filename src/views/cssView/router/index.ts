@@ -19,6 +19,17 @@ const router = {
                 title: '旋转中的视差效果',
             },
         },
+        {
+            path: '/css/infiniteParallaxScrolling',
+            name: '无限视差滚动效果',
+            component: () =>
+                import(
+                    /* webpackChunkName: "infiniteParallaxScrolling" */ '@/views/cssView/components/infiniteParallaxScrolling/Index.vue'
+                ),
+            meta: {
+                title: '无限视差滚动效果',
+            },
+        },
     ],
 };
 

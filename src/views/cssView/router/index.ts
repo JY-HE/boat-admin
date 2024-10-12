@@ -30,6 +30,17 @@ const router = {
                 title: '无限视差滚动效果',
             },
         },
+        {
+            path: '/css/inclinedWheelSeeding',
+            name: '3D倾斜轮播效果',
+            component: () =>
+                import(
+                    /* webpackChunkName: "inclinedWheelSeeding" */ '@/views/cssView/components/inclinedWheelSeeding/Index.vue'
+                ),
+            meta: {
+                title: '3D倾斜轮播效果',
+            },
+        },
     ],
 };
 

@@ -1,0 +1,87 @@
+/* el-color-picker 调色板样式 */
+.el-color-picker {
+    @include whrem(30);
+    border-radius: pxToRem(8);
+
+    .el-color-picker__trigger {
+        @include wh;
+        border-radius: pxToRem(8);
+        border: none;
+        padding: 0;
+
+        .el-color-picker__color {
+            @include wh;
+            border-radius: pxToRem(8);
+            border: none;
+            overflow: hidden;
+
+            .el-color-picker__color-inner {
+                @include wh;
+            }
+        }
+
+        .el-color-picker__icon {
+            @include iconSize(2);
+        }
+    }
+}
+
+.el-color-dropdown.el-color-picker__panel {
+    @include panelStyle;
+    @include panelShadow(0.46);
+    border-radius: pxToRem(12);
+    padding: pxToRem(6);
+    border: none;
+
+    .el-color-dropdown__main-wrapper {
+        margin-bottom: pxToRem(6);
+    }
+
+    .el-color-dropdown__btns {
+        margin-top: pxToRem(6);
+        gap: pxToRem(8);
+        @include flexCenter(space-between);
+
+        .el-color-dropdown__value {
+            flex: 1;
+            flex-shrink: 0;
+            height: pxToRem(40);
+            line-height: pxToRem(40);
+            @include fontStyle(4);
+            @include fontColor(1);
+
+            .el-input {
+                @include wh;
+                @include fontStyle(4);
+                @include fontColor(1);
+                padding-left: pxToRem(2);
+
+                .el-input__inner {
+                    @include wh;
+                    @include fontStyle(4);
+                    @include fontColor(1);
+                    cursor: pointer;
+                    background: none;
+                    padding: 0 pxToRem(8);
+                    margin: 0;
+                }
+            }
+        }
+
+        .el-button {
+            margin-left: pxToRem(10);
+            height: pxToRem(28);
+            line-height: pxToRem(28);
+            border: pxToRem(1) solid;
+            @include themeColor(1, border-color);
+            display: none;
+
+            &:last-child {
+                @include themeColor(1, border-color);
+                @include themeColor(1, background-color);
+                @include whiteColor(1, color);
+                display: block;
+            }
+        }
+    }
+}

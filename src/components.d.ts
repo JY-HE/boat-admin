@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
         BoatCopyButton: typeof import('./components/BoatCopyButton.vue')['default'];
         BoatIconButton: typeof import('./components/BoatIconButton.vue')['default'];
         BoatIconfont: typeof import('./components/BoatIconfont.vue')['default'];
+        BoatLayout: typeof import('./components/BoatLayout.vue')['default'];
         BoatMenu: typeof import('./components/BoatMenu.vue')['default'];
         BoatNoData: typeof import('./components/BoatNoData.vue')['default'];
         BoatTitle: typeof import('./components/BoatTitle.vue')['default'];

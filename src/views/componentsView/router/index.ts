@@ -30,6 +30,17 @@ const router = {
                 title: '联动表单',
             },
         },
+        {
+            path: '/components/fixedHeightVirtualList',
+            name: '定高虚拟列表',
+            component: () =>
+                import(
+                    /* webpackChunkName: "fixedHeightVirtualList" */ '@/views/componentsView/components/fixedHeightVirtualList/Index.vue'
+                ),
+            meta: {
+                title: '定高虚拟列表',
+            },
+        },
     ],
 };
 

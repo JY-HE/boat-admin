@@ -1,9 +1,9 @@
 <template>
     <div class="BoatLayout">
-        <div v-if="$slots.list" ref="boatLayoutList" boatLayoutList>
+        <div v-if="$slots.list" ref="boatLayoutList" class="boatLayout-list">
             <slot name="list"></slot>
         </div>
-        <div v-if="$slots.content" boatLayoutMain>
+        <div v-if="$slots.content" class="boatLayout-main">
             <slot name="content"></slot>
         </div>
         <div v-if="isResize" ref="resize" class="resize" @mousedown="startResize"></div>
@@ -119,16 +119,15 @@ onUnmounted(() => {
     @include flexCenter;
     position: relative;
 
-    div[boatLayoutList] {
+    .boatLayout-list {
         @include wh(pxToRem(320), 100%);
         overflow: hidden;
         padding: pxToRem(16) 0 pxToRem(16) pxToRem(16);
         border-right: pxToRem(1) solid;
         @include themeColor(var(--dividingLineAlpha), border-color);
-        // @include baseTransition(width);
     }
 
-    div[boatLayoutMain] {
+    .boatLayout-main {
         flex: 1;
         flex-shrink: 0;
         height: 100%;

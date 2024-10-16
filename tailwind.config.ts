@@ -11,7 +11,6 @@ const fontStyleList = {
     4: { fontSize: '0.875rem', lineHeight: '1.375rem', fontWeight: 'normal' },
     5: { fontSize: '0.75rem', lineHeight: '1.375rem', fontWeight: 'normal' },
 };
-//
 const fontPlugin = plugin(({ addUtilities }) => {
     const utilities = Object.entries(fontStyleList).reduce((acc, [key, value]) => {
         // 定义类名，例如 `.font-style-1`
@@ -31,7 +30,6 @@ const fontPlugin = plugin(({ addUtilities }) => {
 // #endregion ---------------------- 将字体样式列表转换为 Tailwind CSS 实用工具类 - END -------------------
 
 // #region ------------------------- 定义主题颜色 -------------------------
-
 const colors = {
     whiteColor: 'var(--whiteColor)', // 基础白色
     blackColor: 'var(--blackColor)', // 基础黑色

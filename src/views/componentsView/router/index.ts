@@ -31,14 +31,14 @@ const router = {
             },
         },
         {
-            path: '/components/fixedHeightVirtualList',
-            name: '定高虚拟列表',
+            path: '/components/virtualList',
+            name: '虚拟列表',
             component: () =>
                 import(
-                    /* webpackChunkName: "fixedHeightVirtualList" */ '@/views/componentsView/components/fixedHeightVirtualList/Index.vue'
+                    /* webpackChunkName: "virtualList" */ '@/views/componentsView/components/virtualList/Index.vue'
                 ),
             meta: {
-                title: '定高虚拟列表',
+                title: '虚拟列表',
             },
         },
     ],

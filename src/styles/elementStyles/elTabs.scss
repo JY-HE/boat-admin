@@ -1,0 +1,52 @@
+/* 全局 el-tabs 样式 */
+.el-tabs {
+    width: 100%;
+
+    .el-tabs__header {
+        margin: 0;
+
+        .el-tabs__nav-wrap {
+            margin: 0;
+
+            .el-tabs__nav-scroll {
+                .el-tabs__nav {
+                    .el-tabs__active-bar {
+                        @include themeColor(1, background-color);
+                        @include baseTransition(transform);
+                        height: pxToRem(5);
+                        border-radius: pxToRem(4);
+                    }
+
+                    .el-tabs__item {
+                        @include fontStyle(4);
+                        @include fontColor(3);
+                        height: pxToRem(56);
+                        line-height: pxToRem(56);
+                        padding: 0 pxToRem(16);
+
+                        outline: none !important;
+                        border: none !important;
+                        &.is-active {
+                            @include themeColor(1, color);
+                            font-weight: bold;
+                        }
+                        &:hover {
+                            @include themeColor(1, color);
+                        }
+                    }
+                }
+            }
+
+            &:after {
+                content: '';
+                width: 100%;
+                height: pxToRem(1);
+                @include themeColor(var(--dividingLineAlpha), background-color);
+            }
+        }
+    }
+
+    .el-tabs__content {
+        display: none;
+    }
+}

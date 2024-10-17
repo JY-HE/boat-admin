@@ -11,9 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import { useThemeStore } from '@/store';
+import { useLayoutStore } from '@/store';
 
-const themeStore = useThemeStore();
+const layoutStore = useLayoutStore();
 
 const isDarkValue = ref<boolean>(false);
 
@@ -26,7 +26,7 @@ watch(isDarkValue, newValue => {
  * @param isDark 是否暗黑模式
  */
 const themeModeHandler = (isDark: boolean) => {
-    themeStore.setThemeMode(isDark);
+    layoutStore.setThemeMode(isDark);
     globalStyleHandler(isDark);
 };
 

@@ -1,6 +1,6 @@
 import App from './App.vue';
 import { createApp } from 'vue';
-import store from './store';
+import store, { useLayoutStore } from './store';
 import router from '@/router';
 import adaptiveResolution from '@/utils/adaptiveResolution';
 import directives from '@/directives';
@@ -14,8 +14,6 @@ import '@/styles/base.scss';
 import '@/styles/elementUI.scss';
 
 async function initializeApp() {
-    // 初始化自适应页面
-    await adaptiveResolution();
     // 创建 vue 实例
     const app = createApp(App);
     // 注册 Pinia
@@ -26,6 +24,11 @@ async function initializeApp() {
     app.use(directives);
     // 全局配置
     app.config.globalProperties.$BoatNotify = BoatNotify;
+    // 初始化自适应页面
+    await adaptiveResolution(data => {
+        const layoutStore = useLayoutStore();
+        layoutStore.setScale(data.ratio);
+    });
     // 卸载载入动画
     const loadingView = window.document.getElementById('loadingMaskView');
     if (loadingView) loadingView.style.display = 'none';

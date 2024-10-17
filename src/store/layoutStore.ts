@@ -1,11 +1,15 @@
 import { defineStore } from 'pinia';
 
-export const useThemeStore = defineStore({
-    id: 'theme',
+/**
+ * 页面相关配置
+ */
+export const useLayoutStore = defineStore({
+    id: 'layout',
     state: () => {
         return {
             isDark: false, // 是否暗黑模式
             isHideMenu: false, // 是否隐藏菜单栏
+            scale: 1, // 页面缩放比例
         };
     },
     actions: {
@@ -16,6 +20,9 @@ export const useThemeStore = defineStore({
         },
         setHideMenu(hide: boolean) {
             this.isHideMenu = hide;
+        },
+        setScale(scale: number) {
+            this.scale = parseFloat(scale.toFixed(2));
         },
     },
 });

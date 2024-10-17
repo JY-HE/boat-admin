@@ -4,7 +4,7 @@ const store = createPinia();
 
 export * from './packageStore';
 export * from './routerStore';
-export * from './themeStore';
+export * from './layoutStore';
 export * from './permissionStore';
 export * from './authStore';
 

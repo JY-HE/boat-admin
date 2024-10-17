@@ -37,6 +37,18 @@ function pcSetRem(data: AdaptiveResolution) {
     htmlObj.style.fontSize = `${baseFontSize}px`;
 }
 
+/**
+ * 重新计算并设置根元素的字体大小
+ *
+ * @param {CallbackFunction} callback 在分辨率改变时可选的回调函数，接收计算结果作为参数。
+ * @param {number} designWidth 设计图的宽度，用于计算根字体大小。
+ * @param {number} designHeight 设计图的高度，用于计算根字体大小。
+ *
+ * @example
+ * reCalc((data) => {
+ *     console.log('根字体大小已更新:', data);
+ * }, 1920, 1080);
+ */
 function reCalc(callback: CallbackFunction, designWidth: number, designHeight: number) {
     // 延时执行，确保页面尺寸稳定后再进行计算
     setTimeout(() => {
@@ -47,6 +59,19 @@ function reCalc(callback: CallbackFunction, designWidth: number, designHeight: n
     }, 100);
 }
 
+/**
+ * 适应屏幕分辨率并执行回调函数
+ *
+ * @param {CallbackFunction} [callback] 可选的回调函数，在每次窗口大小调整时执行。
+ * @param {number} [designWidth=1920] 设计图的宽度，默认为 1920。
+ * @param {number} [designHeight=1080] 设计图的高度，默认为 1080。
+ * @returns {Promise<void>} 返回一个 Promise，表示初始化完成。
+ *
+ * @example
+ * adaptiveResolution(() => {
+ *     console.log('屏幕尺寸已调整');
+ * });
+ */
 export default function adaptiveResolution(
     callback?: CallbackFunction,
     designWidth = 1920,

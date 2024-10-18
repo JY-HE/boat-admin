@@ -27,9 +27,7 @@ const useECharts = (elRef: Ref<HTMLDivElement | null>, options: ECOption) => {
     const initCharts = (themeColor?: Array<string>) => {
         // 获取 ref 对象的值
         const el = unref(elRef);
-        if (!el) {
-            return;
-        }
+        if (!el) return;
         //  初始化 ECharts 实例
         charts.value = echarts.init(el);
         if (themeColor) {
@@ -63,7 +61,6 @@ const useECharts = (elRef: Ref<HTMLDivElement | null>, options: ECOption) => {
     });
 
     onBeforeUnmount(() => {
-        charts.value && charts.value.dispose();
         if (timer) {
             clearTimeout(timer);
             timer = null;
@@ -71,6 +68,7 @@ const useECharts = (elRef: Ref<HTMLDivElement | null>, options: ECOption) => {
         if (elRef.value && resizeDetector) {
             resizeDetector.uninstall(elRef.value);
         }
+        charts.value && charts.value.dispose();
     });
 
     return {

@@ -22,6 +22,7 @@
 import { ECOption } from '@/utils/eCharts';
 import { useECharts } from '@/hooks';
 import { useLayoutStore } from '@/store';
+import { getCssVariableValue } from '@/utils/global';
 
 const props = defineProps<{
     title?: string;
@@ -33,23 +34,29 @@ const echartsRef = ref<HTMLDivElement | null>(null);
 const { setOptions, initCharts } = useECharts(echartsRef, props.options);
 
 const layoutStore = useLayoutStore();
-const emits = defineEmits(['darkChange']);
+const emits = defineEmits(['dark-change']);
 
 watch(
     () => layoutStore.isDark,
     newValue => {
-        emits('darkChange', newValue);
+        emits('dark-change', newValue);
     },
     {
         immediate: true,
     }
 );
 
-watch(
-    () => props.options,
-    newValue => {
+watchEffect(
+    () => {
         let targetOptions: ECOption = {};
-        targetOptions = { ...newValue };
+        targetOptions = {
+            darkMode: layoutStore.isDark,
+            backgroundColor: getCssVariableValue(
+                layoutStore.isDark ? '--themeColor' : '--whiteColor',
+                0.03
+            ),
+            ...props.options,
+        };
         if (props.themeColors && props.themeColors.length > 0) {
             targetOptions.color = props.themeColors;
         }

@@ -7,12 +7,17 @@
 <script setup lang="ts">
 import { ECOption } from '@/utils/eCharts';
 
-const options = {
-    tooltip: {},
+const options = reactive<ECOption>({
+    tooltip: {
+        show: true,
+        trigger: 'axis',
+    },
     xAxis: {
         data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
     },
-    yAxis: {},
+    yAxis: {
+        type: 'value',
+    },
     series: [
         {
             name: '销量',
@@ -20,5 +25,5 @@ const options = {
             data: [5, 20, 36, 10, 10, 20],
         },
     ],
-} as ECOption;
+});
 </script>

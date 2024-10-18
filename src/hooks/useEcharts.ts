@@ -1,5 +1,5 @@
+import elementResizeDetectorMaker, { ResizeDetector } from 'element-resize-detector';
 import { Ref, shallowRef, unref } from 'vue';
-
 import echarts, { ECOption } from '@/utils/eCharts';
 
 /**
@@ -11,6 +11,7 @@ import echarts, { ECOption } from '@/utils/eCharts';
  * @returns resize 重新计算
  */
 const useECharts = (elRef: Ref<HTMLDivElement | null>, options: ECOption) => {
+    let resizeDetector: ResizeDetector | null = null;
     const charts = shallowRef<echarts.ECharts>();
     let timer: ReturnType<typeof setTimeout> | null = null;
 
@@ -40,35 +41,35 @@ const useECharts = (elRef: Ref<HTMLDivElement | null>, options: ECOption) => {
     };
 
     /**
-     * 重新窗口变化时，重新计算
+     * 监听容器大小变化，自动调整图表大小
      */
     const resize = () => {
         if (timer !== null) {
             clearTimeout(timer);
             timer = null;
         }
-        timer = setTimeout(() => {
-            charts.value && charts.value.resize();
-        }, 100);
+        resizeDetector = elementResizeDetectorMaker();
+        if (elRef.value) {
+            resizeDetector.listenTo(elRef.value, () => {
+                timer = setTimeout(() => {
+                    charts.value && charts.value.resize();
+                }, 100);
+            });
+        }
     };
 
     onMounted(() => {
-        window.addEventListener('resize', resize);
-    });
-
-    /**
-     * 页面keepAlive时，不监听页面
-     */
-    onDeactivated(() => {
-        window.removeEventListener('resize', resize);
+        resize();
     });
 
     onBeforeUnmount(() => {
-        window.removeEventListener('resize', resize);
         charts.value && charts.value.dispose();
         if (timer) {
             clearTimeout(timer);
             timer = null;
+        }
+        if (elRef.value && resizeDetector) {
+            resizeDetector.uninstall(elRef.value);
         }
     });
 

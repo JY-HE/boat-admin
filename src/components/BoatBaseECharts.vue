@@ -1,20 +1,12 @@
 <template>
-    <div class="BoatBaseECharts w-full h-full">
-        <div v-if="title" class="w-full h-12 text-h1">
-            <h2>{{ title }}</h2>
-        </div>
+    <div class="w-full h-full overflow-hidden BoatBaseECharts">
         <div
-            class="base-echarts-box w-full overflow-hidden rounded-xl border-themeColor-chartModuleBorderAlpha hover:border-themeColor-chartModuleHoverBorderAlpha"
-            :class="title ? 'h-[calc(100%-3rem)]' : 'h-full'"
-        >
-            <div
-                ref="echartsRef"
-                :style="{
-                    width: '100%',
-                    height: '100%',
-                }"
-            ></div>
-        </div>
+            ref="echartsRef"
+            :style="{
+                width: '100%',
+                height: '100%',
+            }"
+        ></div>
     </div>
 </template>
 
@@ -25,7 +17,6 @@ import { useLayoutStore } from '@/store';
 import { getCssVariableValue } from '@/utils/global';
 
 const props = defineProps<{
-    title?: string;
     options: ECOption;
     themeColors?: string[];
 }>();
@@ -37,25 +28,14 @@ const layoutStore = useLayoutStore();
 const emits = defineEmits(['dark-change']);
 
 watch(
-    () => layoutStore.isDark,
-    newValue => {
-        emits('dark-change', newValue);
-    },
-    {
-        immediate: true,
-    }
-);
-
-watchEffect(
-    () => {
+    [() => layoutStore.isDark, () => props.options],
+    ([newIsDark, newOptions]) => {
+        emits('dark-change', newIsDark);
         let targetOptions: ECOption = {};
         targetOptions = {
-            darkMode: layoutStore.isDark,
-            backgroundColor: getCssVariableValue(
-                layoutStore.isDark ? '--themeColor' : '--whiteColor',
-                0.03
-            ),
-            ...props.options,
+            darkMode: newIsDark,
+            backgroundColor: getCssVariableValue(newIsDark ? '--themeColor' : '--whiteColor', 0.03),
+            ...newOptions,
         };
         if (props.themeColors && props.themeColors.length > 0) {
             targetOptions.color = props.themeColors;

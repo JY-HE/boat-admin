@@ -1,7 +1,5 @@
 <template>
-    <div class="w-full h-[calc(32rem)]">
-        <BoatBaseECharts :options="options" title="基础折线图" />
-    </div>
+    <BoatBaseECharts :options="options" />
 </template>
 
 <script setup lang="ts">

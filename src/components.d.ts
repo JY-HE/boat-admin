@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     BoatCard: typeof import('./components/BoatCard.vue')['default']
     BoatColorPick: typeof import('./components/BoatColorPick.vue')['default']
     BoatCopyButton: typeof import('./components/BoatCopyButton.vue')['default']
+    BoatEchartsPreview: typeof import('./components/BoatEchartsPreview.vue')['default']
     BoatIconButton: typeof import('./components/BoatIconButton.vue')['default']
     BoatIconfont: typeof import('./components/BoatIconfont.vue')['default']
     BoatLayout: typeof import('./components/BoatLayout.vue')['default']

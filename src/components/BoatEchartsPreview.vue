@@ -14,6 +14,8 @@
             class="echarts-preview-dialog"
             :title="title || enTitle"
             appendToBody
+            draggable
+            destroyOnClose
         >
             <component :is="componentChart"></component>
         </el-dialog>

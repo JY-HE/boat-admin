@@ -10,7 +10,7 @@ import echarts, { ECOption } from '@/utils/eCharts';
  * @returns setOptions 设置配置项
  * @returns resize 重新计算
  */
-const useECharts = (elRef: Ref<HTMLDivElement | null>, options: ECOption) => {
+const useECharts = (elRef: Ref<HTMLDivElement | null>, options?: ECOption) => {
     let resizeDetector: ResizeDetector | null = null;
     const charts = shallowRef<echarts.ECharts>();
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -24,18 +24,13 @@ const useECharts = (elRef: Ref<HTMLDivElement | null>, options: ECOption) => {
     };
 
     // 初始化
-    const initCharts = (themeColor?: Array<string>) => {
+    const initCharts = () => {
         // 获取 ref 对象的值
         const el = unref(elRef);
         if (!el) return;
         //  初始化 ECharts 实例
         charts.value = echarts.init(el);
-        if (themeColor) {
-            // 创建一个新的配置项对象，避免直接修改传入的options
-            const newOptions = { ...options, color: themeColor };
-            setOptions(newOptions);
-        }
-        setOptions(options);
+        options && setOptions(options);
     };
 
     /**

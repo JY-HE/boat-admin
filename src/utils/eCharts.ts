@@ -47,6 +47,14 @@ import type {
     TooltipComponentOption,
     GridComponentOption,
     DatasetComponentOption,
+    LegendComponentOption,
+    ToolboxComponentOption, // 工具栏
+    DataZoomComponentOption, // 数据缩放
+    VisualMapComponentOption, // 视觉映射
+    TimelineComponentOption, // 时间轴
+    CalendarComponentOption, // 日历
+    GeoComponentOption, // 地理坐标系
+    GraphicComponentOption, // 图形元素
 } from 'echarts/components';
 import type { ComposeOption } from 'echarts/core';
 
@@ -62,6 +70,14 @@ export type ECOption = ComposeOption<
     | TooltipComponentOption
     | GridComponentOption
     | DatasetComponentOption
+    | LegendComponentOption
+    | ToolboxComponentOption
+    | DataZoomComponentOption
+    | VisualMapComponentOption
+    | TimelineComponentOption
+    | CalendarComponentOption
+    | GeoComponentOption
+    | GraphicComponentOption
 >;
 
 // 注册必须的组件

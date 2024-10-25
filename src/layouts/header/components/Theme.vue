@@ -37,6 +37,10 @@ const themeModeHandler = (isDark: boolean) => {
 const globalStyleHandler = (isDark: boolean) => {
     // 底板背景色
     setRootCss(isDark, 'bodyBackground', '255, 255, 255', '0, 0, 0');
+    // 图表背景色
+    setRootCss(isDark, 'chartBackgroundColor', '255, 255, 255', '10, 13, 31');
+    // 图表文本字体色
+    setRootCss(isDark, 'chartTextColor', '91, 91, 94', '255, 255, 255');
     // 底板背景透明度
     setRootCss(isDark, 'panelBackgroundAlpha', 0, 0.16);
     // T1-文本色

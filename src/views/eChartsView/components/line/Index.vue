@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import echartsData from './echartsData.ts';
+import echartsData from './echartsData';
 </script>
 <style lang="scss">
 .lineChart {

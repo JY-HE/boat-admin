@@ -1,16 +1,23 @@
 <template>
-    <div class="w-full h-[calc(32rem)]">
-        <BoatBaseECharts :options="options" title="基础柱状图" />
-    </div>
+    <BoatBaseECharts :options="options" />
 </template>
 
 <script setup lang="ts">
 import { ECOption } from '@/utils/eCharts';
 
-const options = {
-    tooltip: {},
+const options: ECOption = {
+    tooltip: {
+        show: true,
+        trigger: 'axis',
+    },
     xAxis: {
         data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true,
     },
     yAxis: {},
     series: [
@@ -20,5 +27,5 @@ const options = {
             data: [5, 20, 36, 10, 10, 20],
         },
     ],
-} as ECOption;
+};
 </script>

@@ -1,6 +1,6 @@
 {
     "name": "boat-admin",
-    "private": true,
+    "private": false,
     "homepage": "https://jy-he.github.io/boat-admin",
     "description": "Boat-admin 是一款基于 Vue3 + Vite3 + TypeScript + Element-plus + Tailwindcss 的后台管理模板。力求开箱即用，降低学习门槛和维护成本，同时也记录了一些作者工作过程中积累的技术。",
     "version": "0.0.1",

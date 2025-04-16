@@ -1,25 +1,20 @@
 {
     "compilerOptions": {
-        "typeRoots": [
-            "node_modules/@types", // 默认值
-            "src/types"
-        ],
-        "target": "esnext",
-        "useDefineForClassFields": true,
-        "module": "esnext",
-        "moduleResolution": "node",
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "bundler", // Vue 3.4+ 推荐配置
         "strict": true,
         "jsx": "preserve",
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "lib": ["esnext", "dom"],
+        "types": [
+            "vite/client",
+            "unplugin-vue-components/types" // 添加此行以启用自动导入组件的类型支持
+        ],
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+        // "skipLibCheck": true, // 避免第三方库类型冲突
         "baseUrl": "./",
         "paths": {
-            "@": ["src"],
             "@/*": ["src/*"]
-        },
-        "types": ["vite/client"]
+        }
     },
     "include": [
         "src/**/*.ts",
@@ -27,5 +22,6 @@
         "src/**/*.tsx",
         "src/**/*.vue",
         "createDirectory.js"
-    ]
+    ],
+    "exclude": ["node_modules", "dist"]
 }

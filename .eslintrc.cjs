@@ -42,6 +42,7 @@ module.exports = {
                 useTabs: false,
             },
         ],
-        indent: ['warn', 4], // 缩进4
+        'vue/html-indent': ['warn', 4], // 确保 Vue 模板中的缩进为 4 个空格
+        indent: ['warn', 4], // 确保脚本部分的缩进为 4 个空格
     },
 };

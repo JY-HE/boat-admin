@@ -12,6 +12,7 @@ import '@/styles/tailwind.css';
 import '@/styles/base.scss';
 // 自定义element全局样式
 import '@/styles/elementUI.scss';
+import '@koihe/boat-ui/dist/iconfont.js';
 
 async function initializeApp() {
     // 创建 vue 实例

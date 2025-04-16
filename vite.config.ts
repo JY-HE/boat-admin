@@ -1,15 +1,16 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
-import { createHtmlPlugin } from 'vite-plugin-html';
+// import { createHtmlPlugin } from 'vite-plugin-html';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import { BoatUIResolver } from '@koihe/boat-ui/dist/resolver';
 import addDirectory from './public/addDirectory';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: process.env.VITE_BASE_URL || '/',
+    base: '/',
     resolve: {
         //设置别名
         alias: {
@@ -31,18 +32,18 @@ export default defineConfig({
                 globalsPropValue: true,
             },
         }),
-        // elementUi组件自动引入
+        // 组件自动引入
         Components({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [ElementPlusResolver(), BoatUIResolver()],
             dts: 'src/components.d.ts',
         }),
-        createHtmlPlugin({
-            inject: {
-                data: {
-                    BASE_URL: process.env.VITE_BASE_URL || '/',
-                },
-            },
-        }),
+        // createHtmlPlugin({
+        //     inject: {
+        //         data: {
+        //             BASE_URL: process.env.VITE_BASE_URL || '/',
+        //         },
+        //     },
+        // }),
         {
             name: 'file-system-operations',
             configureServer(server) {

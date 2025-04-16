@@ -1,13 +1,32 @@
 {
     "name": "boat-admin",
-    "private": false,
+    "private": true,
+    "version": "0.0.1",
+    "author": "koihe",
     "homepage": "https://jy-he.github.io/boat-admin",
     "description": "Boat-admin 是一款基于 Vue3 + Vite3 + TypeScript + Element-plus + Tailwindcss 的后台管理模板。力求开箱即用，降低学习门槛和维护成本，同时也记录了一些作者工作过程中积累的技术。",
-    "version": "0.0.1",
     "type": "module",
     "engines": {
         "node": ">=18.18.2"
     },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jy-he/boat-admin/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jy-he/boat-admin.git"
+    },
+    "keywords": [
+        "vue3",
+        "vite",
+        "typescript",
+        "admin-template",
+        "element-plus",
+        "tailwindcss",
+        "boat-admin",
+        "koihe"
+    ],
     "scripts": {
         "dev": "vite --mode development",
         "build": "vite build --mode production",

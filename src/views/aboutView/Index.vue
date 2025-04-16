@@ -5,15 +5,18 @@
         >
             <BoatCard title="关于">
                 <p class="text-h1 font-style-2">
-                    Boat-admin 是一款基于 Vue3 + Vite3 + TypeScript + Element-plus + Tailwindcss
-                    的后台管理模板。力求开箱即用，降低学习门槛和维护成本，同时也记录了一些作者工作过程中积累的技术。
+                    {{ packageData.description }}
                 </p>
             </BoatCard>
             <BoatCard title="信息" contentClassName="flex flex-wrap justify-start gap-x-4">
                 <div>
                     <div label>GitHub</div>
                     <div value>
-                        <a href="https://github.com/JY-HE/boat-admin" target="_blank">
+                        <a
+                            href="https://github.com/JY-HE/boat-admin"
+                            target="_blank"
+                            class="underline"
+                        >
                             GitHub地址
                         </a>
                     </div>
@@ -24,7 +27,7 @@
                 </div>
                 <div>
                     <div label>推荐 Node 版本</div>
-                    <div value>>=18.1.0</div>
+                    <div value>{{ packageData.engines.node }}</div>
                 </div>
             </BoatCard>
             <BoatCard title="生产环境依赖" contentClassName="flex flex-wrap justify-start gap-x-4">

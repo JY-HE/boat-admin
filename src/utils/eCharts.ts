@@ -5,28 +5,28 @@ import {
     BarChart,
     LineChart,
     PieChart,
-    MapChart,
-    RadarChart,
-    PictorialBarChart,
+    // MapChart,
+    // RadarChart,
+    // PictorialBarChart,
 } from 'echarts/charts';
 // 引入标题，提示框，直角坐标系，数据集，内置数据转换器组件，组件后缀都为 Component
 import {
     TitleComponent,
     TooltipComponent,
     GridComponent,
-    PolarComponent,
-    AriaComponent,
-    ParallelComponent,
     LegendComponent,
-    RadarComponent,
     ToolboxComponent,
     DataZoomComponent,
-    VisualMapComponent,
-    TimelineComponent,
-    CalendarComponent,
-    GraphicComponent,
     DatasetComponent, // 数据集组件
     TransformComponent, // 数据转换器组件(filter, sort)
+    // PolarComponent,
+    // AriaComponent,
+    // ParallelComponent,
+    // RadarComponent,
+    // VisualMapComponent,
+    // TimelineComponent,
+    // CalendarComponent,
+    // GraphicComponent,
 } from 'echarts/components';
 // 标签自动布局、全局过渡动画等特性
 import { LabelLayout, UniversalTransition } from 'echarts/features';
@@ -37,24 +37,24 @@ import type {
     BarSeriesOption,
     LineSeriesOption,
     PieSeriesOption,
-    MapSeriesOption,
-    RadarSeriesOption,
-    PictorialBarSeriesOption,
+    // MapSeriesOption,
+    // RadarSeriesOption,
+    // PictorialBarSeriesOption,
 } from 'echarts/charts';
 // 组件类型的定义后缀都为 ComponentOption
 import type {
     TitleComponentOption,
     TooltipComponentOption,
     GridComponentOption,
-    DatasetComponentOption,
     LegendComponentOption,
     ToolboxComponentOption, // 工具栏
     DataZoomComponentOption, // 数据缩放
-    VisualMapComponentOption, // 视觉映射
-    TimelineComponentOption, // 时间轴
-    CalendarComponentOption, // 日历
-    GeoComponentOption, // 地理坐标系
-    GraphicComponentOption, // 图形元素
+    DatasetComponentOption,
+    // VisualMapComponentOption, // 视觉映射
+    // TimelineComponentOption, // 时间轴
+    // CalendarComponentOption, // 日历
+    // GeoComponentOption, // 地理坐标系
+    // GraphicComponentOption, // 图形元素
 } from 'echarts/components';
 import type { ComposeOption } from 'echarts/core';
 
@@ -63,9 +63,6 @@ export type ECOption = ComposeOption<
     | BarSeriesOption
     | LineSeriesOption
     | PieSeriesOption
-    | MapSeriesOption
-    | RadarSeriesOption
-    | PictorialBarSeriesOption
     | TitleComponentOption
     | TooltipComponentOption
     | GridComponentOption
@@ -73,11 +70,14 @@ export type ECOption = ComposeOption<
     | LegendComponentOption
     | ToolboxComponentOption
     | DataZoomComponentOption
-    | VisualMapComponentOption
-    | TimelineComponentOption
-    | CalendarComponentOption
-    | GeoComponentOption
-    | GraphicComponentOption
+    // | MapSeriesOption
+    // | RadarSeriesOption
+    // | PictorialBarSeriesOption
+    // | VisualMapComponentOption
+    // | TimelineComponentOption
+    // | CalendarComponentOption
+    // | GeoComponentOption
+    // | GraphicComponentOption
 >;
 
 // 注册必须的组件
@@ -87,23 +87,23 @@ echarts.use([
     GridComponent,
     DatasetComponent,
     TransformComponent,
-    PolarComponent,
-    AriaComponent,
-    ParallelComponent,
+    // PolarComponent,
+    // AriaComponent,
+    // ParallelComponent,
     LegendComponent,
-    RadarComponent,
+    // RadarComponent,
     ToolboxComponent,
     DataZoomComponent,
-    VisualMapComponent,
-    TimelineComponent,
-    CalendarComponent,
-    GraphicComponent,
+    // VisualMapComponent,
+    // TimelineComponent,
+    // CalendarComponent,
+    // GraphicComponent,
     BarChart,
     LineChart,
     PieChart,
-    MapChart,
-    RadarChart,
-    PictorialBarChart,
+    // MapChart,
+    // RadarChart,
+    // PictorialBarChart,
     LabelLayout,
     UniversalTransition,
     CanvasRenderer,

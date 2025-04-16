@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
-// import { createHtmlPlugin } from 'vite-plugin-html';
+import { visualizer } from 'rollup-plugin-visualizer';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
@@ -37,13 +37,8 @@ export default defineConfig({
             resolvers: [ElementPlusResolver(), BoatUIResolver()],
             dts: 'src/components.d.ts',
         }),
-        // createHtmlPlugin({
-        //     inject: {
-        //         data: {
-        //             BASE_URL: process.env.VITE_BASE_URL || '/',
-        //         },
-        //     },
-        // }),
+        // 输出打包体积报告
+        visualizer({ open: true }),
         {
             name: 'file-system-operations',
             configureServer(server) {
@@ -84,7 +79,11 @@ export default defineConfig({
                 // 静态资源拆分
                 manualChunks(id) {
                     if (id.includes('node_modules')) {
-                        return id.toString().split('node_modules/')[1].split('/')[0].toString();
+                        if (id.includes('element-plus')) return 'element-plus';
+                        if (id.includes('echarts')) return 'echarts';
+                        if (id.includes('lodash-es')) return 'lodash-es';
+                        if (id.includes('@koihe/boat-ui')) return '@koihe/boat-ui';
+                        return 'vendor'; // 其他合并成 vendor
                     }
                 },
             },
@@ -103,7 +102,7 @@ export default defineConfig({
         'process.env': process.env,
     },
     optimizeDeps: {
-        include: ['element-plus', 'vue', 'vue-router', 'pinia'], // 预打包 Element Plus 和常用库
+        include: ['vue', 'vue-router', 'pinia'], // 预打包常用库
     },
     server: {
         open: false,

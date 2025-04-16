@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash-es/cloneDeep';
 import { PropType } from 'vue';
 import { FromItemConfig, FromItem } from './type';
 const props = defineProps({

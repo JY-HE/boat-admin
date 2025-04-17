@@ -25,7 +25,7 @@ defineProps({
 <style lang="scss">
 .BoatCard {
     @include panelStyle;
-    @include panelShadow(0.46);
+    @include panelShadow(0.25);
     height: fit-content;
 }
 </style>

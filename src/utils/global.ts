@@ -24,3 +24,34 @@ export const getCssVariableValue = (variableName: string, opacity = 1): string =
     const value = getComputedStyle(document.documentElement).getPropertyValue(variableName);
     return `rgba(${value}, ${opacity})`;
 };
+
+/**
+ * 实现数字千位分隔符格式化的方法，支持整数和负数处理
+ * @param num 要格式化的数字
+ * @returns 格式化后的字符串
+ */
+export const formatNumberWithCommas = (num: number) => {
+    // 处理非数字类型输入
+    if (typeof num !== 'number') return String(num);
+
+    // 分解数字的符号、整数和小数部分
+    const [sign, absNumber] = num < 0 ? ['-', Math.abs(num)] : ['', num];
+    const numStr = String(absNumber);
+    const [integerPart, decimalPart] = numStr.split('.');
+
+    // 格式化整数部分
+    let formattedInteger = '';
+    let count = 0;
+
+    // 从右向左遍历并插入逗号
+    for (let i = integerPart.length - 1; i >= 0; i--) {
+        formattedInteger = integerPart[i] + formattedInteger;
+        count++;
+        if (count % 3 === 0 && i !== 0) {
+            formattedInteger = ',' + formattedInteger;
+        }
+    }
+
+    // 合并所有部分
+    return sign + formattedInteger + (decimalPart ? `.${decimalPart}` : '');
+};

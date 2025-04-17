@@ -63,6 +63,8 @@ npm run build
 
 ### 👀 预览生产环境
 
+[在线预览地址](https://jy-he.github.io/boat-admin/)
+
 ```bash
 npm run preview
 ```

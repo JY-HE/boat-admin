@@ -1,6 +1,6 @@
 <template>
     <div
-        class="StatisticInfo w-full h-[6rem] flex justify-between items-center gap-3 py-2 px-4 rounded-xl"
+        class="StatisticInfo w-full h-full flex justify-between items-center gap-3 py-2 px-4 rounded-xl"
     >
         <div class="w-20 h-full flex justify-center items-center rounded-[50%] overflow-hidden">
             <img src="/public/logo.svg" alt="" class="w-full w-full" />
@@ -43,6 +43,7 @@ const currentStatistic = computed(() => {
 
 <style lang="scss">
 .StatisticInfo {
+    grid-area: 1 / 1 / 1 / 5;
     @include panelStyle;
     @include panelShadow(0.25);
 }

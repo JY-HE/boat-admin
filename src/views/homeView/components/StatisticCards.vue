@@ -1,5 +1,5 @@
 <template>
-    <div class="StatisticCards w-full h-fit-content flex gap-4">
+    <div class="StatisticCards w-full h-full flex gap-4">
         <BoatCard v-for="card in statisticCards" :key="card.title" :title="card.title">
             <div class="flex justify-between">
                 <BoatIconfont :icon="card.icon" class="font-style-1 text-whiteColor-100 text-3xl" />
@@ -60,6 +60,7 @@ const statisticCards = computed(() => {
             end: #aa7ef1,
         )
     );
+    grid-area: 2 / 1 / 2 / 5;
     .BoatCard {
         @for $i from 1 through length($card-colors) {
             &:nth-child(#{$i}) {

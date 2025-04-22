@@ -40,7 +40,6 @@ const recentDays = ref(
 
 <style lang="scss">
 .Dynamics {
-    grid-area: 3 / 4 / 6 / 5;
     @include panelStyle;
     @include panelShadow(0.25);
     $dot-colors: (

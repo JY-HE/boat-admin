@@ -60,7 +60,6 @@ const statisticCards = computed(() => {
             end: #aa7ef1,
         )
     );
-    grid-area: 2 / 1 / 2 / 5;
     .BoatCard {
         @for $i from 1 through length($card-colors) {
             &:nth-child(#{$i}) {

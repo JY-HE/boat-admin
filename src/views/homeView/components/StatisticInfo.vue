@@ -43,7 +43,6 @@ const currentStatistic = computed(() => {
 
 <style lang="scss">
 .StatisticInfo {
-    grid-area: 1 / 1 / 1 / 5;
     @include panelStyle;
     @include panelShadow(0.25);
 }

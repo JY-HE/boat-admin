@@ -1,6 +1,6 @@
 <template>
-    <div class="pt-8 pb-8 pl-8 lineChart">
-        <div class="w-full h-full pr-4 grid scrollbarStyle content">
+    <div class="barChart">
+        <div class="grid content">
             <BoatEchartsPreview v-for="(item, index) in echartsData" :key="index" v-bind="item" />
         </div>
     </div>
@@ -10,7 +10,7 @@
 import echartsData from './echartsData';
 </script>
 <style lang="scss">
-.lineChart {
+.barChart {
     .content {
         grid-template-columns: repeat(auto-fill, minmax(#{pxToRem(322)}, 1fr));
     }

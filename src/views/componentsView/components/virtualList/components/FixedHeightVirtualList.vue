@@ -1,5 +1,5 @@
 <template>
-    <div ref="virtualListRef" class="fixed-height-virtual-list" @scroll="scrollEvent">
+    <div ref="virtualListRef" class="w-full h-full scrollbarStyle relative" @scroll="scrollEvent">
         <div
             class="w-full absolute top-0 left-0 z-[-1]"
             :style="{ height: listHeight + 'px' }"
@@ -125,11 +125,3 @@ onMounted(() => {
     endIndex.value = startIndex.value + visibleCount.value;
 });
 </script>
-
-<style lang="scss">
-.fixed-height-virtual-list {
-    @include wh;
-    @include scrollbarStyle(16);
-    position: relative;
-}
-</style>

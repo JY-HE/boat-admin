@@ -242,7 +242,8 @@ body {
                     position: absolute;
                     @include panelShadow;
                     border-radius: pxToRem(20);
-                    overflow: hidden;
+                    padding: pxToRem(16);
+                    @include scrollbarStyle;
                 }
             }
         }

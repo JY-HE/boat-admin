@@ -8,7 +8,7 @@
                 :name="item.componentName"
             ></el-tab-pane>
         </el-tabs>
-        <div class="w-full h-[calc(100%-3.5rem)] p-8">
+        <div class="w-full h-[calc(100%-3.5rem)] pt-4">
             <component :is="getCurrentComponent"></component>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4">
+    <div>
         <h1 class="text-h1">剪贴板示例</h1>
         <BoatTitle title="v-copy指令" class="mt-8"> </BoatTitle>
         <div class="mt-8 flex gap-8 items-center">

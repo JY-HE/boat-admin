@@ -1,8 +1,6 @@
 <template>
-    <div class="AboutView pt-4 pb-4 pl-4">
-        <div
-            class="scrollbarStyle flex justify-start items-center flex-col gap-4 p-4 w-full h-full"
-        >
+    <div class="AboutView">
+        <div class="flex justify-start items-center flex-col gap-4">
             <BoatCard title="关于">
                 <p class="text-h1 font-style-2">
                     {{ packageData.description }}

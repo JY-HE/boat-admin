@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 flex justify-start items-start flex-col">
+    <div class="flex justify-start items-start flex-col">
         <h1 class="text-h1 mb-8">防抖示例</h1>
         <p class="font-style-3 text-h1">
             防抖（debounce）是一种在前端开发中常见的概念，尤其在处理频繁触发的事件（如滚动、输入、点击等）时非常有用。防抖的基本思想是在事件被频繁触发时，通过设定一个延迟时间，确保在一定时间间隔内只执行一次回调函数，从而避免不必要的计算或DOM操作，提高应用程序的性能。

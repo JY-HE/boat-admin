@@ -1,8 +1,8 @@
 <template>
     <div class="BoatTitle w-full h-8 flex justify-between items-center mb-4 relative">
-        <h2 :title="title" class="text-h1 relative flex-1">
+        <h1 :title="title" class="text-h1 relative flex-1">
             <p class="absolute truncate max-w-full">{{ title }}</p>
-        </h2>
+        </h1>
         <div operation :class="{ showMore: showMore, expand: expand }">
             <div buttonList :style="{ '--maxWidth': maxWidth }">
                 <div ref="slotButtonList" slotButtonList><slot></slot></div>

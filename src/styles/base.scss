@@ -33,9 +33,11 @@ body {
     }
 }
 
+/* 滚动条样式 */
 .scrollbarStyle {
     @include scrollbarStyle;
 }
+
 .scrollbarStyle-important {
     @include scrollbarStyle(8, true);
 }

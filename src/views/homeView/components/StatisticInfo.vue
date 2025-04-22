@@ -47,4 +47,9 @@ const currentStatistic = computed(() => {
     @include panelStyle;
     @include panelShadow(0.25);
 }
+@include darkStyle {
+    .StatisticInfo {
+        @include panelShadow(0.8);
+    }
+}
 </style>

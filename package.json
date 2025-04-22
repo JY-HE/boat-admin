@@ -33,7 +33,7 @@
         "start": "vite --mode production",
         "build:env": "vite build --mode development",
         "eslint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
-        "preview": "vite preview --mode production",
+        "preview": "vite preview",
         "createDirectory": "node createDirectory.js"
     },
     "dependencies": {

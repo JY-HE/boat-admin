@@ -10,7 +10,7 @@ import addDirectory from './public/addDirectory';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/boat-admin/', // 修改为 GitHub Pages 的子路径
+    base: process.env.VITE_BASE_URL, // 从环境变量中读取 base 配置
     resolve: {
         //设置别名
         alias: {

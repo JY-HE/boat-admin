@@ -23,7 +23,7 @@ onMounted(() => {
 
     // 创建一个图像对象
     const img = new Image();
-    img.src = '/logo.svg';
+    img.src = '/public/logo.svg';
     img.onload = () => {
         // 在画布上绘制图片水印
         ctx.globalAlpha = 0.3; // 设置透明度

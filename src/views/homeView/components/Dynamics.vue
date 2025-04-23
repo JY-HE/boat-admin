@@ -1,6 +1,8 @@
 <template>
     <div class="Dynamics h-full rounded-xl p-4 flex flex-col overflow-hidden">
-        <BoatTitle title="最新动态"></BoatTitle>
+        <BoatTitle title="最新动态">
+            <boat-button type="link">查看更多</boat-button>
+        </BoatTitle>
         <main class="flex-1 scrollbarStyle">
             <ul class="w-full h-fit-content">
                 <li
@@ -114,6 +116,13 @@ const recentDays = ref(
                         );
                     }
                 }
+            }
+        }
+    }
+    .BoatTitle {
+        div[operation] {
+            div[buttonlist] {
+                justify-content: end;
             }
         }
     }

@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BoatBaseECharts: typeof import('./components/BoatBaseECharts.vue')['default']
+    BoatButton: typeof import('@koihe/boat-ui/es')['BoatButton']
     BoatCancelConfirmButton: typeof import('./components/BoatCancelConfirmButton.vue')['default']
     BoatCard: typeof import('./components/BoatCard.vue')['default']
     BoatColorPick: typeof import('./components/BoatColorPick.vue')['default']

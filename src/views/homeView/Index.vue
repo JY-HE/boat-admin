@@ -5,6 +5,7 @@
             <StatisticCards class="row-start-2 row-end-2 col-start-1 col-end-5" />
             <StatisticChart class="row-start-3 row-end-6 col-start-1 col-end-4" />
             <Dynamics class="row-start-3 row-end-6 col-start-4 col-end-5" />
+            <StatisticBarAndPieChart class="row-start-6 row-end-9 col-start-1 col-end-4" />
             <Notice class="row-start-6 row-end-9 col-start-4 col-end-5" />
         </main>
         <footer class="text-h1 font-style-4 flex justify-center items-center h-12">
@@ -19,4 +20,5 @@ import StatisticCards from './components/StatisticCards.vue';
 import Dynamics from './components/Dynamics.vue';
 import StatisticChart from './components/StatisticChart.vue';
 import Notice from './components/Notice.vue';
+import StatisticBarAndPieChart from './components/StatisticBarAndPieChart.vue';
 </script>

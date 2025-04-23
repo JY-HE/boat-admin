@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import { ElementRefType } from '@/types';
 
+const imgSrc = ref('/logo.svg');
 const watermarkContainer = ref<ElementRefType>(null);
 const watermarkCanvas = ref<HTMLCanvasElement | null>(null);
 
@@ -23,7 +24,7 @@ onMounted(() => {
 
     // 创建一个图像对象
     const img = new Image();
-    img.src = '/public/logo.svg';
+    img.src = imgSrc.value;
     img.onload = () => {
         // 在画布上绘制图片水印
         ctx.globalAlpha = 0.3; // 设置透明度

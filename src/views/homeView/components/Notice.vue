@@ -1,9 +1,9 @@
 <template>
-    <div class="Notice h-full rounded-xl p-4 flex flex-col overflow-hidden">
+    <div class="Notice h-full py-4 pl-4 rounded-xl flex flex-col overflow-hidden">
         <BoatTitle title="最新公告">
             <boat-button type="link">查看更多</boat-button>
         </BoatTitle>
-        <main class="flex-1 scrollbarStyle">
+        <main class="flex-1 scrollbarStyle pr-4">
             <ul class="w-full h-fit-content flex flex-col gap-2">
                 <li
                     v-for="item in recentNotices"
@@ -100,6 +100,7 @@ const recentNotices = ref<NoticeItem[]>([
 
     .BoatTitle {
         div[operation] {
+            right: pxToRem(16);
             div[buttonlist] {
                 justify-content: end;
             }

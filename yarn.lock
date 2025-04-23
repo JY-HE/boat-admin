@@ -313,10 +313,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@koihe/boat-ui@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.npmmirror.com/@koihe/boat-ui/-/boat-ui-1.1.3.tgz#b14817f4c6ed65ca91325f8e3032e39551d7c2f5"
-  integrity sha512-zUbpctYWF/IxC5dEb+yGqu794TL1M2PNStEFjZyJtdrPnKPiPI+j/yqsuXAoXR73hptuTIBroUhxC5ln65TMgw==
+"@koihe/boat-ui@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.npmmirror.com/@koihe/boat-ui/-/boat-ui-1.1.4.tgz#5db978e1f900ad35d5a66d3e1bc38479f98ff043"
+  integrity sha512-iP6rvzwgOvPRQ0r7kiTWl8e5Y8xq09PZMojiezavEZsKr96RsNYQFWuMxqBhiQ8LQpsw0yLvdSIC7ACugmIOzQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

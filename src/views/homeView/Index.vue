@@ -4,6 +4,7 @@
         <StatisticCards class="row-start-2 row-end-2 col-start-1 col-end-5" />
         <StatisticChart class="row-start-3 row-end-6 col-start-1 col-end-4" />
         <Dynamics class="row-start-3 row-end-6 col-start-4 col-end-5" />
+        <Notice class="row-start-6 row-end-9 col-start-4 col-end-5" />
     </div>
 </template>
 
@@ -12,4 +13,5 @@ import StatisticInfo from './components/StatisticInfo.vue';
 import StatisticCards from './components/StatisticCards.vue';
 import Dynamics from './components/Dynamics.vue';
 import StatisticChart from './components/StatisticChart.vue';
+import Notice from './components/Notice.vue';
 </script>

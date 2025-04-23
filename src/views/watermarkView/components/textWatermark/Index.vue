@@ -1,19 +1,23 @@
 <template>
-    <div ref="watermarkContainer" class="TextWatermark">
+    <div ref="watermarkContainer" class="p-4 text-h1">
         <p>将文字水印作为背景图</p>
-        <canvas ref="watermarkCanvas" class="canvas"></canvas>
+        <canvas ref="watermarkCanvas" class="hidden"></canvas>
     </div>
 </template>
 
 <script setup lang="ts">
-const watermarkContainer = ref(null);
-const watermarkCanvas = ref(null);
+import { ElementRefType } from '@/types';
+
+const watermarkContainer = ref<ElementRefType>(null);
+const watermarkCanvas = ref<HTMLCanvasElement | null>(null);
 
 onMounted(() => {
     const canvas = watermarkCanvas.value;
-    const ctx = canvas.getContext('2d');
+    if (!canvas) return;
 
-    // 设置画布大小
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
     canvas.width = 300;
     canvas.height = 200;
 
@@ -25,18 +29,9 @@ onMounted(() => {
 
     // 将canvas作为背景图片
     const dataURL = canvas.toDataURL('image/png');
-    watermarkContainer.value.style.backgroundImage = `url(${dataURL})`;
-    watermarkContainer.value.style.backgroundRepeat = 'repeat';
+    if (watermarkContainer.value) {
+        watermarkContainer.value.style.backgroundImage = `url(${dataURL})`;
+        watermarkContainer.value.style.backgroundRepeat = 'repeat';
+    }
 });
 </script>
-
-<style lang="scss">
-.TextWatermark {
-    position: relative;
-    padding: pxToRem(16);
-    @include fontColor(1);
-    .canvas {
-        display: none;
-    }
-}
-</style>

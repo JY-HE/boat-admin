@@ -6,22 +6,24 @@
 </template>
 
 <script setup lang="ts">
-import watermarkImage from '/public/img/logo.png'; // 导入水印图片
+import { ElementRefType } from '@/types';
 
-const watermarkContainer = ref(null);
-const watermarkCanvas = ref(null);
+const watermarkContainer = ref<ElementRefType>(null);
+const watermarkCanvas = ref<HTMLCanvasElement | null>(null);
 
 onMounted(() => {
     const canvas = watermarkCanvas.value;
-    const ctx = canvas.getContext('2d');
+    if (!canvas) return;
 
-    // 设置画布大小
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
     canvas.width = 400;
     canvas.height = 200;
 
     // 创建一个图像对象
     const img = new Image();
-    img.src = watermarkImage;
+    img.src = '/logo.svg';
     img.onload = () => {
         // 在画布上绘制图片水印
         ctx.globalAlpha = 0.3; // 设置透明度
@@ -29,8 +31,10 @@ onMounted(() => {
 
         // 将canvas作为背景图片;
         const dataURL = canvas.toDataURL('image/png');
-        watermarkContainer.value.style.backgroundImage = `url(${dataURL})`;
-        watermarkContainer.value.style.backgroundRepeat = 'repeat';
+        if (watermarkContainer.value) {
+            watermarkContainer.value.style.backgroundImage = `url(${dataURL})`;
+            watermarkContainer.value.style.backgroundRepeat = 'repeat';
+        }
     };
 });
 </script>

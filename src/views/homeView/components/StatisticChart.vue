@@ -7,77 +7,46 @@
 <script setup lang="ts">
 import { ECOption } from '@/utils/eCharts';
 
-const options: ECOption = {
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'cross',
+// 定义图表的指标及其随机数范围，名称与统计卡片保持一致
+interface ChartMetricConfig {
+    name: string;
+    min: number;
+    max: number;
+}
+
+const metrics: ChartMetricConfig[] = [
+    { name: '今日新增客户数', min: 100, max: 2000 },
+    { name: '当前在线用户数', min: 50, max: 500 },
+    { name: '24h 活跃用户数', min: 50, max: 2000 },
+    { name: '今日访问量', min: 100, max: 2000 },
+];
+
+const days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+
+function generateOptions(): ECOption {
+    return {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { type: 'cross' },
         },
-    },
-    legend: {
-        data: ['新增客户', '在线人数', '活跃用户', '访问人数'],
-    },
-    grid: {
-        left: '1%',
-        right: '1%',
-        bottom: '0',
-        containLabel: true,
-    },
-    xAxis: [
-        {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-        },
-    ],
-    yAxis: [
-        {
-            type: 'value',
-        },
-    ],
-    series: [
-        {
-            name: '新增客户',
+        legend: { data: metrics.map(m => m.name) },
+        grid: { left: '1%', right: '1%', bottom: '0', containLabel: true },
+        xAxis: [{ type: 'category', boundaryGap: false, data: days }],
+        yAxis: [{ type: 'value' }],
+        series: metrics.map(metric => ({
+            name: metric.name,
             type: 'line',
             stack: '总量',
             areaStyle: {},
-            emphasis: {
-                focus: 'series',
-            },
-            data: [200, 300, 400, 500, 600, 700, 800],
-        },
-        {
-            name: '在线人数',
-            type: 'line',
-            stack: '总量',
-            areaStyle: {},
-            emphasis: {
-                focus: 'series',
-            },
-            data: [50, 60, 70, 80, 90, 100, 110],
-        },
-        {
-            name: '活跃用户',
-            type: 'line',
-            stack: '总量',
-            areaStyle: {},
-            emphasis: {
-                focus: 'series',
-            },
-            data: [1000, 1100, 1200, 1300, 1400, 1500, 1600],
-        },
-        {
-            name: '访问人数',
-            type: 'line',
-            stack: '总量',
-            areaStyle: {},
-            emphasis: {
-                focus: 'series',
-            },
-            data: [5000, 5500, 6000, 6500, 7000, 7500, 8000],
-        },
-    ],
-};
+            emphasis: { focus: 'series' },
+            data: days.map(
+                () => Math.floor(Math.random() * (metric.max - metric.min + 1)) + metric.min
+            ),
+        })),
+    };
+}
+
+const options = generateOptions();
 </script>
 
 <style lang="scss">

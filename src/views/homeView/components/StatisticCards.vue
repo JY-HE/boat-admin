@@ -14,30 +14,27 @@
 <script setup lang="ts">
 import { formatNumberWithCommas } from '@/utils/global';
 
-const statisticCards = computed(() => {
-    return [
-        {
-            title: '新增客户',
-            value: 1245,
-            icon: '&#xe647;',
-        },
-        {
-            title: '在线人数',
-            value: 124,
-            icon: '&#xe688;',
-        },
-        {
-            title: '活跃用户',
-            value: 12433,
-            icon: '&#xe635;',
-        },
-        {
-            title: '访问人数',
-            value: 124536,
-            icon: '&#xe638;',
-        },
-    ];
-});
+interface StatisticCardConfig {
+    title: string;
+    icon: string;
+    min: number;
+    max: number;
+}
+
+const configs: StatisticCardConfig[] = [
+    { title: '今日新增客户数', icon: '&#xe647;', min: 100, max: 2000 },
+    { title: '当前在线用户数', icon: '&#xe688;', min: 50, max: 500 },
+    { title: '24h 活跃用户数', icon: '&#xe635;', min: 50, max: 2000 },
+    { title: '今日访问量', icon: '&#xe638;', min: 100, max: 2000 },
+];
+
+const statisticCards = computed(() =>
+    configs.map(cfg => ({
+        title: cfg.title,
+        icon: cfg.icon,
+        value: Math.floor(Math.random() * (cfg.max - cfg.min + 1)) + cfg.min,
+    }))
+);
 </script>
 
 <style lang="scss">

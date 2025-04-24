@@ -11,7 +11,7 @@
                 >
                     <el-select
                         v-if="item.type === 'select'"
-                        v-model="localValue[name].value"
+                        v-model="item.value"
                         v-bind="item.attrs"
                     >
                         <el-option
@@ -24,25 +24,25 @@
                     </el-select>
                     <el-input
                         v-if="item.type === 'input'"
-                        v-model.trim="localValue[name].value"
+                        v-model.trim="item.value"
                         v-bind="item.attrs"
                     ></el-input>
                     <el-switch
                         v-if="item.type === 'switch'"
-                        v-model="localValue[name].value"
+                        v-model="item.value"
                         v-bind="item.attrs"
                     >
                     </el-switch>
                     <el-input-number
                         v-if="item.type === 'inputNumber'"
-                        v-model="localValue[name].value"
+                        v-model="item.value"
                         controlsPosition="right"
                         v-bind="item.attrs"
                     >
                     </el-input-number>
                     <BoatColorPick
                         v-if="item.type === 'colorPick'"
-                        v-model="localValue[name].value"
+                        v-model="item.value"
                         v-bind="item.attrs"
                     />
                 </el-form-item>
@@ -63,7 +63,7 @@ const props = defineProps({
 });
 const emit = defineEmits(['update:modelValue']);
 // 创建一个本地副本用于修改
-const localValue = reactive(cloneDeep(props.modelValue));
+const localValue = reactive<FromItemConfig>(cloneDeep(props.modelValue));
 const formRef = ref();
 watch(
     localValue,
@@ -114,7 +114,7 @@ onMounted(() => {
         @include wh;
         @include scrollbarStyle;
         .el-form-item__label {
-            width: pxToRem(150);
+            width: pxToRem(200);
         }
         .el-input-number {
             width: 100%;

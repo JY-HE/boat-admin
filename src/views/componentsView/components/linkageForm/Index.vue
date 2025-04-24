@@ -12,7 +12,7 @@ const polygonConfig = reactive<FromItemConfig>({
     layerType: {
         type: 'select',
         desc: '图层类型',
-        value: '',
+        value: 'pointConfig',
         default: 'pointConfig',
         options: [
             {
@@ -59,13 +59,13 @@ const polygonConfig = reactive<FromItemConfig>({
     fill: {
         type: 'switch',
         desc: '面是否填充',
-        value: '',
+        value: false,
         default: false,
     },
     color: {
         type: 'colorPick',
         desc: '面填充颜色',
-        value: '',
+        value: '#FF00FF',
         default: '#FF00FF',
         precondition: { fill: true },
         attrs: {
@@ -75,7 +75,7 @@ const polygonConfig = reactive<FromItemConfig>({
     opacity: {
         type: 'inputNumber',
         desc: '面填充颜色透明度',
-        value: '',
+        value: 1,
         default: 1,
         precondition: { fill: true },
         attrs: { min: 0, max: 1, precision: 1, step: 0.1 },
@@ -83,13 +83,13 @@ const polygonConfig = reactive<FromItemConfig>({
     isUseDataHeight: {
         type: 'switch',
         desc: '使用数据高度',
-        value: '',
+        value: true,
         default: true,
     },
     height: {
         type: 'inputNumber',
         desc: '面高度',
-        value: '',
+        value: 1000,
         default: 1000,
         precondition: { isUseDataHeight: false },
         attrs: {
@@ -99,13 +99,13 @@ const polygonConfig = reactive<FromItemConfig>({
     outline: {
         type: 'switch',
         desc: '显示面的边线',
-        value: '',
+        value: false,
         default: false,
     },
     outlineWidth: {
         type: 'inputNumber',
         desc: '面的边线宽度',
-        value: '',
+        value: 2,
         default: 2,
         precondition: { outline: true },
         attrs: {
@@ -117,7 +117,7 @@ const polygonConfig = reactive<FromItemConfig>({
     outlineColor: {
         type: 'colorPick',
         desc: '面的边线颜色',
-        value: '',
+        value: '#34E031',
         default: '#34E031',
         precondition: { outline: true },
         attrs: {
@@ -127,7 +127,7 @@ const polygonConfig = reactive<FromItemConfig>({
     outlineColorOpacity: {
         type: 'inputNumber',
         desc: '面的边线颜色透明度',
-        value: '',
+        value: 1,
         default: 1,
         precondition: { outline: true },
         attrs: { min: 0, max: 1, precision: 1, step: 0.1 },
@@ -135,7 +135,7 @@ const polygonConfig = reactive<FromItemConfig>({
     outlineHeight: {
         type: 'inputNumber',
         desc: '面的边线的离地高度',
-        value: '',
+        value: 50,
         default: 50,
         precondition: { outline: true },
         attrs: {

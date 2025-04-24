@@ -52,7 +52,7 @@ import { PackageJson } from '@/types';
 const packageStore = usePackageStore();
 
 onMounted(async () => {
-    packageStore.setPackage(packageData as PackageJson);
+    packageStore.setPackage(packageData as unknown as PackageJson);
 });
 </script>
 

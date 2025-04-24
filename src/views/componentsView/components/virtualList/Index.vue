@@ -17,12 +17,12 @@
 <script setup lang="ts">
 import FixedHeightVirtualList from './components/FixedHeightVirtualList.vue';
 
-const activeName = ref('FixedHeightVirtualList');
+const activeName = ref<string>('FixedHeightVirtualList');
 const comps = computed(() => {
     return [{ name: '定高虚拟列表', componentName: 'FixedHeightVirtualList' }];
 });
 // 组件映射
-const componentMap = {
+const componentMap: Record<string, typeof FixedHeightVirtualList> = {
     FixedHeightVirtualList,
 };
 

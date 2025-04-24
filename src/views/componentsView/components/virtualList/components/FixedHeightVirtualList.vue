@@ -94,27 +94,22 @@ const scrollEvent = () => {
     startOffset.value = scrollTop - (scrollTop % localItemHeight.value);
 };
 
-watchEffect(
-    () => {
-        // 重新计算参数渲染
-        localItemHeight.value = props.itemHeight * layoutStore.scale;
-        if (virtualListRef.value) {
-            const { scrollTop, offsetHeight } = virtualListRef.value;
-            screenHeight.value = offsetHeight;
-            // scrollTop - localItemHeight.value * 3 为了保证分辨率改变时出现偏移量留白问题
-            startIndex.value = Math.floor(
-                Math.max(0, scrollTop - localItemHeight.value * 3) / localItemHeight.value
-            );
-            // 计算结束索引
-            endIndex.value = startIndex.value + visibleCount.value;
-            // 计算偏移量
-            startOffset.value = scrollTop - (scrollTop % localItemHeight.value);
-        }
-    },
-    {
-        immediate: true,
+watchEffect(() => {
+    // 重新计算参数渲染
+    localItemHeight.value = props.itemHeight * layoutStore.scale;
+    if (virtualListRef.value) {
+        const { scrollTop, offsetHeight } = virtualListRef.value;
+        screenHeight.value = offsetHeight;
+        // scrollTop - localItemHeight.value * 3 为了保证分辨率改变时出现偏移量留白问题
+        startIndex.value = Math.floor(
+            Math.max(0, scrollTop - localItemHeight.value * 3) / localItemHeight.value
+        );
+        // 计算结束索引
+        endIndex.value = startIndex.value + visibleCount.value;
+        // 计算偏移量
+        startOffset.value = scrollTop - (scrollTop % localItemHeight.value);
     }
-);
+});
 
 onMounted(() => {
     if (virtualListRef.value) {

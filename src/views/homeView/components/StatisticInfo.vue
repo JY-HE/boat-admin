@@ -3,7 +3,7 @@
         class="StatisticInfo w-full h-full flex justify-between items-center gap-3 py-2 px-4 rounded-xl"
     >
         <div class="w-20 h-full flex justify-center items-center rounded-[50%] overflow-hidden">
-            <img src="/public/logo.svg" alt="" class="w-full w-full" />
+            <img src="/logo.svg" alt="logo" class="w-full w-full" />
         </div>
         <main class="flex-1 h-full flex justify-center items-start flex-col gap-2">
             <p class="font-style-1 text-h1">早安，Boat Admin，今天又是活力满满的一天！</p>

@@ -2,7 +2,7 @@
     <div menuMain>
         <div id="systemTitle">
             <div id="logo">
-                <img src="/logo.svg" alt="" />
+                <img src="/logo.svg" alt="logo" />
             </div>
             <h1 class="title">Boat Admin</h1>
         </div>

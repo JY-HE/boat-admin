@@ -1,21 +1,23 @@
 import { Directive, DirectiveBinding } from 'vue';
-import BoatNotify from '@/utils/notification';
+import { BoatNotification } from '@koihe/boat-ui';
 
 const copyText = (text?: string) => {
     if (!text) return;
     navigator.clipboard
         .writeText(text)
         .then(() => {
-            BoatNotify({
+            BoatNotification({
                 title: '复制成功',
                 type: 'success',
+                offset: 80,
             });
         })
         .catch(err => {
-            BoatNotify({
+            BoatNotification({
                 title: '复制失败',
-                message: err,
+                content: err,
                 type: 'error',
+                offset: 80,
             });
         });
 };

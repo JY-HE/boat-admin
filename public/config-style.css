@@ -1,5 +1,5 @@
 /* 全局样式配置 */
-@charset "utf-8";
+@charset "UTF-8";
 
 :root {
     /* ------------ 项目配置 ------------ */
@@ -24,7 +24,6 @@
     --assistColorYellow: 251, 218, 0;
     /* 故障/禁用色 -> rgb(116, 130, 159) */
     --disabledColor: 116, 130, 159;
-
 
     /* 底板背景色 默认模式 -> rgb(255, 255, 255) 黑夜模式 -> rgb(0, 0, 0) */
     --bodyBackground: 255, 255, 255;
@@ -70,12 +69,12 @@
 }
 
 @font-face {
-    font-family: "iconfont";
-    src: url('./font/iconfont.woff2') format('woff2')
+    font-family: 'iconfont';
+    src: url('./font/iconfont.woff2') format('woff2');
 }
 
 .iconfont {
-    font-family: "iconfont" !important;
+    font-family: 'iconfont' !important;
     font-size: 1rem;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
@@ -102,7 +101,7 @@ body #loadingMaskView {
 
 body #loadingMaskView div {
     width: 3rem;
-    aspect-ratio: .577;
+    aspect-ratio: 0.577;
     clip-path: polygon(0 0, 100% 100%, 0 100%, 100% 0);
     position: relative;
     animation: loadingAnimation 2s infinite linear;
@@ -110,16 +109,187 @@ body #loadingMaskView div {
 }
 
 body #loadingMaskView div:before {
-    content: "";
+    content: '';
     position: absolute;
     inset: -150% -150%;
-    background: repeating-conic-gradient(from 30deg, rgb(var(--assistColorYellow)) 0 60deg, rgb(var(--themeColor)) 0 120deg, rgb(var(--errorColor)) 0 180deg);
+    background: repeating-conic-gradient(
+        from 30deg,
+        rgb(var(--assistColorYellow)) 0 60deg,
+        rgb(var(--themeColor)) 0 120deg,
+        rgb(var(--errorColor)) 0 180deg
+    );
     animation: inherit;
     animation-direction: reverse;
 }
 
 @keyframes loadingAnimation {
     100% {
-        transform: rotate(360deg)
+        transform: rotate(360deg);
     }
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input,
+textarea,
+hr {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: '微软雅黑';
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* 全局添加怪异盒模型 */
+    box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+img {
+    display: block;
+    border: none;
+}
+
+body {
+    line-height: 1;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a,
+u {
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+}
+
+i {
+    font-style: normal;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+html {
+    font-size: 16px;
 }

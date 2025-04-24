@@ -4,13 +4,10 @@ import store, { useLayoutStore } from './store';
 import router from '@/router';
 import adaptiveResolution from '@/utils/adaptiveResolution';
 import directives from '@/directives';
-import '@/styles/public.css';
 // 一定要在main.ts中导入tailwind.css，防止vite每次hmr都会请求src/style/index.scss整体css文件导致热更新慢的问题
 import '@/styles/tailwind.css';
-// 自定义基础全局样式
-import '@/styles/base.scss';
-// 自定义element全局样式
-import '@/styles/elementUI.scss';
+// 全局样式
+import '@/styles/global.scss';
 import { BoatNotification } from '@koihe/boat-ui';
 import '@koihe/boat-ui/es/notification/style/index';
 import '@koihe/boat-ui/dist/iconfont.js';

@@ -1,9 +1,0 @@
-.fade-enter-active,
-.fade-leave-active {
-    @include baseTransition(opacity);
-}
-
-.fade-enter,
-.fade-leave-to {
-    opacity: 0;
-}

@@ -1,6 +1,5 @@
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import '@/styles/nprogress.scss';
 
 NProgress.configure({
     // 动画方式

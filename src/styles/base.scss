@@ -37,7 +37,28 @@ body {
 .scrollbarStyle {
     @include scrollbarStyle;
 }
-
 .scrollbarStyle-important {
     @include scrollbarStyle(8, true);
+}
+
+/* 导航栏进度条样式 */
+#nprogress {
+    .bar {
+        @include themeColor(0.68, background-color);
+        @include whrem(100%, 4);
+    }
+    .spinner-icon {
+        @include themeColor(1, border-top-color);
+        @include themeColor(1, border-left-color);
+    }
+}
+
+/* 过渡样式 */
+.fade-enter-active,
+.fade-leave-active {
+    @include baseTransition(opacity);
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
 }

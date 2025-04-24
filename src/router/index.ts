@@ -9,6 +9,11 @@ const routes: Array<RouteRecordRaw> = [
         redirect: '/home',
     },
     ...Routes,
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        redirect: '/error/404',
+    },
 ];
 
 const router = createRouter({

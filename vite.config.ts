@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
+import fs from 'fs';
 import { visualizer } from 'rollup-plugin-visualizer';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
@@ -73,6 +74,18 @@ export default defineConfig(({ mode }) => {
                             next();
                         }
                     });
+                },
+            },
+            {
+                name: 'github-pages-404-fallback',
+                closeBundle() {
+                    const outDir = path.resolve(__dirname, 'dist');
+                    const indexHtml = path.join(outDir, 'index.html');
+                    const notFoundHtml = path.join(outDir, '404.html');
+                    if (fs.existsSync(indexHtml)) {
+                        fs.copyFileSync(indexHtml, notFoundHtml);
+                        console.log('✅ 生成 404.html，启用 History 路由回退');
+                    }
                 },
             },
         ],

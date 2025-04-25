@@ -44,7 +44,7 @@ const handleMessage = (event: MessageEvent) => {
 };
 
 const openAnotherTab = () => {
-    window.open(`${window.location.origin}${import.meta.env.BASE_URL}tabCommunication`, '_blank');
+    window.open(window.location.href, '_blank');
 };
 
 onMounted(() => {

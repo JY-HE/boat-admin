@@ -18,6 +18,8 @@ import errorView from '@/views/errorView/router';
 import aboutView from '@/views/aboutView/router';
 // 权限管理
 import permissionView from '@/views/permissionView/router';
+// 标签页通信
+import tabCommunicationView from '@/views/tabCommunicationView/router';
 
 export default [
     homeViewRoute,
@@ -30,4 +32,5 @@ export default [
     errorView,
     aboutView,
     permissionView,
+    tabCommunicationView,
 ];

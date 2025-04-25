@@ -11,7 +11,7 @@
                 ref="ruleFormRef"
                 :model="ruleForm"
                 :rules="rules"
-                class="dialogForm"
+                class="dialogForm AddRouterForm"
                 requireAsteriskPosition="right"
             >
                 <el-form-item label="菜单等级" prop="menuLevel">
@@ -142,4 +142,12 @@ const menuLevelChange = () => {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.el-form.dialogForm.AddRouterForm {
+    .el-form-item {
+        .el-form-item__label {
+            width: pxToRem(148);
+        }
+    }
+}
+</style>

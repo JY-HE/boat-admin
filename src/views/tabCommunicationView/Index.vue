@@ -15,15 +15,15 @@
 </template>
 
 <script setup lang="ts">
-import FixedHeightVirtualList from './components/FixedHeightVirtualList.vue';
+import BroadcastChannel from './components/BroadcastChannel.vue';
 
-const activeName = ref<string>('FixedHeightVirtualList');
+const activeName = ref<string>('BroadcastChannel');
 const comps = computed(() => {
-    return [{ name: '定高虚拟列表', componentName: 'FixedHeightVirtualList' }];
+    return [{ name: 'BroadcastChannel API', componentName: 'BroadcastChannel' }];
 });
 // 组件映射
-const componentMap: Record<string, typeof FixedHeightVirtualList> = {
-    FixedHeightVirtualList,
+const componentMap: Record<string, typeof BroadcastChannel> = {
+    BroadcastChannel,
 };
 
 // 根据 activeName 获取组件

@@ -33,6 +33,9 @@ module.exports = {
         'vue/no-v-html': 'off',
         'vue/multi-word-component-names': 'off', // 禁用 multi-word-component-names 规则
         'vue/attribute-hyphenation': ['warn', 'never'], // 禁用属性自动转换为短横线命名
+        // 关掉 ESLint 自带的缩进检查，让 prettier/prettier 规则来管
+        indent: 'off',
+        'vue/html-indent': 'off',
         'prettier/prettier': [
             'warn',
             {
@@ -42,7 +45,5 @@ module.exports = {
                 useTabs: false,
             },
         ],
-        'vue/html-indent': ['warn', 4], // 确保 Vue 模板中的缩进为 4 个空格
-        indent: ['warn', 4], // 确保脚本部分的缩进为 4 个空格
     },
 };

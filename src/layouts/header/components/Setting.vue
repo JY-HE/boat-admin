@@ -14,6 +14,7 @@
                         中，要想真正应用于项目，可以将配置对象保存于数据库中，在加载项目时从数据库中获取配置。
                     </div>
                     <ThemeStyle />
+                    <Copyright />
                 </div>
             </template>
             <template #footer>
@@ -28,6 +29,7 @@
 <script setup lang="ts">
 import type { DrawerProps } from 'element-plus';
 import ThemeStyle from './setting/ThemeStyle.vue';
+import Copyright from './setting/Copyright.vue';
 
 const drawerVisible = ref<boolean>(false);
 const direction = ref<DrawerProps['direction']>('rtl');

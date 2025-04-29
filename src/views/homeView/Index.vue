@@ -8,8 +8,18 @@
             <StatisticBarAndPieChart class="row-start-6 row-end-9 col-start-1 col-end-4" />
             <Notice class="row-start-6 row-end-9 col-start-4 col-end-5" />
         </main>
-        <footer class="text-h1 font-style-4 flex justify-center items-center h-12">
-            Copyright MIT (c) 2025 koihe
+        <footer
+            v-if="copyrightConfig.enable"
+            class="text-h1 font-style-4 flex justify-center items-center h-12"
+        >
+            <span class="mr-1">Copyright</span>
+            <span class="mr-1">{{ copyrightConfig.protocol }}</span>
+            <span class="mr-1">(c)</span>
+            <span class="mr-1">{{ copyrightConfig.date }}</span>
+            <a :href="copyrightConfig.url" target="_blank" class="hover:text-themeColor-100">{{
+                copyrightConfig.name
+            }}</a>
+            <span class="ml-1">{{ copyrightConfig.registration }}</span>
         </footer>
     </div>
 </template>
@@ -21,4 +31,7 @@ import Dynamics from './components/Dynamics.vue';
 import StatisticChart from './components/StatisticChart.vue';
 import Notice from './components/Notice.vue';
 import StatisticBarAndPieChart from './components/StatisticBarAndPieChart.vue';
+import { useSystemConfig } from '@/hooks/useSystemConfig';
+
+const { copyrightConfig } = useSystemConfig();
 </script>

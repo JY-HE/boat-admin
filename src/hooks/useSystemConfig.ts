@@ -1,5 +1,6 @@
 import { computed, onMounted, watch, onUnmounted } from 'vue';
-import { useSystemConfigStore, type ThemeMode } from '@/store';
+import { useSystemConfigStore } from '@/store';
+import type { ThemeMode, CopyrightConfig } from '@/store';
 
 /**
  * useSystemConfig
@@ -14,6 +15,7 @@ export function useSystemConfig() {
     const isDark = computed<boolean>(() => store.isDark);
     const isHideMenu = computed<boolean>(() => store.isHideMenu);
     const scale = computed<number>(() => store.scale);
+    const copyrightConfig = computed<CopyrightConfig>(() => store.copyrightConfig);
 
     /**
      * 切换全局CSS变量
@@ -142,9 +144,11 @@ export function useSystemConfig() {
         themeColor,
         isHideMenu,
         scale,
+        copyrightConfig,
         setMode,
         setThemeColor,
         setHideMenu: store.setHideMenu,
         setScale: store.setScale,
+        setCopyrightConfig: store.setCopyrightConfig,
     };
 }

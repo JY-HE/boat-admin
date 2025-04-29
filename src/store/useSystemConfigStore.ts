@@ -6,6 +6,24 @@ import { defineStore } from 'pinia';
 export type ThemeMode = 'auto' | 'light' | 'dark';
 
 /**
+ * 版权配置
+ */
+export type CopyrightConfig = {
+    //  是否启用版权信息
+    enable: boolean;
+    // 协议
+    protocol: string;
+    //  日期
+    date: string;
+    //  公司
+    name: string;
+    // 网址
+    url: string;
+    // 备案
+    registration: string;
+};
+
+/**
  * 系统配置状态
  */
 export interface SystemConfigState {
@@ -29,6 +47,10 @@ export interface SystemConfigState {
      * 页面缩放比例
      */
     scale: number;
+    /**
+     * 版权配置
+     */
+    copyrightConfig: CopyrightConfig;
 }
 
 /**
@@ -43,12 +65,22 @@ export const useSystemConfigStore = defineStore('systemConfig', {
     state: (): SystemConfigState => ({
         // 主题相关
         isDark: false,
-        themeMode: 'auto' as ThemeMode,
+        themeMode: 'auto',
         themeColor: '63, 81, 181',
 
         // 布局相关
         isHideMenu: false,
         scale: 1,
+
+        // 底部版权
+        copyrightConfig: {
+            enable: true,
+            protocol: 'MIT',
+            date: '2025',
+            name: 'koihe',
+            url: 'https://jy-he.github.io/boat-admin/',
+            registration: '',
+        },
     }),
     actions: {
         /**
@@ -99,6 +131,16 @@ export const useSystemConfigStore = defineStore('systemConfig', {
          */
         setScale(scale: number) {
             this.scale = parseFloat(scale.toFixed(2));
+        },
+
+        /**
+         * 设置版权配置
+         * @param config 版权配置
+         * @example
+         * setCopyrightConfig({ enable: true, date: '2023', name: 'My Company', url: 'https://example.com', registration: '备案号' })
+         */
+        setCopyrightConfig(config: CopyrightConfig) {
+            this.copyrightConfig = config;
         },
     },
 });

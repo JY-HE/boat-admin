@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia';
 import { PackageJson } from '@/types';
 
-export const usePackageStore = defineStore({
-    id: 'package',
+export const usePackageStore = defineStore('package', {
     state: () => {
         return {
             package: {},

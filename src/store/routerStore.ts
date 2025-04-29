@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 
-export const useRouterStore = defineStore({
-    id: 'router', // id必填，且需要唯一
+export const useRouterStore = defineStore('router', {
     state: () => {
         return {
             activeRouter: '',

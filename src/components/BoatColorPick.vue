@@ -4,6 +4,10 @@
         <el-color-picker
             v-model.trim="localValue"
             :class="modelValue ? '' : 'empty'"
+            v-bind="$attrs"
+            @active-change="(val: string | null) => {
+                localValue = val as string;
+            }"
         ></el-color-picker>
     </div>
 </template>

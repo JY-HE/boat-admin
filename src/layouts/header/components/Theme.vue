@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { useThemeMode } from '@/hooks/useThemeMode';
+import { useSystemConfig } from '@/hooks/useSystemConfig';
 
-const { isDark, setMode } = useThemeMode();
+const { isDark, setMode } = useSystemConfig();
 </script>

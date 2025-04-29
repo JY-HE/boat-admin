@@ -28,6 +28,7 @@
 
 <script setup lang="ts">
 import type { DrawerProps } from 'element-plus';
+import { usePubSub, Topics } from '@/hooks/usePubSub';
 import ThemeStyle from './setting/ThemeStyle.vue';
 import Copyright from './setting/Copyright.vue';
 
@@ -35,6 +36,10 @@ const drawerVisible = ref<boolean>(false);
 const direction = ref<DrawerProps['direction']>('rtl');
 
 const resetClick = () => {};
+
+usePubSub(Topics.OpenSystemConfigDrawer, () => {
+    drawerVisible.value = !drawerVisible.value;
+});
 </script>
 
 <style lang="scss">

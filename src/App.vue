@@ -10,14 +10,16 @@
             </transition>
         </div>
     </div>
-    <boat-rotate-menu :menus="['home1', 'search']" @click="handleRotateMenuClick" />
+    <boat-rotate-menu :menus="['home1', 'search', 'config']" @click="handleRotateMenuClick" />
 </template>
 
 <script setup lang="ts">
 import MenuList from '@/layouts/menu/Index.vue';
 import Header from '@/layouts/header/Index.vue';
+import { usePubSub, Topics } from '@/hooks/usePubSub';
 
 const router = useRouter();
+const { publish: openConfigDrawer } = usePubSub(Topics.OpenSystemConfigDrawer);
 
 function handleRotateMenuClick(menu: string) {
     switch (menu) {
@@ -32,6 +34,9 @@ function handleRotateMenuClick(menu: string) {
                 bubbles: true,
             });
             document.dispatchEvent(event);
+            break;
+        case 'config':
+            openConfigDrawer(null);
             break;
         default:
             break;

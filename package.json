@@ -49,6 +49,7 @@
         "nprogress": "^0.2.0",
         "pinia": "^2.0.22",
         "pinia-plugin-persistedstate": "^4.2.0",
+        "pubsub-js": "^1.9.5",
         "vue": "^3.4.0",
         "vue-router": "^4.1.5"
     },
@@ -58,6 +59,7 @@
         "@types/js-cookie": "^3.0.6",
         "@types/node": "^18.7.18",
         "@types/nprogress": "^0.2.3",
+        "@types/pubsub-js": "^1.8.6",
         "@typescript-eslint/eslint-plugin": "^5.37.0",
         "@typescript-eslint/parser": "^5.37.0",
         "@vitejs/plugin-vue": "^5.0.4",

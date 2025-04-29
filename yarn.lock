@@ -574,6 +574,11 @@
   resolved "https://registry.npmmirror.com/@types/nprogress/-/nprogress-0.2.3.tgz#b2150b054a13622fabcba12cf6f0b54c48b14287"
   integrity sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==
 
+"@types/pubsub-js@^1.8.6":
+  version "1.8.6"
+  resolved "https://registry.npmmirror.com/@types/pubsub-js/-/pubsub-js-1.8.6.tgz#2492cca3a25431d29df8235f57ef5090e1b501b1"
+  integrity sha512-Kwug5cwV0paUDm/NfwDx1sp9xI0bGIvmWJjJWCU8NngkCCMt3EIC7oPDvb6fV7BR8kPpFyyBu4D11bda/2MdPA==
+
 "@types/semver@^7.3.12":
   version "7.7.0"
   resolved "https://registry.npmmirror.com/@types/semver/-/semver-7.7.0.tgz#64c441bdae033b378b6eef7d0c3d77c329b9378e"
@@ -2882,6 +2887,11 @@ proxy-from-env@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmmirror.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
   integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
+
+pubsub-js@^1.9.5:
+  version "1.9.5"
+  resolved "https://registry.npmmirror.com/pubsub-js/-/pubsub-js-1.9.5.tgz#e9264ef8c7aa4c2510010ebb75bfd54cdcb7b148"
+  integrity sha512-5MZ0I9i5JWVO7SizvOviKvZU2qaBbl2KQX150FAA+fJBwYpwOUId7aNygURWSdPzlsA/xZ/InUKXqBbzM0czTA==
 
 punycode@^2.1.0:
   version "2.3.1"

@@ -1,15 +1,29 @@
 import { computed, onMounted, watch, onUnmounted } from 'vue';
-import { useLayoutStore, type ThemeMode } from '@/store';
+import { useSystemConfigStore, type ThemeMode } from '@/store';
 
 /**
- * useThemeMode
- * @description 统一消费和切换 Store 里管理的 themeMode/isDark，并负责把 isDark 的变化同步到全局 CSS 变量
+ * useSystemConfig
+ * @description 统一管理系统配置：主题模式、主题色、工具栏、导航栏
+ * @returns {Object} 主题模式、是否暗黑、切换主题模式的函数
+ * @example
+ * const { mode, isDark, setMode } = useSystemConfig();
+ * mode: 'auto' | 'light' | 'dark'
+ * isDark: true | false
+ * setMode('light') // 切换为亮色模式
+ * setMode('dark') // 切换为暗黑模式
+ * setMode('auto') // 切换为跟随系统模式
  */
-export function useThemeMode() {
-    const layoutStore = useLayoutStore();
+export function useSystemConfig() {
+    const store = useSystemConfigStore();
 
-    const mode = computed<ThemeMode>(() => layoutStore.themeMode);
-    const isDark = computed<boolean>(() => layoutStore.isDark);
+    /**
+     * 主题模式
+     */
+    const mode = computed<ThemeMode>(() => store.themeMode);
+    /**
+     * 是否暗黑模式
+     */
+    const isDark = computed<boolean>(() => store.isDark);
 
     /**
      * 切换全局CSS变量
@@ -62,7 +76,7 @@ export function useThemeMode() {
     };
 
     /**
-     * 当 Store 中 isDark 改变时，自动更新全局样式
+     * 当 store 中 isDark 改变时，自动更新全局样式
      */
     watch(
         isDark,
@@ -79,7 +93,7 @@ export function useThemeMode() {
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         const listener = (e: MediaQueryListEvent) => {
             if (mode.value === 'auto') {
-                layoutStore.setIsDark(e.matches);
+                store.setIsDark(e.matches);
             }
         };
         mediaQuery.addEventListener('change', listener);
@@ -93,14 +107,14 @@ export function useThemeMode() {
      * @param newMode 新主题模式
      */
     const setMode = (newMode: ThemeMode) => {
-        layoutStore.setThemeMode(newMode);
+        store.setThemeMode(newMode);
 
         // 切完 mode 之后，马上同步一次 isDark
         if (newMode === 'auto') {
             const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            layoutStore.setIsDark(sysDark);
+            store.setIsDark(sysDark);
         } else {
-            layoutStore.setIsDark(newMode === 'dark');
+            store.setIsDark(newMode === 'dark');
         }
     };
 
@@ -122,8 +136,8 @@ export function useThemeMode() {
     });
 
     return {
-        mode, // 'auto' | 'light' | 'dark'
-        isDark, // true / false
-        setMode, // 切换模式
+        mode,
+        isDark,
+        setMode,
     };
 }

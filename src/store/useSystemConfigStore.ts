@@ -3,14 +3,15 @@ import { defineStore } from 'pinia';
 export type ThemeMode = 'auto' | 'light' | 'dark';
 
 /**
- * useLayoutStore
- * @description 管理全局布局相关状态（主题、缩放、菜单栏等）
+ * useSystemConfigStore
+ * @description 管理全局系统配置：主题模式、主题色、工具栏、导航栏等
  */
-export const useLayoutStore = defineStore('layout', {
+export const useSystemConfigStore = defineStore('systemConfig', {
     state: () => ({
         // 主题相关
         isDark: false, // 当前是否暗黑模式
         themeMode: 'auto' as ThemeMode, // 当前主题模式
+        themeColor: '', // 主题色
 
         // 布局相关
         isHideMenu: false, // 是否隐藏菜单栏
@@ -34,6 +35,17 @@ export const useLayoutStore = defineStore('layout', {
         setThemeMode(mode: ThemeMode) {
             this.themeMode = mode;
             localStorage.setItem('themeMode', mode);
+        },
+
+        /**
+         * 设置主题色
+         * @param color 主题色 RGB值，格式为 'R, G, B'，例如 '63, 81, 181'
+         * @example
+         * setThemeColor('63, 81, 181')
+         */
+        setThemeColor(color: string) {
+            this.themeColor = color;
+            document.documentElement.style.setProperty('--themeColor', color);
         },
 
         /**

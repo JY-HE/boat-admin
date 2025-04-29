@@ -14,7 +14,7 @@
 import type { LegendComponentOption } from 'echarts/components';
 import { ECOption } from '@/utils/eCharts';
 import { useECharts } from '@/hooks';
-import { useLayoutStore } from '@/store';
+import { useSystemConfigStore } from '@/store';
 import { getCssVariableValue } from '@/utils/global';
 
 const props = withDefaults(
@@ -27,7 +27,7 @@ const props = withDefaults(
 
 const echartsRef = ref<HTMLDivElement | null>(null);
 const { setOptions, initCharts } = useECharts(echartsRef);
-const layoutStore = useLayoutStore();
+const systemConfigStore = useSystemConfigStore();
 const emits = defineEmits(['dark-change']);
 
 /**
@@ -96,7 +96,7 @@ function setAxisTextColor(options: ECOption): ECOption {
 
 // 监听主题和 options 变化
 watch(
-    [() => layoutStore.isDark, () => props.options],
+    [() => systemConfigStore.isDark, () => props.options],
     ([newIsDark, newOptions]) => {
         emits('dark-change', newIsDark);
         setOptions(handleThemeOptions(newIsDark, newOptions));
@@ -106,7 +106,7 @@ watch(
 
 onMounted(() => {
     initCharts();
-    setOptions(handleThemeOptions(layoutStore.isDark, props.options));
+    setOptions(handleThemeOptions(systemConfigStore.isDark, props.options));
 });
 </script>
 

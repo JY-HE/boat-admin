@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useLayoutStore } from '@/store';
+import { useSystemConfigStore } from '@/store';
 
 const props = defineProps({
     itemHeight: { type: Number, default: 120 },
@@ -31,7 +31,7 @@ const props = defineProps({
 const dataSource = computed(() => {
     return Array.from({ length: 100 }, (_, i) => i);
 });
-const layoutStore = useLayoutStore();
+const systemConfigStore = useSystemConfigStore();
 // 列表父容器的引用
 const virtualListRef = ref<HTMLElement | null>(null);
 const screenHeight = ref(0); // 可视区域高度
@@ -96,7 +96,7 @@ const scrollEvent = () => {
 
 watchEffect(() => {
     // 重新计算参数渲染
-    localItemHeight.value = props.itemHeight * layoutStore.scale;
+    localItemHeight.value = props.itemHeight * systemConfigStore.scale;
     if (virtualListRef.value) {
         const { scrollTop, offsetHeight } = virtualListRef.value;
         screenHeight.value = offsetHeight;

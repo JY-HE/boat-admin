@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { useLayoutStore } from '@/store';
+import { useSystemConfigStore } from '@/store';
 defineProps({
     title: {
         type: String,
@@ -59,7 +59,7 @@ defineProps({
 
 const dialogVisible = ref(false);
 const isLoading = ref(true);
-const isDarkMode = computed(() => useLayoutStore().isDark);
+const isDarkMode = computed(() => useSystemConfigStore().isDark);
 </script>
 
 <style lang="scss">

@@ -1,6 +1,6 @@
 import App from './App.vue';
 import { createApp } from 'vue';
-import store, { useLayoutStore } from './store';
+import store, { useSystemConfigStore } from '@/store';
 import router from '@/router';
 import adaptiveResolution from '@/utils/adaptiveResolution';
 import directives from '@/directives';
@@ -25,7 +25,7 @@ async function initializeApp() {
     app.config.globalProperties.$BoatNotify = BoatNotification;
     // 初始化自适应页面
     await adaptiveResolution(data => {
-        const layoutStore = useLayoutStore();
+        const layoutStore = useSystemConfigStore();
         layoutStore.setScale(data.ratio);
     });
     // 卸载载入动画

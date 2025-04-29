@@ -23,22 +23,22 @@
 
 <script setup lang="ts">
 import { PlusRouteRecordRaw } from '@/types';
-import { useLayoutStore } from '@/store';
+import { useSystemConfigStore } from '@/store';
 
 const router = useRouter();
 const routerList = router
     .getRoutes()
     .filter(item => item?.meta?.isShow) as unknown as PlusRouteRecordRaw[];
 
-const layoutStore = useLayoutStore();
-const isHideMenu = ref<boolean>(layoutStore.isHideMenu);
+const systemConfigStore = useSystemConfigStore();
+const isHideMenu = ref<boolean>(systemConfigStore.isHideMenu);
 
 /**
  * 处理折叠菜单
  */
 const collapseExpandButton = () => {
     isHideMenu.value = !isHideMenu.value;
-    layoutStore.setHideMenu(isHideMenu.value);
+    systemConfigStore.setHideMenu(isHideMenu.value);
     const appElement = document.querySelector('#app') as HTMLElement;
     appElement.setAttribute('class', isHideMenu.value ? 'hide' : '');
 };

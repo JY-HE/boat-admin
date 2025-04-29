@@ -71,8 +71,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRouterStore } from '@/store';
-import { useLayoutStore } from '@/store';
+import { useRouterStore, useSystemConfigStore } from '@/store';
 import { PlusRouteRecordRaw } from '@/types';
 
 const props = defineProps({
@@ -84,7 +83,7 @@ const props = defineProps({
 const routerMenu = reactive<PlusRouteRecordRaw[]>(props.routerList);
 
 const routerStore = useRouterStore();
-const layoutStore = useLayoutStore();
+const systemConfigStore = useSystemConfigStore();
 const isHideMenu = ref<boolean>(false);
 const router = useRouter();
 const active = ref<string>('');
@@ -129,7 +128,7 @@ const collapseOtherMenus = (menu: PlusRouteRecordRaw) => {
 };
 
 watch(
-    () => layoutStore.isHideMenu,
+    () => systemConfigStore.isHideMenu,
     newValue => {
         isHideMenu.value = newValue;
     },

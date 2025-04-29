@@ -1,0 +1,8 @@
+.el-switch {
+    &.is-checked {
+        .el-switch__core {
+            @include themeColor(1, background-color);
+            @include themeColor(1, border-color);
+        }
+    }
+}

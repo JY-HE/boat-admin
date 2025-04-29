@@ -13,7 +13,7 @@
 
         <div
             class="collapseExpandButton"
-            :title="isHideMenu ? '展开' : '折叠'"
+            :title="hideMenu ? '展开' : '折叠'"
             @click="collapseExpandButton"
         >
             <BoatIconfont icon="&#xe6d7;"></BoatIconfont>
@@ -23,25 +23,36 @@
 
 <script setup lang="ts">
 import { PlusRouteRecordRaw } from '@/types';
-import { useSystemConfigStore } from '@/store';
+import { useSystemConfig } from '@/hooks/useSystemConfig';
 
 const router = useRouter();
 const routerList = router
     .getRoutes()
     .filter(item => item?.meta?.isShow) as unknown as PlusRouteRecordRaw[];
 
-const systemConfigStore = useSystemConfigStore();
-const isHideMenu = ref<boolean>(systemConfigStore.isHideMenu);
+const { isHideMenu, setHideMenu } = useSystemConfig();
+
+const hideMenu = ref<boolean>(false);
 
 /**
  * 处理折叠菜单
  */
 const collapseExpandButton = () => {
-    isHideMenu.value = !isHideMenu.value;
-    systemConfigStore.setHideMenu(isHideMenu.value);
-    const appElement = document.querySelector('#app') as HTMLElement;
-    appElement.setAttribute('class', isHideMenu.value ? 'hide' : '');
+    hideMenu.value = !hideMenu.value;
+    setHideMenu(hideMenu.value);
+    addHideClass();
 };
-</script>
 
-<style lang="scss"></style>
+/**
+ * 添加折叠菜单的类名
+ */
+const addHideClass = () => {
+    const appElement = document.querySelector('#app') as HTMLElement;
+    appElement.setAttribute('class', hideMenu.value ? 'hide' : '');
+};
+
+onMounted(() => {
+    hideMenu.value = isHideMenu.value;
+    addHideClass();
+});
+</script>

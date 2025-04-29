@@ -4,26 +4,16 @@ import { useSystemConfigStore, type ThemeMode } from '@/store';
 /**
  * useSystemConfig
  * @description 统一管理系统配置：主题模式、主题色、工具栏、导航栏
- * @returns {Object} 主题模式、是否暗黑、切换主题模式的函数
- * @example
- * const { mode, isDark, setMode } = useSystemConfig();
- * mode: 'auto' | 'light' | 'dark'
- * isDark: true | false
- * setMode('light') // 切换为亮色模式
- * setMode('dark') // 切换为暗黑模式
- * setMode('auto') // 切换为跟随系统模式
+ * @returns {Object} 主题模式、是否暗黑、切换主题模式等函数
  */
 export function useSystemConfig() {
     const store = useSystemConfigStore();
 
-    /**
-     * 主题模式
-     */
     const mode = computed<ThemeMode>(() => store.themeMode);
-    /**
-     * 是否暗黑模式
-     */
+    const themeColor = computed<string>(() => store.themeColor);
     const isDark = computed<boolean>(() => store.isDark);
+    const isHideMenu = computed<boolean>(() => store.isHideMenu);
+    const scale = computed<number>(() => store.scale);
 
     /**
      * 切换全局CSS变量
@@ -81,6 +71,7 @@ export function useSystemConfig() {
     watch(
         isDark,
         dark => {
+            document.body.setAttribute('mode', dark ? 'dark' : 'normal');
             updateGlobalStyles(dark);
         },
         { immediate: true }
@@ -103,6 +94,17 @@ export function useSystemConfig() {
     };
 
     /**
+     * 切换主题颜色
+     * @param color 主题色 RGB值，格式为 'R, G, B'，例如 '63, 81, 181'
+     * @example
+     * setThemeColor('63, 81, 181')
+     */
+    const setThemeColor = (color: string) => {
+        store.setThemeColor(color);
+        document.documentElement.style.setProperty('--themeColor', color);
+    };
+
+    /**
      * 切换主题模式接口
      * @param newMode 新主题模式
      */
@@ -122,11 +124,10 @@ export function useSystemConfig() {
      * 从LocalStorage加载主题模式
      */
     const loadThemeModeFromLocalStorage = () => {
-        const saved = localStorage.getItem('themeMode') as ThemeMode | null;
-        if (saved === 'auto' || saved === 'light' || saved === 'dark') {
-            setMode(saved);
-        } else {
-            setMode('auto');
+        const systemConfigSaved = localStorage.getItem('systemConfig') || null;
+        if (systemConfigSaved) {
+            const { themeColor } = JSON.parse(systemConfigSaved);
+            setThemeColor(themeColor);
         }
     };
 
@@ -138,6 +139,12 @@ export function useSystemConfig() {
     return {
         mode,
         isDark,
+        themeColor,
+        isHideMenu,
+        scale,
         setMode,
+        setThemeColor,
+        setHideMenu: store.setHideMenu,
+        setScale: store.setScale,
     };
 }

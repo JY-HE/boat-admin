@@ -1,6 +1,10 @@
 <template>
     <div class="Breadcrumb" :class="breadcrumbStyle">
-        <div v-for="(item, index) in breadList" :key="index">
+        <div
+            v-for="(item, index) in breadList"
+            :key="index"
+            :class="{ active: index === breadList.length - 1 }"
+        >
             <BoatIconfont
                 v-if="breadcrumbStyle === 'default' && item.meta.icon"
                 :icon="item.meta.icon as string"
@@ -89,8 +93,9 @@ watch(
 
         & > div {
             @include flexCenter;
-            @include fontColor(5);
-            @include themeColor(1, background-color);
+            @include fontColor(1);
+            @include fontStyle(4);
+            @include themeColor(0.2, background-color);
             height: pxToRem(32);
             padding: 0 pxToRem(12 + 4);
             cursor: pointer;
@@ -103,7 +108,6 @@ watch(
                 0% 100%,
                 pxToRem(12) 50%
             );
-
             &:hover {
                 @include themeColor(0.8, background-color);
             }
@@ -124,6 +128,11 @@ watch(
                     calc(100% - #{pxToRem(12)}) 100%,
                     0% 100%
                 );
+            }
+
+            &.active {
+                @include fontStyle(3);
+                @include themeColor(0.5, background-color);
             }
         }
     }

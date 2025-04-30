@@ -6,7 +6,7 @@
             @click="drawerVisible = true"
         ></BoatIconButton>
 
-        <el-drawer v-model="drawerVisible" :direction="direction" title="系统配置">
+        <el-drawer v-model="drawerVisible" direction="rtl" title="系统配置">
             <template #default>
                 <div class="w-full flex flex-col h-fit-content gap-4">
                     <div class="bg-errorColor-20 text-errorColor-100 rounded-xl px-4 py-2">
@@ -18,26 +18,17 @@
                     <Copyright />
                 </div>
             </template>
-            <template #footer>
-                <div style="flex: auto">
-                    <el-button type="danger" @click="resetClick">重置</el-button>
-                </div>
-            </template>
         </el-drawer>
     </div>
 </template>
 
 <script setup lang="ts">
-import type { DrawerProps } from 'element-plus';
 import { usePubSub, Topics } from '@/hooks/usePubSub';
 import ThemeStyle from './setting/ThemeStyle.vue';
 import BreadcrumbStyle from './setting/BreadcrumbStyle.vue';
 import Copyright from './setting/Copyright.vue';
 
 const drawerVisible = ref<boolean>(false);
-const direction = ref<DrawerProps['direction']>('rtl');
-
-const resetClick = () => {};
 
 usePubSub(Topics.OpenSystemConfigDrawer, () => {
     drawerVisible.value = !drawerVisible.value;

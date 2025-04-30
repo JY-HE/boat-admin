@@ -14,6 +14,7 @@
                         中，要想真正应用于项目，可以将配置对象保存于数据库中，在加载项目时从数据库中获取配置。
                     </div>
                     <ThemeStyle />
+                    <BreadcrumbStyle />
                     <Copyright />
                 </div>
             </template>
@@ -30,6 +31,7 @@
 import type { DrawerProps } from 'element-plus';
 import { usePubSub, Topics } from '@/hooks/usePubSub';
 import ThemeStyle from './setting/ThemeStyle.vue';
+import BreadcrumbStyle from './setting/BreadcrumbStyle.vue';
 import Copyright from './setting/Copyright.vue';
 
 const drawerVisible = ref<boolean>(false);

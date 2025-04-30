@@ -6,6 +6,11 @@ import { defineStore } from 'pinia';
 export type ThemeMode = 'auto' | 'light' | 'dark';
 
 /**
+ * 面包屑导航风格
+ */
+export type BreadcrumbStyle = 'default' | 'modern';
+
+/**
  * 版权配置
  */
 export type CopyrightConfig = {
@@ -51,6 +56,10 @@ export interface SystemConfigState {
      * 版权配置
      */
     copyrightConfig: CopyrightConfig;
+    /**
+     * 面包屑导航风格
+     */
+    breadcrumbStyle: BreadcrumbStyle;
 }
 
 /**
@@ -67,6 +76,7 @@ export const useSystemConfigStore = defineStore('systemConfig', {
         isDark: false,
         themeMode: 'auto',
         themeColor: '63, 81, 181',
+        breadcrumbStyle: 'default',
 
         // 布局相关
         isHideMenu: false,
@@ -141,6 +151,16 @@ export const useSystemConfigStore = defineStore('systemConfig', {
          */
         setCopyrightConfig(config: CopyrightConfig) {
             this.copyrightConfig = config;
+        },
+
+        /**
+         * 设置面包屑导航风格
+         * @param style 面包屑导航风格
+         * @example
+         * setBreadcrumbStyle('default')
+         */
+        setBreadcrumbStyle(style: BreadcrumbStyle) {
+            this.breadcrumbStyle = style;
         },
     },
 });

@@ -1,6 +1,6 @@
 import { computed, onMounted, watch, onUnmounted } from 'vue';
 import { useSystemConfigStore } from '@/store';
-import type { ThemeMode, CopyrightConfig } from '@/store';
+import type { ThemeMode, CopyrightConfig, BreadcrumbStyle } from '@/store';
 
 /**
  * useSystemConfig
@@ -16,6 +16,7 @@ export function useSystemConfig() {
     const isHideMenu = computed<boolean>(() => store.isHideMenu);
     const scale = computed<number>(() => store.scale);
     const copyrightConfig = computed<CopyrightConfig>(() => store.copyrightConfig);
+    const breadcrumbStyle = computed<BreadcrumbStyle>(() => store.breadcrumbStyle);
 
     /**
      * 切换全局CSS变量
@@ -145,10 +146,12 @@ export function useSystemConfig() {
         isHideMenu,
         scale,
         copyrightConfig,
+        breadcrumbStyle,
         setMode,
         setThemeColor,
         setHideMenu: store.setHideMenu,
         setScale: store.setScale,
         setCopyrightConfig: store.setCopyrightConfig,
+        setBreadcrumbStyle: store.setBreadcrumbStyle,
     };
 }

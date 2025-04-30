@@ -181,32 +181,13 @@ body {
                 padding: pxToRem(0) pxToRem(16) pxToRem(0) pxToRem(17);
                 margin-bottom: pxToRem(30);
                 position: relative;
-                z-index: var(--zIndex);
+                z-index: 10;
 
                 // 面包屑样式
                 div[breadcrumb] {
                     height: 100%;
-                    @include flexCenter;
-                    @include fontColor(3);
-                    & > div {
-                        @include flexCenter;
-                        .BoatIconfont {
-                            margin-right: pxToRem(9);
-                            @include iconSize(2);
-                            @include fontStyle(2);
-                        }
-                        h2 {
-                            margin-right: pxToRem(9);
-                            @include fontStyle(2);
-                            cursor: pointer;
-                            &:hover {
-                                @include themeColor(0.8, color);
-                            }
-                            &.active {
-                                @include themeColor(1, color);
-                            }
-                        }
-                    }
+                    flex: 1;
+                    flex-shrink: 0;
                 }
 
                 // 操作区域

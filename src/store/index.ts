@@ -8,6 +8,6 @@ export * from './packageStore';
 export * from './routerStore';
 export * from './permissionStore';
 export * from './authStore';
-export * from './useSystemConfigStore';
+export * from './systemConfigStore';
 
 export default store;

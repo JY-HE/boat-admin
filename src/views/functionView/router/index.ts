@@ -30,6 +30,17 @@ const router = {
                 title: '剪贴板',
             },
         },
+        {
+            path: '/function/leaveTips',
+            name: '页面离开提醒',
+            component: () =>
+                import(
+                    /* webpackChunkName: "leaveTips" */ '@/views/functionView/components/leaveTips/Index.vue'
+                ),
+            meta: {
+                title: '页面离开提醒',
+            },
+        },
     ],
 };
 

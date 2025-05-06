@@ -4,15 +4,13 @@
             v-for="(item, index) in breadList"
             :key="index"
             :class="{ active: index === breadList.length - 1 }"
+            @click="breadcrumbClickHandler(item)"
         >
             <BoatIconfont
                 v-if="breadcrumbStyle === 'default' && item.meta.icon"
                 :icon="item.meta.icon as string"
             />
-            <h2
-                :class="{ active: index === breadList.length - 1 }"
-                @click="breadcrumbClickHandler(item)"
-            >
+            <h2 :class="{ active: index === breadList.length - 1 }">
                 {{ item.meta.title }}
             </h2>
             <BoatIconfont
@@ -64,10 +62,10 @@ watch(
 .Breadcrumb {
     height: 100%;
     @include flexCenter(flex-start, center);
-    @include fontColor(3);
 
     &.default {
         & > div {
+            @include fontColor(3);
             @include flexCenter;
             .BoatIconfont {
                 margin-right: pxToRem(9);
@@ -93,7 +91,7 @@ watch(
 
         & > div {
             @include flexCenter;
-            @include fontColor(1);
+            @include fontColor(1, 0.7);
             @include fontStyle(4);
             @include themeColor(0.2, background-color);
             height: pxToRem(32);
@@ -131,6 +129,7 @@ watch(
             }
 
             &.active {
+                @include fontColor(1);
                 @include fontStyle(3);
                 @include themeColor(0.5, background-color);
             }

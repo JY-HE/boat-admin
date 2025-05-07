@@ -44,6 +44,10 @@ export type PlusRouteRecordRaw = Partial<Omit<RouteRecordRaw, 'children'>> & {
          * 隐藏面包屑，默认 false 不隐藏
          */
         hideInBreadcrumb?: boolean;
+        /**
+         * 是否保存页面滚动位置，默认 false 不保存
+         */
+        saveScroll?: boolean;
     };
     children?: PlusRouteRecordRaw[];
 };

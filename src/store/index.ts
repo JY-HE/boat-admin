@@ -9,5 +9,6 @@ export * from './routerStore';
 export * from './permissionStore';
 export * from './authStore';
 export * from './systemConfigStore';
+export * from './saveScrollStore';
 
 export default store;

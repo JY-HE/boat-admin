@@ -41,6 +41,18 @@ const router = {
                 title: '页面离开提醒',
             },
         },
+        {
+            path: '/function/saveScroll',
+            name: '记录滚动位置',
+            component: () =>
+                import(
+                    /* webpackChunkName: "saveScroll" */ '@/views/functionView/components/saveScroll/Index.vue'
+                ),
+            meta: {
+                title: '记录滚动位置',
+                saveScroll: true,
+            },
+        },
     ],
 };
 

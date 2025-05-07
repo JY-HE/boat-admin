@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import type { LegendComponentOption } from 'echarts/components';
 import { ECOption } from '@/utils/eCharts';
-import { useECharts } from '@/hooks';
+import { useECharts } from '@/hooks/useEcharts';
 import { useSystemConfigStore } from '@/store';
 import { getCssVariableValue } from '@/utils/global';
 

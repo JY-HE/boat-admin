@@ -10,7 +10,7 @@ import echarts, { ECOption } from '@/utils/eCharts';
  * @returns setOptions 设置配置项
  * @returns resize 重新计算
  */
-const useECharts = (elRef: Ref<HTMLDivElement | null>, options?: ECOption) => {
+export const useECharts = (elRef: Ref<HTMLDivElement | null>, options?: ECOption) => {
     let resizeDetector: ResizeDetector | null = null;
     const charts = shallowRef<echarts.ECharts>();
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -72,5 +72,3 @@ const useECharts = (elRef: Ref<HTMLDivElement | null>, options?: ECOption) => {
         resize,
     };
 };
-
-export { useECharts };

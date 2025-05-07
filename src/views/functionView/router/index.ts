@@ -53,6 +53,17 @@ const router = {
                 saveScroll: true,
             },
         },
+        {
+            path: '/function/forbidCopy',
+            name: '禁止复制',
+            component: () =>
+                import(
+                    /* webpackChunkName: "forbidCopy" */ '@/views/functionView/components/forbidCopy/Index.vue'
+                ),
+            meta: {
+                title: '禁止复制',
+            },
+        },
     ],
 };
 

@@ -1,5 +1,5 @@
 import { computed, onMounted, watch, onUnmounted } from 'vue';
-import { useSystemConfigStore } from '@/store';
+import { useSystemConfigStore, useThemeVarsStore } from '@/store';
 import type { ThemeMode, CopyrightConfig, BreadcrumbStyle } from '@/store';
 
 /**
@@ -23,49 +23,23 @@ export function useSystemConfig() {
      * @param dark 是否暗黑模式
      */
     const updateGlobalStyles = (dark: boolean) => {
-        const setRootCss = (
-            cssName: string,
-            lightValue: string | number,
-            darkValue: string | number
-        ) => {
-            const value = dark ? darkValue : lightValue;
+        const setRootCss = (cssName: string, value: string | number) => {
             document.documentElement.style.setProperty(`--${cssName}`, value.toString());
         };
 
-        // 底板背景色
-        setRootCss('bodyBackground', '255, 255, 255', '0, 0, 0');
-        // 图表背景色
-        setRootCss('chartBackgroundColor', '255, 255, 255', '10, 13, 31');
-        // 图表文本字体色
-        setRootCss('chartTextColor', '91, 91, 94', '255, 255, 255');
-        // 底板背景透明度
-        setRootCss('panelBackgroundAlpha', 0, 0.16);
-        // T1-文本色
-        setRootCss('textColor_1', '37, 57, 112', '220, 226, 237');
-        // T3-文本色
-        setRootCss('textColor_3', '116, 130, 159', '185, 198, 224');
-        // 分割线透明度
-        setRootCss('dividingLineAlpha', 0.46, 1);
-        // 滚动条背景色透明度
-        setRootCss('scrollbarAlpha', 0.26, 0.46);
-        // 输入框边框色透明度
-        setRootCss('inputBorderAlpha', 0.26, 0.46);
-        // 列表头部背景色透明度
-        setRootCss('datalistHeaderBackgroundAlpha', 0.12, 0.26);
-        // 列表背景色透明度
-        setRootCss('datalistBackgroundAlpha', 0.05, 0.12);
-        // 列表鼠标划入背景色透明度
-        setRootCss('datalistHoverBackgroundAlpha', 0.12, 0.26);
-        // 分页器背景色透明度
-        setRootCss('paginationBackgroundAlpha', 0.05, 0.12);
-        // 分页器鼠标移入背景色透明度
-        setRootCss('paginationHoverBackgroundAlpha', 0.12, 0.26);
-        // 图表模块边框色透明度
-        setRootCss('chartModuleBorderAlpha', 0.12, 1);
-        // 图表模块鼠标移入边框色透明度
-        setRootCss('chartModuleHoverBorderAlpha', 0.46, 1);
-        // 统计数据背景色透明度
-        setRootCss('dataCardBackgroundAlpha', 0.05, 0.26);
+        const { themeVars } = useThemeVarsStore();
+        if (!themeVars) {
+            console.warn('[useThemeVarsStore] themeVars is null');
+            return;
+        }
+        const configs = dark ? themeVars.dark : themeVars.light;
+        if (!configs || !configs.length) {
+            console.warn('[useThemeVarsStore] configs is empty');
+            return;
+        }
+        for (const { cssName, value } of configs) {
+            setRootCss(cssName, value);
+        }
     };
 
     /**

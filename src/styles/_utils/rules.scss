@@ -216,10 +216,3 @@
         font-size: pxToRem(16);
     }
 }
-
-// [全局] 暗黑模式样式
-@mixin darkStyle {
-    body[mode='dark'] {
-        @content;
-    }
-}

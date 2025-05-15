@@ -10,5 +10,6 @@ export * from './permissionStore';
 export * from './authStore';
 export * from './systemConfigStore';
 export * from './saveScrollStore';
+export * from './themeVarsStore';
 
 export default store;

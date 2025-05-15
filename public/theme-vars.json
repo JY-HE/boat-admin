@@ -1,0 +1,100 @@
+{
+    "light": [
+        {
+            "cssName": "textColor_1",
+            "value": "33, 37, 41",
+            "description": "强调文字（标题、主信息）"
+        },
+        { "cssName": "textColor_2", "value": "73, 80, 87", "description": "常规文字（正文）" },
+        {
+            "cssName": "textColor_3",
+            "value": "108, 117, 125",
+            "description": "次要信息（副标题、标签）"
+        },
+        {
+            "cssName": "textColor_4",
+            "value": "173, 181, 189",
+            "description": "弱化信息（注释、辅助提示）"
+        },
+        {
+            "cssName": "textColor_5",
+            "value": "206, 212, 218",
+            "description": "禁用态、背景装饰文字"
+        },
+        { "cssName": "bodyBackground", "value": "255,255,255", "description": "页面背景色" },
+        { "cssName": "chartBackgroundColor", "value": "255,255,255", "description": "图表背景色" },
+        { "cssName": "chartTextColor", "value": "91,91,94", "description": "图表文字颜色" },
+        { "cssName": "panelBackgroundAlpha", "value": 0, "description": "底板背景透明度" },
+        { "cssName": "dividingLineAlpha", "value": 0.46, "description": "分割线透明度" },
+        { "cssName": "scrollbarAlpha", "value": 0.26, "description": "滚动条背景透明度" },
+        { "cssName": "inputBorderAlpha", "value": 0.26, "description": "输入框边框透明度" },
+        {
+            "cssName": "datalistHeaderBackgroundAlpha",
+            "value": 0.12,
+            "description": "列表头背景透明度"
+        },
+        { "cssName": "datalistBackgroundAlpha", "value": 0.05, "description": "列表背景透明度" },
+        {
+            "cssName": "datalistHoverBackgroundAlpha",
+            "value": 0.12,
+            "description": "列表项悬浮背景透明度"
+        },
+        {
+            "cssName": "paginationBackgroundAlpha",
+            "value": 0.05,
+            "description": "分页器背景透明度"
+        },
+        {
+            "cssName": "paginationHoverBackgroundAlpha",
+            "value": 0.12,
+            "description": "分页器悬浮背景透明度"
+        },
+        { "cssName": "chartModuleBorderAlpha", "value": 0.12, "description": "图表模块边框透明度" },
+        {
+            "cssName": "chartModuleHoverBorderAlpha",
+            "value": 0.46,
+            "description": "图表模块悬浮边框透明度"
+        },
+        { "cssName": "dataCardBackgroundAlpha", "value": 0.05, "description": "统计卡片背景透明度" }
+    ],
+    "dark": [
+        { "cssName": "textColor_1", "value": "248, 249, 250" },
+        { "cssName": "textColor_2", "value": "222, 226, 230" },
+        { "cssName": "textColor_3", "value": "173, 181, 189" },
+        { "cssName": "textColor_4", "value": "108, 117, 125" },
+        {
+            "cssName": "textColor_5",
+            "value": "73, 80, 87"
+        },
+        { "cssName": "bodyBackground", "value": "0,0,0" },
+        { "cssName": "chartBackgroundColor", "value": "10,13,31" },
+        { "cssName": "chartTextColor", "value": "255,255,255" },
+        { "cssName": "panelBackgroundAlpha", "value": 0.16 },
+        { "cssName": "dividingLineAlpha", "value": 1 },
+        { "cssName": "scrollbarAlpha", "value": 0.46 },
+        { "cssName": "inputBorderAlpha", "value": 0.46 },
+        {
+            "cssName": "datalistHeaderBackgroundAlpha",
+            "value": 0.26
+        },
+        { "cssName": "datalistBackgroundAlpha", "value": 0.12 },
+        {
+            "cssName": "datalistHoverBackgroundAlpha",
+            "value": 0.26
+        },
+        {
+            "cssName": "paginationBackgroundAlpha",
+            "value": 0.12
+        },
+        {
+            "cssName": "paginationHoverBackgroundAlpha",
+            "value": 0.26
+        },
+        { "cssName": "chartModuleBorderAlpha", "value": 1 },
+        {
+            "cssName": "chartModuleHoverBorderAlpha",
+            "value": 1
+        },
+        { "cssName": "dataCardBackgroundAlpha", "value": 0.26 }
+    ]
+}

@@ -64,6 +64,17 @@ const router = {
                 title: '禁止复制',
             },
         },
+        {
+            path: '/function/lazyLoadingImage',
+            name: '图片懒加载',
+            component: () =>
+                import(
+                    /* webpackChunkName: "lazyLoadingImage" */ '@/views/functionView/components/lazyLoadingImage/Index.vue'
+                ),
+            meta: {
+                title: '图片懒加载',
+            },
+        },
     ],
 };
 

@@ -94,9 +94,9 @@ async function createRouterFile(fileDirPath, fileName, title, icon) {
     // 创建 index.ts 文件
     const routerIndexPath = path.join(routerDir, 'index.ts');
     const routerIndexTsContent = `const router = {
-    path: '/${fileName.toLowerCase()}',
+    path: '/${fileName}',
     name: '${title}',
-    component: () => import(/* webpackChunkName: "${fileName.toLowerCase()}" */ '@/views/${fileName.toLowerCase()}View/Index.vue'),
+    component: () => import(/* webpackChunkName: "${fileName}" */ '@/views/${fileName}View/Index.vue'),
     meta: {
         isShow: true,
         title: '${title}',
@@ -159,9 +159,9 @@ async function updateParentRouterFile(parentName, fileName, title) {
 
         // 构造子路由对象
         const childRouterObject = `{
-            path: '/${parentName.replace('View', '')}/${fileName.toLowerCase()}',
+            path: '/${parentName.replace('View', '')}/${fileName}',
             name: '${title}',
-            component: () => import(/* webpackChunkName: "${fileName.toLowerCase()}" */ '@/views/${parentName}/components/${fileName.toLowerCase()}/Index.vue'),
+            component: () => import(/* webpackChunkName: "${fileName}" */ '@/views/${parentName}/components/${fileName}/Index.vue'),
             meta: {
                 title: '${title}',
             },
@@ -180,7 +180,7 @@ async function updateParentRouterFile(parentName, fileName, title) {
                 `   redirect: '/${parentName.replace(
                     'View',
                     ''
-                )}/${fileName.toLowerCase()}',\n    children: [\n    ${childRouterObject}\n  ],\n` +
+                )}/${fileName}',\n    children: [\n    ${childRouterObject}\n  ],\n` +
                 content.slice(closingBracketIndex);
 
             // 写回修改后的内容

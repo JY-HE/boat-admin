@@ -17,11 +17,14 @@ class AppConfig {
 
     async init(): Promise<void> {
         try {
-            const response: AxiosResponse<ThemeVars> = await axios.get('/theme-vars.json', {
-                headers: {
-                    'Cache-Control': 'no-cache',
-                },
-            });
+            const response: AxiosResponse<ThemeVars> = await axios.get(
+                `${import.meta.env.BASE_URL}theme-vars.json`,
+                {
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                    },
+                }
+            );
 
             const configStyle = response.data;
 

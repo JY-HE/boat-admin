@@ -9,10 +9,10 @@
         <el-drawer v-model="drawerVisible" direction="rtl" title="系统配置">
             <template #default>
                 <div class="w-full flex flex-col h-fit-content gap-4">
-                    <div class="bg-errorColor-20 text-errorColor-100 rounded-xl px-4 py-2">
+                    <BoatTips>
                         应用配置可实时预览效果，但只是临时生效，保存于 localStorage
                         中，要想真正应用于项目，可以将配置对象保存于数据库中，在加载项目时从数据库中获取配置。
-                    </div>
+                    </BoatTips>
                     <ThemeStyle />
                     <BreadcrumbStyle />
                     <Copyright />

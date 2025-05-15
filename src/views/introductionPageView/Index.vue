@@ -1,6 +1,6 @@
 <template>
     <div class="IntroductionPage text-h1 p-4">
-        <p class="font-style-1 mb-4">引导页常用于引导式介绍项目的基本功能或亮点</p>
+        <BoatTitle title="引导页常用于引导式介绍项目的基本功能或亮点"></BoatTitle>
         <span class="font-style-2">
             本事例基于
             <a href="https://driverjs.com" target="\_blank">driver.js</a>

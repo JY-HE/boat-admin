@@ -18,7 +18,7 @@ const lazyDirective: ObjectDirective<LazyImageElement> = {
         el.src = DEFAULT_PLACEHOLDER;
         el.__src__ = realSrc;
 
-        // 创建 IntersectionObserver，10%可见即触发
+        // 创建 IntersectionObserver，30%可见即触发
         const io = new IntersectionObserver(
             (entries, observer) => {
                 entries.forEach(entry => {
@@ -37,7 +37,7 @@ const lazyDirective: ObjectDirective<LazyImageElement> = {
                     }
                 });
             },
-            { threshold: 0.1 }
+            { threshold: 0.3 }
         );
 
         io.observe(el);

@@ -1,11 +1,21 @@
 <template>
     <div class="LazyLoadingImage">
-        <div
-            v-for="img in images"
-            :key="img.id"
-            class="overflow-hidden relative bg-disabledColor-50"
+        <BoatTips
+            >实现一个 v-lazy 指令，利用 Intersection Observer
+            监听元素进入视口后再动态加载图片，以提升性能和用户体验。</BoatTips
         >
-            <img v-lazy="img.url" alt="懒加载示例" class="absolute w-full h-full object-cover" />
+        <div class="grid gap-4 grid-cols-4 mt-4">
+            <div
+                v-for="img in images"
+                :key="img.id"
+                class="overflow-hidden relative bg-disabledColor-50 w-full h-[18rem]"
+            >
+                <img
+                    v-lazy="img.url"
+                    alt="懒加载示例"
+                    class="absolute w-full h-full object-cover"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -24,15 +34,3 @@ const images = ref<ImageItem[]>(
     }))
 );
 </script>
-
-<style lang="scss">
-.LazyLoadingImage {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: pxToRem(16);
-
-    div {
-        @include whrem(100%, 300);
-    }
-}
-</style>

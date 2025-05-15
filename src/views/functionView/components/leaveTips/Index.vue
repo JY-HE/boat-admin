@@ -1,9 +1,8 @@
 <template>
     <div>
-        <h1 class="text-h1 mb-8">页面离开提醒</h1>
-        <p class="font-style-3 text-h1">
-            在页面离开时，增加弹窗二次确认，避免因误操作导致当前页面数据清空
-        </p>
+        <BoatTitle title="页面离开提醒"></BoatTitle>
+
+        <BoatTips> 在页面离开时，增加弹窗二次确认，避免因误操作导致当前页面数据清空 </BoatTips>
     </div>
 </template>
 

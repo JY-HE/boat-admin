@@ -1,12 +1,14 @@
 <template>
     <div>
-        <h1 class="text-h1">剪贴板示例</h1>
-        <BoatTitle title="v-copy指令" class="mt-8"> </BoatTitle>
+        <BoatTitle title="剪贴板示例"></BoatTitle>
+
+        <h2 class="font-style-2 text-h2 mt-8">v-copy指令</h2>
         <div class="mt-8 flex gap-8 items-center">
             <el-input v-model="copyValue" />
             <el-button v-copy="copyValue" type="primary">复制</el-button>
         </div>
-        <BoatTitle title="BoatCopyButton组件" class="mt-8"> </BoatTitle>
+
+        <h2 class="font-style-2 text-h2 mt-8">BoatCopyButton组件</h2>
         <div class="mt-8 flex gap-8 items-center">
             <span class="font-style-3 text-h3">{{ copyValue }}</span>
             <BoatCopyButton :copyText="copyValue" />

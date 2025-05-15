@@ -1,12 +1,13 @@
 <template>
     <div class="flex flex-col w-fit-content gap-4">
         <div>
-            <p class="text-h1 font-style-1 mb-4">原理</p>
+            <BoatTitle title="原理"></BoatTitle>
             <p class="text-h1 font-style-4 mb-4">
                 BroadcastChannel
                 提供了在同源的不同浏览上下文（窗口、标签页、iframe、Worker）之间进行双向广播消息的能力。
             </p>
-            <p class="text-h1 font-style-1 mb-4">优缺点</p>
+
+            <BoatTitle title="优缺点"></BoatTitle>
             <div>
                 <p class="text-h1 font-style-4 mb-4">
                     优​点：使用简单，无需轮询或额外写

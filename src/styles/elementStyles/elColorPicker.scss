@@ -48,18 +48,18 @@
             height: pxToRem(40);
             line-height: pxToRem(40);
             @include fontStyle(4);
-            @include fontColor(1);
+            @include fontColor(2);
 
             .el-input {
                 @include wh;
                 @include fontStyle(4);
-                @include fontColor(1);
+                @include fontColor(2);
                 padding-left: pxToRem(2);
 
                 .el-input__inner {
                     @include wh;
                     @include fontStyle(4);
-                    @include fontColor(1);
+                    @include fontColor(2);
                     cursor: pointer;
                     background: none;
                     padding: 0 pxToRem(8);

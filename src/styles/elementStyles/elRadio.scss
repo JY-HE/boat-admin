@@ -1,7 +1,7 @@
 /* .el-radio 单选框样式 */
 .el-radio {
     @include fontStyle(4);
-    @include fontColor(1);
+    @include fontColor(2);
     margin-right: pxToRem(48);
     outline: none;
 
@@ -40,7 +40,7 @@
 
     .el-radio__label {
         @include fontStyle(4);
-        @include fontColor(1);
+        @include fontColor(2);
     }
 
     &.is-checked {
@@ -53,7 +53,7 @@
         }
 
         .el-radio__label {
-            @include fontColor(1);
+            @include fontColor(2);
         }
     }
 }

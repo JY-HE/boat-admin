@@ -13,7 +13,7 @@
                     <el-tag :type="item.type">
                         {{ item.label }}
                     </el-tag>
-                    <p class="text-h1 font-style-4">{{ item.content }}</p>
+                    <p class="text-h2 font-style-4">{{ item.content }}</p>
                 </li>
             </ul>
         </main>

@@ -18,7 +18,7 @@
         .el-input__inner {
             @include wh;
             @include fontStyle(4);
-            @include fontColor(3);
+            @include fontColor(2);
             border: pxToRem(1) solid;
             @include themeColor(var(--inputBorderAlpha), border-color);
             border-radius: pxToRem(12);
@@ -31,7 +31,7 @@
         .el-input__prefix,
         .el-input__suffix {
             width: fit-content;
-            @include fontColor(3);
+            @include fontColor(2);
             @include flexCenter;
             position: absolute;
 
@@ -100,7 +100,7 @@ input {
     line-height: pxToRem(40);
     padding-left: pxToRem(22);
     padding-right: pxToRem(30);
-    @include fontColor(3);
+    @include fontColor(2);
     @include fontStyle(4);
     background: none;
 

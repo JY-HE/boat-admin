@@ -7,7 +7,7 @@
         </div>
         <main class="flex-1 h-full flex justify-center items-start flex-col gap-2">
             <p class="font-style-1 text-h1">早安，Boat Admin，今天又是活力满满的一天！</p>
-            <p class="font-style-4 text-h3">今日多云转晴，20℃ ~ 28℃</p>
+            <p class="font-style-3 text-h3">今日多云转晴，20℃ ~ 28℃</p>
         </main>
         <div class="w-fit-content h-full flex items-center gap-6">
             <div

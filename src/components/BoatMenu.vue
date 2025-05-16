@@ -140,6 +140,7 @@ watchEffect(() => {
     border-radius: pxToRem(12);
 
     p {
+        @include fontColor(2);
         padding: pxToRem(10) pxToRem(16);
     }
 
@@ -167,7 +168,7 @@ watchEffect(() => {
             margin-top: 0;
         }
         h4 {
-            @include fontColor(1);
+            @include fontColor(2);
             @include textHidden;
             width: 100%;
         }

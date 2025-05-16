@@ -34,14 +34,14 @@
 
         .el-icon-arrow-up,
         .el-icon-arrow-down {
-            @include fontColor(3);
+            @include fontColor(2);
             font-size: pxToRem(12);
             font-weight: bolder;
         }
         &.is-disabled {
             .el-icon-arrow-up,
             .el-icon-arrow-down {
-                @include fontColor(3, 0.3);
+                @include fontColor(2, 0.3);
             }
         }
     }

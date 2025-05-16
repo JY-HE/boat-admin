@@ -1,7 +1,7 @@
 /* popover 弹出框样式 */
 .el-popover.el-popper {
     @include bodyBackground(1, background-color, true);
-    @include fontColor(1);
+    @include fontColor(2);
     border: none !important;
     width: fit-content !important;
     min-width: fit-content;

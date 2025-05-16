@@ -3,7 +3,7 @@
         <BoatCard v-for="card in statisticCards" :key="card.title" :title="card.title">
             <div class="flex justify-between">
                 <BoatIconfont :icon="card.icon" class="font-style-1 text-whiteColor-100 text-3xl" />
-                <p class="text-h4 font-style-1">
+                <p class="text-h1 font-style-1">
                     {{ formatNumberWithCommas(card.value) }}
                 </p>
             </div>

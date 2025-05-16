@@ -106,7 +106,7 @@ body {
                             }
                             .BoatIconfont {
                                 @include iconSize(2);
-                                @include fontColor(3);
+                                @include fontColor(2);
 
                                 &:first-child {
                                     @include iconSize(1);
@@ -118,7 +118,7 @@ body {
                                 }
                             }
                             h4 {
-                                @include fontColor(3);
+                                @include fontColor(2);
                                 @include textHidden;
                                 width: calc(100% - #{pxToRem(22 + 8 + 16)});
                             }
@@ -154,7 +154,7 @@ body {
                     @include themeColor(0.06, background-color);
                     cursor: pointer;
                     @include baseTransition(width);
-                    @include fontColor(1);
+                    @include fontColor(2);
                     &:hover {
                         @include themeColor(var(--datalistHoverBackgroundAlpha), background-color);
                     }
@@ -198,7 +198,7 @@ body {
 
                     .BoatIconButton {
                         .iconfont {
-                            @include fontColor(3);
+                            @include fontColor(2);
                         }
                     }
                 }

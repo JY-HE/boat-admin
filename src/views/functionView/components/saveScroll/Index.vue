@@ -119,16 +119,16 @@ useSaveScroll('SaveScroll');
 <style lang="scss">
 .BoatCard {
     .subtitle {
-        @apply text-h1 mb-4;
+        @apply text-h2 font-style-3 mb-4;
     }
     .content {
-        @apply text-h1 font-style-3 mb-4;
+        @apply text-h2 font-style-4 mb-4;
     }
     .model-params {
         @apply w-full border-collapse;
         td,
         th {
-            @apply border  p-3 text-left;
+            @apply border p-3 text-left;
         }
     }
     .theory-compare {

@@ -2,7 +2,7 @@
     <div class="AboutView">
         <div class="flex justify-start items-center flex-col gap-4">
             <BoatCard title="关于">
-                <p class="text-h1 font-style-2">
+                <p class="text-h2 font-style-4">
                     {{ packageData.description }}
                 </p>
             </BoatCard>
@@ -66,8 +66,8 @@ onMounted(async () => {
                 border: pxToRem(1) solid;
                 @include themeColor(0.16, border-color);
                 div {
-                    @include fontStyle(2);
-                    @include fontColor(1);
+                    @include fontStyle(3);
+                    @include fontColor(2);
                     padding: pxToRem(16);
                     &[label] {
                         width: 65%;

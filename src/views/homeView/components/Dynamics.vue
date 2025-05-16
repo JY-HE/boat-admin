@@ -10,7 +10,7 @@
                     :key="item.date"
                     class="flex justify-center items-start flex-col relative pl-10"
                 >
-                    <p class="text-h3 font-style-4">{{ `${item.date}（${item.weekday}）` }}</p>
+                    <p class="text-h2 font-style-4">{{ `${item.date}（${item.weekday}）` }}</p>
                     <p class="text-h1 font-style-4">
                         新增
                         <span class="text-errorColor-100">{{ item.newCount }}</span>

@@ -11,7 +11,7 @@
         .el-form-item__label {
             @include whrem(120, 40);
             @include fontStyle(4);
-            @include fontColor(1);
+            @include fontColor(2);
             line-height: pxToRem(40);
             padding-right: pxToRem(20);
             position: relative;
@@ -46,7 +46,7 @@
                     line-height: pxToRem(40);
                     border-radius: pxToRem(12);
                     border: pxToRem(1) solid;
-                    @include fontColor(3);
+                    @include fontColor(2);
                     @include themeColor(0.26, border-color);
 
                     &:hover {

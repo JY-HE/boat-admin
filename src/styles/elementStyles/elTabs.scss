@@ -19,7 +19,7 @@
 
                     .el-tabs__item {
                         @include fontStyle(4);
-                        @include fontColor(3);
+                        @include fontColor(2);
                         height: pxToRem(56);
                         line-height: pxToRem(56);
                         padding: 0 pxToRem(16);

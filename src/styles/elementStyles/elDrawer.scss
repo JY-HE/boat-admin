@@ -13,18 +13,18 @@
         @include flexCenter(flex-start);
         padding: 0 pxToRem(16);
         @include fontStyle(2);
-        @include fontColor(1);
+        @include fontColor(2);
         & > div {
             flex: 1;
         }
         .el-drawer__title {
-            @include fontColor(1);
+            @include fontColor(2);
             @include fontStyle(2);
             @include textHidden;
         }
         .el-drawer__close-btn {
             .el-drawer__close {
-                @include fontColor(1);
+                @include fontColor(2);
                 @include whrem(24);
             }
         }

@@ -24,6 +24,7 @@
 <script setup lang="ts">
 import { PlusRouteRecordRaw } from '@/types';
 import { useSystemConfig } from '@/hooks/useSystemConfig';
+import { debounce } from 'lodash-es';
 
 const router = useRouter();
 const routerList = router
@@ -51,8 +52,22 @@ const addHideClass = () => {
     appElement.setAttribute('class', hideMenu.value ? 'hide' : '');
 };
 
+/**
+ * 监听页面 resize 事件，自动折叠/恢复菜单
+ */
+const handleResize = () => {
+    hideMenu.value = document.body.clientWidth < 1300;
+    setHideMenu(hideMenu.value);
+    addHideClass();
+};
+
 onMounted(() => {
     hideMenu.value = isHideMenu.value;
     addHideClass();
+    window.addEventListener('resize', debounce(handleResize, 200));
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', debounce(handleResize, 200));
 });
 </script>

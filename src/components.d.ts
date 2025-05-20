@@ -22,6 +22,7 @@ declare module 'vue' {
     BoatRotateMenu: typeof import('@koihe/boat-ui/es')['BoatRotateMenu']
     BoatTips: typeof import('./components/BoatTips.vue')['default']
     BoatTitle: typeof import('./components/BoatTitle.vue')['default']
+    BoatUpdateModal: typeof import('./components/BoatUpdateModal.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElDialog: typeof import('element-plus/es')['ElDialog']

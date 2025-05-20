@@ -11,12 +11,14 @@
         </div>
     </div>
     <boat-rotate-menu :menus="['home1', 'search', 'config']" @click="handleRotateMenuClick" />
+    <BoatUpdateModal v-model="visibleUpdateModal" />
 </template>
 
 <script setup lang="ts">
 import MenuList from '@/layouts/menu/Index.vue';
 import Header from '@/layouts/header/Index.vue';
 import { usePubSub, Topics } from '@/hooks/usePubSub';
+import { useVersionChecker } from '@/hooks/useVersionChecker';
 
 const router = useRouter();
 const { publish: openConfigDrawer } = usePubSub(Topics.OpenSystemConfigDrawer);
@@ -42,6 +44,14 @@ function handleRotateMenuClick(menu: string) {
             break;
     }
 }
+
+const visibleUpdateModal = ref(false);
+const { hasNewVersion } = useVersionChecker();
+watch(hasNewVersion, newValue => {
+    if (newValue) {
+        visibleUpdateModal.value = true;
+    }
+});
 </script>
 
 <style lang="scss">

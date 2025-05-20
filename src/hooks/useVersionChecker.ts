@@ -53,7 +53,9 @@ export function useVersionChecker(options: VersionCheckerOptions = {}): VersionC
 
     async function fetchVersion(): Promise<string | null> {
         try {
-            const res = await fetch('/version.json', { cache: 'no-store' });
+            const res = await fetch(`${import.meta.env.BASE_URL}version.json`, {
+                cache: 'no-store',
+            });
             if (!res.ok) {
                 // 请求到文件但状态非 2xx
                 console.error(`[VersionChecker] 请求 /version.json 失败: status ${res.status}`);

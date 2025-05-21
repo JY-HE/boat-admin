@@ -26,7 +26,6 @@ export default defineConfig(({ mode }) => {
             AutoImport({
                 imports: ['vue', 'vue-router', 'pinia'],
                 resolvers: [ElementPlusResolver()],
-                // 可以选择auto-import.d.ts生成的位置，使用ts建议设置为'src/auto-import.d.ts'
                 dts: 'src/auto-import.d.ts',
                 // 配置开启 eslint
                 eslintrc: {
@@ -84,7 +83,6 @@ export default defineConfig(({ mode }) => {
                     const notFoundHtml = path.join(outDir, '404.html');
                     if (fs.existsSync(indexHtml)) {
                         fs.copyFileSync(indexHtml, notFoundHtml);
-                        console.log('✅ 生成 404.html，启用 History 路由回退');
                     }
                 },
             },

@@ -21,7 +21,8 @@
         "src/**/*.d.ts",
         "src/**/*.tsx",
         "src/**/*.vue",
-        "createDirectory.js"
+        "createDirectory.js",
+        "src/components.d.ts" // 导入组件的类型定义文件，解决丢失组件类型提示
     ],
     "exclude": ["node_modules", "dist"]
 }

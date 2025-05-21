@@ -1,11 +1,9 @@
 name: Deploy index.html site to Pages
 
 on:
-    # 在针对 `main` 分支的推送上运行。如果你
-    # 使用 `master` 分支作为默认分支，请将其更改为 `master`
+    # 在针对 `main` 分支的推送上运行。如果你使用 `master` 作为默认分支，请将其更改为 `master`
     push:
         branches: [main]
-
     # 允许你从 Actions 选项卡手动运行此工作流程
     workflow_dispatch:
 
@@ -36,16 +34,18 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  cache: pnpm #  yarn / pnpm
+                  cache: pnpm
 
-            - name: Setup Pages
-              uses: actions/configure-pages@v4
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                  version: latest
 
             - name: Install dependencies
-              run: pnpm install # 或 pnpm install / yarn install / bun install
+              run: pnpm install
 
             - name: Build with index.html
-              run: pnpm run build # 或 pnpm build / yarn build / bun run build
+              run: pnpm run build
 
             # 不走缓存，确保每次都能拿到最新版本号
             - name: Generate version.json
@@ -60,12 +60,11 @@ jobs:
 
     # 部署工作
     deploy:
+        needs: build
+        runs-on: ubuntu-latest
         environment:
             name: github-pages
             url: ${{ steps.deployment.outputs.page_url }}
-        needs: build
-        runs-on: ubuntu-latest
-        name: Deploy
         steps:
             - name: Deploy to GitHub Pages
               id: deployment

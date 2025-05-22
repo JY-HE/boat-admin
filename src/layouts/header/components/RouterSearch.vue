@@ -25,7 +25,7 @@
                         :key="index"
                         class="searchItem"
                         :class="selectedIndex === index ? 'active' : ''"
-                        @click="routerHandler(item)"
+                        @click.stop="routerHandler(item)"
                     >
                         <p class="text-h1 font-style-3">{{ item.name }}</p>
                         <p class="text-h3 font-style-4">{{ item.path }}</p>
@@ -87,10 +87,12 @@ watchEffect(() => {
  * @param item 路由对象
  */
 const routerHandler = (item: PlusRouteRecordRaw) => {
-    router.push(item.path);
+    dialogVisible.value = false;
     searchValue.value = '';
     selectedIndex.value = -1;
-    dialogVisible.value = false;
+    nextTick(() => {
+        router.push(item.path);
+    });
 };
 
 /**
@@ -100,9 +102,10 @@ const routerHandler = (item: PlusRouteRecordRaw) => {
 const handleKeydown = (event: KeyboardEvent) => {
     const { key } = event;
     const { length } = searchList.value;
-    // 检查是否是Ctrl+H组合键
-    if (event.ctrlKey && (event.key === 'I' || event.key === 'i')) {
+    // 检查是否是 Ctrl + I 组合键
+    if (!dialogVisible.value && event.ctrlKey && (event.key === 'I' || event.key === 'i')) {
         dialogVisible.value = true;
+        return;
     }
     if (key === 'ArrowUp') {
         if (selectedIndex.value > 0) {

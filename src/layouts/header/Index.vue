@@ -6,7 +6,7 @@
         <div operation>
             <RouterSearch />
             <Theme />
-            <AddRouter v-if="mode === 'development'" />
+            <AddRouter v-if="!isProd" />
             <Setting />
         </div>
     </div>
@@ -19,5 +19,5 @@ import RouterSearch from './components/RouterSearch.vue';
 import Setting from './components/Setting.vue';
 import AddRouter from './components/AddRouter.vue';
 
-const mode = ref(import.meta.env.VITE_NODE_ENV);
+const isProd = import.meta.env.PROD; // 判断是否为生产环境
 </script>

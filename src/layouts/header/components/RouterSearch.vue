@@ -66,15 +66,20 @@ const inputRef = ref<HTMLInputElement | null>(null);
 const searchValue = ref<string>('');
 const dialogVisible = ref<boolean>(false);
 const selectedIndex = ref<number>(-1);
+const searchList = ref<PlusRouteRecordRaw[]>([]);
 
-/**
- * 过滤搜索列表
- */
-const searchList = computed<PlusRouteRecordRaw[]>(() => {
-    if (!searchValue.value) return [];
-    return routerList.filter(
-        item => item.path.includes(searchValue.value) || item.meta.title.includes(searchValue.value)
-    );
+watchEffect(() => {
+    if (!searchValue.value) {
+        searchList.value = [];
+    } else {
+        // 过滤搜索列表
+        searchList.value = routerList.filter(item => {
+            return (
+                item.path?.includes(searchValue.value) ||
+                item.meta?.title?.includes(searchValue.value)
+            );
+        });
+    }
 });
 
 /**
@@ -82,9 +87,10 @@ const searchList = computed<PlusRouteRecordRaw[]>(() => {
  * @param item 路由对象
  */
 const routerHandler = (item: PlusRouteRecordRaw) => {
-    dialogVisible.value = false;
     router.push(item.path);
     searchValue.value = '';
+    selectedIndex.value = -1;
+    dialogVisible.value = false;
 };
 
 /**

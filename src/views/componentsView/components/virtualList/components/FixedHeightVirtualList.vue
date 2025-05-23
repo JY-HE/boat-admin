@@ -15,7 +15,7 @@
                 class="flex justify-center items-center bg-themeColor-40 rounded font-style-1 text-h1"
                 :style="{ height: localItemHeight + 'px' }"
             >
-                {{ item }}
+                {{ item + 1 }}
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@ const startIndex = ref(0); // 起始索引
 const endIndex = ref(0); // 结束索引
 const startOffset = ref(0); // 偏移量
 const localItemHeight = ref(props.itemHeight); // 每项高度
-
+const bufferCount = 3; // 缓冲数量
 /**
  * 列表总高度
  * @returns {number} 列表高度
@@ -51,7 +51,8 @@ const listHeight = computed(() => dataSource.value.length * localItemHeight.valu
  * @returns {number} 可显示的项数
  */
 const visibleCount = computed(() => {
-    return Math.ceil(screenHeight.value / localItemHeight.value);
+    // 增大可视 count，多渲染 3 条作 buffer，以避免快速滚动或分辨率微调时的空白闪烁
+    return Math.ceil(screenHeight.value / localItemHeight.value) + bufferCount;
 });
 
 /**
@@ -100,9 +101,9 @@ watchEffect(() => {
     if (virtualListRef.value) {
         const { scrollTop, offsetHeight } = virtualListRef.value;
         screenHeight.value = offsetHeight;
-        // scrollTop - localItemHeight.value * 3 为了保证分辨率改变时出现偏移量留白问题
+        // scrollTop - localItemHeight.value * bufferCount 为了保证分辨率改变时出现偏移量留白问题
         startIndex.value = Math.floor(
-            Math.max(0, scrollTop - localItemHeight.value * 3) / localItemHeight.value
+            Math.max(0, scrollTop - localItemHeight.value * bufferCount) / localItemHeight.value
         );
         // 计算结束索引
         endIndex.value = startIndex.value + visibleCount.value;

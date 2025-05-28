@@ -1,13 +1,13 @@
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
-import fs from 'fs';
 import { visualizer } from 'rollup-plugin-visualizer';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { BoatUIResolver } from '@koihe/boat-ui/dist/resolver';
-import addDirectory from './public/addDirectory';
+import fileSystemOperationsPlugin from './src/plugins/fileSystemOperations';
+import githubPagesFallbackPlugin from './src/plugins/pagesFallback';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -41,51 +41,8 @@ export default defineConfig(({ mode }) => {
             }),
             // 输出打包体积报告
             visualizer({ open: true }),
-            {
-                name: 'file-system-operations',
-                configureServer(server) {
-                    server.middlewares.use((req, res, next) => {
-                        if (req.url === '/addDirectory' && req.method === 'POST') {
-                            let body = '';
-                            req.on('data', chunk => {
-                                body += chunk.toString(); // 将 Buffer 对象转换为字符串并拼接到 body 中
-                            });
-                            req.on('end', async () => {
-                                const { level, title, fileName, icon, parentName } =
-                                    JSON.parse(body);
-                                try {
-                                    const data = await addDirectory(
-                                        level,
-                                        title,
-                                        fileName,
-                                        icon,
-                                        parentName
-                                    );
-                                    res.statusCode = 200;
-                                    res.setHeader('Content-Type', 'application/json');
-                                    res.end(data);
-                                } catch (error) {
-                                    res.statusCode = 500;
-                                    res.end(`Error creating directory: ${error.message}`);
-                                }
-                            });
-                        } else {
-                            next();
-                        }
-                    });
-                },
-            },
-            {
-                name: 'github-pages-404-fallback',
-                closeBundle() {
-                    const outDir = path.resolve(__dirname, 'dist');
-                    const indexHtml = path.join(outDir, 'index.html');
-                    const notFoundHtml = path.join(outDir, '404.html');
-                    if (fs.existsSync(indexHtml)) {
-                        fs.copyFileSync(indexHtml, notFoundHtml);
-                    }
-                },
-            },
+            fileSystemOperationsPlugin(),
+            githubPagesFallbackPlugin(),
         ],
         build: {
             rollupOptions: {
@@ -93,10 +50,10 @@ export default defineConfig(({ mode }) => {
                     // 静态资源拆分
                     manualChunks(id) {
                         if (id.includes('node_modules')) {
-                            if (id.includes('element-plus')) return 'element-plus';
-                            if (id.includes('echarts')) return 'echarts';
-                            if (id.includes('lodash-es')) return 'lodash-es';
-                            if (id.includes('@koihe/boat-ui')) return '@koihe/boat-ui';
+                            if (id.includes('element-plus')) return 'el-vendor';
+                            if (id.includes('echarts')) return 'echarts-vendor';
+                            if (id.includes('lodash-es')) return 'lodash-vendor';
+                            if (id.includes('@koihe/boat-ui')) return 'koihe-vendor';
                             return 'vendor'; // 其他合并成 vendor
                         }
                     },
@@ -113,7 +70,7 @@ export default defineConfig(({ mode }) => {
             },
         },
         optimizeDeps: {
-            include: ['vue', 'vue-router', 'pinia'], // 预打包常用库
+            include: ['vue', 'vue-router', 'pinia', 'lodash-es'], // 预打包常用库
         },
         server: {
             open: false,

@@ -49,4 +49,56 @@
     .el-tabs__content {
         display: none;
     }
+
+    &.el-tabs--card {
+        .el-tabs__header {
+            height: fit-content;
+            border-bottom: pxToRem(1) solid;
+            @include themeColor(1, border-bottom-color);
+
+            .el-tabs__nav-wrap {
+                .el-tabs__nav {
+                    border: none;
+
+                    .el-tabs__item {
+                        padding: 0 pxToRem(16);
+                        &.is-active {
+                            position: relative;
+
+                            .label {
+                                height: 100%;
+                                color: rgba(var(--whiteColor), 1);
+                                background-color: rgba(var(--themeColor), 1);
+                                border-radius: pxToRem(14) pxToRem(14) 0 0;
+                                padding: 0 pxToRem(16);
+                            }
+
+                            &:has(.label) {
+                                &::before,
+                                &::after {
+                                    position: absolute;
+                                    content: '';
+                                    @include whrem(20, 20);
+                                    background-color: transparent;
+                                    bottom: 0;
+                                }
+                                &::before {
+                                    left: 0;
+                                    border-bottom-right-radius: pxToRem(20);
+                                    box-shadow: pxToRem(6) pxToRem(6) 0 pxToRem(6)
+                                        rgba(var(--themeColor));
+                                }
+                                &::after {
+                                    right: 0;
+                                    border-bottom-left-radius: pxToRem(20);
+                                    box-shadow: pxToRem(-6) pxToRem(6) 0 pxToRem(6)
+                                        rgba(var(--themeColor));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

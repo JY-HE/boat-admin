@@ -21,8 +21,8 @@ importers:
         specifier: ^5.5.0
         version: 5.6.0
       element-plus:
-        specifier: ^2.7.3
-        version: 2.9.10(vue@3.5.14(typescript@5.8.3))
+        specifier: ^2.9.0
+        version: 2.9.0(vue@3.5.14(typescript@5.8.3))
       element-resize-detector:
         specifier: ^1.2.4
         version: 1.2.4
@@ -594,6 +594,9 @@ packages:
   '@types/node@18.19.103':
     resolution: {integrity: sha512-hHTHp+sEz6SxFsp+SA+Tqrua3AbmlAw+Y//aEwdHrdZkYVRWdvWD3y5uPZ0flYOkgskaFWqZ/YGFm3FaFQ0pRw==}
 
+  '@types/node@18.19.105':
+    resolution: {integrity: sha512-a+DrwD2VyzqQR2W0EVF8EaCh6Em4ilQAYLEPZnMNkQHXR7ziWW7RUhZMWZAgRpkDDAdUIcJOXSPJT/zBEwz3sA==}
+
   '@types/nprogress@0.2.3':
     resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
 
@@ -1159,8 +1162,8 @@ packages:
   electron-to-chromium@1.5.155:
     resolution: {integrity: sha512-ps5KcGGmwL8VaeJlvlDlu4fORQpv3+GIcF5I3f9tUKUlJ/wsysh6HU8P5L1XWRYeXfA0oJd4PyM8ds8zTFf6Ng==}
 
-  element-plus@2.9.10:
-    resolution: {integrity: sha512-W2v9jWnm1kl/zm4bSvCh8aFCVlxvhG3fmqiDZwyd6WQiWGE595J/mpjcCggEr+49QDgIymhXrpPMOPPSARUbng==}
+  element-plus@2.9.0:
+    resolution: {integrity: sha512-ccOFXKsauo2dtokAr4OX7gZsb7TuAoVxA2zGRZo5o2yyDDBLBaZxOoFQPoxITSLcHbBfQuNDGK5Iag5hnyKkZA==}
     peerDependencies:
       vue: ^3.2.0
 
@@ -2277,6 +2280,11 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  terser@5.40.0:
+    resolution: {integrity: sha512-cfeKl/jjwSR5ar7d0FGmave9hFGJT8obyo0z+CrQOylLDbk7X81nPU6vq9VORa5jU30SkDnT2FXjLbR8HLP+xA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
   text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
 
@@ -2516,15 +2524,15 @@ packages:
       typescript:
         optional: true
 
-  watchpack@2.4.3:
-    resolution: {integrity: sha512-adBYQLivcg1jbdKEJeqScJJFvgm4qY9+3tXw+jdG6lkVeqRJEtiQmSWjmth8GKmDZuX7sYM4YFxQsf0AzMfGGw==}
+  watchpack@2.4.4:
+    resolution: {integrity: sha512-c5EGNOiyxxV5qmTtAB7rbiXxi1ooX1pQKMLX/MIabJjRA0SJBQOjKF+KSVfHkr9U1cADPon0mRiVe/riyaiDUA==}
     engines: {node: '>=10.13.0'}
 
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
 
-  webpack-sources@3.2.3:
-    resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
+  webpack-sources@3.3.0:
+    resolution: {integrity: sha512-77R0RDmJfj9dyv5p3bM5pOHa+X8/ZkO9c7kpDstigkC4nIDobadsfSGCwB4bKhMVxqAok8tajaoR8rirM7+VFQ==}
     engines: {node: '>=10.13.0'}
 
   webpack-virtual-modules@0.6.2:
@@ -2953,6 +2961,10 @@ snapshots:
   '@types/lodash@4.17.17': {}
 
   '@types/node@18.19.103':
+    dependencies:
+      undici-types: 5.26.5
+
+  '@types/node@18.19.105':
     dependencies:
       undici-types: 5.26.5
 
@@ -3593,7 +3605,7 @@ snapshots:
 
   electron-to-chromium@1.5.155: {}
 
-  element-plus@2.9.10(vue@3.5.14(typescript@5.8.3)):
+  element-plus@2.9.0(vue@3.5.14(typescript@5.8.3)):
     dependencies:
       '@ctrl/tinycolor': 3.6.1
       '@element-plus/icons-vue': 2.3.1(vue@3.5.14(typescript@5.8.3))
@@ -4060,7 +4072,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 18.19.103
+      '@types/node': 18.19.105
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -4755,10 +4767,17 @@ snapshots:
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
-      terser: 5.39.2
+      terser: 5.40.0
       webpack: 5.99.9
 
   terser@5.39.2:
+    dependencies:
+      '@jridgewell/source-map': 0.3.6
+      acorn: 8.14.1
+      commander: 2.20.3
+      source-map-support: 0.5.21
+
+  terser@5.40.0:
     dependencies:
       '@jridgewell/source-map': 0.3.6
       acorn: 8.14.1
@@ -5019,7 +5038,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.8.3
 
-  watchpack@2.4.3:
+  watchpack@2.4.4:
     dependencies:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
@@ -5028,7 +5047,7 @@ snapshots:
     dependencies:
       defaults: 1.0.4
 
-  webpack-sources@3.2.3: {}
+  webpack-sources@3.3.0: {}
 
   webpack-virtual-modules@0.6.2: {}
 
@@ -5056,8 +5075,8 @@ snapshots:
       schema-utils: 4.3.2
       tapable: 2.2.2
       terser-webpack-plugin: 5.3.14(webpack@5.99.9)
-      watchpack: 2.4.3
-      webpack-sources: 3.2.3
+      watchpack: 2.4.4
+      webpack-sources: 3.3.0
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild

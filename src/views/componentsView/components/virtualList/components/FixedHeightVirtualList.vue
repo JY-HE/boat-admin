@@ -11,11 +11,11 @@
             <div
                 v-for="item in visibleData"
                 ref="items"
-                :key="item"
+                :key="item.index"
                 class="flex justify-center items-center bg-themeColor-40 rounded font-style-1 text-h1"
                 :style="{ height: localItemHeight + 'px' }"
             >
-                {{ item + 1 }}
+                {{ item.index + 1 }}
             </div>
         </div>
     </div>
@@ -25,13 +25,12 @@
 import { useSystemConfigStore } from '@/store';
 
 const props = defineProps({
+    listData: { type: Array as PropType<{ index: number; value: string }[]>, default: () => [] },
     itemHeight: { type: Number, default: 120 },
 });
-// 模拟数据源
-const dataSource = computed(() => {
-    return Array.from({ length: 100 }, (_, i) => i);
-});
+
 const systemConfigStore = useSystemConfigStore();
+
 // 列表父容器的引用
 const virtualListRef = ref<HTMLElement | null>(null);
 const screenHeight = ref(0); // 可视区域高度
@@ -44,7 +43,7 @@ const bufferCount = 3; // 缓冲数量
  * 列表总高度
  * @returns {number} 列表高度
  */
-const listHeight = computed(() => dataSource.value.length * localItemHeight.value);
+const listHeight = computed(() => props.listData.length * localItemHeight.value);
 
 /**
  * 可显示的列表项数
@@ -68,10 +67,7 @@ const getTransform = computed(() => {
  * @returns {any[]} 可见的列表数据
  */
 const visibleData = computed(() => {
-    return dataSource.value.slice(
-        startIndex.value,
-        Math.min(endIndex.value, dataSource.value.length)
-    );
+    return props.listData.slice(startIndex.value, Math.min(endIndex.value, props.listData.length));
 });
 
 /**
@@ -84,7 +80,7 @@ const scrollEvent = () => {
     // 判断是否已经滚动到底部，防止不必要的事件触发
     if (
         scrollTop + screenHeight.value >= listHeight.value &&
-        endIndex.value >= dataSource.value.length
+        endIndex.value >= props.listData.length
     )
         return;
     // 计算当前的起始索引

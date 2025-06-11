@@ -47,11 +47,11 @@ const dataSource = ref<{ index: number; value: string }[]>([
 
 /**
  * 生成随机汉字字符串，长度在 minLen 到 maxLen 之间随机
- * @param minLen 最少汉字数，默认 100
- * @param maxLen 最多汉字数，默认 200
+ * @param minLen 最少汉字数，默认 200
+ * @param maxLen 最多汉字数，默认 800
  * @returns 随机生成的汉字字符串
  */
-function randomChineseString(minLen = 100, maxLen = 200): string {
+function randomChineseString(minLen = 200, maxLen = 800): string {
     const length = Math.floor(Math.random() * (maxLen - minLen + 1)) + minLen;
     return generateParagraph(length);
 }

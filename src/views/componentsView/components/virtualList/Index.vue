@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { faker } from '@faker-js/faker';
+import { generateParagraph } from 'lipsum-zh';
 import FixedHeightVirtualList from './components/FixedHeightVirtualList.vue';
 import IndefiniteHeightVirtualList from './components/IndefiniteHeightVirtualList.vue';
 
@@ -40,10 +40,21 @@ const dataSource = ref<{ index: number; value: string }[]>([
     ...Array.from({ length: 100 }, (_, i) => {
         return {
             index: i,
-            value: faker.lorem.sentences(),
+            value: randomChineseString(),
         };
     }),
 ]);
+
+/**
+ * 生成随机汉字字符串，长度在 minLen 到 maxLen 之间随机
+ * @param minLen 最少汉字数，默认 100
+ * @param maxLen 最多汉字数，默认 200
+ * @returns 随机生成的汉字字符串
+ */
+function randomChineseString(minLen = 100, maxLen = 200): string {
+    const length = Math.floor(Math.random() * (maxLen - minLen + 1)) + minLen;
+    return generateParagraph(length);
+}
 </script>
 
 <style lang="scss"></style>

@@ -16,7 +16,7 @@
                 :data-index="item.index"
             >
                 <span class="mr-4">{{ item.index }}</span>
-                <span> {{ item.value }} </span>
+                <span class="font-style-3"> {{ item.value }} </span>
             </div>
         </div>
     </div>

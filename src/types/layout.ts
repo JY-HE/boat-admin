@@ -25,7 +25,7 @@ export type PlusRouteRecordRaw = Partial<Omit<RouteRecordRaw, 'children'>> & {
          */
         icon?: string;
         /**
-         * 是否显示在侧边栏（一级菜单需要设置）
+         * 是否显示在侧边栏
          */
         isShow?: boolean;
         /**

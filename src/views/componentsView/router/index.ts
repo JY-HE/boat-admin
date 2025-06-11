@@ -16,6 +16,7 @@ const router = {
                     /* webpackChunkName: "picturePreview" */ '@/views/componentsView/components/picturePreview/Index.vue'
                 ),
             meta: {
+                isShow: false,
                 title: '图片预览',
             },
         },

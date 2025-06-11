@@ -81,13 +81,30 @@ const props = defineProps({
         required: true,
     },
 });
-const routerMenu = reactive<PlusRouteRecordRaw[]>(props.routerList);
 
 const routerStore = useRouterStore();
 const { isHideMenu } = useSystemConfig();
 
 const router = useRouter();
 const active = ref<string>('');
+const routerMenu = ref<PlusRouteRecordRaw[]>([]);
+
+watch(
+    () => props.routerList,
+    newList => {
+        // 过滤 children 中 isShow 为 false 的路由
+        routerMenu.value = newList.map(item => {
+            item.children = item.children?.filter(child => {
+                if ('isShow' in child.meta) {
+                    return child.meta.isShow;
+                }
+                return true;
+            });
+            return item;
+        });
+    },
+    { immediate: true }
+);
 
 /**
  * 点击菜单跳转路由
@@ -111,7 +128,7 @@ const expandRouter = () => {
         ?.split('/')
         ?.filter(item => Boolean(item))
         ?.at(0);
-    const findItem = routerMenu.find(item => item.path === `/${pathName}`);
+    const findItem = routerMenu.value.find(item => item.path === `/${pathName}`);
     if (findItem && findItem.children?.length) {
         findItem.meta.isShowChildRouter = true;
     }
@@ -121,7 +138,7 @@ const expandRouter = () => {
  * 折叠其他菜单
  */
 const collapseOtherMenus = (menu: PlusRouteRecordRaw) => {
-    routerMenu?.forEach(router => {
+    routerMenu.value.forEach(router => {
         if (router.children?.length && !menu.path.startsWith(router.path)) {
             router.meta.isShowChildRouter = false;
         }

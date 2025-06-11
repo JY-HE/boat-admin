@@ -28,6 +28,9 @@ router.beforeResolve((to, from, next) => {
 
 router.beforeEach((to, from, next) => {
     NProgress.start();
+    if ('isShow' in to.meta && !to.meta.isShow) {
+        return next({ name: 'NotFound' });
+    }
     next();
 });
 

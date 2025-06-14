@@ -1,36 +1,36 @@
-// 首页
-import homeViewRoute from '@/views/homeView/router';
+// 仪表盘
+import dashboardViewRouter from '@/views/dashboardView/router';
 // 玩转css
 import cssViewRouter from '@/views/cssView/router';
 // 组件
-import componentsView from '@/views/componentsView/router';
+import componentsViewRouter from '@/views/componentsView/router';
 // 功能
-import functionView from '@/views/functionView/router';
+import functionViewRouter from '@/views/functionView/router';
 // eCharts示例
-import eChartsView from '@/views/eChartsView/router';
+import eChartsViewRouter from '@/views/eChartsView/router';
 // 引导页
-import introductionPageView from '@/views/introductionPageView/router';
+import introductionPageViewRouter from '@/views/introductionPageView/router';
 // 水印
-import watermarkView from '@/views/watermarkView/router';
+import watermarkViewRouter from '@/views/watermarkView/router';
 // 异常页
-import errorView from '@/views/errorView/router';
+import errorViewRouter from '@/views/errorView/router';
 // 关于页
-import aboutView from '@/views/aboutView/router';
+import aboutViewRouter from '@/views/aboutView/router';
 // 权限管理
-import permissionView from '@/views/permissionView/router';
+import permissionViewRouter from '@/views/permissionView/router';
 // 标签页通信
-import tabCommunicationView from '@/views/tabCommunicationView/router';
+import tabCommunicationViewRouter from '@/views/tabCommunicationView/router';
 
 export default [
-    homeViewRoute,
+    dashboardViewRouter,
     cssViewRouter,
-    componentsView,
-    functionView,
-    eChartsView,
-    introductionPageView,
-    watermarkView,
-    errorView,
-    aboutView,
-    permissionView,
-    tabCommunicationView,
+    componentsViewRouter,
+    functionViewRouter,
+    eChartsViewRouter,
+    introductionPageViewRouter,
+    watermarkViewRouter,
+    errorViewRouter,
+    aboutViewRouter,
+    permissionViewRouter,
+    tabCommunicationViewRouter,
 ];

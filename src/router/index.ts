@@ -6,7 +6,7 @@ import NProgress from '@/utils/nprogress';
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        redirect: '/home',
+        redirect: '/dashboard/workbench',
     },
     ...Routes,
     {

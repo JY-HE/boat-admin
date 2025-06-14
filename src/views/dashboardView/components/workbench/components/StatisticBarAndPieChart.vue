@@ -65,7 +65,12 @@ const barOptions: ECOption = {
 
 // 饼图配置
 const pieOptions: ECOption = {
-    title: { text: '近七天告警处置率', left: 'center', top: '0', textStyle: { fontSize: 14 } },
+    title: {
+        text: '近七天告警处置率',
+        left: 'center',
+        top: '0',
+        textStyle: { fontSize: 14 },
+    },
     tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
     series: [
         {

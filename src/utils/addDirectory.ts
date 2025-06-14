@@ -123,8 +123,8 @@ async function updateRouterFile(title: string, fileName: string): Promise<void> 
         // 读取当前路由对象文件内容
         let content: string = fs.readFileSync(routersFilePath, 'utf8');
         // 构造导入语句和路由对象
-        const importStatement: string = `// ${title}\nimport ${fileName}View from '@/views/${fileName}View/router';\n`;
-        const routerObject: string = `  ${fileName}View,\n`;
+        const importStatement: string = `// ${title}\nimport ${fileName}ViewRouter from '@/views/${fileName}View/router';\n`;
+        const routerObject: string = `  ${fileName}ViewRouter,\n`;
         // 在适当位置插入导入语句
         const lastImportIndex: number = content.lastIndexOf('import ');
         const nextLineIndex: number = content.indexOf('\n', lastImportIndex) + 1;

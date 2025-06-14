@@ -27,6 +27,8 @@ const props = withDefaults(
 
 const TEXT_COLOR = ref(getCssVariableValue('--chartTextColor'));
 const FONT_SIZE = '12px';
+const DARK_COLORS = ['#3966A2', '#6191D3', '#DBBACB', '#457B9D', '#C2C0D8'];
+const LIGHT_COLORS = ['#8AA4C7', '#F3CFD0', '#96B9D9', '#8C618C', '#6B8AA6'];
 
 const echartsRef = ref<HTMLDivElement | null>(null);
 const { setOptions, initCharts } = useECharts(echartsRef);
@@ -43,6 +45,7 @@ function handleThemeOptions(isDark: boolean, options: ECOption): ECOption {
     const modifiedOptions: ECOption = {
         ...options,
         darkMode: isDark,
+        color: isDark ? DARK_COLORS : LIGHT_COLORS,
     };
     return props.textColorAuto ? applyTextColor(modifiedOptions) : modifiedOptions;
 }

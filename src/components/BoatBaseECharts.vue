@@ -27,7 +27,7 @@ const props = withDefaults(
 
 const TEXT_COLOR = ref(getCssVariableValue('--chartTextColor'));
 const FONT_SIZE = '12px';
-const DARK_COLORS = ['#3966A2', '#6191D3', '#DBBACB', '#457B9D', '#C2C0D8'];
+const DARK_COLORS = ['#3966A2', '#457B9D', '#DBBACB', '#2161D3', '#C2C0D8', '#457B9D'];
 const LIGHT_COLORS = ['#8AA4C7', '#F3CFD0', '#96B9D9', '#8C618C', '#6B8AA6'];
 
 const echartsRef = ref<HTMLDivElement | null>(null);

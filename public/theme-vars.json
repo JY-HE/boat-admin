@@ -49,7 +49,7 @@
             "value": 0.12,
             "description": "分页器悬浮背景透明度"
         },
-        { "cssName": "chartModuleBorderAlpha", "value": 0.12, "description": "图表模块边框透明度" },
+        { "cssName": "chartModuleBorderAlpha", "value": 0.35, "description": "图表模块边框透明度" },
         {
             "cssName": "chartModuleHoverBorderAlpha",
             "value": 0.46,
@@ -90,7 +90,7 @@
             "cssName": "paginationHoverBackgroundAlpha",
             "value": 0.26
         },
-        { "cssName": "chartModuleBorderAlpha", "value": 1 },
+        { "cssName": "chartModuleBorderAlpha", "value": 0.7 },
         {
             "cssName": "chartModuleHoverBorderAlpha",
             "value": 1

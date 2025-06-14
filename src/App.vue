@@ -10,7 +10,11 @@
             </transition>
         </div>
     </div>
-    <boat-rotate-menu :menus="['home1', 'search', 'config']" @click="handleRotateMenuClick" />
+    <boat-rotate-menu :menus="iconList" @click="handleRotateMenuClick">
+        <template v-slot="{ data }">
+            <BoatIconfont :icon="data.icon" class="text-5xl font-bold" />
+        </template>
+    </boat-rotate-menu>
     <BoatUpdateModal v-model="visibleUpdateModal" />
 </template>
 
@@ -23,10 +27,25 @@ import { useVersionChecker } from '@/hooks/useVersionChecker';
 const router = useRouter();
 const { publish: openConfigDrawer } = usePubSub(Topics.OpenSystemConfigDrawer);
 
-function handleRotateMenuClick(menu: string) {
-    switch (menu) {
-        case 'home1':
-            router.push('/home');
+const iconList = ref<{ icon: string; menu: string }[]>([
+    {
+        icon: '&#xeb95;',
+        menu: 'workbench',
+    },
+    {
+        icon: '&#xe662;',
+        menu: 'search',
+    },
+    {
+        icon: '&#xe63c;',
+        menu: 'config',
+    },
+]);
+
+function handleRotateMenuClick(data: { icon: string; menu: string }) {
+    switch (data.menu) {
+        case 'workbench':
+            router.push('/dashboard/workbench');
             break;
         case 'search':
             const event = new KeyboardEvent('keydown', {

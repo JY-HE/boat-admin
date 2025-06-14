@@ -49,15 +49,37 @@ function handleThemeOptions(isDark: boolean, options: ECOption): ECOption {
  * @param options 图表配置项
  */
 function applyTextColor(options: ECOption): ECOption {
-    // 设置图例文本颜色
+    // 设置标题文本颜色和字体大小
+    setTitleTextColor(options);
+    // 设置图例文本颜色和字体大小
     setLegendTextColor(options);
-    // 设置坐标轴文本颜色
+    // 设置坐标轴文本颜色和字体大小
     setAxisTextColor(options);
     return options;
 }
 
 /**
- * 设置图例文本颜色
+ * 设置 title 文本颜色和字体大小
+ * @param options 图表配置项
+ */
+function setTitleTextColor(options: ECOption): ECOption {
+    const textColor = getCssVariableValue('--chartTextColor');
+    if (Array.isArray(options.title)) {
+        options.title.forEach(title => {
+            title.textStyle = title.textStyle || {};
+            title.textStyle.color = textColor;
+            title.textStyle.fontSize = '12px';
+        });
+    } else if (options.title) {
+        options.title.textStyle = options.title.textStyle || {};
+        options.title.textStyle.color = textColor;
+        options.title.textStyle.fontSize = '12px';
+    }
+    return options;
+}
+
+/**
+ * 设置图例文本颜色和字体大小
  * @param options 图表配置项
  */
 function setLegendTextColor(options: ECOption): ECOption {
@@ -65,6 +87,7 @@ function setLegendTextColor(options: ECOption): ECOption {
     function updateLegendTextStyle(legendItem: LegendComponentOption) {
         legendItem.textStyle = legendItem.textStyle || {};
         legendItem.textStyle.color = textColor;
+        legendItem.textStyle.fontSize = '12px';
     }
     if (Array.isArray(options.legend)) {
         options.legend.forEach(updateLegendTextStyle);
@@ -75,13 +98,15 @@ function setLegendTextColor(options: ECOption): ECOption {
 }
 
 /**
- * 设置坐标轴文本颜色
+ * 设置坐标轴文本颜色和字体大小
+ * @param options 图表配置项
  */
 function setAxisTextColor(options: ECOption): ECOption {
     const textColor = getCssVariableValue('--chartTextColor');
     function updateAxisTextStyle(axisItem: any) {
         axisItem.axisLabel = axisItem.axisLabel || {};
         axisItem.axisLabel.color = textColor;
+        axisItem.axisLabel.fontSize = '12px';
     }
     const axes = [options.yAxis, options.xAxis];
     axes.forEach(axis => {

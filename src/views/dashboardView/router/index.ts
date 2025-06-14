@@ -28,7 +28,6 @@ const router = {
                 ),
             meta: {
                 title: '分析页',
-                isShow: false,
             },
         },
     ],

@@ -43,12 +43,7 @@ const currentStatistic = computed(() => {
 
 <style lang="scss">
 .StatisticInfo {
-    @include panelStyle;
-    @include panelShadow(0.25);
-}
-@include darkStyle {
-    .StatisticInfo {
-        @include panelShadow(0.8);
-    }
+    border: pxToRem(1) solid;
+    @include themeColor(var(--chartModuleBorderAlpha), border-color);
 }
 </style>

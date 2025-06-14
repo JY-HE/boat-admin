@@ -95,8 +95,8 @@ const recentNotices = ref<NoticeItem[]>([
 
 <style lang="scss">
 .Notice {
-    @include panelStyle;
-    @include panelShadow(0.25);
+    border: pxToRem(1) solid;
+    @include themeColor(var(--chartModuleBorderAlpha), border-color);
 
     .BoatTitle {
         div[operation] {
@@ -105,12 +105,6 @@ const recentNotices = ref<NoticeItem[]>([
                 justify-content: end;
             }
         }
-    }
-}
-
-@include darkStyle {
-    .Notice {
-        @include panelShadow(0.8);
     }
 }
 </style>

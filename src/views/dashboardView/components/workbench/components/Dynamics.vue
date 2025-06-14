@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 const recentDays = ref(
-    Array.from({ length: 5 }, (_, i) => {
+    Array.from({ length: 7 }, (_, i) => {
         const date = new Date();
         date.setDate(date.getDate() - i);
         const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
@@ -42,8 +42,8 @@ const recentDays = ref(
 
 <style lang="scss">
 .Dynamics {
-    @include panelStyle;
-    @include panelShadow(0.25);
+    border: pxToRem(1) solid;
+    @include themeColor(var(--chartModuleBorderAlpha), border-color);
     $dot-colors: (
         (
             start: #667eea,
@@ -62,8 +62,16 @@ const recentDays = ref(
             end: #aa7ef1,
         ),
         (
-            start: #663ff3,
-            end: #aa7ef1,
+            start: #93c3cc,
+            end: #9a7ace,
+        ),
+        (
+            start: #e7b16a,
+            end: #7e7b66,
+        ),
+        (
+            start: #4aca71,
+            end: #345a2f,
         )
     );
     ul {
@@ -125,11 +133,6 @@ const recentDays = ref(
                 justify-content: end;
             }
         }
-    }
-}
-@include darkStyle {
-    .Dynamics {
-        @include panelShadow(0.8);
     }
 }
 </style>

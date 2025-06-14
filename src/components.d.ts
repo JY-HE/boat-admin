@@ -24,6 +24,7 @@ declare module 'vue' {
     BoatTitle: typeof import('./components/BoatTitle.vue')['default']
     BoatUpdateModal: typeof import('./components/BoatUpdateModal.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']

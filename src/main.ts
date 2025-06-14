@@ -4,13 +4,12 @@ import store, { useSystemConfigStore } from '@/store';
 import router from '@/router';
 import adaptiveResolution from '@/utils/adaptiveResolution';
 import appConfig from '@/utils/appConfig';
+import { registerGlobalProperties } from '@/utils/globalProperties';
 import directives from '@/directives';
 // 一定要在main.ts中导入tailwind.css，防止vite每次hmr都会请求src/style/index.scss整体css文件导致热更新慢的问题
 import '@/styles/tailwind.css';
 // 全局样式
 import '@/styles/global.scss';
-import { BoatNotification } from '@koihe/boat-ui';
-import '@koihe/boat-ui/es/notification/style/index';
 import '@koihe/boat-ui/dist/iconfont.js';
 
 async function initializeApp() {
@@ -23,8 +22,8 @@ async function initializeApp() {
     // 注册指令
     app.use(directives);
 
-    // 全局配置
-    app.config.globalProperties.$BoatNotify = BoatNotification;
+    // 注册全局属性
+    registerGlobalProperties(app);
 
     // 初始化自适应页面
     await adaptiveResolution(data => {

@@ -12,6 +12,10 @@ export interface ThemeVars {
     dark: ThemeVar[];
 }
 
+/**
+ * AppConfig 类用于加载和管理应用的主题变量配置。
+ * 它从指定的 JSON 文件中获取主题变量，并提供方法来访问这些变量。
+ */
 class AppConfig {
     private configStyle: ThemeVars = { light: [], dark: [] };
 

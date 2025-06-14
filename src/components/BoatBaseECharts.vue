@@ -25,6 +25,9 @@ const props = withDefaults(
     { textColorAuto: true }
 );
 
+const TEXT_COLOR = ref(getCssVariableValue('--chartTextColor'));
+const FONT_SIZE = '12px';
+
 const echartsRef = ref<HTMLDivElement | null>(null);
 const { setOptions, initCharts } = useECharts(echartsRef);
 const systemConfigStore = useSystemConfigStore();
@@ -36,10 +39,10 @@ const emits = defineEmits(['dark-change']);
  * @param options 图表配置项
  */
 function handleThemeOptions(isDark: boolean, options: ECOption): ECOption {
+    TEXT_COLOR.value = getCssVariableValue('--chartTextColor');
     const modifiedOptions: ECOption = {
         ...options,
         darkMode: isDark,
-        backgroundColor: getCssVariableValue('--chartBackgroundColor'),
     };
     return props.textColorAuto ? applyTextColor(modifiedOptions) : modifiedOptions;
 }
@@ -63,17 +66,16 @@ function applyTextColor(options: ECOption): ECOption {
  * @param options 图表配置项
  */
 function setTitleTextColor(options: ECOption): ECOption {
-    const textColor = getCssVariableValue('--chartTextColor');
     if (Array.isArray(options.title)) {
         options.title.forEach(title => {
             title.textStyle = title.textStyle || {};
-            title.textStyle.color = textColor;
-            title.textStyle.fontSize = '12px';
+            title.textStyle.color = TEXT_COLOR.value;
+            title.textStyle.fontSize = FONT_SIZE;
         });
     } else if (options.title) {
         options.title.textStyle = options.title.textStyle || {};
-        options.title.textStyle.color = textColor;
-        options.title.textStyle.fontSize = '12px';
+        options.title.textStyle.color = TEXT_COLOR.value;
+        options.title.textStyle.fontSize = FONT_SIZE;
     }
     return options;
 }
@@ -83,11 +85,10 @@ function setTitleTextColor(options: ECOption): ECOption {
  * @param options 图表配置项
  */
 function setLegendTextColor(options: ECOption): ECOption {
-    const textColor = getCssVariableValue('--chartTextColor');
     function updateLegendTextStyle(legendItem: LegendComponentOption) {
         legendItem.textStyle = legendItem.textStyle || {};
-        legendItem.textStyle.color = textColor;
-        legendItem.textStyle.fontSize = '12px';
+        legendItem.textStyle.color = TEXT_COLOR.value;
+        legendItem.textStyle.fontSize = FONT_SIZE;
     }
     if (Array.isArray(options.legend)) {
         options.legend.forEach(updateLegendTextStyle);
@@ -102,11 +103,10 @@ function setLegendTextColor(options: ECOption): ECOption {
  * @param options 图表配置项
  */
 function setAxisTextColor(options: ECOption): ECOption {
-    const textColor = getCssVariableValue('--chartTextColor');
     function updateAxisTextStyle(axisItem: any) {
         axisItem.axisLabel = axisItem.axisLabel || {};
-        axisItem.axisLabel.color = textColor;
-        axisItem.axisLabel.fontSize = '12px';
+        axisItem.axisLabel.color = TEXT_COLOR.value;
+        axisItem.axisLabel.fontSize = FONT_SIZE;
     }
     const axes = [options.yAxis, options.xAxis];
     axes.forEach(axis => {

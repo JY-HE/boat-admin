@@ -1,19 +1,19 @@
 const router = {
-    path: '/components',
-    name: '组件',
+    path: '/templates',
+    name: '模板中心',
     meta: {
         isShow: true,
-        title: '组件',
+        title: '模板中心',
         icon: '&#xe779;',
     },
-    redirect: '/components/picturePreview',
+    redirect: '/templates/picturePreview',
     children: [
         {
-            path: '/components/picturePreview',
+            path: '/templates/picturePreview',
             name: '图片预览',
             component: () =>
                 import(
-                    /* webpackChunkName: "picturePreview" */ '@/views/componentsView/components/picturePreview/Index.vue'
+                    /* webpackChunkName: "picturePreview" */ '@/views/templatesView/components/picturePreview/Index.vue'
                 ),
             meta: {
                 isShow: false,
@@ -21,22 +21,22 @@ const router = {
             },
         },
         {
-            path: '/components/linkageForm',
+            path: '/templates/linkageForm',
             name: '联动表单',
             component: () =>
                 import(
-                    /* webpackChunkName: "linkageForm" */ '@/views/componentsView/components/linkageForm/Index.vue'
+                    /* webpackChunkName: "linkageForm" */ '@/views/templatesView/components/linkageForm/Index.vue'
                 ),
             meta: {
                 title: '联动表单',
             },
         },
         {
-            path: '/components/virtualList',
+            path: '/templates/virtualList',
             name: '虚拟列表',
             component: () =>
                 import(
-                    /* webpackChunkName: "virtualList" */ '@/views/componentsView/components/virtualList/Index.vue'
+                    /* webpackChunkName: "virtualList" */ '@/views/templatesView/components/virtualList/Index.vue'
                 ),
             meta: {
                 title: '虚拟列表',

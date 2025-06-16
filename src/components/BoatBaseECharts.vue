@@ -55,12 +55,16 @@ function handleThemeOptions(isDark: boolean, options: ECOption): ECOption {
  * @param options 图表配置项
  */
 function applyTextColor(options: ECOption): ECOption {
-    // 设置标题文本颜色和字体大小
+    // 设置标题文本
     setTitleTextColor(options);
-    // 设置图例文本颜色和字体大小
+    // 设置图例文本
     setLegendTextColor(options);
-    // 设置坐标轴文本颜色和字体大小
+    // 设置坐标轴文本
     setAxisTextColor(options);
+    // 设置 xAxis
+    setXAxisAxisTick(options);
+    // 设置 yAxis
+    setYAxisSplitLineColor(options);
     return options;
 }
 
@@ -73,12 +77,12 @@ function setTitleTextColor(options: ECOption): ECOption {
         options.title.forEach(title => {
             title.textStyle = title.textStyle || {};
             title.textStyle.color = TEXT_COLOR.value;
-            title.textStyle.fontSize = FONT_SIZE;
+            title.textStyle.fontSize = title.textStyle?.fontSize ?? FONT_SIZE;
         });
     } else if (options.title) {
         options.title.textStyle = options.title.textStyle || {};
         options.title.textStyle.color = TEXT_COLOR.value;
-        options.title.textStyle.fontSize = FONT_SIZE;
+        options.title.textStyle.fontSize = options.title.textStyle?.fontSize ?? FONT_SIZE;
     }
     return options;
 }
@@ -119,6 +123,41 @@ function setAxisTextColor(options: ECOption): ECOption {
             updateAxisTextStyle(axis);
         }
     });
+    return options;
+}
+
+/**
+ * 设置 xAxis 的 axisTick
+ */
+function setXAxisAxisTick(options: ECOption): ECOption {
+    if (Array.isArray(options.xAxis)) {
+        options.xAxis.forEach(xAxis => {
+            xAxis.axisTick = xAxis.axisTick || {};
+            xAxis.axisTick.show = false;
+        });
+    } else if (options.xAxis) {
+        options.xAxis.axisTick = options.xAxis.axisTick || {};
+        options.xAxis.axisTick.show = false;
+    }
+    return options;
+}
+
+/**
+ * 设置 yAxis
+ * @param options 图表配置项
+ */
+function setYAxisSplitLineColor(options: ECOption): ECOption {
+    if (Array.isArray(options.yAxis)) {
+        options.yAxis.forEach(yAxis => {
+            yAxis.splitLine = yAxis.splitLine || {};
+            yAxis.splitLine.lineStyle = yAxis.splitLine.lineStyle || {};
+            yAxis.splitLine.lineStyle.color = 'rgba(116, 130, 159, 0.25)';
+        });
+    } else if (options.yAxis) {
+        options.yAxis.splitLine = options.yAxis.splitLine || {};
+        options.yAxis.splitLine.lineStyle = options.yAxis.splitLine.lineStyle || {};
+        options.yAxis.splitLine.lineStyle.color = 'rgba(116, 130, 159, 0.25)';
+    }
     return options;
 }
 

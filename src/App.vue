@@ -5,9 +5,11 @@
     <div mainArea>
         <Header></Header>
         <div mainContent>
-            <transition name="fade">
-                <router-view contentArea></router-view>
-            </transition>
+            <router-view v-slot="{ Component }">
+                <transition name="fade">
+                    <component :is="Component" contentArea />
+                </transition>
+            </router-view>
         </div>
     </div>
     <boat-rotate-menu :menus="iconList" @click="handleRotateMenuClick">

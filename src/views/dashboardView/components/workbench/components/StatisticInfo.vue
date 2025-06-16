@@ -1,7 +1,5 @@
 <template>
-    <div
-        class="StatisticInfo w-full h-full flex justify-between items-center gap-3 py-2 px-4 rounded-xl"
-    >
+    <div class="w-full h-full flex justify-between items-center gap-3 py-2 px-4 rounded-xl">
         <div class="w-20 h-full flex justify-center items-center rounded-[50%] overflow-hidden">
             <img src="/logo.svg" alt="logo" class="w-full w-full" />
         </div>
@@ -40,10 +38,3 @@ const currentStatistic = computed(() => {
     ];
 });
 </script>
-
-<style lang="scss">
-.StatisticInfo {
-    border: pxToRem(1) solid;
-    @include themeColor(var(--chartModuleBorderAlpha), border-color);
-}
-</style>

@@ -129,9 +129,6 @@ const addTodoItem = () => {
 
 <style lang="scss">
 .ToDoItems {
-    border: pxToRem(1) solid;
-    @include themeColor(var(--chartModuleBorderAlpha), border-color);
-
     .BoatTitle {
         div[operation] {
             right: pxToRem(16);

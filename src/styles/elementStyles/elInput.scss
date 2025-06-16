@@ -118,6 +118,7 @@ input {
         @include themeColor(var(--inputBorderAlpha), border-color);
         border-radius: pxToRem(12);
         background: none;
+        box-shadow: none;
         padding: pxToRem(6) pxToRem(16) pxToRem(6) pxToRem(16);
         @include scrollbarStyle;
     }

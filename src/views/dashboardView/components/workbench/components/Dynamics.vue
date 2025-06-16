@@ -42,8 +42,6 @@ const recentDays = ref(
 
 <style lang="scss">
 .Dynamics {
-    border: pxToRem(1) solid;
-    @include themeColor(var(--chartModuleBorderAlpha), border-color);
     $dot-colors: (
         (
             start: #667eea,

@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="Workbench">
         <main class="grid gap-4 grid-cols-4 auto-rows-[7.875rem]">
-            <StatisticInfo class="row-start-1 row-end-1 col-start-1 col-end-5" />
+            <StatisticInfo class="module row-start-1 row-end-1 col-start-1 col-end-5" />
             <StatisticCards class="row-start-2 row-end-2 col-start-1 col-end-5" />
-            <ToDoItems class="row-start-3 row-end-7 col-start-1 col-end-3" />
-            <Notice class="row-start-3 row-end-7 col-start-3 col-end-4" />
-            <Dynamics class="row-start-3 row-end-7 col-start-4 col-end-5" />
+            <ToDoItems class="module row-start-3 row-end-7 col-start-1 col-end-3" />
+            <Notice class="module row-start-3 row-end-7 col-start-3 col-end-4" />
+            <Dynamics class="module row-start-3 row-end-7 col-start-4 col-end-5" />
         </main>
         <footer
             v-if="copyrightConfig.enable"
@@ -33,3 +33,12 @@ import { useSystemConfig } from '@/hooks/useSystemConfig';
 
 const { copyrightConfig } = useSystemConfig();
 </script>
+
+<style lang="scss">
+.Workbench {
+    .module {
+        border: pxToRem(1) solid;
+        @include themeColor(var(--chartModuleBorderAlpha), border-color);
+    }
+}
+</style>

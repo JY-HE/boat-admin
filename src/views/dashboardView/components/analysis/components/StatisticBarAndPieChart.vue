@@ -1,5 +1,5 @@
 <template>
-    <div class="StatisticBarAndPieChart h-full rounded-xl p-4 flex justify-between gap-4">
+    <div class="h-full rounded-xl p-4 flex justify-between gap-4">
         <div class="w-[65%]">
             <BoatBaseECharts :options="barOptions" />
         </div>
@@ -51,15 +51,45 @@ const totalUnprocessed = computed(() => dayData.value.reduce((s, d) => s + d.unp
 
 // 柱状图配置
 const barOptions: ECOption = {
-    tooltip: { trigger: 'axis' },
-    legend: { data: ['告警总数', '处置总数', '未处置总数'] },
-    grid: { left: '1%', right: '1%', bottom: '0', containLabel: true },
+    title: {
+        text: '近七天告警处置统计',
+        left: 'left',
+        top: '0',
+        textStyle: { fontSize: 18 },
+    },
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    legend: { data: ['告警总数', '处置总数', '未处置总数'], bottom: '0' },
+    grid: { left: '1%', right: '1%', bottom: '10%', containLabel: true },
     xAxis: [{ type: 'category', data: dates }],
     yAxis: [{ type: 'value', name: '次' }],
     series: [
-        { name: '告警总数', type: 'bar', data: dayData.value.map(d => d.total) },
-        { name: '处置总数', type: 'bar', data: dayData.value.map(d => d.processed) },
-        { name: '未处置总数', type: 'bar', data: dayData.value.map(d => d.unprocessed) },
+        {
+            name: '告警总数',
+            type: 'bar',
+            data: dayData.value.map(d => d.total),
+            itemStyle: {
+                borderRadius: [5, 5, 0, 0],
+            },
+            barWidth: '15%',
+        },
+        {
+            name: '处置总数',
+            type: 'bar',
+            data: dayData.value.map(d => d.processed),
+            itemStyle: {
+                borderRadius: [5, 5, 0, 0],
+            },
+            barWidth: '15%',
+        },
+        {
+            name: '未处置总数',
+            type: 'bar',
+            data: dayData.value.map(d => d.unprocessed),
+            itemStyle: {
+                borderRadius: [5, 5, 0, 0],
+            },
+            barWidth: '15%',
+        },
     ],
 };
 
@@ -67,9 +97,9 @@ const barOptions: ECOption = {
 const pieOptions: ECOption = {
     title: {
         text: '近七天告警处置率',
-        left: 'center',
+        left: 'left',
         top: '0',
-        textStyle: { fontSize: 14 },
+        textStyle: { fontSize: 18 },
     },
     tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
     series: [
@@ -99,14 +129,3 @@ const pieOptions: ECOption = {
     ],
 };
 </script>
-
-<style lang="scss">
-.StatisticBarAndPieChart {
-    @include panelStyle;
-    @include panelShadow(0.25);
-
-    @include darkStyle {
-        @include panelShadow(0.8);
-    }
-}
-</style>

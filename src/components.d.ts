@@ -13,6 +13,7 @@ declare module 'vue' {
     BoatCard: typeof import('./components/BoatCard.vue')['default']
     BoatColorPick: typeof import('./components/BoatColorPick.vue')['default']
     BoatCopyButton: typeof import('./components/BoatCopyButton.vue')['default']
+    BoatCountTo: typeof import('./components/BoatCountTo.vue')['default']
     BoatEchartsPreview: typeof import('./components/BoatEchartsPreview.vue')['default']
     BoatIconButton: typeof import('./components/BoatIconButton.vue')['default']
     BoatIconfont: typeof import('./components/BoatIconfont.vue')['default']

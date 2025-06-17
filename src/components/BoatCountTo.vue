@@ -1,7 +1,7 @@
 <template>
     <div class="BoatCountTo">
         <div class="text-h1 font-style-1">
-            {{ displayStr }}
+            {{ `${displayStr} ${props.unit ?? ''}` }}
         </div>
     </div>
 </template>
@@ -16,6 +16,8 @@ interface CountToProps {
     duration?: number;
     /** 保留小数位数 */
     decimalPlaces?: number;
+    /** 单位 */
+    unit?: string;
 }
 
 const props = defineProps<CountToProps>();

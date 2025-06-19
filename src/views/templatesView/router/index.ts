@@ -42,6 +42,17 @@ const router = {
                 title: '虚拟列表',
             },
         },
+        {
+            path: '/templates/cards',
+            name: '卡片',
+            component: () =>
+                import(
+                    /* webpackChunkName: "cards" */ '@/views/templatesView/components/cards/Index.vue'
+                ),
+            meta: {
+                title: '卡片',
+            },
+        },
     ],
 };
 

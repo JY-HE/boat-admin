@@ -20,15 +20,15 @@
 
 <script setup lang="ts">
 import { ElementRefType } from '@/types';
-const props = withDefaults(
-    defineProps<{
-        title: string;
-        maxShowBtnCount?: number;
-    }>(),
-    {
-        maxShowBtnCount: 3,
-    }
-);
+
+interface Props {
+    title: string;
+    maxShowBtnCount?: number;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    maxShowBtnCount: 3,
+});
 
 const showMore = ref(false);
 const expand = ref(false);

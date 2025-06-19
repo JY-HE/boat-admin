@@ -8,13 +8,21 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-    icon: { type: String, default: '' },
-    className: { type: String, default: '' },
-    errorColor: { type: Boolean, default: false },
-    isClickStop: { type: Boolean, default: false }, // 传false可以冒泡，避免饿了么组件（如上传）插槽不能点击生效问题
-});
-const emits = defineEmits(['click']);
+interface Props {
+    /** 图标类名 */
+    icon?: string;
+    /** 额外的类名 */
+    className?: string;
+    /** 是否使用错误色 */
+    errorColor?: boolean;
+    /** 是否阻止冒泡 */
+    isClickStop?: boolean;
+}
+const props = defineProps<Props>();
+
+const emits = defineEmits<{
+    (e: 'click'): void;
+}>();
 
 const clickHandle = (event: MouseEvent) => {
     // 默认阻止冒泡

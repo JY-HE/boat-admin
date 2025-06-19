@@ -19,14 +19,14 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-    modelValue: {
-        type: Boolean,
-        required: true,
-    },
-});
+interface Props {
+    modelValue: boolean;
+}
+const props = defineProps<Props>();
 
-const emit = defineEmits(['update:modelValue']);
+const emits = defineEmits<{
+    (e: 'update:modelValue', value: boolean): void;
+}>();
 
 const visible = ref(props.modelValue);
 
@@ -39,7 +39,7 @@ watch(
 
 watch(visible, newValue => {
     if (newValue !== props.modelValue) {
-        emit('update:modelValue', newValue);
+        emits('update:modelValue', newValue);
     }
 });
 

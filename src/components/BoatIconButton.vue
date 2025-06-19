@@ -13,37 +13,43 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(
-    defineProps<{
-        title: string;
-        icon: string;
-        successColor?: boolean;
-        errorColor?: boolean;
-        disabledColor?: boolean;
-        placement?:
-            | 'top'
-            | 'top-start'
-            | 'top-end'
-            | 'bottom'
-            | 'bottom-start'
-            | 'bottom-end'
-            | 'left'
-            | 'left-start'
-            | 'left-end'
-            | 'right'
-            | 'right-start'
-            | 'right-end';
-    }>(),
-    {
-        placement: 'top-start',
-    }
-);
+interface Props {
+    /** 按钮标题 */
+    title: string;
+    /** 图标类名 */
+    icon: string;
+    /** 是否使用成功色 */
+    successColor?: boolean;
+    /** 是否使用错误色 */
+    errorColor?: boolean;
+    /** 是否禁用颜色 */
+    disabledColor?: boolean;
+    /** 提示位置 */
+    placement?:
+        | 'top'
+        | 'top-start'
+        | 'top-end'
+        | 'bottom'
+        | 'bottom-start'
+        | 'bottom-end'
+        | 'left'
+        | 'left-start'
+        | 'left-end'
+        | 'right'
+        | 'right-start'
+        | 'right-end';
+}
+const props = withDefaults(defineProps<Props>(), {
+    placement: 'top-start',
+});
 
-const emit = defineEmits(['click']);
+const emits = defineEmits<{
+    (e: 'click'): void;
+}>();
 
 const clickHandle = () => {
     if (props.disabledColor) return;
-    emit('click');
+    emits('click');
 };
 </script>
 

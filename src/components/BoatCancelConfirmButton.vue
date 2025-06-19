@@ -13,12 +13,23 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-    cancelDescription: { type: String, default: '取消' },
-    confirmDescription: { type: String, default: '确定' },
-    disabledConfirm: { type: Boolean, default: false },
-    isDisabledButton: { type: Boolean, default: false },
+interface Props {
+    /** 取消按钮描述 */
+    cancelDescription?: string;
+    /** 确认按钮描述 */
+    confirmDescription?: string;
+    /** 确认按钮是否禁用 */
+    disabledConfirm?: boolean;
+    /** 整体按钮是否禁用 */
+    isDisabledButton?: boolean;
+}
+withDefaults(defineProps<Props>(), {
+    cancelDescription: '取消',
+    confirmDescription: '确定',
 });
 
-const emits = defineEmits(['cancel', 'submitForm']);
+const emits = defineEmits<{
+    (e: 'cancel'): void;
+    (e: 'submitForm'): void;
+}>();
 </script>

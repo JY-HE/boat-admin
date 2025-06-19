@@ -15,11 +15,12 @@
 </template>
 
 <script lang="ts" setup>
-defineProps({
-    title: { type: String, default: '' },
-    className: { type: String, default: '' },
-    contentClassName: { type: String, default: '' },
-});
+interface Props {
+    title?: string;
+    className?: string;
+    contentClassName?: string;
+}
+defineProps<Props>();
 </script>
 
 <style lang="scss">

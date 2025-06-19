@@ -34,28 +34,15 @@
 
 <script setup lang="ts">
 import { useSystemConfigStore } from '@/store';
-defineProps({
-    title: {
-        type: String,
-        default: '',
-    },
-    enTitle: {
-        type: String,
-        default: '',
-    },
-    darkSrc: {
-        type: String,
-        default: '',
-    },
-    lightSrc: {
-        type: String,
-        default: '',
-    },
-    componentChart: {
-        type: Object,
-        default: () => ({}),
-    },
-});
+
+interface Props {
+    title?: string;
+    enTitle?: string;
+    darkSrc?: string;
+    lightSrc?: string;
+    componentChart?: any; // 可以是 Vue 组件或其他类型
+}
+defineProps<Props>();
 
 const dialogVisible = ref(false);
 const isLoading = ref(true);

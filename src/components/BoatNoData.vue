@@ -396,9 +396,13 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-    title: { type: String, default: '暂无数据' },
-    type: { type: String, default: 'data' },
+interface Props {
+    title?: string;
+    type?: 'data' | 'file' | 'video' | 'search' | 'image';
+}
+withDefaults(defineProps<Props>(), {
+    title: '暂无数据',
+    type: 'data',
 });
 </script>
 

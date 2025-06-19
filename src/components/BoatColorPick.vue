@@ -13,20 +13,23 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-    modelValue: {
-        type: String,
-        required: true,
-    },
-    placeholder: {
-        type: String,
-        default: '请输入颜色值',
-    },
+interface Props {
+    /** 颜色值 */
+    modelValue: string;
+    /** 占位符 */
+    placeholder?: string;
+}
+const props = withDefaults(defineProps<Props>(), {
+    placeholder: '请输入颜色值',
 });
-const emit = defineEmits(['update:modelValue']);
+const emits = defineEmits<{
+    (e: 'update:modelValue', value: string): void;
+}>();
+
 const localValue = ref(props.modelValue);
+
 watch(localValue, newValue => {
-    emit('update:modelValue', newValue);
+    emits('update:modelValue', newValue);
 });
 </script>
 

@@ -75,12 +75,12 @@ import { useRouterStore } from '@/store';
 import { PlusRouteRecordRaw } from '@/types';
 import { useSystemConfig } from '@/hooks/useSystemConfig';
 
-const props = defineProps({
-    routerList: {
-        type: Array as () => PlusRouteRecordRaw[],
-        required: true,
-    },
-});
+interface Props {
+    /** 路由列表 */
+    routerList: PlusRouteRecordRaw[];
+}
+
+const props = defineProps<Props>();
 
 const routerStore = useRouterStore();
 const { isHideMenu } = useSystemConfig();

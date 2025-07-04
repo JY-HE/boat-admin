@@ -53,6 +53,11 @@ defineProps<Props>();
         img {
             @include wh;
             object-fit: fill;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            &:hover {
+                transform: scale(1.05);
+            }
         }
     }
 

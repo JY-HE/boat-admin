@@ -4,20 +4,20 @@
             <img :src="image" alt="Image" />
         </div>
         <div class="image-info">
-            <div class="tag">{{ tag }}</div>
+            <div v-if="tag" class="tag">{{ tag }}</div>
             <div class="title font-style-2 text-h2 mb-4">
-                {{ title }}
+                {{ title || '- -' }}
             </div>
             <div class="flex justify-start align-center gap-4 font-style-4 text-h3">
                 <div>
                     <BoatIconfont icon="&#xe627;" />
-                    <span class="ml-1">{{ formatNumberWithCommas(views) }}</span>
+                    <span class="ml-1">{{ formatNumberWithCommas(views || 0) }}</span>
                 </div>
                 <div>
                     <BoatIconfont icon="&#xe6af;" />
-                    <span class="ml-1">{{ formatNumberWithCommas(reviews) }}</span>
+                    <span class="ml-1">{{ formatNumberWithCommas(reviews || 0) }}</span>
                 </div>
-                <div>{{ date }}</div>
+                <div>{{ date || '- -' }}</div>
             </div>
         </div>
     </div>

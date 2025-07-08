@@ -194,6 +194,9 @@ watchEffect(() => {
             &:hover {
                 @include themeColor(1, background-color);
             }
+            h4 {
+                @include whiteColor(1, color);
+            }
         }
     }
 }

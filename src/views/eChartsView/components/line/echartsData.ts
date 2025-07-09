@@ -1,28 +1,117 @@
-import { DefineComponent } from 'vue';
-import BasicLine from './components/BasicLine.vue';
-import StackedAreaChart from './components/StackedAreaChart.vue';
+import { ECOption } from '@/utils/eCharts';
 
-interface EChartsData {
-    title: string;
-    enTitle: string;
-    componentChart: DefineComponent<object, object, any>;
-    darkSrc: string;
-    lightSrc: string;
-}
-
-export default [
+export const echartsData = [
     {
-        title: '基础折线图',
-        enTitle: 'Basic Line Chart',
-        componentChart: BasicLine,
-        darkSrc: 'https://s21.ax1x.com/2024/10/21/pAaofm9.png',
-        lightSrc: 'https://s21.ax1x.com/2024/10/21/pAao4T1.png',
+        tooltip: {
+            show: true,
+            trigger: 'axis',
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true,
+        },
+        xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+        },
+        yAxis: {
+            type: 'value',
+        },
+        series: [
+            {
+                name: '销量',
+                type: 'line',
+                data: [5, 20, 36, 10, 10, 20],
+            },
+        ],
     },
     {
-        title: '堆叠面积图',
-        enTitle: 'Stacked Area Chart',
-        componentChart: StackedAreaChart,
-        darkSrc: 'https://s21.ax1x.com/2024/10/25/pAw0ytA.png',
-        lightSrc: 'https://s21.ax1x.com/2024/10/25/pAw0dOO.png',
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985',
+                },
+            },
+        },
+        legend: {
+            data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine'],
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true,
+        },
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            },
+        ],
+        yAxis: [
+            {
+                type: 'value',
+            },
+        ],
+        series: [
+            {
+                name: 'Email',
+                type: 'line',
+                stack: 'Total',
+                areaStyle: {},
+                emphasis: {
+                    focus: 'series',
+                },
+                data: [120, 132, 101, 134, 90, 230, 210],
+            },
+            {
+                name: 'Union Ads',
+                type: 'line',
+                stack: 'Total',
+                areaStyle: {},
+                emphasis: {
+                    focus: 'series',
+                },
+                data: [220, 182, 191, 234, 290, 330, 310],
+            },
+            {
+                name: 'Video Ads',
+                type: 'line',
+                stack: 'Total',
+                areaStyle: {},
+                emphasis: {
+                    focus: 'series',
+                },
+                data: [150, 232, 201, 154, 190, 330, 410],
+            },
+            {
+                name: 'Direct',
+                type: 'line',
+                stack: 'Total',
+                areaStyle: {},
+                emphasis: {
+                    focus: 'series',
+                },
+                data: [320, 332, 301, 334, 390, 330, 320],
+            },
+            {
+                name: 'Search Engine',
+                type: 'line',
+                stack: 'Total',
+                label: {
+                    show: true,
+                    position: 'top',
+                },
+                areaStyle: {},
+                emphasis: {
+                    focus: 'series',
+                },
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+            },
+        ],
     },
-] as EChartsData[];
+] as ECOption[];

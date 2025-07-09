@@ -177,7 +177,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style lang="scss">
 .BoatBaseECharts {
     width: 100%;
     height: 100%;

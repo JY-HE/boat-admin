@@ -1,20 +1,27 @@
-import { DefineComponent } from 'vue';
-import BasicBar from './components/BasicBar.vue';
+import { ECOption } from '@/utils/eCharts';
 
-interface EChartsData {
-    title: string;
-    enTitle: string;
-    componentChart: DefineComponent<object, object, any>;
-    darkSrc: string;
-    lightSrc: string;
-}
-
-export default [
+export const echartsData = [
     {
-        title: '基础柱状图',
-        enTitle: 'Basic Bar Chart',
-        componentChart: BasicBar,
-        darkSrc: 'https://s21.ax1x.com/2024/10/25/pAwrpS1.png',
-        lightSrc: 'https://s21.ax1x.com/2024/10/25/pAwrCy6.png',
+        tooltip: {
+            show: true,
+            trigger: 'axis',
+        },
+        xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true,
+        },
+        yAxis: {},
+        series: [
+            {
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20],
+            },
+        ],
     },
-] as EChartsData[];
+] as ECOption[];

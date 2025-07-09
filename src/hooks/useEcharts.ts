@@ -6,13 +6,16 @@ import echarts, { ECOption } from '@/utils/eCharts';
  * 统一处理 ECharts 实例
  * @param elRef 挂载 ECharts 的 ref 对象
  * @param options ECharts 配置项
+ * @returns chartRef 实例 Ref
  * @returns initCharts 初始化方法
  * @returns setOptions 设置配置项
+ * @returns clearCharts 清空图表
  * @returns resize 重新计算
+ * @returns destroyCharts 销毁实例
  */
 export const useECharts = (elRef: Ref<HTMLDivElement | null>, options?: ECOption) => {
     let resizeDetector: ResizeDetector | null = null;
-    const charts = shallowRef<echarts.ECharts>();
+    const chartRef = shallowRef<echarts.ECharts>();
     let timer: ReturnType<typeof setTimeout> | null = null;
 
     /**
@@ -20,7 +23,7 @@ export const useECharts = (elRef: Ref<HTMLDivElement | null>, options?: ECOption
      * @param options 配置项
      */
     const setOptions = (options: ECOption) => {
-        charts.value && charts.value.setOption(options);
+        chartRef.value && chartRef.value.setOption(options);
     };
 
     // 初始化
@@ -29,7 +32,7 @@ export const useECharts = (elRef: Ref<HTMLDivElement | null>, options?: ECOption
         const el = unref(elRef);
         if (!el) return;
         //  初始化 ECharts 实例
-        charts.value = echarts.init(el);
+        chartRef.value = echarts.init(el);
         options && setOptions(options);
     };
 
@@ -45,10 +48,30 @@ export const useECharts = (elRef: Ref<HTMLDivElement | null>, options?: ECOption
         if (elRef.value) {
             resizeDetector.listenTo(elRef.value, () => {
                 timer = setTimeout(() => {
-                    charts.value && charts.value.resize();
+                    chartRef.value && chartRef.value.resize();
                 }, 100);
             });
         }
+    };
+
+    /**
+     * 销毁 ECharts 实例
+     */
+    const destroyCharts = () => {
+        if (!chartRef.value) return;
+        const dom = chartRef.value.getDom();
+        // 只有在 DOM 还挂载在页面上的时候，才去 dispose
+        if (dom.parentNode) {
+            chartRef.value.dispose();
+        }
+        chartRef.value = undefined;
+    };
+
+    /**
+     * 清除 ECharts 实例
+     */
+    const clearCharts = () => {
+        chartRef.value && chartRef.value.clear();
     };
 
     onMounted(() => {
@@ -63,12 +86,15 @@ export const useECharts = (elRef: Ref<HTMLDivElement | null>, options?: ECOption
         if (elRef.value && resizeDetector) {
             resizeDetector.uninstall(elRef.value);
         }
-        charts.value && charts.value.dispose();
+        destroyCharts();
     });
 
     return {
+        chartRef,
         initCharts,
         setOptions,
+        clearCharts,
         resize,
+        destroyCharts,
     };
 };

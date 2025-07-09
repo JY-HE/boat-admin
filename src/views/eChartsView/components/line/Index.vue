@@ -1,6 +1,6 @@
 <template>
-    <div class="lineChart">
-        <div v-for="(item, index) in echartsData" :key="index" class="module">
+    <div class="line-echarts">
+        <div v-for="(item, index) in echartsData" :key="index" class="echarts-item">
             <BoatBaseECharts :options="item" />
         </div>
     </div>
@@ -11,16 +11,18 @@ import { echartsData } from './echartsData';
 </script>
 
 <style lang="scss">
-.lineChart {
+.line-echarts {
     display: grid;
     gap: pxToRem(32);
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(auto-fill, minmax(#{pxToRem(320)}, 1fr));
-    .module {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: pxToRem(380);
+
+    .echarts-item {
         @include wh;
         border: pxToRem(1) solid;
         @include themeColor(var(--chartModuleBorderAlpha), border-color);
         border-radius: pxToRem(16);
+        padding: pxToRem(16);
     }
 }
 </style>

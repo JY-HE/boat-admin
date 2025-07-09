@@ -31,7 +31,7 @@ const DARK_COLORS = ['#3966A2', '#457B9D', '#DBBACB', '#2161D3', '#C2C0D8', '#45
 const LIGHT_COLORS = ['#8AA4C7', '#F3CFD0', '#96B9D9', '#8C618C', '#6B8AA6'];
 
 const echartsRef = ref<HTMLDivElement | null>(null);
-const { setOptions, initCharts } = useECharts(echartsRef);
+const { chartRef, setOptions, initCharts, destroyCharts, clearCharts } = useECharts(echartsRef);
 const systemConfigStore = useSystemConfigStore();
 const emits = defineEmits(['dark-change']);
 
@@ -166,7 +166,16 @@ watch(
     [() => systemConfigStore.isDark, () => props.options],
     ([newIsDark, newOptions]) => {
         emits('dark-change', newIsDark);
-        setOptions(handleThemeOptions(newIsDark, newOptions));
+        if (chartRef.value) {
+            clearCharts();
+            setOptions(handleThemeOptions(newIsDark, newOptions));
+        } else {
+            destroyCharts();
+            nextTick(() => {
+                initCharts();
+                setOptions(handleThemeOptions(newIsDark, newOptions));
+            });
+        }
     },
     { deep: true }
 );

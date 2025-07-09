@@ -216,6 +216,8 @@ body {
                 flex-shrink: 0;
                 width: 100%;
                 position: relative;
+                border-radius: pxToRem(20);
+                overflow: hidden;
 
                 div[contentArea] {
                     @include wh;

@@ -30,6 +30,17 @@ const router = {
                 title: '柱状图',
             },
         },
+        {
+            path: '/eCharts/pie',
+            name: '饼图',
+            component: () =>
+                import(
+                    /* webpackChunkName: "pie" */ '@/views/eChartsView/components/pie/Index.vue'
+                ),
+            meta: {
+                title: '饼图',
+            },
+        },
     ],
 };
 

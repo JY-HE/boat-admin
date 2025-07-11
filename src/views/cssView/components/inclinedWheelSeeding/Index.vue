@@ -6,7 +6,7 @@
                 :key="index"
                 :src="i"
                 alt=""
-                class="item"
+                class="img-item"
                 @click="handleImgClick(index)"
             />
         </div>
@@ -27,7 +27,7 @@ const imgs = computed(() => {
         new URL('@/assets/img/5.png', import.meta.url).href,
     ];
 });
-let items: NodeListOf<Element> | null = null;
+let imgItems: NodeListOf<Element> | null = null;
 let currentIndex = ref(2);
 
 function handlePrev() {
@@ -52,12 +52,12 @@ function handleImgClick(index: number) {
 }
 
 function handelLayout() {
-    if (!items) return;
+    if (!imgItems) return;
     const xOffsetStep = 150; // 两种轮播图之间的间隔
     const scaleStep = 0.7; // 缩放的递减倍率
     const opacityStep = 0.7; // 透明度的递减倍率
-    for (let i = 0; i < items.length; i += 1) {
-        const item = items[i] as HTMLElement;
+    for (let i = 0; i < imgItems.length; i += 1) {
+        const item = imgItems[i] as HTMLElement;
         const sign = Math.sign(i - currentIndex.value); // 正负符号
         let xOffset = (i - currentIndex.value) * xOffsetStep; // 偏移量
         if (i !== currentIndex.value) {
@@ -68,12 +68,12 @@ function handelLayout() {
         const rotateY = i === currentIndex.value ? 0 : 60 * -sign;
         item.style.transform = `translateX(${xOffset}px) scale(${scale}) rotateY(${rotateY}deg)`;
         item.style.opacity = (opacityStep ** dis).toString();
-        item.style.zIndex = (items.length - dis).toString();
+        item.style.zIndex = (imgItems.length - dis).toString();
     }
 }
 
 onMounted(() => {
-    items = document.querySelectorAll('.item');
+    imgItems = document.querySelectorAll('.img-item');
     handelLayout();
 });
 </script>

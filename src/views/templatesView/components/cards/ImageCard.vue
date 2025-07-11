@@ -1,7 +1,14 @@
 <template>
     <div class="ImageCard">
         <div class="image-box">
-            <img :src="image" alt="Image" />
+            <BoatLoading v-show="loading" />
+            <img
+                v-show="!loading"
+                :src="image"
+                alt="Image"
+                @error="loading = false"
+                @load="loading = false"
+            />
         </div>
         <div class="image-info">
             <div v-if="tag" class="tag">{{ tag }}</div>
@@ -38,6 +45,8 @@ interface Props {
 }
 
 defineProps<Props>();
+
+const loading = ref(true);
 </script>
 
 <style lang="scss">
@@ -51,6 +60,8 @@ defineProps<Props>();
 
     .image-box {
         @include whrem(100%, 244);
+        @include disabledColor(0.15, background-color);
+        @include flexCenter;
 
         img {
             @include wh;

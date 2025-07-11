@@ -21,6 +21,8 @@
 </template>
 
 <script lang="ts" setup>
+defineOptions({ name: 'LazyLoadingImage' });
+
 interface ImageItem {
     id: number;
     url: string;

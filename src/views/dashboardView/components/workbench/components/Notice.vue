@@ -21,6 +21,8 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({ name: 'Notice' });
+
 interface NoticeItem {
     id: number;
     type: 'success' | 'warning' | 'danger' | 'info';

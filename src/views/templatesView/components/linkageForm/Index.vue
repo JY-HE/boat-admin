@@ -8,6 +8,8 @@
 import FormItem from './FormItem.vue';
 import { FromItemConfig } from './type';
 
+defineOptions({ name: 'LinkageForm' });
+
 const polygonConfig = reactive<FromItemConfig>({
     layerType: {
         type: 'select',

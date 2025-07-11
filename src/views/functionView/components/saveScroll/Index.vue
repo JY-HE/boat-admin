@@ -113,6 +113,8 @@
 <script lang="ts" setup>
 import { useSaveScroll } from '@/hooks/useSaveScroll';
 
+defineOptions({ name: 'SaveScroll' });
+
 useSaveScroll('SaveScroll');
 </script>
 

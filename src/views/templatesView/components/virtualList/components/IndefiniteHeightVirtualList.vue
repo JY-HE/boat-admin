@@ -25,6 +25,8 @@
 <script lang="ts" setup>
 import { useSystemConfigStore } from '@/store';
 
+defineOptions({ name: 'IndefiniteHeightVirtualList' });
+
 const props = defineProps({
     listData: { type: Array as PropType<{ index: number; value: string }[]>, default: () => [] },
     itemHeight: { type: Number, default: 70 },

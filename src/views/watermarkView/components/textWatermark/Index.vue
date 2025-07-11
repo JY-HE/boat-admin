@@ -8,6 +8,8 @@
 <script setup lang="ts">
 import { ElementRefType } from '@/types';
 
+defineOptions({ name: 'TextWatermark' });
+
 const watermarkContainer = ref<ElementRefType>(null);
 const watermarkCanvas = ref<HTMLCanvasElement | null>(null);
 

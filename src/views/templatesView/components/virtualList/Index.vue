@@ -18,6 +18,8 @@ import { generateParagraph } from 'lipsum-zh';
 import FixedHeightVirtualList from './components/FixedHeightVirtualList.vue';
 import IndefiniteHeightVirtualList from './components/IndefiniteHeightVirtualList.vue';
 
+defineOptions({ name: 'VirtualList' });
+
 const activeName = ref<string>('FixedHeightVirtualList');
 const comps = computed(() => {
     return [

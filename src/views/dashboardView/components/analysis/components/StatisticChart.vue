@@ -7,6 +7,8 @@
 <script setup lang="ts">
 import { ECOption } from '@/utils/eCharts';
 
+defineOptions({ name: 'StatisticChart' });
+
 // 定义图表的指标及其随机数范围，名称与统计卡片保持一致
 interface ChartMetricConfig {
     name: string;

@@ -8,6 +8,8 @@
 
 <script setup lang="ts">
 import { echartsData } from './echartsData';
+
+defineOptions({ name: 'PieEcharts' });
 </script>
 
 <style lang="scss">

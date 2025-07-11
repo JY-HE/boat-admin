@@ -25,6 +25,8 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({ name: 'Dynamics' });
+
 const recentDays = ref(
     Array.from({ length: 7 }, (_, i) => {
         const date = new Date();

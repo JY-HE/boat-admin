@@ -21,6 +21,8 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({ name: 'StatisticInfo' });
+
 const currentStatistic = computed(() => {
     return [
         {

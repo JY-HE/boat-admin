@@ -54,6 +54,8 @@ import DigitalScrolling from './DigitalScrolling.vue';
 import ProgressCard from './ProgressCard.vue';
 import ImageCard from './ImageCard.vue';
 
+defineOptions({ name: 'CardsPage' });
+
 const digitalScrollingData = [
     {
         subContent: '销售产品',

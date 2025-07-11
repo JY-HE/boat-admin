@@ -7,6 +7,8 @@
 <script setup lang="ts">
 import { ECOption } from '@/utils/eCharts';
 
+defineOptions({ name: 'CustomerSatisfactionChart' });
+
 function generateOptions(): ECOption {
     return {
         title: {

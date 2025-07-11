@@ -5,6 +5,8 @@
 </template>
 
 <script lang="ts" setup>
+defineOptions({ name: 'InfiniteParallaxScrolling' });
+
 const imgs = computed(() => {
     return [
         new URL('@/assets/img/1.png', import.meta.url).href,

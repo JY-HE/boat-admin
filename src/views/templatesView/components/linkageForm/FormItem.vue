@@ -55,6 +55,9 @@
 import cloneDeep from 'lodash-es/cloneDeep';
 import { PropType } from 'vue';
 import { FromItemConfig, FromItem } from './type';
+
+defineOptions({ name: 'FormItem' });
+
 const props = defineProps({
     modelValue: {
         type: Object as PropType<FromItemConfig>,

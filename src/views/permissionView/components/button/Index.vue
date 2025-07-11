@@ -21,6 +21,9 @@
 
 <script lang="ts" setup>
 import { usePermissionStore } from '@/store';
+
+defineOptions({ name: 'ButtonPermission' });
+
 const permissionStore = usePermissionStore();
 permissionStore.setUser({
     id: 1,

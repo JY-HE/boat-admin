@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+defineOptions({ name: 'BroadcastChannel' });
 
 const message = ref('');
 const receivedMessage = ref('');

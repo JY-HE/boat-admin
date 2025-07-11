@@ -14,6 +14,8 @@
 </template>
 
 <script lang="ts" setup>
+defineOptions({ name: 'DigitalScrolling' });
+
 defineProps({
     icon: { type: String, default: '&#xeb95;' },
     subContent: { type: String, default: '' },

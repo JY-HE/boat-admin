@@ -14,6 +14,8 @@
 <script setup lang="ts">
 import { formatNumberWithCommas } from '@/utils/global';
 
+defineOptions({ name: 'StatisticCards' });
+
 interface StatisticCardConfig {
     title: string;
     icon: string;

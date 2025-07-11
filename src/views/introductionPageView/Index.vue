@@ -13,6 +13,8 @@
 import { driver } from 'driver.js';
 import 'driver.js/dist/driver.css';
 
+defineOptions({ name: 'IntroductionPage' });
+
 const driverObj = driver({
     showProgress: false,
     showButtons: ['next', 'previous'],

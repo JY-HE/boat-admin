@@ -49,6 +49,8 @@ import packageData from '@/../package.json';
 import { usePackageStore } from '@/store';
 import { PackageJson } from '@/types';
 
+defineOptions({ name: 'About' });
+
 const packageStore = usePackageStore();
 
 onMounted(async () => {

@@ -18,4 +18,6 @@
 
 <script lang="ts" setup>
 const copyValue = ref('Hello boat-admin');
+
+defineOptions({ name: 'Clipboard' });
 </script>

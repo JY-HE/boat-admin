@@ -14,6 +14,8 @@ import StatisticChart from './components/StatisticChart.vue';
 import StatisticBarAndPieChart from './components/StatisticBarAndPieChart.vue';
 import VisitorInsightsChart from './components/VisitorInsightsChart.vue';
 import CustomerSatisfactionChart from './components/CustomerSatisfactionChart.vue';
+
+defineOptions({ name: 'Analysis' });
 </script>
 
 <style lang="scss">

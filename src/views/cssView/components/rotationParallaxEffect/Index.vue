@@ -11,6 +11,8 @@
 <script setup lang="ts">
 import { getAssetsImg } from '@/utils/global';
 
+defineOptions({ name: 'RotationParallaxEffect' });
+
 const imageUrls = ref<string[]>([]);
 
 for (let i = 0; i < 5; i += 1) {

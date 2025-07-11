@@ -27,6 +27,8 @@
 </template>
 
 <script lang="ts" setup>
+defineOptions({ name: 'ForbidCopy' });
+
 function handleCopy(e: ClipboardEvent) {
     e.preventDefault(); // 阻止默认复制行为
     alert('禁止复制！');

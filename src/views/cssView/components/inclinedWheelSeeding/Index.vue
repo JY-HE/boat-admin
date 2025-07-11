@@ -16,6 +16,8 @@
 </template>
 
 <script lang="ts" setup>
+defineOptions({ name: 'InclinedWheelSeeding' });
+
 const imgs = computed(() => {
     return [
         new URL('@/assets/img/1.png', import.meta.url).href,

@@ -12,6 +12,8 @@
 <script setup lang="ts">
 import { ECOption } from '@/utils/eCharts';
 
+defineOptions({ name: 'StatisticBarAndPieChart' });
+
 // 生成最近 7 天的日期标签 (MM/DD)
 function getLast7Days(): string[] {
     return Array.from({ length: 7 }).map((_, idx) => {

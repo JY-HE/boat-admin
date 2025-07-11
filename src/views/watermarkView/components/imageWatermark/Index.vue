@@ -8,6 +8,8 @@
 <script setup lang="ts">
 import { ElementRefType } from '@/types';
 
+defineOptions({ name: 'ImageWatermark' });
+
 const logoUrl = `${window.location.origin}${import.meta.env.BASE_URL}logo.svg`; // 相对于项目根 public 目录
 const watermarkContainer = ref<ElementRefType>(null);
 const watermarkCanvas = ref<HTMLCanvasElement | null>(null);

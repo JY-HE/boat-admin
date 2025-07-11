@@ -26,6 +26,8 @@
 <script setup lang="ts">
 import { formatNumberWithCommas } from '@/utils/global';
 
+defineOptions({ name: 'ImageCard' });
+
 interface Props {
     image?: string;
     tag?: string;

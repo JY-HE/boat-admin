@@ -17,6 +17,8 @@
 <script setup lang="ts">
 import BroadcastChannel from './components/BroadcastChannel.vue';
 
+defineOptions({ name: 'TabCommunication' });
+
 const activeName = ref<string>('BroadcastChannel');
 const comps = computed(() => {
     return [{ name: 'BroadcastChannel API', componentName: 'BroadcastChannel' }];

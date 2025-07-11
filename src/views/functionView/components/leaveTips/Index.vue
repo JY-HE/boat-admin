@@ -9,6 +9,8 @@
 <script lang="ts" setup>
 import { useRouterStore } from '@/store';
 
+defineOptions({ name: 'LeaveTips' });
+
 const routerStore = useRouterStore();
 
 onBeforeRouteLeave((to, from, next) => {

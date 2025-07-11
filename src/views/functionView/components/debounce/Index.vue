@@ -20,5 +20,8 @@
 
 <script setup lang="ts">
 import { debounceRef } from '@/utils/debounce';
+
+defineOptions({ name: 'Debounce' });
+
 const inputValue = debounceRef('');
 </script>

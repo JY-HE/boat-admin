@@ -63,6 +63,8 @@
 <script setup lang="ts">
 import type { FormInstance, FormRules } from 'element-plus';
 
+defineOptions({ name: 'ToDoItems' });
+
 interface TodoItem {
     id: number;
     time: string;

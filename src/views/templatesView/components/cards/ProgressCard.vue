@@ -25,6 +25,8 @@
 </template>
 
 <script lang="ts" setup>
+defineOptions({ name: 'ProgressCard' });
+
 defineProps({
     icon: { type: String, default: '&#xeb95;' },
     subContent: { type: String, default: '' },

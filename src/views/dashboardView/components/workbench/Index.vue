@@ -31,6 +31,8 @@ import Dynamics from './components/Dynamics.vue';
 import Notice from './components/Notice.vue';
 import { useSystemConfig } from '@/hooks/useSystemConfig';
 
+defineOptions({ name: 'Workbench' });
+
 const { copyrightConfig } = useSystemConfig();
 </script>
 

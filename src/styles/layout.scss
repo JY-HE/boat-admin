@@ -216,16 +216,18 @@ body {
                 flex-shrink: 0;
                 width: 100%;
                 position: relative;
+                @include panelStyle;
+                @include panelShadow;
                 border-radius: pxToRem(20);
                 overflow: hidden;
+                padding: pxToRem(16) 0;
 
                 div[contentArea] {
-                    @include wh;
-                    @include panelStyle;
+                    width: 100%;
+                    height: calc(100% - #{pxToRem(32)});
                     position: absolute;
-                    @include panelShadow;
                     border-radius: pxToRem(20);
-                    padding: pxToRem(16);
+                    padding: pxToRem(8) pxToRem(16);
                     @include scrollbarStyle;
                 }
             }

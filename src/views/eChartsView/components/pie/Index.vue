@@ -14,13 +14,13 @@ defineOptions({ name: 'PieEcharts' });
 
 <style lang="scss">
 .pie-echarts {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: pxToRem(32);
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: pxToRem(380);
 
     .echarts-item {
-        @include wh;
+        width: calc((100% - #{pxToRem(32)}) / 2);
+        aspect-ratio: 6 / 3;
         border: pxToRem(1) solid;
         @include themeColor(var(--chartModuleBorderAlpha), border-color);
         border-radius: pxToRem(16);

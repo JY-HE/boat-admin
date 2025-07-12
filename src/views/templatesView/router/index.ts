@@ -53,6 +53,17 @@ const router = {
                 title: '卡片',
             },
         },
+        {
+            path: '/templates/textScroll',
+            name: '文字滚动',
+            component: () =>
+                import(
+                    /* webpackChunkName: "textScroll" */ '@/views/templatesView/components/textScroll/Index.vue'
+                ),
+            meta: {
+                title: '文字滚动',
+            },
+        },
     ],
 };
 

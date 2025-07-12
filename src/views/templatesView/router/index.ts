@@ -1,9 +1,9 @@
 const router = {
     path: '/templates',
-    name: '模板中心',
+    name: '组件中心',
     meta: {
         isShow: true,
-        title: '模板中心',
+        title: '组件中心',
         icon: '&#xe779;',
     },
     redirect: '/templates/picturePreview',

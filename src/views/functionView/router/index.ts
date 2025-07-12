@@ -1,9 +1,9 @@
 const router = {
     path: '/function',
-    name: '功能',
+    name: '功能示例',
     meta: {
         isShow: true,
-        title: '功能',
+        title: '功能示例',
         icon: '&#xe778;',
     },
     redirect: '/function/debounce',
@@ -28,6 +28,17 @@ const router = {
                 ),
             meta: {
                 title: '剪贴板',
+            },
+        },
+        {
+            path: '/function/linkageForm',
+            name: '联动表单',
+            component: () =>
+                import(
+                    /* webpackChunkName: "linkageForm" */ '@/views/functionView/components/linkageForm/Index.vue'
+                ),
+            meta: {
+                title: '联动表单',
             },
         },
         {

@@ -21,17 +21,6 @@ const router = {
             },
         },
         {
-            path: '/templates/linkageForm',
-            name: '联动表单',
-            component: () =>
-                import(
-                    /* webpackChunkName: "linkageForm" */ '@/views/templatesView/components/linkageForm/Index.vue'
-                ),
-            meta: {
-                title: '联动表单',
-            },
-        },
-        {
             path: '/templates/virtualList',
             name: '虚拟列表',
             component: () =>

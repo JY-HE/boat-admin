@@ -2,9 +2,9 @@
 import dashboardViewRouter from '@/views/dashboardView/router';
 // 玩转css
 import cssViewRouter from '@/views/cssView/router';
-// 模板中心
-import templatesViewRouter from '@/views/templatesView/router';
-// 功能
+// 组件中心
+import widgetsViewRouter from '@/views/widgetsView/router';
+// 功能示例
 import functionViewRouter from '@/views/functionView/router';
 // eCharts示例
 import eChartsViewRouter from '@/views/eChartsView/router';
@@ -24,7 +24,7 @@ import tabCommunicationViewRouter from '@/views/tabCommunicationView/router';
 export default [
     dashboardViewRouter,
     cssViewRouter,
-    templatesViewRouter,
+    widgetsViewRouter,
     functionViewRouter,
     eChartsViewRouter,
     introductionPageViewRouter,

@@ -1,19 +1,19 @@
 const router = {
-    path: '/templates',
+    path: '/widgets',
     name: '组件中心',
     meta: {
         isShow: true,
         title: '组件中心',
         icon: '&#xe779;',
     },
-    redirect: '/templates/picturePreview',
+    redirect: '/widgets/picturePreview',
     children: [
         {
-            path: '/templates/picturePreview',
+            path: '/widgets/picturePreview',
             name: '图片预览',
             component: () =>
                 import(
-                    /* webpackChunkName: "picturePreview" */ '@/views/templatesView/components/picturePreview/Index.vue'
+                    /* webpackChunkName: "picturePreview" */ '@/views/widgetsView/components/picturePreview/Index.vue'
                 ),
             meta: {
                 isShow: false,
@@ -21,33 +21,33 @@ const router = {
             },
         },
         {
-            path: '/templates/virtualList',
+            path: '/widgets/virtualList',
             name: '虚拟列表',
             component: () =>
                 import(
-                    /* webpackChunkName: "virtualList" */ '@/views/templatesView/components/virtualList/Index.vue'
+                    /* webpackChunkName: "virtualList" */ '@/views/widgetsView/components/virtualList/Index.vue'
                 ),
             meta: {
                 title: '虚拟列表',
             },
         },
         {
-            path: '/templates/cards',
+            path: '/widgets/cards',
             name: '卡片',
             component: () =>
                 import(
-                    /* webpackChunkName: "cards" */ '@/views/templatesView/components/cards/Index.vue'
+                    /* webpackChunkName: "cards" */ '@/views/widgetsView/components/cards/Index.vue'
                 ),
             meta: {
                 title: '卡片',
             },
         },
         {
-            path: '/templates/textScroll',
+            path: '/widgets/textScroll',
             name: '文字滚动',
             component: () =>
                 import(
-                    /* webpackChunkName: "textScroll" */ '@/views/templatesView/components/textScroll/Index.vue'
+                    /* webpackChunkName: "textScroll" */ '@/views/widgetsView/components/textScroll/Index.vue'
                 ),
             meta: {
                 title: '文字滚动',

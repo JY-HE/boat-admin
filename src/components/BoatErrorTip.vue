@@ -1,5 +1,5 @@
 <template>
-    <div class="ErrorTip flex justify-center items-center gap-12">
+    <div class="BoatErrorTip flex justify-center items-center gap-12">
         <!-- 403 -->
         <svg
             v-if="type === '403'"

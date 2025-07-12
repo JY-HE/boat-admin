@@ -1,5 +1,5 @@
 <template>
-    <ErrorTip type="500" />
+    <BoatErrorTip type="500" />
 </template>
 
 <script setup lang="ts">

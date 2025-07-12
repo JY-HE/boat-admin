@@ -15,22 +15,22 @@
 
 <script setup lang="ts">
 import { generateParagraph } from 'lipsum-zh';
-import FixedHeightVirtualList from './components/FixedHeightVirtualList.vue';
-import IndefiniteHeightVirtualList from './components/IndefiniteHeightVirtualList.vue';
+import BoatFixedHeightVirtualList from '@/components/BoatFixedHeightVirtualList.vue';
+import BoatIndefiniteHeightVirtualList from '@/components/BoatIndefiniteHeightVirtualList.vue';
 
 defineOptions({ name: 'VirtualList' });
 
-const activeName = ref<string>('FixedHeightVirtualList');
+const activeName = ref<string>('BoatFixedHeightVirtualList');
 const comps = computed(() => {
     return [
-        { name: '定高虚拟列表', componentName: 'FixedHeightVirtualList' },
-        { name: '不定高虚拟列表', componentName: 'IndefiniteHeightVirtualList' },
+        { name: '定高虚拟列表', componentName: 'BoatFixedHeightVirtualList' },
+        { name: '不定高虚拟列表', componentName: 'BoatIndefiniteHeightVirtualList' },
     ];
 });
 // 组件映射
-const componentMap: Record<string, typeof FixedHeightVirtualList> = {
-    FixedHeightVirtualList,
-    IndefiniteHeightVirtualList,
+const componentMap: Record<string, typeof BoatFixedHeightVirtualList> = {
+    BoatFixedHeightVirtualList,
+    BoatIndefiniteHeightVirtualList,
 };
 
 // 根据 activeName 获取组件

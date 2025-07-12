@@ -1,5 +1,9 @@
 <template>
-    <div ref="virtualListRef" class="w-full h-full scrollbarStyle relative" @scroll="scrollEvent">
+    <div
+        ref="virtualListRef"
+        class="BoatIndefiniteHeightVirtualList w-full h-full scrollbarStyle relative"
+        @scroll="scrollEvent"
+    >
         <div
             class="w-full absolute top-0 left-0 z-[-1]"
             :style="{ height: listHeight + 'px' }"
@@ -24,8 +28,6 @@
 
 <script lang="ts" setup>
 import { useSystemConfigStore } from '@/store';
-
-defineOptions({ name: 'IndefiniteHeightVirtualList' });
 
 const props = defineProps({
     listData: { type: Array as PropType<{ index: number; value: string }[]>, default: () => [] },

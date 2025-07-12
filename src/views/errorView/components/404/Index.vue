@@ -1,5 +1,5 @@
 <template>
-    <ErrorTip type="404" />
+    <BoatErrorTip type="404" />
 </template>
 
 <script setup lang="ts">

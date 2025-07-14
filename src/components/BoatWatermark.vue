@@ -58,7 +58,7 @@ const createWatermark = () => {
  * @param ctx CanvasRenderingContext2D
  * @param canvas HTMLCanvasElement
  */
-const handleTextWatermark = (ctx, canvas) => {
+const handleTextWatermark = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
     // 处理 content：如果是数组，每项一行；否则整体作为一行
     const lines: string[] = Array.isArray(props.content) ? props.content : [props.content || ''];
     const lineHeight = props.fontSize * 1.2;
@@ -85,7 +85,7 @@ const handleTextWatermark = (ctx, canvas) => {
  * @param ctx CanvasRenderingContext2D
  * @param canvas HTMLCanvasElement
  */
-const handleImageWatermark = (ctx, canvas) => {
+const handleImageWatermark = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.src = props.imageUrl!;

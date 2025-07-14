@@ -10,8 +10,6 @@ import functionViewRouter from '@/views/functionView/router';
 import eChartsViewRouter from '@/views/eChartsView/router';
 // 引导页
 import introductionPageViewRouter from '@/views/introductionPageView/router';
-// 水印
-import watermarkViewRouter from '@/views/watermarkView/router';
 // 异常页
 import errorViewRouter from '@/views/errorView/router';
 // 关于页
@@ -28,7 +26,6 @@ export default [
     functionViewRouter,
     eChartsViewRouter,
     introductionPageViewRouter,
-    watermarkViewRouter,
     errorViewRouter,
     aboutViewRouter,
     permissionViewRouter,

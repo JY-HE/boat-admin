@@ -6,7 +6,7 @@ const router = {
         title: '组件中心',
         icon: '&#xe779;',
     },
-    redirect: '/widgets/picturePreview',
+    redirect: '/widgets/virtualList',
     children: [
         {
             path: '/widgets/picturePreview',
@@ -51,6 +51,17 @@ const router = {
                 ),
             meta: {
                 title: '文字滚动',
+            },
+        },
+        {
+            path: '/widgets/watermark',
+            name: '水印',
+            component: () =>
+                import(
+                    /* webpackChunkName: "watermark" */ '@/views/widgetsView/components/watermark/Index.vue'
+                ),
+            meta: {
+                title: '水印',
             },
         },
     ],

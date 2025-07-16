@@ -19,6 +19,7 @@ declare module 'vue' {
     BoatFixedHeightVirtualList: typeof import('./components/BoatFixedHeightVirtualList.vue')['default']
     BoatIconButton: typeof import('./components/BoatIconButton.vue')['default']
     BoatIconfont: typeof import('./components/BoatIconfont.vue')['default']
+    BoatImageCrop: typeof import('./components/BoatImageCrop.vue')['default']
     BoatIndefiniteHeightVirtualList: typeof import('./components/BoatIndefiniteHeightVirtualList.vue')['default']
     BoatLayout: typeof import('./components/BoatLayout.vue')['default']
     BoatLoading: typeof import('./components/BoatLoading.vue')['default']

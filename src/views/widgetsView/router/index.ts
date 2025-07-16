@@ -64,7 +64,15 @@ const router = {
                 title: '水印',
             },
         },
-    ],
+        {
+            path: '/widgets/imageCrop',
+            name: '图片裁剪',
+            component: () => import(/* webpackChunkName: "imageCrop" */ '@/views/widgetsView/components/imageCrop/Index.vue'),
+            meta: { 
+                title: '图片裁剪' 
+              },
+        },
+  ],
 };
 
 export default router;

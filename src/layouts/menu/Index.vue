@@ -26,6 +26,8 @@ import { PlusRouteRecordRaw } from '@/types';
 import { useSystemConfig } from '@/hooks/useSystemConfig';
 import { debounce } from 'lodash-es';
 
+defineOptions({ name: 'Menu' });
+
 const router = useRouter();
 const routerList = router
     .getRoutes()

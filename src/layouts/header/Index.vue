@@ -8,6 +8,7 @@
             <Theme />
             <AddRouter v-if="!isProd" />
             <Setting />
+            <User />
         </div>
     </div>
 </template>
@@ -18,6 +19,7 @@ import Theme from './components/Theme.vue';
 import RouterSearch from './components/RouterSearch.vue';
 import Setting from './components/Setting.vue';
 import AddRouter from './components/AddRouter.vue';
+import User from './components/User.vue';
 
 defineOptions({ name: 'Header' });
 
